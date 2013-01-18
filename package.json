@@ -1,0 +1,11 @@
+{
+    "name": "matte",
+    "version": "0.1.0",
+    "dependencies": {
+        "montage": "*",
+        "montage-testing": "~0.1.1"
+    },
+    "devDependencies": {
+        "testacular": "~0.5.7"
+    }
+}
