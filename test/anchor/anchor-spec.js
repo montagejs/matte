@@ -1,16 +1,14 @@
 var Montage = require("montage").Montage,
-        TestPageLoader = require("support/testpageloader").TestPageLoader;
+    TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-var testPage = TestPageLoader.queueTest("anchor-test", function() {
+TestPageLoader.queueTest("anchor-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
-    var test = testPage.test;
-
-
-    describe("ui/anchor-spec", function() {
+    describe("test/anchor/anchor-spec", function() {
         describe("initialization", function() {
-            it("should load", function() {
-                expect(testPage.loaded).toBeTruthy();
-            });
 
             describe("once loaded", function() {
 

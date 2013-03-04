@@ -2,10 +2,11 @@
     "name": "matte",
     "version": "0.1.0",
     "dependencies": {
-        "montage": "~0.12.4"
+        "montage": "~0.13.0",
+        "montage-native": "~0.1.0"
     },
     "devDependencies": {
-        "montage-testing": "~0.1.1"
+        "montage-testing": "~0.1.3"
     },
     "exclude": [
         "overview.html",

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="../../node_modules/montage/montage.js" data-package="../../"></script>
+     <script type="text/montage-serialization">
+        {
+
+            "test": {
+                "prototype": "test/anchor/anchor-test",
+                "properties": {
+                    "link1": {"@": "link1"},
+                    "link2": {"@": "link2"},
+                    "link3": {"@": "link3"}
+                }
+            },
+
+            "link1": {
+                "prototype": "ui/anchor.reel",
+                "properties": {
+                    "element": {"#": "link1"}
+                }
+            },
+
+            "link2": {
+                "prototype": "ui/anchor.reel",
+                "properties": {
+                    "element": {"#": "link2"},
+                    "href": "http://www.google.com"
+                }
+            },
+
+            "link3": {
+                "prototype": "ui/anchor.reel",
+                "properties": {
+                    "element": {"#": "link3"}
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <table id="list1" class="bordered-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="table-row">
+            <tr>
+                <td><a data-montage-id="link1" target="_blank"></a></td>
+                <td><span data-montage-id="desc"></span></td>
+            </tr>
+            <tr>
+                <td><a data-montage-id="link2" target="_blank">Foo</a></td>
+                <td><span data-montage-id="desc"></span></td>
+            </tr>
+            <tr>
+                <td><a data-montage-id="link3" target="_blank">Bar</a></td>
+                <td><span data-montage-id="desc"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

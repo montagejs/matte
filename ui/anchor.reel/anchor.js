@@ -7,8 +7,8 @@
 
 /*global require,exports */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
-    NativeAnchor = require("ui/native/anchor.reel").Anchor;
+    Component = require("montage/ui/component").Component,
+    NativeAnchor = require("montage-native/ui/anchor.reel").Anchor;
 
 /**
  * Montage Anchor
