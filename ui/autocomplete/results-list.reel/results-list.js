@@ -1,5 +1,5 @@
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component;
+    Component = require("montage/ui/component").Component;
 
 exports.ResultsList = Montage.create(Component, {
 

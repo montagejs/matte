@@ -1,17 +1,17 @@
 
 /**
-    @module "montage/ui/autocomplete/result-item.reel"
+    @module "matte/ui/autocomplete/result-item.reel"
     @requires montage
     @requires montage/ui/component
-    @requires "montage/ui/dynamic-text.reel"
+    @requires "matte/ui/dynamic-text.reel"
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
+    Component = require("montage/ui/component").Component,
     DynamicText = require("ui/dynamic-text.reel").DynamicText;
 
 /**
-    @class module:"montage/ui/autocomplete/result-item.reel".ResultItem
-    @extends module:"montage/ui/dynamic-text.reel".DynamicText
+    @class module:"matte/ui/autocomplete/result-item.reel".ResultItem
+    @extends module:"matte/ui/dynamic-text.reel".DynamicText
 */
 exports.ResultItem = Montage.create(DynamicText, {
 

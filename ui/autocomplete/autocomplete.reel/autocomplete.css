@@ -1,7 +1,7 @@
- .montage-Autocomplete {
+ .matte-Autocomplete {
      padding-right: 20px;
  }
- .montage-Autocomplete--loading {
+ .matte-Autocomplete--loading {
      background: url('loading.gif') no-repeat;
      background-position: right;
  }

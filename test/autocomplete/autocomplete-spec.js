@@ -1,15 +1,14 @@
 /*global require,exports,describe,it,expect */
-var Montage = require("montage").Montage,
-    TestPageLoader = require("support/testpageloader").TestPageLoader,
-    EventInfo = require("support/testpageloader").EventInfo;
+var Montage = require("montage").Montage;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-var testPage = TestPageLoader.queueTest("autocomplete-test", function() {
-    var test = testPage.test;
+var testPage = TestPageLoader.queueTest("autocomplete-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
-    describe("ui/autocomplete-spec", function() {
-        it("should load", function() {
-            expect(testPage.loaded).toBe(true);
-        });
+    describe("test/autocomplete/autocomplete-spec", function() {
 
         describe("AutocompleteTest", function(){
             it("can be created", function() {

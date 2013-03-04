@@ -1,4 +1,5 @@
 var Montage = require("montage").Montage;
+var TestController = require("montage-testing/test-controller").TestController;
 
 var states = [
     {name: "Alabama", code: "AL" },
@@ -61,7 +62,7 @@ var tags = [
 'business', 'companies', 'startups', 'silicon valley', 'bay area', 'biking', 'tennis', 'united states', 'USA'
 ];
 
-var AutocompleteTest = exports.AutocompleteTest = Montage.create(Montage, {
+exports.AutocompleteTest = Montage.create(TestController, {
 
     autocomplete1: {
         value: null

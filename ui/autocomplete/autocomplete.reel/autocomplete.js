@@ -1,16 +1,16 @@
 
 /**
-    @module "montage/ui/autocomplete/autocomplete.reel"
+    @module "matte/ui/autocomplete/autocomplete.reel"
 */
 
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
+    Component = require("montage/ui/component").Component,
     TextInput = require("ui/text-input").TextInput,
-    logger = require("core/logger").logger("autocomplete"),
+    logger = require("montage/core/logger").logger("autocomplete"),
     ResultsList = require("ui/autocomplete/results-list.reel/results-list").ResultsList,
     Popup = require("ui/popup/popup.reel").Popup,
-    PressComposer = require("ui/composer/press-composer").PressComposer,
-    RangeController = require("core/range-controller").RangeController;
+    PressComposer = require("montage/ui/composer/press-composer").PressComposer,
+    RangeController = require("montage/core/range-controller").RangeController;
 
 var KEY_UP = 38,
     KEY_DOWN = 40,
@@ -38,10 +38,10 @@ var getElementPosition = function(obj) {
 
 /**
     The Autocomplete component
-    @class module:"montage/ui/autocomplete/autocomplete.reel".Autocomplete
-    @extends module:montage/ui/text-input.TextInput
+    @class module:"matte/ui/autocomplete/autocomplete.reel".Autocomplete
+    @extends module:matte/ui/text-input.TextInput
 */
-var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends module:"montage/ui/autocomplete/autocomplete.reel".Autocomplete# */ {
+var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends module:"matte/ui/autocomplete/autocomplete.reel".Autocomplete# */ {
 
     didCreate: {
         value: function() {
@@ -56,7 +56,7 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
     willPrepareForDraw: {
         value: function() {
             TextInput.willPrepareForDraw.call(this);
-            this.element.classList.add("montage-InputText");
+            this.element.classList.add("matte-InputText");
         }
     },
 
@@ -416,7 +416,7 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
     prepareForDraw: {
         value: function() {
             this._addEventListeners();
-            this.element.classList.add('montage-Autocomplete');
+            this.element.classList.add('matte-Autocomplete');
 
             // create the Repetition for the suggestions
             this.resultsController = RangeController.create();
@@ -484,7 +484,7 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
             }
 
             var isLoading = (this.loadingStatus === 'loading');
-            this.element.classList[isLoading ? 'add' : 'remove']('montage-Autocomplete--loading');
+            this.element.classList[isLoading ? 'add' : 'remove']('matte-Autocomplete--loading');
 
 
         }
