@@ -1,14 +1,14 @@
 /*global require,exports,describe,it,expect */
-var Montage = require("montage").Montage,
-    TestPageLoader = require("support/testpageloader").TestPageLoader;
+var Montage = require("montage").Montage;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-var testPage = TestPageLoader.queueTest("dynamic-text-test", function() {
-    var test = testPage.test;
+TestPageLoader.queueTest("dynamic-text-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
-    describe("ui/dynamic-text-spec", function() {
-        it("should load", function() {
-            expect(testPage.loaded).toBe(true);
-        });
+    describe("test/dynamic-text/dynamic-text-spec", function() {
 
         describe("DynamicText", function() {
             it("wipes out it's content in initialization", function() {
