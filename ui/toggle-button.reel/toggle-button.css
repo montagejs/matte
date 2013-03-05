@@ -1,8 +1,8 @@
 
-.montage-Button.active {
+.matte-Button.active {
     background-color: #cccccc;
 }
 
-.montage-Button.active:hover {
+.matte-Button.active:hover {
     background-color: #d8d8d8;
 }

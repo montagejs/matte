@@ -1,19 +1,19 @@
 
 /**
-    @module "montage/ui/toggle-button.reel"
+    @module "matte/ui/toggle-button.reel"
     @requires montage/ui/component
-    @requires "montage/ui/button.reel"
+    @requires "matte/ui/button.reel"
 */
 
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
+    Component = require("montage/ui/component").Component,
     Button = require("ui/button.reel").Button;
 /**
   The ToggleButton component extends the Button component to include state management (pressed or not pressed), and the ability to specify labels and CSS classes for each state.
-  @class module:"montage/ui/toggle-button.reel".ToggleButton
-  @extends module:"montage/ui/button.reel".Button
+  @class module:"matte/ui/toggle-button.reel".ToggleButton
+  @extends module:"matte/ui/button.reel".Button
  */
-var ToggleButton = exports.ToggleButton = Montage.create(Button, /** @lends module:"montage/ui/toggle-button.reel".ToggleButton# */ {
+var ToggleButton = exports.ToggleButton = Montage.create(Button, /** @lends module:"matte/ui/toggle-button.reel".ToggleButton# */ {
     hasTemplate: {value: true},
 
     _pressed: {
