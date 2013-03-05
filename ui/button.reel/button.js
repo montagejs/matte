@@ -6,22 +6,21 @@
     @requires "montage/ui/native/button.reel"
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
-    NativeButton = require("ui/native/button.reel").Button;
+    NativeButton = require("montage-native/ui/button.reel").Button;
 
 /**
  * Montage Button
- @class module:"montage/ui/button.reel".Button
- @extends module:"montage/ui/native/button.reel".Button
+ @class module:"matte/ui/button.reel".Button
+ @extends module:"montage-native/ui/button.reel".Button
 */
-exports.Button = Montage.create(NativeButton, /** @lends module:"montage/ui/button.reel".Button# */ {
+exports.Button = Montage.create(NativeButton, /** @lends module:"matte/ui/button.reel".Button# */ {
 
     hasTemplate: {value: true},
 
     willPrepareForDraw: {
         value: function() {
             NativeButton.willPrepareForDraw.call(this);
-            this.element.classList.add("montage-Button");
+            this.element.classList.add("matte-Button");
         }
     }
 });

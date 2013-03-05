@@ -1,9 +1,12 @@
-var Montage = require("montage").Montage,
-    Bindings = require("montage/core/bindings").Bindings,
-    TestPageLoader = require("support/testpageloader").TestPageLoader;
+var Montage = require("montage").Montage;
+var Bindings = require("montage/core/bindings").Bindings;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-var testPage = TestPageLoader.queueTest("buttontest", function() {
-    var test = testPage.test;
+TestPageLoader.queueTest("button-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
     var click = function(component, el, fn) {
         el = el || component.element;
@@ -19,10 +22,7 @@ var testPage = TestPageLoader.queueTest("buttontest", function() {
         expect(component.label).toBe(value);
     };
 
-    describe("ui/button-spec", function() {
-        it("should load", function() {
-            expect(testPage.loaded).toBe(true);
-        });
+    describe("test/button/button-spec", function() {
 
         describe("button", function(){
 
@@ -149,9 +149,9 @@ var testPage = TestPageLoader.queueTest("buttontest", function() {
 
 
             describe("action event detail property", function() {
-                var detailButton = test.detailbutton,
-                    testHandler;
+                var detailButton, testHandler;
                 beforeEach(function() {
+                    detailButton = test.detailbutton;
                     testHandler = {
                         handler: function(event) {
                             testHandler.event = event;
@@ -199,8 +199,12 @@ var testPage = TestPageLoader.queueTest("buttontest", function() {
             });
 
             it("supports converters for label", function(){
+                test.converterbutton.label = "pass";
                 expect(test.converterbutton.label).toBe("PASS");
-                expect(test.converterbutton.element.value).toBe("PASS");
+                testPage.waitForDraw();
+                runs(function(){
+                    expect(test.converterbutton.element.value).toBe("PASS");
+                });
             });
 
             // TODO should be transplanted to the press-composer-spec
@@ -253,166 +257,6 @@ var testPage = TestPageLoader.queueTest("buttontest", function() {
                     });
                 });
             }
-
-            describe("inside a scroll view", function() {
-                it("fires an action event when clicked", function() {
-                    testButton(test.scroll_button, "scroll button");
-                });
-                it("doesn't fire an action event when scroller is dragged", function() {
-                    var el = test.scroll_button.element;
-                    var scroll_el = test.scroll.element;
-
-                    var listener = testPage.addListener(test.scroll_button);
-
-                    var press_composer = test.scroll_button.composerList[0];
-
-                    // mousedown
-                    testPage.mouseEvent({target: el}, "mousedown");
-
-                    expect(test.scroll_button.active).toBe(true);
-                    expect(test.scroll_button.eventManager.isPointerClaimedByComponent(press_composer._observedPointer, press_composer)).toBe(true);
-
-                    // Mouse move doesn't happen instantly
-                    waits(10);
-                    runs(function() {
-                        // mouse move up
-                        var moveEvent = document.createEvent("MouseEvent");
-                        // Dispatch to scroll view, but use the coordinates from the
-                        // button
-                        moveEvent.initMouseEvent("mousemove", true, true, scroll_el.view, null,
-                                el.offsetLeft, el.offsetTop - 100,
-                                el.offsetLeft, el.offsetTop - 100,
-                                false, false, false, false,
-                                0, null);
-                        scroll_el.dispatchEvent(moveEvent);
-
-                        expect(test.scroll_button.active).toBe(false);
-                        expect(test.scroll_button.eventManager.isPointerClaimedByComponent(press_composer._observedPointer, press_composer)).toBe(false);
-
-                        // mouse up
-                        testPage.mouseEvent({target: el}, "mouseup");;
-
-                        expect(listener).not.toHaveBeenCalled();
-                    });
-
-                });
-            });
-        });
-
-        describe("toggle button", function() {
-            it("alternates between unpressed and pressed", function() {
-                expect(test.toggleinput.pressed).toBe(false);
-                expect(test.toggleinput.label).toBe("off");
-
-                click(test.toggleinput);
-                expect(test.toggleinput.pressed).toBe(true);
-                expect(test.toggleinput.label).toBe("on");
-
-                click(test.toggleinput);
-                expect(test.toggleinput.pressed).toBe(false);
-                expect(test.toggleinput.label).toBe("off");
-            });
-
-            describe("toggle()", function() {
-                it("swaps the state", function() {
-                    test.toggleinput.pressed = false;
-                    test.toggleinput.toggle();
-                    expect(test.toggleinput.pressed).toBe(true);
-                    test.toggleinput.toggle();
-                    expect(test.toggleinput.pressed).toBe(false);
-                    test.toggleinput.toggle();
-                    expect(test.toggleinput.pressed).toBe(true);
-                });
-            });
-
-            describe("label property", function() {
-                it("alternates between unpressed and pressed", function() {
-                    test.toggleinput.pressed = false;
-
-                    // The expectations are in a closure because the draw can
-                    // happen at any point after we click on the button
-                    var checker = function(e) {
-                        return function(){
-                            expect(test.toggleinput.pressed).toBe(e);
-                            expect(test.toggleinput.element.value).toBe((e)?"on":"off");
-                        };
-                    };
-
-                    runs(checker(false));
-
-                    runs(function(){ click(test.toggleinput); });
-                    testPage.waitForDraw();
-                    runs(checker(true));
-                });
-                it("changes pressed state when set to unpressedLabel or pressedLabel", function(){
-                    test.toggleinput.pressed = false;
-                    test.toggleinput.label = "on";
-                    expect(test.toggleinput.pressed).toBe(true);
-                    test.toggleinput.label = "off";
-                    expect(test.toggleinput.pressed).toBe(false);
-                });
-                it("doesn't change pressed state when set to a non-matching string", function(){
-                   expect(test.toggleinput.pressed).toBe(false);
-                   test.toggleinput.label = "random";
-                   expect(test.toggleinput.pressed).toBe(false);
-                   expect(test.toggleinput.label).toBe("random");
-
-                   test.toggleinput.pressed = true;
-                   expect(test.toggleinput.label).toBe("on");
-                });
-            });
-            describe("unpressedLabel", function() {
-                it("is set as the value when the button is unpressed", function() {
-                    test.toggleinput.pressed = false;
-                    expect(test.toggleinput.label).toBe("off");
-                    test.toggleinput.unpressedLabel = "unpressed";
-                    expect(test.toggleinput.label).toBe("unpressed");
-
-                    testPage.waitForDraw();
-                    runs(function(){
-                        expect(test.toggleinput.element.value).toBe("unpressed");
-                    });
-                });
-                it("is taken from `value` on init if the button is unpressed and unpressedLabel isn't set", function() {
-                    expect(test.toggleinput2.unpressedLabel).toBe(test.toggleinput2.label);
-                });
-            });
-
-            describe("pressedLabel", function() {
-                it("is set as the value when the button is pressed", function() {
-                    test.toggleinput.pressed = true;
-                    expect(test.toggleinput.label).toBe("on");
-                    test.toggleinput.pressedLabel = "pressed";
-                    expect(test.toggleinput.label).toBe("pressed");
-
-                    testPage.waitForDraw();
-                    runs(function(){
-                        expect(test.toggleinput.element.value).toBe("pressed");
-                    });
-                });
-                it("is taken from `value` on init if the button is pressed and pressedLabel isn't set", function() {
-                    expect(test.toggleinput3.pressedLabel).toBe(test.toggleinput3.label);
-                });
-            });
-
-            describe("pressedClass", function() {
-                it("is not in the classList when the button is unpressed", function() {
-                    test.toggleinput.pressed = false;
-
-                    testPage.waitForDraw();
-                    runs(function(){
-                        expect(test.toggleinput.element.className).not.toContain("pressed");
-                    });
-                });
-                it("is added to the classList when the button is pressed", function() {
-                    test.toggleinput.pressed = true;
-
-                    testPage.waitForDraw();
-                    runs(function(){
-                        expect(test.toggleinput.element.className).toContain("pressed");
-                    });
-                });
-            });
         });
     });
 });

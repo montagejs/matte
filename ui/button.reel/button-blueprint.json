@@ -1,20 +1,20 @@
 {
     "blueprint_nativebutton_reference":{
-        "prototype":"core/meta/blueprint-reference",
+        "prototype":"montage/core/meta/blueprint-reference",
         "properties":{
             "valueReference":{
                 "blueprintName":"NativeButton",
-                "blueprintModuleId":"ui/native/button.reel/button-blueprint.json",
+                "blueprintModuleId":"montage-native/ui/button.reel/button-blueprint.json",
                 "prototypeName":"NativeButton"
             }
         }
     },
 
     "root":{
-        "prototype":"core/meta/blueprint",
+        "prototype":"montage/core/meta/blueprint",
         "properties":{
             "name":"Button",
-            "blueprintModuleId":"ui/button.reel/button-blueprint.json",
+            "blueprintModuleId":"matte/ui/button.reel/button-blueprint.json",
             "prototypeName":"Button",
             "customPrototype":false,
             "parent":{

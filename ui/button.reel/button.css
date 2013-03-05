@@ -1,5 +1,5 @@
 
-.montage-Button {
+.matte-Button {
     outline: none;
     box-sizing: border-box;
     font-size: 12px;
@@ -15,36 +15,36 @@
 }
 
 /* States */
-.montage-Button:hover {
+.matte-Button:hover {
     background-color: #fff;
     color: #000;
 }
 
-.montage-Button:active {
+.matte-Button:active {
     background-color: #e5e5e5;
 }
 
-.montage-Button:focus {
+.matte-Button:focus {
     border-color: #7f7f7f;
 }
 
 
 /* ButtonGroup ------------------------------- */
 
-.montage-ButtonGroup {
+.matte-ButtonGroup {
     padding-left: 5px; /* Add the negative margin back */
 }
 
-.montage-ButtonGroup > .montage-Button {
+.matte-ButtonGroup > .montage-Button {
     margin: 0;
     border-radius: 0;
     margin-left: -5px; /* Remove the space inbetween */
 }
 
-.montage-ButtonGroup > .montage-Button:first-child {
+.matte-ButtonGroup > .montage-Button:first-child {
     border-radius: 3px 0 0 3px;
 }
 
-.montage-ButtonGroup > .montage-Button:last-child {
+.matte-ButtonGroup > .montage-Button:last-child {
     border-radius: 0 3px 3px 0;
 }

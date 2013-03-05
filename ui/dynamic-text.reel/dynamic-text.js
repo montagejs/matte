@@ -4,7 +4,7 @@
     @requires montage/ui/component
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component;
+    Component = require("montage/ui/component").Component;
 
 /**
  @class module:"montage/ui/dynamic-text.reel".DynamicText
