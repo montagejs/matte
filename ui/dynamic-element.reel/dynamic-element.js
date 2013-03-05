@@ -5,8 +5,8 @@
     @requires collections/set
 */
 var Montage = require("montage").Montage;
-var Component = require("ui/component").Component;
-var Set = require("collections/set");
+var Component = require("montage/ui/component").Component;
+var Set = require("montage/collections/set");
 
 // TODO replace all usage of undefinedGet and undefinedSet with manipulation of
 // a classList Set() from Collections and handle rangeChange events to sync

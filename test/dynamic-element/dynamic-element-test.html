@@ -2,12 +2,11 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>DynamicElement Test</title>
-    <script type="text/javascript" src="../../../montage.js" data-package="../../"></script>
+    <script type="text/javascript" src="../../node_modules/montage/montage.js" data-package="../../"></script>
     <script type="text/montage-serialization">
         {
             "test": {
-                "prototype": "ui/dynamic-element-test/test",
+                "prototype": "test/dynamic-element/test",
                 "properties": {
                     "dynamicElement": {"@": "dynamicElement"},
                     "dynamicElementClassList": {"@": "dynamicElementClassList"},
@@ -16,7 +15,7 @@
             },
 
             "dynamicElement": {
-                "prototype": "montage/ui/dynamic-element.reel",
+                "prototype": "ui/dynamic-element.reel",
                 "properties": {
                     "element": {"#": "dynamicElement"},
                     "allowedTagNames": ["div"]
@@ -24,7 +23,7 @@
             },
 
             "dynamicElementClassList": {
-                "prototype": "montage/ui/dynamic-element.reel",
+                "prototype": "ui/dynamic-element.reel",
                 "properties": {
                     "element": {"#": "dynamicElementClassList"}
                 },
@@ -34,7 +33,7 @@
                 }
             },
             "dynamicElementClassInMarkup": {
-                "prototype": "montage/ui/dynamic-element.reel",
+                "prototype": "ui/dynamic-element.reel",
                 "properties": {
                     "element": {"#": "dynamicElementClassInMarkup"}
                 }

@@ -3,6 +3,7 @@ require("montage-testing").run(require,[
     "test/anchor/anchor-spec",
     //"test/autocomplete/autocomplete-spec"
     "test/button/button-spec",
+    "test/dynamic-element/dynamic-element-spec",
     "test/dynamic-text/dynamic-text-spec",
     "test/toggle-button/toggle-button-spec"
 ]);

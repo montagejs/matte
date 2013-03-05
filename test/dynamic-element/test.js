@@ -1,7 +1,7 @@
-var Montage = require("montage").Montage,
-    TestController = require("support/test-controller").TestController;
+var Montage = require("montage").Montage;
+var TestController = require("montage-testing/test-controller").TestController;
 
-var Test = exports.Test = Montage.create(TestController, {
+exports.Test = Montage.create(TestController, {
 
     dynamicElement: {
         value: null

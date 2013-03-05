@@ -1,15 +1,15 @@
 /*global require,exports,describe,it,expect */
 var Montage = require("montage").Montage;
-var TestPageLoader = require("support/testpageloader").TestPageLoader;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 var Bindings = require("montage/core/bindings").Bindings;
 
-var testPage = TestPageLoader.queueTest("dynamic-element-test", function() {
-    var test = testPage.test;
+TestPageLoader.queueTest("dynamic-element-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
-    describe("ui/dynamic-element-spec", function() {
-        it("should load", function() {
-            expect(testPage.loaded).toBe(true);
-        });
+    describe("test/dynamic-element/dynamic-element-spec", function() {
 
         describe("DynamicElement", function() {
 
