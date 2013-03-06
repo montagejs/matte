@@ -1,19 +1,19 @@
 
-.montage-Alert-dialog {
+.matte-Alert-dialog {
     min-width: 300px;
 }
-.montage-Alert-dialog .montage-Alert-content {
+.matte-Alert-dialog Alert-content {
     font-size: 1.3em;
     padding: 15px;
 
 }
-.montage-Alert-dialog .montage-Alert-actions {
+.matte-Alert-dialog Alert-actions {
     float: right;
 }
 
 /*
 
-.montage-Alert-dialog {
+.matte-Alert-dialog {
     font-family: "AG Buch BQ Regular", "AG Buch BQ", Helvetica, Arial, sans-serif;
     background-color: #333;
     border: 1px solid #333;
@@ -22,40 +22,40 @@
     padding: 0px 3px;
 }
 
-.montage-Alert-dialog .header {
+.matte-Alert-dialog .header {
     height: 25px;
     color: #fff;
 }
 
-.montage-Alert-dialog .header h4 {
+.matte-Alert-dialog .header h4 {
     margin: 10px 0;
     font-weight: normal;
 }
 
-.montage-Alert-dialog .content {
+.matte-Alert-dialog .content {
     text-align: center;
     margin: 5px 0;
     background-color: #e6e6e6;
     padding: 10px;
 }
 
-.montage-Alert-dialog .msg-container {
+.matte-Alert-dialog .msg-container {
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
 }
 
-.montage-Alert-dialog .msg {
+.matte-Alert-dialog .msg {
     font-size: 18pt;
     font-weight: normal;
 }
 
-.montage-Alert-dialog .msg-detail {
+.matte-Alert-dialog .msg-detail {
     font-size: 12pt;
     font-weight: normal;
     color: #cccccc;
 }
 
-.montage-Alert-dialog .action-container {
+.matte-Alert-dialog .action-container {
     padding: 10px 0;
 }
 */

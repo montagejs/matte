@@ -1,5 +1,5 @@
 /* these need to be moved to montage.css when that is created */
-.montage-invisible {
+.matte-invisible {
     display: none;
 }
 .clearfix:after {
@@ -11,7 +11,7 @@
 	height: 0;
 }
 
-.montage-Popup-modal-mask {
+.matte-Popup-modal-mask {
     position: fixed;
     left: 0;
     top: 0;
@@ -21,7 +21,7 @@
     opacity: 0.8;
 }
 
-.montage-Popup-container {
+.matte-Popup-container {
     border: 1px solid #eee;
     -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -40,28 +40,28 @@
     border-radius: 3px;
 }
 
-.montage-Popup-noborder {
+.matte-Popup-noborder {
     border: 0px;
 }
 
-.montage-Popup--modal {
+.matte-Popup--modal {
     border: 3px solid #ccc;
 }
 
-.montage-Popup-container *:focus {
+.matte-Popup-container *:focus {
     outline: none;
 }
 
-.montage-Popup-wrapper {
+.matte-Popup-wrapper {
 
 }
 
-.montage-Popup-header {
+.matte-Popup-header {
     background-color: whitesmoke;
     border-bottom: 1px solid #eee;
     padding: 5px 15px;
 }
-.montage-Popup-footer {
+.matte-Popup-footer {
     background-color: whitesmoke;
     padding: 10px 15px;
     border-top: 1px solid #ddd;

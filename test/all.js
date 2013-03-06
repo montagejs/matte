@@ -10,5 +10,6 @@ require("montage-testing").run(require,[
     "test/input-radio/input-radio-spec",
     "test/input-range/input-range-spec",
     "test/input-text/input-text-spec",
-    "test/list/list-spec"
+    "test/list/list-spec",
+    "test/popup/popup-spec"
 ]);

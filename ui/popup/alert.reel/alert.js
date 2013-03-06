@@ -1,17 +1,17 @@
 
 /**
-    @module "montage/ui/popup/alert.reel"
+    @module "matte/ui/popup/alert.reel"
     @requires montage/core/core
     @requires montage/ui/component
-    @requires "montage/ui/popup/popup.reel"
+    @requires "matte/ui/popup/popup.reel"
 */
 
 var Montage = require("montage").Montage;
-var Component = require("ui/component").Component;
+var Component = require("montage/ui/component").Component;
 var Popup = require("ui/popup/popup.reel").Popup;
 
 /**
- @class module:"montage/ui/popup/alert.reel".Alert
+ @class module:"matte/ui/popup/alert.reel".Alert
  @extends module:montage/ui/component.Component
  */
 

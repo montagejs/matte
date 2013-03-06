@@ -1,12 +1,12 @@
 
- .montage-Confirm-dialog {
+.matte-Confirm-dialog {
      min-width: 300px;
  }
- .montage-Confirm-dialog .montage-Confirm-content {
+.matte-Confirm-dialog Confirm-content {
      font-size: 1.3em;
      padding: 15px;
  }
- .montage-Confirm-dialog .montage-Confirm-actions {
+.matte-Confirm-dialog Confirm-actions {
      float: right;
  }
 

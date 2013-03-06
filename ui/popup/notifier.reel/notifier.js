@@ -1,20 +1,20 @@
 
 /**
-    @module "montage/ui/popup/notifier.reel"
+    @module "matte/ui/popup/notifier.reel"
     @requires montage/core/core
     @requires montage/ui/component
     @requires "montage/ui/popup/popup.reel"
 */
 var Montage = require("montage").Montage;
-var Component = require("ui/component").Component;
+var Component = require("montage/ui/component").Component;
 var Popup = require("ui/popup/popup.reel").Popup;
 
 /**
- @class module:"montage/ui/popup/notifier.reel".Notifier
+ @class module:"matte/ui/popup/notifier.reel".Notifier
  @extends module:montage/ui/component.Component
  */
 
-var Notifier = exports.Notifier = Montage.create(Component, /** @lends module:"montage/ui/popup/notifier.reel".Notifier# */ {
+var Notifier = exports.Notifier = Montage.create(Component, /** @lends module:"matte/ui/popup/notifier.reel".Notifier# */ {
 
     _msgEl: {
         value: null

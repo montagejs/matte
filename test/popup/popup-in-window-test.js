@@ -1,6 +1,5 @@
-var Montage = require("montage").Montage,
-    Button = require("montage/ui/button.reel").Button,
-    Popup = require("montage/ui/popup/popup.reel").Popup;
+var Montage = require("montage").Montage;
+var TestController = require("montage-testing/test-controller").TestController;
 
 /**
 * A Delegate to position the popup using custom logic
@@ -28,7 +27,7 @@ var TestPopupPositionDelegate = Montage.create(Montage, {
 });
 var aTestPopupPositionDelegate = Montage.create(TestPopupPositionDelegate);
 
-var PopupInWindowTest = exports.PopupInWindowTest = Montage.create(Montage, {
+exports.PopupInWindowTest = Montage.create(TestController, {
     deserializedFromTemplate: {
         value: function() {
             return this;

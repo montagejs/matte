@@ -1,18 +1,18 @@
 
 /**
-    @module "montage/ui/popup/popup.reel"
+    @module "matte/ui/popup/popup.reel"
     @requires montage/core/core
     @requires montage/ui/component
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component;
+    Component = require("montage/ui/component").Component;
 
 /**
-    @class module:"montage/ui/popup.reel".Popup
+    @class module:"matte/ui/popup.reel".Popup
     @extends module:montage/ui/component.Component
 */
 
-var Popup = exports.Popup = Montage.create(Component, { /** @lends module:"module/ui/popup/popup.reel".Popup */
+var Popup = exports.Popup = Montage.create(Component, { /** @lends module:"matte/ui/popup/popup.reel".Popup */
 
     hasTemplate: {value: true},
 
@@ -381,7 +381,7 @@ var Popup = exports.Popup = Montage.create(Component, { /** @lends module:"modul
 
     _showModalMask: {
         value: function() {
-            this._modalDialogMask = document.querySelector('.montage-Popup-modal-mask');
+            this._modalDialogMask = document.querySelector('Popup-modal-mask');
             this._modalDialogMask = this._modalDialogMask || this._createModalMask();
             this._modalDialogMask.classList.remove('montage-invisible');
         }
