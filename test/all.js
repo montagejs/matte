@@ -9,5 +9,6 @@ require("montage-testing").run(require,[
     "test/input-checkbox/input-checkbox-spec",
     "test/input-radio/input-radio-spec",
     "test/input-range/input-range-spec",
-    "test/input-text/input-text-spec"
+    "test/input-text/input-text-spec",
+    "test/list/list-spec"
 ]);

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../../node_modules/montage/montage.js" data-package="../../"></script>
+    <script type="text/montage-serialization">
+        {
+            "test": {
+                "prototype": "test/list/list-test",
+                "properties": {
+                    "list": {"@": "list1"}
+                }
+            },
+
+            "slider1": {
+                "prototype": "ui/input-range.reel",
+                "properties": {
+                    "element": {"#": "slider"}
+                }
+            },
+
+            "list1": {
+                "prototype": "ui/list.reel",
+                "properties": {
+                    "element": {"#": "list"},
+                    "content": [
+                        0,
+                        1,
+                        2
+                    ]
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+<div data-montage-id="list" class="list">
+    List Item
+    <span data-montage-id="slider" class="slider"></span>
+</div>
+
+</body>
+</html>

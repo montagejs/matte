@@ -1,17 +1,17 @@
 /**
-	@module "montage/ui/list.reel"
+	@module "matte/ui/list.reel"
     @requires montage/core/core
     @requires montage/ui/component
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
-    observeProperty = require("frb/observers").observeProperty;
+    Component = require("montage/ui/component").Component,
+    observeProperty = require("montage/frb/observers").observeProperty;
 
 /**
  @class module:"montage/ui/list.reel".List
  @extends module:montage/ui/component.Component
  */
-var List = exports.List = Montage.create(Component,/** @lends module:"montage/ui/list.reel".List# */ {
+var List = exports.List = Montage.create(Component,/** @lends module:"matte/ui/list.reel".List# */ {
     /**
       Description TODO
       @private
