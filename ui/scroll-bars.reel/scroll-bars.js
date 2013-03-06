@@ -1,9 +1,9 @@
 
 /**
-    @module "montage/ui/scroll-bars.reel"
+    @module "matte/ui/scroll-bars.reel"
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component;
+    Component = require("montage/ui/component").Component;
 
 var ScrollBars = exports.ScrollBars = Montage.create(Component, {
 

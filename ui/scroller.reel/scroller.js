@@ -1,16 +1,16 @@
 
 /**
-    @module "montage/ui/scroller.reel"
+    @module "matte/ui/scroller.reel"
     @requires montage
     @requires montage/ui/component
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component;
+    Component = require("montage/ui/component").Component;
 
 /**
     Provides scrolling for the contained elements.
 
-    @class module:"montage/ui/scroller.reel".Scroller
+    @class module:"matte/ui/scroller.reel".Scroller
     @extends module:montage/ui/component.Component
     @example
     <caption>HTML needed for the scroller</caption>
@@ -20,7 +20,7 @@ var Montage = require("montage").Montage,
     &lt;p&gt;Another large paragraph...&lt;/p&gt;
 &lt;/div&gt;
 */
-exports.Scroller = Montage.create(Component, /** @lends module:"montage/ui/scroller.reel".Scroller */ {
+exports.Scroller = Montage.create(Component, /** @lends module:"matte/ui/scroller.reel".Scroller */ {
 
     _scrollX: {
         value: 0

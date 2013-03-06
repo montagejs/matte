@@ -1,5 +1,5 @@
 
-.montage-ScrollBars {
+.matte-ScrollBars {
     position: absolute;
     left: 0;
     top: 0;
@@ -8,7 +8,7 @@
     z-index: 9999;
     pointer-events: none;
 }
-.montage-ScrollBars .montage-ScrollBars-top {
+.matte-ScrollBars .matte-ScrollBars-top {
     position: absolute;
     right: 2px;
     background: black;
@@ -20,7 +20,7 @@
     clip: rect(-1px, 6px, 3px, -1px);
     -webkit-transform: translateZ(0);
 }
-.montage-ScrollBars .montage-ScrollBars-bottom {
+.matte-ScrollBars .matte-ScrollBars-bottom {
     background: black;
     -webkit-box-shadow: 0 0 0 1px rgba(255,255,255,.27);
     width: 5px;
@@ -28,13 +28,13 @@
     opacity: 0;
     -webkit-transform: translateZ(0);
 }
-.montage-ScrollBars .montage-ScrollBars-bottomClip {
+.matte-ScrollBars .matte-ScrollBars-bottomClip {
     position: absolute;
     right: 2px;
     width: 5px;
     -webkit-transform: translateZ(0);
 }
-.montage-ScrollBars .montage-ScrollBars-left {
+.matte-ScrollBars .matte-ScrollBars-left {
     position: absolute;
     bottom: 2px;
     background: black;
@@ -46,7 +46,7 @@
     clip: rect(-1px, 3px, 6px, -1px);
     -webkit-transform: translateZ(0);
 }
-.montage-ScrollBars .montage-ScrollBars-right {
+.matte-ScrollBars .matte-ScrollBars-right {
     background: black;
     -webkit-box-shadow: 0 0 0 1px rgba(255,255,255,.27);
     height: 5px;
@@ -54,7 +54,7 @@
     opacity: 0;
     -webkit-transform: translateZ(0);
 }
-.montage-ScrollBars .montage-ScrollBars-rightClip {
+.matte-ScrollBars .matte-ScrollBars-rightClip {
     position: absolute;
     bottom: 2px;
     height: 5px;

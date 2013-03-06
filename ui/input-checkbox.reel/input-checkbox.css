@@ -1,5 +1,5 @@
 
-.montage-InputCheckbox {
+.matte-InputCheckbox {
     -webkit-appearance: none;
     -moz-appearance: none;
     outline: none;
@@ -14,23 +14,23 @@
     cursor: pointer;
 }
 
-.montage-InputCheckbox:hover {
+.matte-InputCheckbox:hover {
     background-color: #fff;
 }
 
-.montage-InputCheckbox:active {
+.matte-InputCheckbox:active {
     background-color: #e5e5e5;
 }
 
-.montage-InputCheckbox:focus {
+.matte-InputCheckbox:focus {
     border-color: #7f7f7f;
 }
 
-.montage-InputCheckbox:checked {
+.matte-InputCheckbox:checked {
     background: #f2f2f2 url(checkbox.png) no-repeat center;
 }
 
-.montage-InputCheckbox:disabled {
+.matte-InputCheckbox:disabled {
     opacity: .5;
     border-style: dashed;
     pointer-events: none;
