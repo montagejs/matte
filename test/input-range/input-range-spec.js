@@ -1,9 +1,12 @@
 /*global require,exports,describe,it,expect */
-var Montage = require("montage").Montage,
-    TestPageLoader = require("support/testpageloader").TestPageLoader;
+var Montage = require("montage").Montage;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-var testPage = TestPageLoader.queueTest("input-range-test", function() {
-    var test = testPage.test;
+TestPageLoader.queueTest("input-range-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
     describe("ui/input-range-spec", function() {
         it("should load", function() {

@@ -2,25 +2,33 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>SkeletonRangeInput Test</title>
-    <script type="text/javascript" src="../../../montage.js" data-package="../../"></script>
+    <script type="text/javascript" src="../../node_modules/montage/montage.js" data-package="../../"></script>
     <script type="text/montage-serialization">
         {
+            "test": {
+                "prototype": "test/input-range/input-range-test",
+                "properties": {
+                    "range_input1": {"@": "range_input1"},
+                    "range_input2": {"@": "range_input2"},
+                    "scroll": {"@": "scroll"},
+                    "scroll_range": {"@": "scroll_range"}
+                }
+            },
             "range_input1": {
-                "prototype": "montage/ui/input-range.reel",
+                "prototype": "ui/input-range.reel",
                 "properties": {
                     "element": {"#": "range_input1"}
                 }
             },
             "range_input2": {
-                "prototype": "montage/ui/input-range.reel",
+                "prototype": "ui/input-range.reel",
                 "properties": {
                     "element": {"#": "range_input2"},
                     "value": 1
                 }
             },
             "output": {
-                "prototype": "montage/ui/dynamic-text.reel",
+                "prototype": "ui/dynamic-text.reel",
                 "properties": {
                     "element": {"#": "output"},
                     "value": "hello"
@@ -31,25 +39,15 @@
             },
 
             "scroll": {
-                "prototype": "montage/ui/scroller.reel",
+                "prototype": "ui/scroller.reel",
                 "properties": {
                     "element": {"#": "scroll"}
                 }
             },
             "scroll_range": {
-                "prototype": "montage/ui/input-range.reel",
+                "prototype": "ui/input-range.reel",
                 "properties": {
                     "element": {"#": "scroll_range"}
-                }
-            },
-
-            "test": {
-                "object": "ui/input-range-test/input-range-test[theTest]",
-                "properties": {
-                    "range_input1": {"@": "range_input1"},
-                    "range_input2": {"@": "range_input2"},
-                    "scroll": {"@": "scroll"},
-                    "scroll_range": {"@": "scroll_range"}
                 }
             }
         }

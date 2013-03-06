@@ -1,5 +1,5 @@
 
-.montage-InputRange {
+.matte-InputRange {
     position: relative;
     display: inline-block;
     box-sizing: border-box;
@@ -10,7 +10,7 @@
     background-color: #d9d9d9;
 }
 
-.montage-InputRange-thumb {
+.matte-InputRange-thumb {
     position: absolute;
     font-size: inherit;
     box-sizing: border-box;
@@ -26,16 +26,16 @@
 }
 
 /* States */
-.montage-InputRange-thumb:hover {
+.matte-InputRange-thumb:hover {
     background-color: #fff;
 }
-.montage-InputRange-thumb:active {
+.matte-InputRange-thumb:active {
     background-color: #e5e5e5;
 }
-.montage-InputRange-thumb:focus {
+.matte-InputRange-thumb:focus {
     border-color: #7f7f7f;
 }
-.montage-InputRange-thumb:before {
+.matte-InputRange-thumb:before {
     content: "";
     position: absolute;
     top: -7px;

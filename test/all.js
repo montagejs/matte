@@ -7,5 +7,6 @@ require("montage-testing").run(require,[
     "test/dynamic-text/dynamic-text-spec",
     "test/toggle-button/toggle-button-spec",
     "test/input-checkbox/input-checkbox-spec",
-    "test/input-radio/input-radio-spec"
+    "test/input-radio/input-radio-spec",
+    "test/input-range/input-range-spec"
 ]);

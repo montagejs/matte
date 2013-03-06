@@ -3,15 +3,15 @@
 */
 /*global require,exports */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
-    dom = require("ui/dom");
+    Component = require("montage/ui/component").Component,
+    dom = require("montage/ui/dom");
 
 /**
  * The input type="range" field
- * @class module:"montage/ui/input-range.reel".InputRange
- * @extends module:"montage/ui/native/input-range.reel".InputRange
+ * @class module:"matte/ui/input-range.reel".InputRange
+ * @extends module:"montage/ui/component".Component
  */
-var InputRange = exports.InputRange = Montage.create(Component, /** @lends module:"montage/ui/input-range.reel".InputRange */  {
+var InputRange = exports.InputRange = Montage.create(Component, /** @lends module:"matte/ui/input-range.reel".InputRange */  {
 
     // public API
     _min: {
