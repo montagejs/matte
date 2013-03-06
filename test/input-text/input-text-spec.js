@@ -1,10 +1,11 @@
-var Montage = require("montage").Montage,
-TestPageLoader = require("support/testpageloader").TestPageLoader;
+var Montage = require("montage").Montage;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-
-var testPage = TestPageLoader.queueTest("textfieldtest", function() {
-
-    var test = testPage.test;
+TestPageLoader.queueTest("input-text-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
     var DATE_CLASS = '[object Date]';
     var FUNCTION_CLASS = '[object Function]',

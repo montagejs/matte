@@ -1,5 +1,6 @@
-var Montage = require("montage").Montage,
-Converter = require("montage/core/converter/converter").Converter;
+var Montage = require("montage").Montage;
+var Converter = require("montage/core/converter/converter").Converter;
+var TestController = require("montage-testing/test-controller").TestController;
 
 exports.TextValidator = Montage.create(Converter, {
     possibleValues: {
@@ -24,7 +25,7 @@ exports.TextValidator = Montage.create(Converter, {
 
 });
 
-var TextfieldTest = exports.TextfieldTest = Montage.create(Montage, {
+exports.InputTextTest = Montage.create(TestController, {
 
     txt1: {
         value: null
