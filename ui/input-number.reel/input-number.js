@@ -1,20 +1,20 @@
 
 /**
-    @module "montage/ui/input-number.reel"
+    @module "matte/ui/input-number.reel"
     @requires montage/ui/component
     @requires montage/ui/text-input
 */
 
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
-    NativeInputNumber = require("ui/native/input-number.reel").InputNumber;
+    Component = require("montage/ui/component").Component,
+    NativeInputNumber = require("montage-native/ui/input-number.reel").InputNumber;
 
 /**
  * Wraps the a &lt;input type="date"> element with binding support for the element's standard attributes.
-   @class module:"montage/ui/input-number.reel".InputNumber
-   @extends module:"montage/ui/native/input-number.reel".InputNumber
+   @class module:"matte/ui/input-number.reel".InputNumber
+   @extends module:"montage-native/ui/input-number.reel".InputNumber
  */
-exports.InputNumber = Montage.create(NativeInputNumber, /** @lends module:"montage/ui/input-number.reel".InputNumber */{
+exports.InputNumber = Montage.create(NativeInputNumber, /** @lends module:"matte/ui/input-number.reel".InputNumber */{
 
     hasTemplate: {
         value: true
