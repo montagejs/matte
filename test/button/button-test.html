@@ -21,7 +21,9 @@
                 "converterbutton": {"@": "converterbutton"},
                 "uppercaseconverter": {"@": "uppercaseconverter"},
                 "detailbutton": {"@": "detailbutton"},
-                "output": {"@": "output"}
+                "output": {"@": "output"},
+                "scroll": {"@": "scroll"},
+                "scroll_button": {"@": "scroll_button"}
             }
         },
         "divbutton": {
@@ -141,6 +143,25 @@
                 "element": {"#": "output"},
                 "value": ""
             }
+        },
+
+        "scroll": {
+            "prototype": "ui/scroller.reel",
+            "properties": {
+                "element": {"#": "scroll"}
+            }
+        },
+        "scroll_button": {
+            "prototype": "ui/button.reel",
+            "properties": {
+                "element": {"#": "scroll_button"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"->": {"arguments": [], "body": "console.log('button szn action');"}}
+                }
+            ]
         }
 
     }</script>
@@ -190,6 +211,15 @@
 
     <button data-montage-id="loggingbutton">Logging button</button>
     <button data-montage-id="detailbutton">Detail button</button>
+
+    <h2>Scroll</h2>
+    <form action="" method="get">
+    <div data-montage-id="scroll" style="background:#CCC; height: 300px">
+        <div style="background:#A00; height:260px; width:10px">.</div>
+        <button type="button" data-montage-id="scroll_button">scroll button</button>
+        <div style="background:#A00; height:200px; width:10px">.</div>
+    </div>
+    </form>
 
 </body>
 </html>

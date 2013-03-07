@@ -257,6 +257,57 @@ TestPageLoader.queueTest("button-test", function(testPage) {
                     });
                 });
             }
+
+            var testButton = function(component, value) {
+                expect(component).toBeDefined();
+                expect(click(component)).toHaveBeenCalled();
+                expect(component.label).toBe(value);
+            };
+
+            describe("inside a scroll view", function() {
+                it("fires an action event when clicked", function() {
+                    testButton(test.scroll_button, "scroll button");
+                });
+                it("doesn't fire an action event when scroller is dragged", function() {
+                    var el = test.scroll_button.element;
+                    var scroll_el = test.scroll.element;
+
+                    var listener = testPage.addListener(test.scroll_button);
+
+                    var press_composer = test.scroll_button.composerList[0];
+
+                    // mousedown
+                    testPage.mouseEvent({target: el}, "mousedown");
+
+                    expect(test.scroll_button.active).toBe(true);
+                    expect(test.scroll_button.eventManager.isPointerClaimedByComponent(press_composer._observedPointer, press_composer)).toBe(true);
+
+                    // Mouse move doesn't happen instantly
+                    waits(10);
+                    runs(function() {
+                        // mouse move up
+                        var moveEvent = document.createEvent("MouseEvent");
+                        // Dispatch to scroll view, but use the coordinates from the
+                        // button
+                        moveEvent.initMouseEvent("mousemove", true, true, scroll_el.view, null,
+                                el.offsetLeft, el.offsetTop - 100,
+                                el.offsetLeft, el.offsetTop - 100,
+                                false, false, false, false,
+                                0, null);
+                        scroll_el.dispatchEvent(moveEvent);
+
+                        expect(test.scroll_button.active).toBe(false);
+                        expect(test.scroll_button.eventManager.isPointerClaimedByComponent(press_composer._observedPointer, press_composer)).toBe(false);
+
+                        // mouse up
+                        testPage.mouseEvent({target: el}, "mouseup");;
+
+                        expect(listener).not.toHaveBeenCalled();
+                    });
+
+                });
+            });
+
         });
     });
 });
