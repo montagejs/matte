@@ -1,4 +1,4 @@
-.montage-Token {
+.matte-Token {
     display: inline-block;
     margin: 3px 1px;
     border: 1px solid hsl(0,0%,85%);
@@ -9,11 +9,11 @@
     border-radius: 3px;
 }
 
-.montage-Token > .montage-Token-text {
+.matte-Token > .matte-Token-text {
     padding: 0px 1px 0px 5px;
 }
 
-.montage-Token > .montage-Token-delete {
+.matte-Token > .matte-Token-delete {
     display: inline-block;
     padding: 3px 6px;
     border-left: inherit;
@@ -21,29 +21,29 @@
     color: hsl(0,0%,60%);
     cursor: pointer;
 }
-.montage-Token > .montage-Token-delete:hover {
+.matte-Token > .matte-Token-delete:hover {
     color: hsl(0,0%,30%);
     background-color: hsl(0,0%,90%);
 }
-.montage-Token > .montage-Token-delete:active {
+.matte-Token > .matte-Token-delete:active {
     color: hsl(0,0%,60%);
     background-color: hsl(0,0%,85%);
 }
 
 /* selected */
-.montage-Token.selected {
+.matte-Token.selected {
     border-color: hsl(0,0%,60%);
 }
 
-.montage-Token.selected > .montage-Token-delete {
+.matte-Token.selected > .matte-Token-delete {
     color: hsl(0,0%,100%);
     background-color: hsl(0,0%,60%);
 }
 
-.montage-Token.active {
+.matte-Token.active {
     border: 1px solid #ccc;
 }
 
-.montage-Token.montage-Token--adhoc {
+.matte-Token.matte-Token--adhoc {
     border: 1px dashed #ccc;
 }

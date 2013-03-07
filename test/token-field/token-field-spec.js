@@ -1,14 +1,14 @@
 /*global require,exports,describe,it,expect */
-var Montage = require("montage").Montage,
-    TestPageLoader = require("support/testpageloader").TestPageLoader;
+var Montage = require("montage").Montage;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-var testPage = TestPageLoader.queueTest("token-field-test", function() {
-    var test = testPage.test;
+TestPageLoader.queueTest("token-field-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
-    describe("ui/token-field-spec", function() {
-        it("should load", function() {
-            expect(testPage.loaded).toBe(true);
-        });
+    describe("test/token-field/token-field-spec", function() {
 
         describe("TokenField", function(){
            it("can be created", function() {

@@ -20,7 +20,7 @@
     },
 
     "tokensController": {
-        "prototype": "core/range-controller",
+        "prototype": "montage/core/range-controller",
         "properties": {
             "selectAddedObjects": true
         },
@@ -30,7 +30,7 @@
     },
 
     "tokenList": {
-        "prototype": "ui/repetition.reel",
+        "prototype": "montage/ui/repetition.reel",
         "properties": {
             "element": {
                 "#": "token-list"
@@ -70,11 +70,11 @@
     </script>
 </head>
 <body>
-    <div data-montage-id="token-field" class="montage-TokenField">
-        <div data-montage-id="token-list" class="montage-TokenField-list">
+    <div data-montage-id="token-field" class="matte-TokenField">
+        <div data-montage-id="token-list" class="matte-TokenField-list">
             <span data-montage-id="token"></span>
         </div>
-        <input type="text" data-montage-id="autocomplete" class="montage-TokenField-Autocomplete" tabindex="0">
+        <input type="text" data-montage-id="autocomplete" class="matte-TokenField-Autocomplete" tabindex="0">
     </div>
 </body>
 </html>

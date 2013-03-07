@@ -55,7 +55,7 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
 
     willPrepareForDraw: {
         value: function() {
-            TextInput.willPrepareForDraw.call(this);
+            //TextInput.willPrepareForDraw.call(this);
             this.element.classList.add("matte-InputText");
         }
     },

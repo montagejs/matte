@@ -1,5 +1,5 @@
-var Montage = require("montage").Montage,
-    TestController = require("support/test-controller").TestController;
+var Montage = require("montage").Montage;
+var TestController = require("montage-testing/test-controller").TestController;
 
 var states = [
     {name: "Alabama", code: "AL" },
@@ -63,7 +63,7 @@ var tags = [
 ];
 
 
-var Test = exports.TestController = Montage.create(TestController, {
+exports.TokenFieldTest = Montage.create(TestController, {
 
     tokenField1: {
         value: null
@@ -132,4 +132,3 @@ var Test = exports.TestController = Montage.create(TestController, {
         }
     }
 });
-exports.theTest = Test.create();

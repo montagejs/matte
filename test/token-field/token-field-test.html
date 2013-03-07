@@ -2,19 +2,18 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>TokenField Test</title>
-    <script type="text/javascript" src="../../../montage.js" data-package="../../"></script>
+    <script type="text/javascript" src="../../node_modules/montage/montage.js" data-package="../../"></script>
     <script type="text/montage-serialization">
         {
             "test": {
-                "object": "ui/token-field-test/token-field-test[theTest]",
+                "prototype": "test/token-field/token-field-test",
                 "properties": {
                     "tokenField1": {"@": "tokenField1"},
                     "tokenField2": {"@": "tokenField2"}
                 }
             },
             "tokenField1": {
-                "prototype": "montage/ui/token-field/token-field.reel",
+                "prototype": "ui/token-field/token-field.reel",
                 "properties": {
                     "element": {"#": "token-field1"},
                     "identifier": "state",
@@ -27,7 +26,7 @@
             },
 
             "tokenField2": {
-                "prototype": "montage/ui/token-field/token-field.reel",
+                "prototype": "ui/token-field/token-field.reel",
                 "properties": {
                     "element": {"#": "token-field2"},
                     "identifier": "tags",

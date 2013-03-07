@@ -1,5 +1,5 @@
 
-.montage-TokenField {
+.matte-TokenField {
     background: white;
     border: 1px solid #bdbdbd;
     padding: 3px 5px;
@@ -7,11 +7,11 @@
     cursor: text;
 }
 
-.montage-TokenField-list {
+.matte-TokenField-list {
     display: inline;
 }
 
-.montage-TokenField-Autocomplete.montage-InputText {
+.matte-TokenField-AutocompleteInputText {
     -webkit-appearance: none;
     -moz-appearance: none;
     border: none;
@@ -24,6 +24,6 @@
     width: 2px;
 }
 
-.montage-TokenField-Autocomplete:focus {
+.matte-TokenField-Autocomplete:focus {
     width: 80%;
 }

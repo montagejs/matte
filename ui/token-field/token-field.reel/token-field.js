@@ -1,8 +1,8 @@
 /**
-    @module "montage/ui/token-field/token-field.reel"
+    @module "matte/ui/token-field/token-field.reel"
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component;
+    Component = require("montage/ui/component").Component;
 
 var KEY_DELETE = 46,
 KEY_BACKSPACE = 8,
@@ -12,10 +12,10 @@ KEY_RIGHT = 39,
 KEY_DOWN = 40;
 
 /**
-    @class module:"montage/ui/token-field/token-field.reel".TokenField
+    @class module:"matte/ui/token-field/token-field.reel".TokenField
     @extends module:montage/ui/component.Component
 */
-exports.TokenField = Montage.create(Component, /** @lends module:"montage/ui/token-field/token-field.reel".TokenField */ {
+exports.TokenField = Montage.create(Component, /** @lends module:"matte/ui/token-field/token-field.reel".TokenField */ {
 
     delegate: {value: null},
 
