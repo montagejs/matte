@@ -7,11 +7,13 @@ require("montage-testing").run(require,[
     "test/dynamic-text/dynamic-text-spec",
     "test/toggle-button/toggle-button-spec",
     "test/input-checkbox/input-checkbox-spec",
+    "test/input-number/input-number-spec",
     "test/input-radio/input-radio-spec",
     "test/input-range/input-range-spec",
     "test/input-text/input-text-spec",
     "test/list/list-spec",
     "test/popup/popup-spec",
     "test/rich-text-editor/rich-text-editor-spec",
-    "test/scroller/scroller-spec"
+    "test/scroller/scroller-spec",
+    "test/select/select-spec"
 ]);

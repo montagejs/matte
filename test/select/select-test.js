@@ -1,8 +1,7 @@
-var Montage = require("montage").Montage,
-    SelectInput = require("montage/ui/select.reel").SelectInput,
-    Converter = require("montage/core/converter/converter").Converter;
+var Montage = require("montage").Montage;
+var TestController = require("montage-testing/test-controller").TestController;
 
-
+var Converter = require("montage/core/converter/converter").Converter;
 
 exports.JustifyConverter = Montage.create(Converter, {
     justify: {value: null},
@@ -20,7 +19,7 @@ exports.JustifyConverter = Montage.create(Converter, {
     }
 });
 
-var SelectInputTest = exports.SelectInputTest = Montage.create(Montage, {
+exports.SelectTest = Montage.create(TestController, {
 
     dept: {
         value: null
@@ -106,21 +105,15 @@ var SelectInputTest = exports.SelectInputTest = Montage.create(Montage, {
         }
     },
 
-    _justify: {value: null},
-       justify: {
-           get: function() {
-               return this._justify;
-           },
-           set: function(value) {
-               this._justify = value;
-               this.needsDraw = true;
-           }
-       },
+    justify: {value: null},
 
-       prepareForDraw: {
-           value: function() {
-               this.justify = "center";
-               this.dept.values = ['HRD', 'SWE'];
-           }
-       }
+    deptValues: {value: null},
+
+    didCreate: {
+        value: function() {
+            TestController.didCreate.apply(this, arguments);
+            this.justify = "center";
+            this.deptValues = ['HRD', 'SWE'];
+        }
+    }
 });
