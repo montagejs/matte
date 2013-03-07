@@ -12,5 +12,6 @@ require("montage-testing").run(require,[
     "test/input-text/input-text-spec",
     "test/list/list-spec",
     "test/popup/popup-spec",
-    "test/rich-text-editor/rich-text-editor-spec"
+    "test/rich-text-editor/rich-text-editor-spec",
+    "test/scroller/scroller-spec"
 ]);

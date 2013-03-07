@@ -5,7 +5,7 @@
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component;
 
-var ScrollBars = exports.ScrollBars = Montage.create(Component, {
+exports.ScrollBars = Montage.create(Component, {
 
     // Scroll and length are defined in a [0..1] range
 

@@ -2,31 +2,24 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Scroller Test</title>
-    <script type="text/javascript" src="../../../montage.js" data-package="../../"></script>
+    <script type="text/javascript" src="../../node_modules/montage/montage.js" data-package="../../"></script>
     <script type="text/montage-serialization">
-{
-    "scroller1": {
-        "prototype": "montage/ui/scroller.reel",
-        "properties": {
-            "element": {"#": "scroller"},
-            "hasMomentum": false
-        }
-    },
+        {
+            "test": {
+                "prototype": "test/scroller/scroller-test",
+                "properties": {
+                    "scroller1": {"@": "scroller1"}
+                }
+            },
 
-    "test": {
-        "prototype": "ui/scroller-test/scroller-test",
-        "properties": {
-            "scroller1": {"@": "scroller1"}
+            "scroller1": {
+                "prototype": "ui/scroller.reel",
+                "properties": {
+                    "element": {"#": "scroller"},
+                    "hasMomentum": false
+                }
+            }
         }
-    },
-    "application": {
-        "prototype": "montage/ui/application",
-        "properties": {
-            "delegate": {"@": "test"}
-        }
-    }
-}
     </script>
 
 <style type="text/css">
