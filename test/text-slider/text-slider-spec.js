@@ -1,15 +1,14 @@
 /*global require,exports,describe,it,expect,waits,runs */
-var Montage = require("montage").Montage,
-    TestPageLoader = require("support/testpageloader").TestPageLoader,
-    ActionEventListener = require("montage/core/event/action-event-listener").ActionEventListener;
+var Montage = require("montage").Montage;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-var testPage = TestPageLoader.queueTest("text-slider-test", function() {
-    var test = testPage.test;
+TestPageLoader.queueTest("text-slider-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
-    describe("ui/text-slider-spec", function() {
-        it("should load", function() {
-            expect(testPage.loaded).toBe(true);
-        });
+    describe("test/text-slider/text-slider-spec", function() {
 
         describe("text-slider", function() {
             it("can be created", function() {
@@ -96,7 +95,7 @@ var testPage = TestPageLoader.queueTest("text-slider-test", function() {
                     expect(test.hex.isEditing).toBe(true);
                     testPage.waitForDraw();
                     runs(function() {
-                        expect(test.hex.element.className).toMatch("montage-TextSlider--editing");
+                        expect(test.hex.element.className).toMatch("matte-TextSlider--editing");
                     });
                 });
                 it("increases when the up arrow is pressed", function() {

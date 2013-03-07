@@ -1,16 +1,16 @@
 
-.montage-TextSlider-input {
+.matte-TextSlider-input {
     display: none;
 }
 
-.montage-TextSlider--editing .montage-TextSlider-input {
+.matte-TextSlider--editing .matte-TextSlider-input {
     display: inherit;
 }
 
-.montage-TextSlider-value {
+.matte-TextSlider-value {
     border-bottom: 1px dotted #000;
 }
 
-.montage-TextSlider--editing .montage-TextSlider-value, .montage-TextSlider--editing .montage-TextSlider-label {
+.matte-TextSlider--editing .matte-TextSlider-value, .matte-TextSlider--editing .matte-TextSlider-label {
     display: none;
 }

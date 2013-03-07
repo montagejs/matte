@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="../../node_modules/montage/montage.js" data-package="../../"></script>
+    <script type="text/montage-serialization">
+        {
+            "test": {
+                "prototype": "test/text-slider/text-slider-test",
+                "properties": {
+                    "number": {"@": "number"},
+                    "percent": {"@": "percent"},
+                    "multiple": {"@": "multiple"},
+                    "hex": {"@": "hex"}
+                }
+            },
+            "number": {
+                "prototype": "ui/text-slider.reel",
+                "properties": {
+                    "element": {"#": "number"}
+                }
+            },
+            "percent": {
+                "prototype": "ui/text-slider.reel",
+                "properties": {
+                    "element": {"#": "percent"},
+                    "minValue": 0,
+                    "maxValue": 100,
+                    "unit": "%"
+                }
+            },
+            "multiple": {
+                "prototype": "ui/text-slider.reel",
+                "properties": {
+                    "element": {"#": "multiple"}
+                }
+            },
+
+            "hex": {
+                "prototype": "ui/text-slider.reel",
+                "properties": {
+                    "element": {"#": "hex"},
+                    "minValue": 0,
+                    "maxValue": 255,
+                    "smallStepSize": 1
+                },
+                "bindings": {
+                    "converter": {"<-": "@test.hexConverter"}
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+    html, body { height: 100%; }
+    </style>
+</head>
+<body>
+    <h1>TextSlider test</h1>
+
+    <label>Infinite: <span data-montage-id="number"></span></label><br/>
+    <label for="percent-hottext">Percent:</label> <span id="percent-hottext" data-montage-id="percent" style="width: 50px;"></span><br/>
+    <span data-montage-id="multiple"></span><br/>
+    Hex: <span data-montage-id="hex"></span>
+
+</body>
+</html>

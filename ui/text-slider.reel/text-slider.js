@@ -1,16 +1,16 @@
 /*global require,exports */
 
 /**
-    @module "montage/ui/text-slider.reel"
+    @module "matte/ui/text-slider.reel"
     @requires montage/core/core
     @requires montage/ui/component
     @requires montage/ui/composer/press-composer
  */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
-    PressComposer = require("ui/composer/press-composer").PressComposer;
+    Component = require("montage/ui/component").Component,
+    PressComposer = require("montage/ui/composer/press-composer").PressComposer;
 
-var EDITING_CLASS = "montage-TextSlider--editing";
+var EDITING_CLASS = "matte-TextSlider--editing";
 
 /**
     <p>Provides a way for users to quickly and easily manipulate numeric values.
@@ -28,10 +28,10 @@ var EDITING_CLASS = "montage-TextSlider--editing";
     decrease respectively. If the user holds Control or Shift while pressing an
     arrow the value will change by a smaller or larger amount respectively.</p>
 
-    @class module:"montage/ui/text-slider.reel".TextSlider
+    @class module:"matte/ui/text-slider.reel".TextSlider
     @extends module:montage/ui/component.Component
  */
-var TextSlider = exports.TextSlider = Montage.create(Component, /** @lends module:"montage/ui/text-slider.reel".TextSlider# */ {
+var TextSlider = exports.TextSlider = Montage.create(Component, /** @lends module:"matte/ui/text-slider.reel".TextSlider# */ {
 
     // Properties
 

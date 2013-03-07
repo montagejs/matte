@@ -1,7 +1,8 @@
-var Montage = require("montage").Montage,
-    Converter = require("montage/core/converter/converter").Converter;
+var Montage = require("montage").Montage;
+var TestController = require("montage-testing/test-controller").TestController;
+var Converter = require("montage/core/converter/converter").Converter;
 
-var TextSliderTest = exports.TextSliderTest = Montage.create(Montage, {
+exports.TextSliderTest = Montage.create(TestController, {
     number: {
         value: null
     },
@@ -19,6 +20,7 @@ var TextSliderTest = exports.TextSliderTest = Montage.create(Montage, {
     },
     didCreate: {
         value: function() {
+            TestController.didCreate.apply(this, arguments);
             this.hexConverter = Converter.create();
 
             this.hexConverter.convert = function(value) {

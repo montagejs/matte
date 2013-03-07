@@ -26,7 +26,7 @@
         },
 
         "translateComposer": {
-            "prototype": "ui/composer/translate-composer",
+            "prototype": "montage/ui/composer/translate-composer",
             "properties": {
                 "component": {"@": "owner"},
                 "hasMomentum": false,
@@ -57,7 +57,7 @@
         },
 
         "pressComposer": {
-            "prototype": "ui/composer/press-composer",
+            "prototype": "montage/ui/composer/press-composer",
             "properties": {
                 "component": {"@": "owner"},
                 "delegate": {"@": "owner"}
@@ -71,7 +71,7 @@
         },
 
         "numberConverter": {
-            "prototype": "core/converter/number-converter"
+            "prototype": "montage/core/converter/number-converter"
         },
 
         "owner": {
@@ -88,10 +88,10 @@
     </script>
 </head>
 <body>
-    <span data-montage-id="text-slider" class="montage-TextSlider" tabindex="0">
-        <input type="text" data-montage-id="input" class="montage-TextSlider-input"/>
-        <span data-montage-id="value" class="montage-TextSlider-value"></span>
-        <span data-montage-id="units" class="montage-TextSlider-label"></span>
+    <span data-montage-id="text-slider" class="matte-TextSlider" tabindex="0">
+        <input type="text" data-montage-id="input" class="matte-TextSlider-input"/>
+        <span data-montage-id="value" class="matte-TextSlider-value"></span>
+        <span data-montage-id="units" class="matte-TextSlider-label"></span>
     </span>
 </body>
 </html>
