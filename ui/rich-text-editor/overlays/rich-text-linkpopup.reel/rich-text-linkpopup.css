@@ -1,5 +1,5 @@
 
-.montage-link-popup {
+.matte-link-popup {
     position: absolute;
     padding: 12px 20px;
     border: 1px solid;
@@ -19,7 +19,7 @@
     cursor: default;
 }
 
-.montage-link-popup a {
+.matte-link-popup a {
     cursor: pointer;
     text-decoration: none;
     color: #15C;

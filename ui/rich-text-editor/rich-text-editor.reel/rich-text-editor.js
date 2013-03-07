@@ -8,7 +8,7 @@
 var Montage = require("montage").Montage,
     RichTextEditorBase = require("./rich-text-editor-base").RichTextEditorBase,
     Sanitizer = require("./rich-text-sanitizer").Sanitizer,
-    Promise = require("core/promise").Promise;
+    Promise = require("montage/core/promise").Promise;
 
 /**
     @classdesc The RichTextEditor component is a lightweight Montage component that provides basic HTML editing capability. It wraps the HTML5 <code>contentEditable</code> property and largely relies on the browser's support of <code><a href="http://www.quirksmode.org/dom/execCommand.html" target="_blank">execCommand</a></code>.
@@ -127,7 +127,7 @@ exports.RichTextEditor = Montage.create(RichTextEditorBase,/** @lends module:"mo
 
                 if (contentNode) {
                     // Temporary orphan the overlay slot while retrieving the content
-                    overlayElement = contentNode.querySelector(".montage-Editor-overlay");
+                    overlayElement = contentNode.querySelector("Editor-overlay");
                     if (overlayElement) {
                         overlayParent = overlayElement.parentNode;
                         overlayNextSibling = overlayElement.nextSibling;
@@ -202,7 +202,7 @@ exports.RichTextEditor = Montage.create(RichTextEditorBase,/** @lends module:"mo
 
                 if (contentNode) {
                     // Temporary orphan the overlay slot in order to retrieve the content
-                    overlayElement = contentNode.querySelector(".montage-Editor-overlay");
+                    overlayElement = contentNode.querySelector("Editor-overlay");
                     if (overlayElement) {
                         overlayParent = overlayElement.parentNode;
                         overlayNextSibling = overlayElement.nextSibling;

@@ -6,9 +6,9 @@
     @requires montage/ui/dom
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
-    dom = require("ui/dom"),
-    Point = require("core/geometry/point").Point;
+    Component = require("montage/ui/component").Component,
+    dom = require("montage/ui/dom"),
+    Point = require("montage/core/geometry/point").Point;
 
 /**
     @class module:"montage/ui/rich-text-editor/overlays/rich-text-resizer.reel".RichTextResizer

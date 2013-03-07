@@ -1,15 +1,14 @@
 /*global require,exports,describe,it,expect */
-var Montage = require("montage").Montage,
-    TestPageLoader = require("support/testpageloader").TestPageLoader,
-    EventInfo = require("support/testpageloader").EventInfo;
+var Montage = require("montage").Montage;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-var testPage = TestPageLoader.queueTest("rich-text-editor-test", function() {
-    var test = testPage.test;
+TestPageLoader.queueTest("rich-text-editor-test", function(testPage) {
+    var test;
+    beforeEach(function() {
+        test = testPage.test;
+    });
 
-    describe("ui/rich-text-editor-spec", function() {
-        it("should load", function() {
-            expect(testPage.loaded).toBe(true);
-        });
+    describe("test/rich-text-editor/rich-text-editor-spec", function() {
 
         describe("RichTextEditor", function(){
             it("can be created", function() {

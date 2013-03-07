@@ -1,12 +1,12 @@
 
-.montage-Editor-container {
+.matte-Editor-container {
     position: relative;
     overflow: auto;
     height: 100%;
     width: 100%;
 }
 
-.montage-Editor {
+.matte-Editor {
     position: relative;
     height: inherit;
     outline:  none;
@@ -21,6 +21,6 @@
 /*
  Overlay
 */
-.montage-Editor-overlay {
+.matte-Editor-overlay {
     z-index: 50;
 }

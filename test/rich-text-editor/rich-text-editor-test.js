@@ -1,7 +1,8 @@
-var Montage = require("montage").Montage,
-    UndoManager = require("montage/core/undo-manager").UndoManager;
+var Montage = require("montage").Montage;
+var TestController = require("montage-testing/test-controller").TestController;
+var UndoManager = require("montage/core/undo-manager").UndoManager;
 
-var RichTextEditorTest = exports.RichTextEditorTest = Montage.create(Montage, {
+exports.RichTextEditorTest = Montage.create(TestController, {
 
     editor1: {
         value: null

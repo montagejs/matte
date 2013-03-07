@@ -1,14 +1,14 @@
 
-.montage-Resizer {
+.matte-Resizer {
     display: inline-block;
 }
 
-.montage-Resizer-container {
+.matte-Resizer-container {
     position: absolute;
     border: 1px solid black;
 }
 
-.montage-Resizer-handle {
+.matte-Resizer-handle {
     position: absolute;
     width: 7px;
     height: 7px;
@@ -18,106 +18,106 @@
     background: white;
 }
 
-.montage-Resizer-handle:hover {
+.matte-Resizer-handle:hover {
     width: 9px;
     height: 9px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
 
-.montage-Resizer-handle.n {
+.matte-Resizer-handle.n {
     top: -4px;
     left: 50%;
     margin-left: -4px;
     cursor: n-resize;
 }
 
-.montage-Resizer-handle.n:hover {
+.matte-Resizer-handle.n:hover {
     top: -5px;
     margin-left: -5px;
 }
 
-.montage-Resizer-handle.ne {
+.matte-Resizer-handle.ne {
     top: -4px;
     right: -4px;
     cursor: ne-resize;
 }
 
-.montage-Resizer-handle.ne:hover {
+.matte-Resizer-handle.ne:hover {
     top: -5px;
     right: -5px;
 }
 
-.montage-Resizer-handle.e {
+.matte-Resizer-handle.e {
     right: -4px;
     top: 50%;
     margin-top: -4px;
     cursor: e-resize;
 }
 
-.montage-Resizer-handle.e:hover {
+.matte-Resizer-handle.e:hover {
     right: -5px;
     margin-top: -5px;
 }
 
-.montage-Resizer-handle.se {
+.matte-Resizer-handle.se {
     bottom: -4px;
     right: -4px;
     cursor: se-resize;
 }
 
-.montage-Resizer-handle.se:hover {
+.matte-Resizer-handle.se:hover {
     bottom: -5px;
     right: -5px;
 }
 
-.montage-Resizer-handle.s {
+.matte-Resizer-handle.s {
     bottom: -4px;
     left: 50%;
     margin-left: -4px;
     cursor: s-resize;
 }
 
-.montage-Resizer-handle.s:hover {
+.matte-Resizer-handle.s:hover {
     bottom: -5px;
     margin-left: -5px;
 }
 
-.montage-Resizer-handle.sw {
+.matte-Resizer-handle.sw {
     bottom: -4px;
     left: -4px;
     cursor: sw-resize;
 }
 
-.montage-Resizer-handle.sw:hover {
+.matte-Resizer-handle.sw:hover {
     bottom: -5px;
     left: -5px;
 }
 
-.montage-Resizer-handle.w {
+.matte-Resizer-handle.w {
     left: -4px;
     top: 50%;
     margin-top: -4px;
     cursor: w-resize;
 }
 
-.montage-Resizer-handle.w:hover {
+.matte-Resizer-handle.w:hover {
     left: -5px;
     margin-top: -5px;
 }
 
-.montage-Resizer-handle.nw {
+.matte-Resizer-handle.nw {
     top: -4px;
     left: -4px;
     cursor: nw-resize;
 }
 
-.montage-Resizer-handle.nw:hover {
+.matte-Resizer-handle.nw:hover {
     top: -5px;
     left: -5px;
 }
 
-.montage-Resizer-image {
+.matte-Resizer-image {
     position: absolute;
     display: none;
     top: 0;
@@ -127,10 +127,10 @@
     opacity: 0.5;
 }
 
-.montage-Editor--resizing .montage-Resizer-image {
+.matte-Editor--resizing Resizer-image {
     display: block;
 }
 
-.montage-Resizer-element::selection {
+.matte-Resizer-element::selection {
     background: rgba(0,0,0,0);
 }

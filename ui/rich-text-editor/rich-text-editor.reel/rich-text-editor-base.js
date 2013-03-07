@@ -4,12 +4,12 @@
     @requires montage/core/core
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
+    Component = require("montage/ui/component").Component,
     Sanitizer = require("./rich-text-sanitizer").Sanitizer,
     RichTextLinkPopup = require("../overlays/rich-text-linkpopup.reel").RichTextLinkPopup,
     RichTextResizer = require("../overlays/rich-text-resizer.reel").RichTextResizer,
-    Promise = require("core/promise").Promise,
-    defaultUndoManager = require("core/undo-manager").defaultUndoManager;
+    Promise = require("montage/core/promise").Promise,
+    defaultUndoManager = require("montage/core/undo-manager").defaultUndoManager;
 
 /**
     @class module:"montage/ui/rich-text-editor.reel".RichTextEditorBase
@@ -625,13 +625,13 @@ exports.RichTextEditorBase = Montage.create(Component,/** @lends module:"montage
                 i;
 
             if (this._needsAssingValue || this._needsAssignOriginalContent) {
-                editorInnerElement = this._innerElement = editorElement.querySelector(".montage-Editor");
+                editorInnerElement = this._innerElement = editorElement.querySelector(".matte-Editor");
 
                 if (this._contentInitialized) {
                     // if the content has been already initialized, we need replace it by a clone of itself
                     // in order to reset the browser undo stack
                     editorElement.replaceChild(editorInnerElement.cloneNode(true), editorInnerElement);
-                    editorInnerElement = this._innerElement = editorElement.querySelector(".montage-Editor");
+                    editorInnerElement = this._innerElement = editorElement.querySelector(".matte-Editor");
 
                     //JFD TODO: Need to clear entries in the Montage undoManager queue
                 }
