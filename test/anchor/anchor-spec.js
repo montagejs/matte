@@ -1,5 +1,5 @@
-var Montage = require("montage").Montage,
-    TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
+var Montage = require("montage").Montage;
+var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
 TestPageLoader.queueTest("anchor-test", function(testPage) {
     var test;

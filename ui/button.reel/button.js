@@ -1,6 +1,6 @@
 /*global require,exports */
 /**
-    @module "montage/ui/button.reel"
+    module:"matte/ui/button.reel"
     @requires montage/core/core
     @requires montage/ui/component
     @requires "montage/ui/native/button.reel"

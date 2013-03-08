@@ -1,6 +1,6 @@
 
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
+    Component = require("montage/ui/component").Component,
     FlowBezierSpline = require("ui/flow-bezier-spline").FlowBezierSpline,
     observeProperty = require("frb/observers").observeProperty;
 

@@ -1,5 +1,5 @@
 /**
-    @module "montage/ui/anchor.reel"
+    module:"matte/ui/anchor.reel"
     @requires montage
     @requires montage/ui/component
     @requires "montage/ui/native/anchor.reel"
@@ -12,10 +12,10 @@ var Montage = require("montage").Montage,
 
 /**
  * Montage Anchor
- * @class module:"montage/ui/anchor.reel".Anchor
- * @extends module:"montage/ui/native/anchor.reel".Anchor
+ * @class module:"matte/ui/anchor.reel".Anchor
+ * @extends module:"montage-native/ui/anchor.reel".Anchor
  */
-exports.Anchor = Montage.create(NativeAnchor, /** @lends module:"montage/ui/anchor.reel".Anchor# */{
+exports.Anchor = Montage.create(NativeAnchor, /** @lends module:"matte/ui/anchor.reel".Anchor# */{
 
     hasTemplate: {value: false},
 

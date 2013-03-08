@@ -8,15 +8,15 @@
     @requires core/media-controller
 */
 var Montage = require("montage").Montage,
-    Bindings = require("core/bindings").Bindings,
-    Component = require("ui/component").Component,
-    logger = require("core/logger").logger("video-player"),
-    ActionEventListener = require("core/event/action-event-listener").ActionEventListener,
-    MediaController = require("core/media-controller").MediaController;
+    Bindings = require("montage/core/bindings").Bindings,
+    Component = require("montage/ui/component").Component,
+    logger = require("montage/core/logger").logger("video-player"),
+    ActionEventListener = require("montage/core/event/action-event-listener").ActionEventListener,
+    MediaController = require("montage/core/media-controller").MediaController;
 /**
- @class module:montage/ui/video-player.VideoPlayer
+ @class module:matte/ui/video-player.VideoPlayer
  */
-var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends module:montage/ui/video-player.VideoPlayer# */ {
+var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends module:matte/ui/video-player.VideoPlayer# */ {
 
     /*-----------------------------------------------------------------------------
     MARK:   Constants

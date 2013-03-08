@@ -1,5 +1,5 @@
 /**
-    @module "montage/ui/input-range.reel"
+    module:"matte/ui/input-range.reel"
 */
 /*global require,exports */
 var Montage = require("montage").Montage,

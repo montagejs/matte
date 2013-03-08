@@ -1,5 +1,5 @@
 /**
-	@module "montage/ui/dynamic-text.reel"
+	module:"matte/ui/dynamic-text.reel"
     @requires montage/core/core
     @requires montage/ui/component
 */
@@ -7,10 +7,10 @@ var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component;
 
 /**
- @class module:"montage/ui/dynamic-text.reel".DynamicText
+ @class module:"matte/ui/dynamic-text.reel".DynamicText
  @extends module:montage/ui/component.Component
  */
-exports.DynamicText = Montage.create(Component, /** @lends module:"montage/ui/dynamic-text.reel".DynamicText# */ {
+exports.DynamicText = Montage.create(Component, /** @lends module:"matte/ui/dynamic-text.reel".DynamicText# */ {
 
     hasTemplate: {
         value: false

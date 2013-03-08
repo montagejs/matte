@@ -1,11 +1,11 @@
 
-.montage-Flow {
+.matte-Flow {
     position: relative;
     overflow: hidden;
     -webkit-transform: translateZ(0);
 }
-.montage-Flow-camera,
-.montage-Flow-Repetition {
+.matte-Flow-camera,
+.matte-Flow-Repetition {
     position: absolute;
     top: 0;
     left: 0;
@@ -14,11 +14,11 @@
     -webkit-transform-style: preserve-3d;
     -webkit-transform: translateZ(0);
 }
-.montage-Flow-Repetition .no-transition,
-.montage-Flow-Repetition .no-transition * {
+.matte-Flow-Repetition .no-transition,
+.matte-Flow-Repetition .no-transition * {
     -webkit-transition: none !important;
 }
-.montage-Flow-Repetition > div {
+.matte-Flow-Repetition > div {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -27,7 +27,7 @@
     -webkit-transform: translateZ(0);
     -webkit-transform-style: preserve-3d;
 }
-.montage-Flow-Slot {
+.matte-Flow-Slot {
     position: absolute;
     top: 50%;
     left: 50%;

@@ -1,5 +1,5 @@
 /**
-    @module "montage/ui/rich-text-editor/rich-text-editor.reel"
+    module:"matte/ui/rich-text-editor/rich-text-editor.reel"
     @requires montage/core/core
     @requires montage/core/event/mutable-event
     @requires montage/core/event/event-manager
@@ -12,7 +12,7 @@ var Montage = require("montage").Montage,
 
 /**
     @classdesc The RichTextEditor component is a lightweight Montage component that provides basic HTML editing capability. It wraps the HTML5 <code>contentEditable</code> property and largely relies on the browser's support of <code><a href="http://www.quirksmode.org/dom/execCommand.html" target="_blank">execCommand</a></code>.
-    @class module:"montage/ui/rich-text-editor/rich-text-editor.reel".RichTextEditor
+    @class module:"matte/ui/rich-text-editor/rich-text-editor.reel".RichTextEditor
     @extends module:montage/ui/component.Component
     @summary
 The easiest way to create a RichTextEditor is with a serialization and a &lt;div> tag:<p>
@@ -36,7 +36,7 @@ The easiest way to create a RichTextEditor is with a serialization and a &lt;div
 &lt;/body&gt;
 </pre>
 */
-exports.RichTextEditor = Montage.create(RichTextEditorBase,/** @lends module:"montage/ui/rich-text-editor/rich-text-editor.reel".RichTextEditor# */ {
+exports.RichTextEditor = Montage.create(RichTextEditorBase,/** @lends module:"matte/ui/rich-text-editor/rich-text-editor.reel".RichTextEditor# */ {
 
 /**
     Returns <code>true</code> if the edtior has focus, otherwise returns <code>false</code>.

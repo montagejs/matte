@@ -1,6 +1,6 @@
 /*global Element */
 /**
-	@module "montage/ui/rich-text-editor.reel"
+	module:"matte/ui/rich-text-editor.reel"
     @requires montage/core/core
 */
 var Montage = require("montage").Montage,
@@ -12,10 +12,10 @@ var Montage = require("montage").Montage,
     defaultUndoManager = require("montage/core/undo-manager").defaultUndoManager;
 
 /**
-    @class module:"montage/ui/rich-text-editor.reel".RichTextEditorBase
+    @class module:"matte/ui/rich-text-editor.reel".RichTextEditorBase
     @extends module:montage/ui/component.Component
 */
-exports.RichTextEditorBase = Montage.create(Component,/** @lends module:"montage/ui/rich-text-editor.reel".RichTextEditor# */ {
+exports.RichTextEditorBase = Montage.create(Component,/** @lends module:"matte/ui/rich-text-editor.reel".RichTextEditor# */ {
     /**
       Description TODO
       @private

@@ -40,13 +40,13 @@ var Montage = require("montage").Montage,
 
 /**
     The base class for all text-based input components. You typically won't create instances of this prototype.
-    @class module:montage/ui/text-input.TextInput
+    @class module:matte/ui/text-input.TextInput
     @extends module:montage/ui/component.Component
-    @see {module:"montage/ui/input-date.reel".DateInput}
-    @see module:"montage/ui/input-text.reel".InputText
-    @see module:"montage/ui/input-number.reel".InputNumber
-    @see module:"montage/ui/input-range.reel".RangeInput
-    @see module:"montage/ui/textarea.reel".TextArea
+    @see {module:"matte/ui/input-date.reel".DateInput}
+    @see module:"matte/ui/input-text.reel".InputText
+    @see module:"matte/ui/input-number.reel".InputNumber
+    @see module:"matte/ui/input-range.reel".RangeInput
+    @see module:"matte/ui/textarea.reel".TextArea
 
 */
 var TextInput = exports.TextInput =  Montage.create(Component, /** @lends module:matte/ui/text-input.TextInput# */ {

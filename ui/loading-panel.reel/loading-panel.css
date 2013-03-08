@@ -1,5 +1,5 @@
 
-.montage-LoadingPanel {
+.matte-LoadingPanel {
     position: absolute;
     z-index: 999;
     top: 0;
@@ -8,14 +8,14 @@
     left: 0;
 }
 
-.montage-LoadingPanel > .montage-LoadingPanel-loadingIndicator {
+.matte-LoadingPanel > .matte-LoadingPanel-loadingIndicator {
     width: 200px;
     margin: 20px;
     display: none; /* disabled for now, because the loading doesn't really look continuos enough. */
 }
 
 
-.montage-LoadingPanel > .montage-LoadingPanel-loadingCount {
+.matte-LoadingPanel > .matte-LoadingPanel-loadingCount {
     position: absolute;
     width: 160px;
     height: 160px;
@@ -35,6 +35,6 @@
     overflow: hidden;
 }
 
-.montage-LoadingPanel > .montage-LoadingPanel-loadingCount > .montage-LoadingPanel-divider {
+.matte-LoadingPanel > .matte-LoadingPanel-loadingCount > .matte-LoadingPanel-divider {
     color: hsl(200,100%,50%);
 }

@@ -1,17 +1,17 @@
 // TODO: ComponentList instead? ComponentContainer?
 /**
-	@module "montage/ui/component-group.reel"
+	module:"matte/ui/component-group.reel"
     @requires montage/core/core
     @requires montage/ui/component
 */
 var Montage = require("montage").Montage;
-var Component = require("ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
 /**
- @class module:"montage/ui/component-group.reel".ComponentGroup
+ @class module:"matte/ui/component-group.reel".ComponentGroup
  @extends module:montage/ui/component.Component
  */
-var ComponentGroup = exports.ComponentGroup = Montage.create(Component, /** @lends module:"montage/ui/component-group.reel".ComponentGroup# */ {
+var ComponentGroup = exports.ComponentGroup = Montage.create(Component, /** @lends module:"matte/ui/component-group.reel".ComponentGroup# */ {
 
     hasTemplate: {value: false},
 

@@ -91,9 +91,6 @@ td:nth-child(4) { background: hsl(0,0%,24%); }
 
 /* Montage overrides */
 
-.montage-Map {
-   display: inline-block;
-}
 body {
     margin: 0;
     color: #444;

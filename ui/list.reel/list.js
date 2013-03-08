@@ -8,7 +8,7 @@ var Montage = require("montage").Montage,
     observeProperty = require("montage/frb/observers").observeProperty;
 
 /**
- @class module:"montage/ui/list.reel".List
+ @class module:"matte/ui/list.reel".List
  @extends module:montage/ui/component.Component
  */
 var List = exports.List = Montage.create(Component,/** @lends module:"matte/ui/list.reel".List# */ {

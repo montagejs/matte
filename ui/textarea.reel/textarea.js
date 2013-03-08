@@ -1,17 +1,17 @@
 /**
-    @module "montage/ui/textarea.reel"
+    module:"matte/ui/textarea.reel"
 */
 /*global require,exports */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
-    NativeTextarea = require("ui/native/textarea.reel").Textarea;
+    Component = require("montage/ui/component").Component,
+    NativeTextarea = require("montage-native/ui/textarea.reel").Textarea;
 
 /**
  * Textarea
- * @class module:"montage/ui/textarea.reel".Textarea
- * @lends module:"ui/native/textarea.reel".Textarea
+ * @class module:"matte/ui/textarea.reel".Textarea
+ * @lends module:"montage-native/ui/textarea.reel".Textarea
  */
-exports.Textarea = Montage.create(NativeTextarea, /** @lends module:"montage/ui/textarea.reel".Textarea */ {
+exports.Textarea = Montage.create(NativeTextarea, /** @lends module:"matte/ui/textarea.reel".Textarea */ {
 
     hasTemplate: {value: true},
 

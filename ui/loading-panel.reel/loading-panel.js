@@ -1,17 +1,17 @@
 
 /**
-	@module "montage/ui/loading-panel.reel"
+	module:"matte/ui/loading-panel.reel"
 */
 
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component;
+    Component = require("montage/ui/component").Component;
 
 /**
- @class module:montage/ui/loading-panel.LoadingPanel
+ @class module:matte/ui/loading-panel.LoadingPanel
  @extends module:montage/ui/component.Component
  */
 
-exports.LoadingPanel = Montage.create(Component, /** @lends module:montage/ui/loading-panel.LoadingPanel# */ {
+exports.LoadingPanel = Montage.create(Component, /** @lends module:matte/ui/loading-panel.LoadingPanel# */ {
 
 /**
 	The number of modules that are required to load.

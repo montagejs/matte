@@ -1,16 +1,16 @@
 /**
-    @module "montage/ui/bluemoon/progress.reel"
+    module:"matte/ui/progress.reel"
     @requires montage/core/core
     @requires montage/ui/component
 */
 var Montage = require("montage").Montage,
-    Component = require("ui/component").Component,
-    NativeProgress = require("ui/native/progress.reel").Progress;
+    Component = require("montage/ui/component").Component,
+    NativeProgress = require("montage-native/ui/progress.reel").Progress;
 /**
-    @class module:montage/ui/progress.Progress
+    @class module:matte/ui/progress.Progress
     @extends module:montage/ui/component.Component
 */
-exports.Progress = Montage.create(NativeProgress,/** @lends module:"montage/ui/bluemoon/progress.reel".Progress# */ {
+exports.Progress = Montage.create(NativeProgress,/** @lends module:"matte/ui/progress.reel".Progress# */ {
 
     hasTemplate: {value: true},
 

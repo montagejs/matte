@@ -1,5 +1,5 @@
 
-.montage-Textarea {
+.matte-Textarea {
     outline: none;
     box-sizing: border-box;
     font-size: 12px;
@@ -12,15 +12,15 @@
     background-color: #fff;
 }
 
-.montage-Textarea:hover {
+.matte-Textarea:hover {
   border-color: #ccc;
 }
 
-.montage-Textarea:focus {
+.matte-Textarea:focus {
   border-color: #7f7f7f;
 }
 
-.montage-Textarea:disabled {
+.matte-Textarea:disabled {
     opacity: .5;
     border-style: dashed;
     pointer-events: none;

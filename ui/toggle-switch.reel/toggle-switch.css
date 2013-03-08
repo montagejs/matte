@@ -1,9 +1,9 @@
-.montage-ToggleSwitch {
+.matte-ToggleSwitch {
     width: 60px;
     height: 22px;
 }
 
-.montage-ToggleSwitch .toggle:before {
+.matte-ToggleSwitch .toggle:before {
     content: "";
     position: absolute;
     left: -13px;
@@ -13,7 +13,7 @@
     border-radius: 30px;
 }
 
-.montage-ToggleSwitch .toggle {
+.matte-ToggleSwitch .toggle {
     position: absolute;
     border-radius: 12px;
     height: 20px;
@@ -22,11 +22,11 @@
     -webkit-box-shadow: inset 0 1px 4px rgba(0,0,0,.3), 0 1px rgba(255,255,255,.4), 0 -1px rgba(0,0,0,.1);
 }
 
-.montage-ToggleSwitch .scroll {
+.matte-ToggleSwitch .scroll {
     -webkit-transform: translateZ(0);
 }
 
-.montage-ToggleSwitch .circle {
+.matte-ToggleSwitch .circle {
     position: absolute;
     margin: -16px 0 0 -16px;
     height: 50px;
@@ -38,11 +38,11 @@
     -webkit-transform: scale3d(.35, .35, 0) translateZ(0);
 }
 
-.montage-ToggleSwitch.pressed .circle {
+.matte-ToggleSwitch.pressed .circle {
     -webkit-transform: scale3d(1, 1, 0) translateZ(0);
 }
 
-.montage-ToggleSwitch .handlerbg {
+.matte-ToggleSwitch .handlerbg {
     position: absolute;
     background: transparent;
     position: absolute;
@@ -53,7 +53,7 @@
     -webkit-transform: translateZ(0);
 }
 
-.montage-ToggleSwitch .handler {
+.matte-ToggleSwitch .handler {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -62,7 +62,7 @@
     -webkit-transform: translateZ(0);
 }
 
-.montage-ToggleSwitch .handler:after {
+.matte-ToggleSwitch .handler:after {
     content: "";
     position: absolute;
     margin: 6px 0 0 6px;
@@ -74,7 +74,7 @@
     -webkit-transform: scale3d(.9, .9, 0) translateZ(0);
 }
 
-.montage-ToggleSwitch .handleronbg {
+.matte-ToggleSwitch .handleronbg {
     opacity: 0;
     position: absolute;
     background: rgba(0,0,0,.3);
@@ -86,7 +86,7 @@
     -webkit-transform: translateZ(0);
 }
 
-.montage-ToggleSwitch .handleron {
+.matte-ToggleSwitch .handleron {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -95,7 +95,7 @@
     -webkit-transform: translateZ(0);
 }
 
-.montage-ToggleSwitch .handleron:after {
+.matte-ToggleSwitch .handleron:after {
     content: "";
     position: absolute;
     margin: 6px 0 0 6px;
@@ -107,7 +107,7 @@
     -webkit-transform: scale3d(.9, .9, 0) translateZ(0);
 }
 
-.montage-ToggleSwitch .handlerdragarea {
+.matte-ToggleSwitch .handlerdragarea {
     position: absolute;
     margin: -16px 0 0 -16px;
     width: 52px;
@@ -116,14 +116,14 @@
     -webkit-transform: translateZ(0);
 }
 
-.montage-ToggleSwitch.dark .toggle {
+.matte-ToggleSwitch.dark .toggle {
     padding: 0;
     border: 1px solid rgba(0,0,0,.4);
     background-color: rgba(40,40,40,.55);
     -webkit-box-shadow: 0 1px rgba(255,255,255,.2), 0 -1px rgba(0,0,0,.1);
 }
 
-.montage-ToggleSwitch.dark .circle {
+.matte-ToggleSwitch.dark .circle {
     opacity: .25;
     background: rgba(120, 120, 120, .8);
     border: 1px solid #000;
@@ -131,20 +131,20 @@
     -webkit-transition: -webkit-transform 150ms;
 }
 
-.montage-ToggleSwitch.pressed.dark .circle {
+.matte-ToggleSwitch.pressed.dark .circle {
     -webkit-transform: scale3d(1, 1, 0) translateZ(0);
 }
 
-.montage-ToggleSwitch.dark .handler {
+.matte-ToggleSwitch.dark .handler {
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.5)), to(rgba(255,255,255,.3)));
 }
 
-.montage-ToggleSwitch.dark .handler:after {
+.matte-ToggleSwitch.dark .handler:after {
     background-color: rgba(0,0,0,.6);
     -webkit-box-shadow: 0 1px 0 #828282;
 }
 
-.montage-ToggleSwitch.dark .handleronbg {
+.matte-ToggleSwitch.dark .handleronbg {
     opacity: 0;
     position: absolute;
     background: transparent;
