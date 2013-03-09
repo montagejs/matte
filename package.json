@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "dependencies": {
         "montage": "0.13.0-alpha",
-        "montage-native": "~0.1.0"
+        "native": "~0.1.0"
     },
     "devDependencies": {
         "montage-testing": "0.2.0-alpha"

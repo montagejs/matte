@@ -7,12 +7,12 @@
 
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
-    NativeInputNumber = require("montage-native/ui/input-number.reel").InputNumber;
+    NativeInputNumber = require("native/ui/input-number.reel").InputNumber;
 
 /**
  * Wraps the a &lt;input type="date"> element with binding support for the element's standard attributes.
    @class module:"matte/ui/input-number.reel".InputNumber
-   @extends module:"montage-native/ui/input-number.reel".InputNumber
+   @extends module:"native/ui/input-number.reel".InputNumber
  */
 exports.InputNumber = Montage.create(NativeInputNumber, /** @lends module:"matte/ui/input-number.reel".InputNumber */{
 

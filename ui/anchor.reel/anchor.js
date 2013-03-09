@@ -8,12 +8,12 @@
 /*global require,exports */
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
-    NativeAnchor = require("montage-native/ui/anchor.reel").Anchor;
+    NativeAnchor = require("native/ui/anchor.reel").Anchor;
 
 /**
  * Montage Anchor
  * @class module:"matte/ui/anchor.reel".Anchor
- * @extends module:"montage-native/ui/anchor.reel".Anchor
+ * @extends module:"native/ui/anchor.reel".Anchor
  */
 exports.Anchor = Montage.create(NativeAnchor, /** @lends module:"matte/ui/anchor.reel".Anchor# */{
 

@@ -4,12 +4,12 @@
 /*global require,exports */
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
-    NativeTextarea = require("montage-native/ui/textarea.reel").Textarea;
+    NativeTextarea = require("native/ui/textarea.reel").Textarea;
 
 /**
  * Textarea
  * @class module:"matte/ui/textarea.reel".Textarea
- * @lends module:"montage-native/ui/textarea.reel".Textarea
+ * @lends module:"native/ui/textarea.reel".Textarea
  */
 exports.Textarea = Montage.create(NativeTextarea, /** @lends module:"matte/ui/textarea.reel".Textarea */ {
 

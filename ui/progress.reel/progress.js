@@ -5,7 +5,7 @@
 */
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
-    NativeProgress = require("montage-native/ui/progress.reel").Progress;
+    NativeProgress = require("native/ui/progress.reel").Progress;
 /**
     @class module:matte/ui/progress.Progress
     @extends module:montage/ui/component.Component
