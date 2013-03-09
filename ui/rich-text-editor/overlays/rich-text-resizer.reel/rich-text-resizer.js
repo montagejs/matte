@@ -2,12 +2,12 @@
 	module:"matte/ui/rich-text-editor/overlays/rich-text-resizer.reel"
     @requires montage/core/core
     @requires montage/core/geometry/point
+    @requires montage/core/dom
     @requires montage/ui/component
-    @requires montage/ui/dom
 */
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
-    dom = require("montage/ui/dom"),
+    dom = require("montage/core/dom"),
     Point = require("montage/core/geometry/point").Point;
 
 /**

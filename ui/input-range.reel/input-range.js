@@ -4,7 +4,7 @@
 /*global require,exports */
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
-    dom = require("montage/ui/dom");
+    dom = require("montage/core/dom");
 
 /**
  * The input type="range" field

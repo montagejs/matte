@@ -4,11 +4,11 @@
     @module "matte/ui/text-slider.reel"
     @requires montage/core/core
     @requires montage/ui/component
-    @requires montage/ui/composer/press-composer
+    @requires montage/composer/press-composer
  */
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
-    PressComposer = require("montage/ui/composer/press-composer").PressComposer;
+    PressComposer = require("montage/composer/press-composer").PressComposer;
 
 var EDITING_CLASS = "matte-TextSlider--editing";
 

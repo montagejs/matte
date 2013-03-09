@@ -9,7 +9,7 @@ var Montage = require("montage").Montage,
     logger = require("montage/core/logger").logger("autocomplete"),
     ResultsList = require("ui/autocomplete/results-list.reel/results-list").ResultsList,
     Popup = require("ui/popup/popup.reel").Popup,
-    PressComposer = require("montage/ui/composer/press-composer").PressComposer,
+    PressComposer = require("montage/composer/press-composer").PressComposer,
     RangeController = require("montage/core/range-controller").RangeController;
 
 var KEY_UP = 38,
