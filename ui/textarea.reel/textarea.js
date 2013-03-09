@@ -18,7 +18,7 @@ exports.Textarea = Montage.create(NativeTextarea, /** @lends module:"matte/ui/te
     willPrepareForDraw: {
         value: function() {
             NativeTextarea.willPrepareForDraw.call(this);
-            this.element.classList.add("montage-Textarea");
+            this.element.classList.add("matte-Textarea");
         }
     }
 });

@@ -118,7 +118,7 @@ exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/r
                 } else if (target.tagName === "IMG") {
                     if (target !== previousTarget) {
                         if (previousTarget) {
-                            previousTarget.classList.remove("montage-Resizer-element");
+                            previousTarget.classList.remove("matte-Resizer-element");
                             if (previousTarget.classList.length == 0) {
                                 previousTarget.removeAttribute("class");
                             }
@@ -207,8 +207,8 @@ exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/r
                 style.top = offsetTop + "px";;
                 style.left = offsetLeft + "px";
 
-                this._editor.innerElement.classList.remove("montage-Editor--resizing");
-                target.classList.add("montage-Resizer-element");
+                this._editor.innerElement.classList.remove("matte-Editor--resizing");
+                target.classList.add("matte-Resizer-element");
 
                 // Setup the image
                 this.image.src = target.src;
@@ -226,7 +226,7 @@ exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/r
                 var zero = Point.create().init(0, 0),
                     framePosition = dom.convertPointFromNodeToPage(element, zero),
                     cursor = this._cursorPosition,
-                    direction = this._draggedElement.getAttribute("data-montage-id").substring("montage-resizer-handle-".length),
+                    direction = this._draggedElement.getAttribute("data-montage-id").substring("matte-resizer-handle-".length),
                     info = this._resizerFrameInfo,
                     ratio = info.ratio,
                     height = parseFloat(element.style.height, 10),
@@ -235,7 +235,7 @@ exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/r
                     left = parseFloat(element.style.left, 10),
                     minSize = 15;
 
-                this._editor.innerElement.classList.add("montage-Editor--resizing");
+                this._editor.innerElement.classList.add("matte-Editor--resizing");
 
                 if (direction == "n") {
                     height += framePosition.y - cursor.y;
@@ -294,8 +294,8 @@ exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/r
                 width = element.clientWidth;
                 height = element.clientHeight;
 
-                this._editor.innerElement.classList.remove("montage-Editor--resizing");
-                target.classList.remove("montage-Resizer-element");
+                this._editor.innerElement.classList.remove("matte-Editor--resizing");
+                target.classList.remove("matte-Resizer-element");
                 if (target.classList.length == 0) {
                     target.removeAttribute("class");
                 }
@@ -317,7 +317,7 @@ exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/r
                 offlineElement.style.removeProperty("height");
 
                 savedID = offlineElement.id;
-                offlineElement.id = "montage-editor-resized-image";
+                offlineElement.id = "matte-editor-resized-image";
 
                 // Inject the resized element into the contentEditable using execCommand in order to be in the browser undo queue
                 this._editor.execCommand("inserthtml", false, div.innerHTML, "Resizing Image");
@@ -378,7 +378,7 @@ exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/r
 
             if (target) {
                 // Let's do some extra cleanup
-                target.classList.remove("montage-Resizer-element");
+                target.classList.remove("matte-Resizer-element");
                 if (target.classList.length == 0) {
                     target.removeAttribute("class");
                 }
@@ -414,7 +414,7 @@ exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/r
             var target = event.target,
                 element = this.element;
 
-            if (target.classList.contains("montage-Resizer-handle")) {
+            if (target.classList.contains("matte-Resizer-handle")) {
                 if (window.Touch) {
                     this._observePointer(target.id);
                     document.addEventListener("touchmove", this);

@@ -22,7 +22,7 @@ exports.Anchor = Montage.create(NativeAnchor, /** @lends module:"matte/ui/anchor
     willPrepareForDraw: {
         value: function() {
             NativeAnchor.willPrepareForDraw.call(this);
-            this.element.classList.add("montage-anchor");
+            this.element.classList.add("matte-anchor");
         }
     }
 });

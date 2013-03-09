@@ -232,7 +232,7 @@ var TextInput = exports.TextInput =  Montage.create(Component, /** @lends module
                 el.classList.add('montage--invalidText');
                 el.title = this.error.message || '';
             } else {
-                el.classList.remove("montage--invalidText");
+                el.classList.remove("matte--invalidText");
                 el.title = '';
             }
         }

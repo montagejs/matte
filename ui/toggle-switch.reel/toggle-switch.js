@@ -321,7 +321,7 @@ var ToggleSwitch = exports.ToggleSwitch = Montage.create(Component, /** @lends m
     prepareForDraw: {
         enumerable: false,
         value: function() {
-            this._element.classList.add("montage-ToggleSwitch");
+            this._element.classList.add("matte-ToggleSwitch");
             this._toggle = document.createElement('div');
             this._scroll = document.createElement('div');
             this._circle = document.createElement('div');
