@@ -5,7 +5,6 @@ require("montage-testing").run(require,[
     "test/blueprint/button/button-blueprint-spec",
     "test/button/button-spec",
     "test/dynamic-element/dynamic-element-spec",
-    "test/dynamic-text/dynamic-text-spec",
     "test/toggle-button/toggle-button-spec",
     "test/input-checkbox/input-checkbox-spec",
     "test/input-number/input-number-spec",

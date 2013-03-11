@@ -75,18 +75,18 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     MARK:   Component References
     -----------------------------------------------------------------------------*/
     /**
-        The DynamicText component used to display the currently playing track's playback position.
-        @type {module:montage/ui/dynamic-text.DynamicText}
+        The Text component used to display the currently playing track's playback position.
+        @type {module:montage/ui/text.Text}
         @default null
     */
-    positionText: { value: null, enumerable: false },     /* montage/ui/dynamic-text */
+    positionText: { value: null, enumerable: false },     /* montage/ui/text */
 
     /**
-        The DynamicText component used to display the currently playing track's duration.
-        @type {module:montage/ui/dynamic-text.DynamicText}
+        The Text component used to display the currently playing track's duration.
+        @type {module:montage/ui/text.Text}
         @default null
     */
-    durationText: { value: null, enumerable: false },     /* montage/ui/dynamic-text */
+    durationText: { value: null, enumerable: false },     /* montage/ui/text */
 
     /**
         The Slider component used to control the playback position.
