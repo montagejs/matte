@@ -6,20 +6,20 @@
     <script type="text/montage-serialization">
         {
             "repetition": {
-                "prototype": "ui/repetition.reel",
+                "prototype": "montage/ui/repetition.reel",
                 "properties": {
                     "element": {
-                        "#": "matte-flow-repetition"
+                        "#": "montage-flow-repetition"
                     }
                 },
                 "bindings": {
-                    "content": {"<-": "@owner.objects"},
                     "contentController": {"<-": "@owner.contentController"},
+                    "content": {"<-": "@owner.content"},
                     "isSelectionEnabled": {"<-": "@owner.isSelectionEnabled"}
                 }
             },
             "flowTranslateComposer": {
-                "prototype": "composer/flow-translate-composer",
+                "prototype": "montage/ui/composer/flow-translate-composer",
                 "properties": {
                     "flow": {"@": "owner"},
                     "invertAxis": true,
@@ -35,9 +35,9 @@
                 }
             },
             "slot": {
-                "prototype": "ui/slot.reel",
+                "prototype": "montage/ui/slot.reel",
                 "properties": {
-                    "element": {"#": "matte-flow-slot"}
+                    "element": {"#": "montage-flow-slot"}
                 },
                 "bindings": {
                     "content": {"<->": "@owner.slotContent"}
@@ -46,7 +46,7 @@
             "owner": {
                 "properties": {
                     "element": {
-                        "#": "matte-flow"
+                        "#": "montage-flow"
                     },
                     "_repetition": {
                         "@": "repetition"
@@ -55,7 +55,7 @@
                         "@": "flowTranslateComposer"
                     },
                     "_cameraElement": {
-                        "#": "matte-flow-camera"
+                        "#": "montage-flow-camera"
                     }
                 },
                 "bindings": {
@@ -69,10 +69,14 @@
     </script>
 </head>
 <body>
-    <div data-montage-id="montage-flow" class="matte-Flow">
-        <div data-montage-id="montage-flow-camera" class="matte-Flow-camera">
-            <div data-montage-id="montage-flow-repetition" class="matte-Flow-Repetition"></div>
-            <div data-montage-id="montage-flow-slot" class="matte-Flow-Slot"></div>
+    <div data-montage-id="montage-flow" class="montage-Flow">
+        <div data-montage-id="montage-flow-camera" class="montage-Flow-camera">
+            <div data-montage-id="montage-flow-repetition" class="montage-Flow-Repetition">
+                <div data-montage-id="wrapper">
+                    <div data-param="*"></div>
+                </div>
+            </div>
+            <div data-montage-id="montage-flow-slot" class="montage-Flow-Slot"></div>
         </div>
     </div>
 </body>
