@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="../../node_modules/montage/montage.js" data-package="../../"></script>
+    <script type="text/montage-serialization">
+        {
+            "test": {
+                "prototype": "test/video-player/video-player-test",
+                "properties": {
+                    "videoPlayer1": {"@": "videoPlayer1"}
+                }
+            },
+            "videoPlayer1": {
+                "prototype": "ui/video-player.reel",
+                "properties": {
+                    "element": {
+                        "#": "videoPlayer1"
+                    },
+                    "autoHide": "true",
+                    "identifier": "videoPlayer1",
+                    "src": "sample.ogv",
+                    "supportsFullScreen": "true"
+                }
+            }
+
+        }
+    </script>
+
+</head>
+<body>
+    <h1>VideoPlayer test</h1>
+    <div data-montage-id="videoPlayer1"></div>
+</body>
+</html>

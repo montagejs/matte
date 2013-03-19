@@ -102,7 +102,11 @@ MARK:    Scrubber Panel
 .matte-VideoPlayer .scrubber {
     display: block;
     -webkit-box-flex: 1;
-    margin-top: -2px;
+}
+
+.scrubber {
+    top: 50%;
+    margin: -5px 14px 0 14px;
 }
 
 .matte-VideoPlayer .position {
@@ -139,6 +143,8 @@ MARK:    Button Panel
     outline: none;
     background-repeat: no-repeat;
     background-position: center center;
+    background-color: transparent;
+    border: none;
 }
 .matte-VideoPlayer .controller-button:active {
 	background-color: hsla(0,0%,0%,.4);
@@ -150,7 +156,7 @@ MARK:    Button Panel
 .matte-VideoPlayer .ff,
 .matte-VideoPlayer .rw,
 .matte-VideoPlayer .repeat
-{ display: none; } /* Temporarly disabled */
+{ display: none; } /* Temporarily disabled */
 
 /*-----------------------------------------------------------------------------
 MARK:    Volume Panel
