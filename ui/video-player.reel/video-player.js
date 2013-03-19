@@ -147,11 +147,10 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
                 },
                 "durationText.value": {
                     "<->": "controller.duration",
-                    convert: this._prettyTime,
+                    convert: this._prettyTime
                 },
-                "slider.maxValue": {
-                    "<->": "controller.duration",
-                    convert: this._roundTime
+                "slider.max": {
+                    "<->": "controller.duration"
                 }
             });
         }
@@ -169,14 +168,6 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             min = Math.floor(time / 60) % 60;
             hour = Math.floor(time / 3600);
             return (hour > 0 ? hour + ":" : "") + (min < 10 ? "0"+min : min) + ":" + (sec < 10 ? "0"+sec : sec);
-        }
-    },
-/**
-  @private
-*/
-    _roundTime: {
-        value: function(time) {
-            return (time < 0 ? 0 : Math.floor(time));
         }
     },
 /**

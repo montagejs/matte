@@ -33,13 +33,12 @@
         }
     },
     "slider1": {
-        "prototype": "montage/ui/bluemoon/slider.reel",
+        "prototype": "ui/input-range.reel",
         "properties": {
             "element": {
                 "#": "durationSlider"
             },
-            "minValue": 0,
-            "hasTapBarToScroll": true
+            "min": 0.0
         },
         "bindings": {
             "value": {"<->": "@owner.controller.position"}
@@ -55,7 +54,7 @@
         }
     },
     "togglebutton1": {
-        "prototype": "montage/ui/bluemoon/button.reel[ToggleButton]",
+        "prototype": "ui/toggle-button.reel",
         "properties": {
             "element": {
                 "#": "playButton"
@@ -81,7 +80,7 @@
         }
     },
     "button1": {
-        "prototype": "montage/ui/bluemoon/button.reel",
+        "prototype": "ui/button.reel",
         "properties": {
             "element": {
                 "#": "rewindButton"
@@ -107,7 +106,7 @@
         }
     },
     "button2": {
-        "prototype": "montage/ui/bluemoon/button.reel",
+        "prototype": "ui/button.reel",
         "properties": {
             "element": {
                 "#": "ffButton"
@@ -133,7 +132,7 @@
         }
     },
     "button3": {
-        "prototype": "montage/ui/bluemoon/button.reel",
+        "prototype": "ui/button.reel",
         "properties": {
             "element": {
                 "#": "decreaseVolume"
@@ -159,7 +158,7 @@
         }
     },
     "button4": {
-        "prototype": "montage/ui/bluemoon/button.reel",
+        "prototype": "ui/button.reel",
         "properties": {
             "element": {
                 "#": "increaseVolume"
@@ -185,7 +184,7 @@
         }
     },
     "button5": {
-        "prototype": "montage/ui/bluemoon/button.reel",
+        "prototype": "ui/button.reel",
         "properties": {
             "element": {
                 "#": "muteButton"
@@ -211,7 +210,7 @@
         }
     },
     "button6": {
-        "prototype": "montage/ui/bluemoon/button.reel",
+        "prototype": "ui/button.reel",
         "properties": {
             "element": {
                 "#": "repeatButton"
@@ -237,7 +236,7 @@
         }
     },
     "button7": {
-        "prototype": "montage/ui/bluemoon/button.reel",
+        "prototype": "ui/button.reel",
         "properties": {
             "element": {
                 "#": "fullScreenButton"
@@ -254,7 +253,7 @@
         ]
     },
     "owner": {
-        "prototype": "montage/ui/video-player.reel",
+        "prototype": "ui/video-player.reel",
         "properties": {
             "element": {
                 "#": "video-player"
