@@ -7,22 +7,6 @@ exports.Test = Montage.create(TestController, {
         value: null
     },
 
-    dynamicElementClassList: {
-        value: null
-    },
-
-    dynamicElementClassInMarkup: {
-        value: null
-    },
-
-    class1: {
-        value: true
-    },
-
-    class2: {
-        value: false
-    },
-
     self: {
         get: function() {
             return this;

@@ -1,7 +1,7 @@
 /*global require,exports,describe,it,expect */
 var Montage = require("montage").Montage;
 var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
-var Bindings = require("montage/core/bindings").Bindings;
+
 
 TestPageLoader.queueTest("dynamic-element-test", function(testPage) {
     var test;
@@ -88,70 +88,6 @@ TestPageLoader.queueTest("dynamic-element-test", function(testPage) {
                     })
                 });
             });
-
-            describe("using classList", function() {
-                describe("with bindings", function() {
-                    it("should correctly initialize from a template", function() {
-                        expect(test.dynamicElementClassList.element.classList.contains("class1")).toBeTruthy();
-                        expect(test.dynamicElementClassList.element.classList.contains("class2")).toBeFalsy();
-                    });
-                    it("should reflect changes to the classList's properties", function() {
-                        test.class1 = false;
-                        test.class2 = true;
-                        return testPage.nextDraw().then(function() {
-                            expect(test.dynamicElementClassList.element.classList.contains("class1")).toBeFalsy();
-                            expect(test.dynamicElementClassList.element.classList.contains("class2")).toBeTruthy();
-                        })
-                    });
-                    it("should be possible to bind to a new class", function() {
-                        test.class3 = true;
-                        Bindings.defineBinding(test.dynamicElementClassList, "classList.has('newClass')", {
-                            source: test,
-                            "<-": "class3"
-                        });
-                        expect(test.dynamicElementClassList.classList.contains("newClass")).toBeTruthy();
-                        return testPage.nextDraw().then(function() {
-                            expect(test.dynamicElementClassList.element.classList.contains("newClass")).toBeTruthy();
-                        })
-                    });
-                });
-                describe("with programmatic API", function() {
-                    it("should correctly add a class", function() {
-                        test.dynamicElementClassList.classList.add("myclass");
-                        return testPage.nextDraw().then(function() {
-                            expect(test.dynamicElementClassList.element.classList.contains("myclass")).toBeTruthy();
-                        })
-                    });
-                    it("should correctly remove a class", function() {
-                        test.dynamicElementClassList.classList.remove("myclass");
-                        return testPage.nextDraw().then(function() {
-                            expect(test.dynamicElementClassList.element.classList.contains("myclass")).toBeFalsy();
-                        })
-                    });
-                    it("should correctly toggle a class", function() {
-                        test.dynamicElementClassList.classList.toggle("myclass");
-                        return testPage.nextDraw().then(function() {
-                            expect(test.dynamicElementClassList.element.classList.contains("myclass")).toBeTruthy();
-                        })
-                    });
-                    it("should correctly report contains state of a class", function() {
-                        expect(test.dynamicElementClassList.classList.contains("myclass")).toBeTruthy();
-                    });
-                });
-                describe("with classes in original element", function() {
-                    it("should correctly add a class based on markup", function() {
-                        expect(test.dynamicElementClassInMarkup.classList.contains("markupClass1")).toBeTruthy();
-                        expect(test.dynamicElementClassInMarkup.classList.contains("markupClass2")).toBeTruthy();
-                    });
-                    it("should be able to change those classes as if they were added via the component", function() {
-                        test.dynamicElementClassInMarkup.classList.toggle("markupClass1");
-                        return testPage.nextDraw().then(function() {
-                            expect(test.dynamicElementClassInMarkup.element.classList.contains("markupClass1")).toBeFalsy();
-                        })
-                    });
-                });
-            });
-
         });
     });
 });

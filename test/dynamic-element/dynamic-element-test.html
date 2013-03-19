@@ -8,9 +8,7 @@
             "test": {
                 "prototype": "test/dynamic-element/test",
                 "properties": {
-                    "dynamicElement": {"@": "dynamicElement"},
-                    "dynamicElementClassList": {"@": "dynamicElementClassList"},
-                    "dynamicElementClassInMarkup": {"@": "dynamicElementClassInMarkup"}
+                    "dynamicElement": {"@": "dynamicElement"}
                 }
             },
 
@@ -19,23 +17,6 @@
                 "properties": {
                     "element": {"#": "dynamicElement"},
                     "allowedTagNames": ["div"]
-                }
-            },
-
-            "dynamicElementClassList": {
-                "prototype": "ui/dynamic-element.reel",
-                "properties": {
-                    "element": {"#": "dynamicElementClassList"}
-                },
-                "bindings": {
-                    "classList.has('class1')": {"<-": "@test.class1"},
-                    "classList.has('class2')": {"<-": "@test.class2"}
-                }
-            },
-            "dynamicElementClassInMarkup": {
-                "prototype": "ui/dynamic-element.reel",
-                "properties": {
-                    "element": {"#": "dynamicElementClassInMarkup"}
                 }
             }
         }
@@ -46,7 +27,5 @@
     <h1>DynamicElement test</h1>
 
     <div data-montage-id="dynamicElement"><div id="bar2"></div></div>
-    <div data-montage-id="dynamicElementClassList"></div>
-    <div data-montage-id="dynamicElementClassInMarkup" class="markupClass1 markupClass2"></div>
 </body>
 </html>

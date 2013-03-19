@@ -1,16 +1,41 @@
+/* <copyright>
+Copyright (c) 2012, Motorola Mobility LLC.
+All Rights Reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of Motorola Mobility LLC nor the names of its
+  contributors may be used to endorse or promote products derived from this
+  software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+</copyright> */
 /**
     module:"matte/ui/dynamic-element.reel"
     @requires montage
     @requires montage/ui/component
-    @requires collections/set
 */
 var Montage = require("montage").Montage;
 var Component = require("montage/ui/component").Component;
-var Set = require("montage/collections/set");
 
-// TODO replace all usage of undefinedGet and undefinedSet with manipulation of
-// a classList Set() from Collections and handle rangeChange events to sync
-// the document in the next draw
 
 /**
     The DynamicElement is a general purpose component that aims to expose all the properties of the element as a component.
@@ -92,10 +117,6 @@ exports.DynamicElement = Montage.create(Component, /** @lends module:"matte/ui/d
                     className = this.element.className;
                 range.selectNodeContents(this.element);
                 this._range = range;
-                // classList
-                if (className.length !== 0) {
-                    this.classList.addEach(className.split(" "));
-                }
             }
         }
     },
@@ -151,59 +172,6 @@ exports.DynamicElement = Montage.create(Component, /** @lends module:"matte/ui/d
                         content.data = displayValue;
                     }
                 }
-            }
-            // classList
-            this._drawClassListIntoComponent();
-        }
-    },
-
-    _classList: {
-        value: null
-    },
-
-    _classListDirty: {
-        value: false
-    },
-
-    /**
-        The classList of the component's element, the purpose is to mimic the element's API but to also respect the draw.
-        It can also be bound to by binding each class as a property.
-        example to toggle the complete class: "classList.has('complete')" : { "<-" : "@owner.isCompete"}
-        @type {Property}
-        @default null
-    */
-    classList: {
-        get: function() {
-            if (this._classList === null) {
-                this._classList = new Set();
-                this._classList.addRangeChangeListener(this, "classList");
-            }
-            return this._classList;
-        }
-    },
-
-    handleClassListRangeChange: {
-        value: function (name) {
-            this._classListDirty = true;
-            this.needsDraw = true;
-        }
-    },
-
-    _drawClassListIntoComponent: {
-        value: function() {
-            if (this._classListDirty) {
-                var elementClassList = this.element.classList,
-                    classList = this._classList;
-
-                Array.prototype.forEach.call(elementClassList, function(cssClass) {
-                    if (! classList.has(cssClass)) {
-                        elementClassList.remove(cssClass);
-                    }
-                });
-                this._classList.forEach(function(cssClass) {
-                    elementClassList.add(cssClass);
-                });
-                this._classListDirty = false;
             }
         }
     }
