@@ -1,198 +1,141 @@
 {
 
     "blueprint_flow_stride":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"stride",
             "blueprint":{
                 "@":"root"
             },
-            "cardinality":1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"number",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_flow_hasElasticScrolling":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"hasElasticScrolling",
             "blueprint":{
                 "@":"root"
             },
-            "cardinality":1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"boolean",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_flow_momentumDuration":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"momentumDuration",
             "blueprint":{
                 "@":"root"
             },
-            "cardinality":1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"number",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_flow_objects":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"objects",
             "blueprint":{
                 "@":"root"
             },
             "cardinality":-1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"object",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_flow_contentController":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"contentController",
             "blueprint":{
                 "@":"root"
             },
-            "cardinality":1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"object",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_flow_activeIndexes":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"activeIndexes",
             "blueprint":{
                 "@":"root"
             },
             "cardinality":-1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"number",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_flow_isSelectionEnabled":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"isSelectionEnabled",
             "blueprint":{
                 "@":"root"
             },
-            "cardinality":1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"boolean",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_flow_hasSelectedIndexScrolling":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"hasSelectedIndexScrolling",
             "blueprint":{
                 "@":"root"
             },
-            "cardinality":1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"boolean",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_flow_scrollingTransitionDuration":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"scrollingTransitionDuration",
             "blueprint":{
                 "@":"root"
             },
-            "cardinality":1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"number",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_flow_selectedIndexes":{
-        "prototype":"core/meta/property-blueprint",
+        "prototype":"montage/core/meta/property-blueprint",
         "properties":{
             "name":"selectedIndexes",
             "blueprint":{
                 "@":"root"
             },
             "cardinality":-1,
-            "mandatory":false,
-            "denyDelete":false,
-            "readOnly":false,
             "valueType":"number",
-            "enumValues":[
-            ],
             "helpKey":""
         }
     },
 
     "blueprint_component_reference":{
-        "prototype":"core/meta/blueprint-reference",
+        "prototype":"montage/core/meta/blueprint-reference",
         "properties":{
             "valueReference":{
                 "blueprintName":"Component",
-                "blueprintModuleId":"ui/component-blueprint.json",
+                "blueprintModuleId":"montage/ui/component-blueprint.json",
                 "prototypeName":"Component"
             }
         }
     },
 
     "root":{
-        "prototype":"core/meta/blueprint",
+        "prototype":"montage/core/meta/blueprint",
         "properties":{
             "name":"Flow",
             "blueprintModuleId":"ui/flow.reel/flow-blueprint.json",
