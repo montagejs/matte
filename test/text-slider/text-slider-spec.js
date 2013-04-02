@@ -18,25 +18,33 @@ TestPageLoader.queueTest("text-slider-test", function(testPage) {
             it("increases when dragged right", function() {
                 var oldValue = test.number.value;
                 testPage.dragElementOffsetTo(test.number.element, 50, 0, null, function() {
-                    expect(test.number.value).toBe(oldValue + 50);
+                    var newValue = oldValue + 50;
+                    expect(test.number.value).toBe(newValue);
+                    expect(test.number.templateObjects.value.value).toBe(newValue);
                 }, null);
             });
             it("decreases when dragged left", function() {
                 var oldValue = test.number.value;
                 testPage.dragElementOffsetTo(test.number.element, -50, 0, null, function() {
-                    expect(test.number.value).toBe(oldValue - 50);
+                    var newValue = oldValue - 50;
+                    expect(test.number.value).toBe(newValue);
+                    expect(test.number.templateObjects.value.value).toBe(newValue);
                 }, null);
             });
             it("increases when dragged up", function() {
                 var oldValue = test.number.value;
                 testPage.dragElementOffsetTo(test.number.element, 0, -50, null, function() {
-                    expect(test.number.value).toBe(oldValue + 50);
+                    var newValue = oldValue + 50;
+                    expect(test.number.value).toBe(newValue);
+                    expect(test.number.templateObjects.value.value).toBe(newValue);
                 }, null);
             });
             it("decreases when dragged down", function() {
                 var oldValue = test.number.value;
                 testPage.dragElementOffsetTo(test.number.element, 0, 50, null, function() {
-                    expect(test.number.value).toBe(oldValue - 50);
+                    var newValue = oldValue - 50;
+                    expect(test.number.value).toBe(newValue);
+                    expect(test.number.templateObjects.value.value).toBe(newValue);
                 }, null);
             });
             it("it doesn't decrease when dragging up and left", function() {

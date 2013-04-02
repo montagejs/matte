@@ -54,7 +54,9 @@ var TextSlider = exports.TextSlider = Montage.create(Component, /** @lends modul
         },
         set: function(value) {
             if (this._converter !== value) {
+                this.dispatchBeforeOwnPropertyChange("convertedValue", this.convertedValue);
                 this._converter = value;
+                this.dispatchOwnPropertyChange("convertedValue", this.convertedValue);
                 this.needsDraw = true;
             }
         }
@@ -86,7 +88,9 @@ var TextSlider = exports.TextSlider = Montage.create(Component, /** @lends modul
             }
 
             if (this._value !== value) {
+                this.dispatchBeforeOwnPropertyChange("convertedValue", this.convertedValue);
                 this._value = value;
+                this.dispatchOwnPropertyChange("convertedValue", this.convertedValue);
                 this.needsDraw = true;
             }
         }
@@ -100,7 +104,6 @@ var TextSlider = exports.TextSlider = Montage.create(Component, /** @lends modul
     @default "0"
     */
     convertedValue: {
-        dependencies: ["value", "converter"],
         get: function() {
             // TODO catch errors from conversion?
             return (this._converter) ? this._converter.convert(this._value) : this._value;
