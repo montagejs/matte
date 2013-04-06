@@ -58,9 +58,11 @@ var Alert = exports.Alert = Montage.create(Component, {
 
     okCallback: {value: null},
 
-    prepareForDraw: {
-        value: function() {
-            this.element.addEventListener("keyup", this, false);
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                this.element.addEventListener("keyup", this, false);
+            }
         }
     },
 /**

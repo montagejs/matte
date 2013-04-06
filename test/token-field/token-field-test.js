@@ -75,9 +75,11 @@ exports.TokenFieldTest = Montage.create(TestController, {
     states: {value: null},
     tags: {value: null},
 
-    prepareForDraw: {
-        value: function() {
-            this.states = [states[0], states[3], states[5]];
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                this.states = [states[0], states[3], states[5]];
+            }
         }
     },
 

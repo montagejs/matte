@@ -72,9 +72,11 @@ var Confirm = exports.Confirm = Montage.create(Component, /** @lends module:"mat
     okCallback: {value: null},
     cancelCallback: {value: null},
 
-    prepareForDraw: {
-        value: function() {
-            this.element.addEventListener("keyup", this, false);
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                this.element.addEventListener("keyup", this, false);
+            }
         }
     },
 /**

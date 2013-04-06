@@ -99,16 +99,18 @@ exports.TokenField = Montage.create(Component, /** @lends module:"matte/ui/token
         }
     },
 
-    prepareForDraw: {
-        value: function() {
-            this._autocomplete.delegate = this.delegate;
-            if(this.identifier) {
-                this._autocomplete.identifier = this.identifier;
-                // @todo : this might be a problem. Since delegate methods are prefixed with
-                // the identifier
-                //this.identifier = 'token-field-' + this.identifier;
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                this._autocomplete.delegate = this.delegate;
+                if(this.identifier) {
+                    this._autocomplete.identifier = this.identifier;
+                    // @todo : this might be a problem. Since delegate methods are prefixed with
+                    // the identifier
+                    //this.identifier = 'token-field-' + this.identifier;
+                }
+                this._autocomplete.element.addEventListener("keyup", this);
             }
-            this._autocomplete.element.addEventListener("keyup", this);
         }
     },
 

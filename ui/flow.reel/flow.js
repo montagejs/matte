@@ -696,16 +696,17 @@ var Flow = exports.Flow = Montage.create(Component, {
         }
     },
 
-    prepareForDraw: {
-        value: function () {
-            var self = this,
-                i;
+    enterDocument: {
+        value: function (firstTime) {
+            if (firstTime) {
+                var self = this;
 
-            window.addEventListener("resize", function () {
-                self._isCameraUpdated = true;
-                self.needsDraw = true;
-            }, false);
-            // TODO remove event listener
+                window.addEventListener("resize", function () {
+                    self._isCameraUpdated = true;
+                    self.needsDraw = true;
+                }, false);
+                // TODO remove event listener
+            }
         }
     },
 

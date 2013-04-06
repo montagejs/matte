@@ -85,15 +85,17 @@ exports.DynamicElement = Montage.create(Component, /** @lends module:"matte/ui/d
         value: null
     },
 
-    prepareForDraw: {
-        value: function() {
-            var range = document.createRange(),
-                className = this.element.className;
-            range.selectNodeContents(this.element);
-            this._range = range;
-            // classList
-            if (className.length !== 0) {
-                this.classList.addEach(className.split(" "));
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                var range = document.createRange(),
+                    className = this.element.className;
+                range.selectNodeContents(this.element);
+                this._range = range;
+                // classList
+                if (className.length !== 0) {
+                    this.classList.addEach(className.split(" "));
+                }
             }
         }
     },

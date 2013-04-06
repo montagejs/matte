@@ -70,12 +70,14 @@ exports.Token = Montage.create(Component, {
 
     _deleteEl: {value: null},
 
-    prepareForDraw: {
-        value: function() {
-            if(window.Touch) {
-                this._deleteEl.addEventListener('touchend', this);
-            } else {
-                this._deleteEl.addEventListener('click', this);
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                if(window.Touch) {
+                    this._deleteEl.addEventListener('touchend', this);
+                } else {
+                    this._deleteEl.addEventListener('click', this);
+                }
             }
         }
     },

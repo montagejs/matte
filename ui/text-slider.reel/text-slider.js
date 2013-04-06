@@ -294,15 +294,17 @@ var TextSlider = exports.TextSlider = Montage.create(Component, /** @lends modul
         }
     },
 
-    prepareForDraw: {
-        value: function() {
-            this._element.identifier = "text";
-            this._inputElement.identifier = "input";
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                this._element.identifier = "text";
+                this._inputElement.identifier = "input";
 
-            this._element.addEventListener("focus", this, false);
-            this._inputElement.addEventListener("blur", this, false);
-            this._element.addEventListener("keydown", this, false);
-            this._inputElement.addEventListener("keydown", this, false);
+                this._element.addEventListener("focus", this, false);
+                this._inputElement.addEventListener("blur", this, false);
+                this._element.addEventListener("keydown", this, false);
+                this._inputElement.addEventListener("keydown", this, false);
+            }
         }
     },
 

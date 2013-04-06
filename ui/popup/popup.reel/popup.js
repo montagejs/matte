@@ -182,9 +182,11 @@ var Popup = exports.Popup = Montage.create(Component, { /** @lends module:"matte
     Description TODO
     @function
     */
-    prepareForDraw: {
-        value: function() {
-            this.type = this.type || 'custom';
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                this.type = this.type || 'custom';
+            }
         }
     },
 

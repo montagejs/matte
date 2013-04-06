@@ -166,10 +166,11 @@ exports.RichTextLinkPopup = Montage.create(Component,/** @lends module:"matte/ui
     Description TODO
     @function
     */
-    prepareForDraw: {
-        enumerable: false,
-        value: function() {
-            this._popupExtraWidth = this.element.offsetWidth;
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                this._popupExtraWidth = this.element.offsetWidth;
+            }
         }
     },
 

@@ -413,33 +413,35 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
         }
     },
 
-    prepareForDraw: {
-        value: function() {
-            this._addEventListeners();
-            this.element.classList.add('matte-Autocomplete');
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                this._addEventListeners();
+                this.element.classList.add('matte-Autocomplete');
 
-            // create the Repetition for the suggestions
-            this.resultsController = RangeController.create();
-            this.defineBinding("resultsController.content", {
-                "<-": "suggestions"
-            });
-            this.defineBinding("suggestedValue", {
-                "<-": "resultsController.selection[0]"
-            });
+                // create the Repetition for the suggestions
+                this.resultsController = RangeController.create();
+                this.defineBinding("resultsController.content", {
+                    "<-": "suggestions"
+                });
+                this.defineBinding("suggestedValue", {
+                    "<-": "resultsController.selection[0]"
+                });
 
-            this.resultsList = ResultsList.create();
-            this.defineBinding("resultsList.contentController", {
-                "<-": "resultsController"
-            });
-            // TODO what is activeIndexes?
-            this.defineBinding("resultsList.activeIterations", {
-                "<-": "activeIterations"
-            });
-            this.defineBinding("resultsList.textPropertyPath", {
-                "<-": "textPropertyPath"
-            });
+                this.resultsList = ResultsList.create();
+                this.defineBinding("resultsList.contentController", {
+                    "<-": "resultsController"
+                });
+                // TODO what is activeIndexes?
+                this.defineBinding("resultsList.activeIterations", {
+                    "<-": "activeIterations"
+                });
+                this.defineBinding("resultsList.textPropertyPath", {
+                    "<-": "textPropertyPath"
+                });
 
-            var popup = this._getPopup();
+                this._getPopup();
+            }
         }
     },
 

@@ -274,14 +274,16 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
 /**
     @private
     */
-    prepareForDraw: {
-        value: function() {
-            this._installUserActionDetector();
-            this.controller._installControlEventHandlers();
-            this._installMediaEventListeners();
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                this._installUserActionDetector();
+                this.controller._installControlEventHandlers();
+                this._installMediaEventListeners();
 
-            if (!this.autoHide) {
-                this.element.style.paddingBottom = "50px";
+                if (!this.autoHide) {
+                    this.element.style.paddingBottom = "50px";
+                }
             }
         }
     },
