@@ -1,8 +1,17 @@
 var Montage = require("montage").Montage;
 var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 
-var changeSelection = function(select, selectedIndex) {
-    select.options[selectedIndex].selected = true;
+var changeSelection = function(select, selectedIndex, multiple) {
+    var options = select.options;
+
+    if (multiple) {
+        options[selectedIndex].selected = true;
+    } else {
+        for (var i = 0; i < options.length; i++) {
+            options[i].selected = (i === selectedIndex);
+        }
+    }
+
     var event = document.createEvent('CustomEvent');
     event.initEvent('change', true, true);
     select.dispatchEvent(event);
@@ -60,7 +69,7 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                     });
 
                     it("country should get its possible values from the markup", function() {
-                        expect(test.country.contentController.iterations.length).toBe(5);
+                        expect(test.country.contentController.organizedContent.length).toBe(5);
                     });
 
                     // select a country via the contentController
@@ -77,7 +86,6 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                     it("country's contentController must reflect selections", function() {
                         var select = test.country.element;
                         changeSelection(select, 1);
-
                         expect(test.country.selectedIndexes[0]).toBe(1);
                     });
                 });
@@ -90,7 +98,7 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                     it("state should contain values for US when US is selected as the Country", function() {
                         // since US is selectedCountry by default
                         test.country.selectedIndexes = [1];  // US
- expect(test.state.contentController.iterations.length).toBe(7);
+                        expect(test.state.contentController.organizedContent.length).toBe(7);
 
 
                     });
@@ -105,7 +113,7 @@ TestPageLoader.queueTest("select-test", function(testPage) {
 
                 //TODO francois: This needs to revisited once selection is solid in range-controller
                 describe("#208: Ability to bind to SelectInput.value", function() {
-                    xit("TODO Value should be set to the bound value initially", function() {
+                    it("Value should be set to the bound value initially", function() {
                         var justifySelect = test.justifySelect;
                         test.justify = 'center';
 
@@ -118,7 +126,7 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                     });
 
 
-                    it("TODO Verify Select.value changes when bound value changes", function() {
+                    it("Verify Select.value changes when bound value changes", function() {
                         var justifySelect = test.justifySelect;
                         test.justify = 'right';
                         expect(justifySelect.value).toBe("right");
@@ -126,7 +134,7 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                     });
 
 
-                    it("TODO Verify bound value (justify) to change when Selection changes", function() {
+                    it("Verify bound value (justify) to change when Selection changes", function() {
                         var justifySelect = test.justifySelect;
 
                         changeSelection(justifySelect.element, 1);
@@ -143,7 +151,7 @@ TestPageLoader.queueTest("select-test", function(testPage) {
 
                 //TODO francois: This needs to revisited once selection is solid in range-controller
                 describe("#208: Ability to bind to SelectInput.values", function() {
-                    it("TODO Value should be set to the bound value initially", function() {
+                    it("Value should be set to the bound value initially", function() {
                         var dept = test.dept;
                         dept.values = ['SWE', 'IT'];
 
@@ -152,11 +160,9 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                             expect(dept.values.length).toBe(2);
                             expect(dept._selectedIndexes[1]).toBe(5);
                         });
-
                     });
 
-
-                    it("TODO Verify Select.values changes when bound value changes", function() {
+                    it("Verify Select.values changes when bound value changes", function() {
                         var dept = test.dept;
                         dept.selectedIndexes = [2, 4, 5];
 
@@ -168,7 +174,7 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                     });
 
 
-                    it("TODO Verify bound value (justify) to change when Selection changes", function() {
+                    it("Verify bound value (justify) to change when Selection changes", function() {
                         var dept = test.dept;
 
                         changeSelection(dept.element, 1);

@@ -16,9 +16,9 @@
                     "statesController": {"@": "statesController"}
                 },
                 "bindings": {
-                    "selectedCountry": {"<->": "@country.contentController.iterations.filter{selected}.0.object"},
-                    "selectedState": {"<->": "@state.contentController.iterations.filter{selected}.0.object"},
-                    "selectedDept": {"<->": "@dept.contentController.iterations.filter{selected}.0.object"}
+                    "selectedCountry": {"<->": "@country.contentController.selection.0"},
+                    "selectedState": {"<->": "@state.contentController.selection.0"},
+                    "selectedDept": {"<->": "@dept.contentController.selection.0"}
                 }
             },
 
@@ -27,7 +27,8 @@
                 "properties": {
                     "element": {"#": "dept"},
                     "textPropertyPath": "name",
-                    "valuePropertyPath": "code"
+                    "valuePropertyPath": "code",
+                    "multiple": true
                 },
                 "bindings": {
                     "content": {"<-": "@test.departments"},
