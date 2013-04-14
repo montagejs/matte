@@ -22,7 +22,8 @@
         },
         "bindings": {
             "contentController": {"<-": "@owner.contentController"},
-            "activeIndexes": {"<-": "@owner.activeIndexes"}
+            "activeIterations.rangeContent()": {"<-": "iterations.filter{@owner.activeIndexes.has(index)}"}
+
         }
     },
 

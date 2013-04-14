@@ -1,7 +1,7 @@
 require("montage-testing").run(require,[
     // Please keep in alphabetical order
     "test/anchor/anchor-spec",
-    //"test/autocomplete/autocomplete-spec"
+    "test/autocomplete/autocomplete-spec",
     "test/blueprint/button/button-blueprint-spec",
     "test/button/button-spec",
     "test/dynamic-element/dynamic-element-spec",

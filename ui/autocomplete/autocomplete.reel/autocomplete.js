@@ -432,9 +432,8 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
                 this.defineBinding("resultsList.contentController", {
                     "<-": "resultsController"
                 });
-                // TODO what is activeIndexes?
-                this.defineBinding("resultsList.activeIterations", {
-                    "<-": "activeIterations"
+                this.defineBinding("resultsList.activeIndexes", {
+                    "<-": "_activeIndexes"
                 });
                 this.defineBinding("resultsList.textPropertyPath", {
                     "<-": "textPropertyPath"
@@ -528,7 +527,7 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
 
                 case KEY_ENTER:
                 if(popup.displayed === true) {
-                    this.resultsController.selectedIndexes = [this.activeItemIndex];
+                    this.resultsController.selection = [this.suggestions[this.activeItemIndex]];
                     e.preventDefault();
                     // select the currently active item in the results list
                 } else {
