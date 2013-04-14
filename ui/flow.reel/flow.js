@@ -32,7 +32,8 @@ POSSIBILITY OF SUCH DAMAGE.
 var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
     observeProperty = require("montage/frb/observers").observeProperty,
-    FlowBezierSpline = require("core/flow-bezier-spline").FlowBezierSpline;
+    FlowBezierSpline = require("core/flow-bezier-spline").FlowBezierSpline,
+    RangeController = require("montage/core/range-controller").RangeController;
 
 var Flow = exports.Flow = Montage.create(Component, {
 
@@ -56,6 +57,15 @@ var Flow = exports.Flow = Montage.create(Component, {
             });
             // dispatches handle_numberOfIterationsChange
             this.addOwnPropertyChangeListener("_numberOfIterations", this);
+        }
+    },
+
+    content: {
+        get: function () {
+            return this.getPath("contentController.content");
+        },
+        set: function (content) {
+            this.contentController = RangeController.create().initWithContent(content);
         }
     },
 
@@ -485,7 +495,7 @@ var Flow = exports.Flow = Montage.create(Component, {
     _handleSelectedIndexesChange: {
         value: function (plus, minus, index) {
             if (plus[0]) {
-                this.startScrollingIndexToOffset(plus[0].content, this.selectedIndexScrollingOffset);
+                this.startScrollingIndexToOffset(this.contentController.content.indexOf(plus[0].object), this.selectedIndexScrollingOffset);
             }
         }
     },
@@ -915,6 +925,10 @@ var Flow = exports.Flow = Montage.create(Component, {
                     self._isCameraUpdated = true;
                     self.needsDraw = true;
                 }, false);
+                /*"bindings": {
+                "value": {"<-": "@rangeController.content.indexOf(@rangeController.selection.0)"}
+            }*/
+
                 this._repetition.addRangeAtPathChangeListener("selectedIterations", this, "_handleSelectedIndexesChange");
                 // TODO remove event listener
             }
