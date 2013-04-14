@@ -483,9 +483,9 @@ var Flow = exports.Flow = Montage.create(Component, {
     /**
      */
     _handleSelectedIndexesChange: {
-        value: function (event) {
-            if (this.hasSelectedIndexScrolling && event.plus) {
-                this.startScrollingIndexToOffset(event.plus[0], this.selectedIndexScrollingOffset);
+        value: function (plus, minus, index) {
+            if (plus[0]) {
+                this.startScrollingIndexToOffset(plus[0].content, this.selectedIndexScrollingOffset);
             }
         }
     },
@@ -915,7 +915,7 @@ var Flow = exports.Flow = Montage.create(Component, {
                     self._isCameraUpdated = true;
                     self.needsDraw = true;
                 }, false);
-
+                this._repetition.addRangeAtPathChangeListener("selectedIterations", this, "_handleSelectedIndexesChange");
                 // TODO remove event listener
             }
         }
@@ -1637,6 +1637,15 @@ var Flow = exports.Flow = Montage.create(Component, {
      */
     _elasticScrollingSpeed: {
         value: 1
+    },
+
+    elasticScrollingSpeed: {
+        get: function () {
+            return this._elasticScrollingSpeed;
+        },
+        set: function (value) {
+            this._elasticScrollingSpeed = parseFloat(value);
+        }
     },
 
     // TODO doc
