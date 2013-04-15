@@ -486,7 +486,10 @@ var Flow = exports.Flow = Montage.create(Component, {
     _handleSelectedIndexesChange: {
         value: function (plus, minus, index) {
             if (this.hasSelectedIndexScrolling && plus[0]) {
-                this.startScrollingIndexToOffset(this.contentController.content.indexOf(plus[0].object), this.selectedIndexScrollingOffset);
+                this.startScrollingIndexToOffset(
+                    Math.floor(this.contentController.content.indexOf(plus[0].object) / this._paths.length),
+                    this.selectedIndexScrollingOffset
+                );
             }
         }
     },
