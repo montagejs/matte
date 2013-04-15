@@ -60,15 +60,6 @@ var Flow = exports.Flow = Montage.create(Component, {
         }
     },
 
-    content: {
-        get: function () {
-            return this.getPath("contentController.content");
-        },
-        set: function (content) {
-            this.contentController = RangeController.create().initWithContent(content);
-        }
-    },
-
     /**
      * An optional component or element to place inside the camera's
      * perspective shared by the slides.
@@ -494,7 +485,7 @@ var Flow = exports.Flow = Montage.create(Component, {
      */
     _handleSelectedIndexesChange: {
         value: function (plus, minus, index) {
-            if (plus[0]) {
+            if (this.hasSelectedIndexScrolling && plus[0]) {
                 this.startScrollingIndexToOffset(this.contentController.content.indexOf(plus[0].object), this.selectedIndexScrollingOffset);
             }
         }
@@ -1270,20 +1261,14 @@ var Flow = exports.Flow = Montage.create(Component, {
         }
     },
 
-    _content: {
-        value: null
-    },
-
-    // TODO doc
-    /**
-     */
     content: {
-        get: function() {
-            return this._content;
+        get: function () {
+            return this.getPath("contentController.content");
+            console.log("foooooo");
         },
-        set: function(value) {
-            this._content = value;
-            this.needsDraw = true;
+        set: function (content) {
+            console.log("bar");
+            this.contentController = RangeController.create().initWithContent(content);
         }
     },
 
