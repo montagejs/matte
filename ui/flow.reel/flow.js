@@ -1267,10 +1267,8 @@ var Flow = exports.Flow = Montage.create(Component, {
     content: {
         get: function () {
             return this.getPath("contentController.content");
-            console.log("foooooo");
         },
         set: function (content) {
-            console.log("bar");
             this.contentController = RangeController.create().initWithContent(content);
         }
     },
