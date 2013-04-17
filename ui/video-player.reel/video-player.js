@@ -1,6 +1,6 @@
 "use strict";
 /**
-	@module montage/ui/video-player
+    @module montage/ui/video-player
     @requires montage
     @requires montage/ui/component
     @requires core/logger
@@ -12,7 +12,8 @@ var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
     logger = require("montage/core/logger").logger("video-player"),
     ActionEventListener = require("montage/core/event/action-event-listener").ActionEventListener,
-    MediaController = require("montage/core/media-controller").MediaController;
+    MediaController = require("montage/core/media-controller").MediaController,
+    MediaGroupControllers = {};
 /**
  @class module:matte/ui/video-player.VideoPlayer
  */
@@ -105,14 +106,120 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     controller: { value: null, enumerable: false },     /* montage/controller/media-controller */
 
     /**
-        The source URL for the video.
-        @type {string}
-        @default null
+    @private
     */
-    src: { value: null },
+    _src: {
+        value: null
+    },
+    /**
+     * @type {String}
+     * @default null
+     */
+    src: {
+        get: function() {
+            return this._src;
+        },
+        set: function(src) {
+            this._src = src;
+        }
+    },
+    
+    /**
+    @private
+    */
+    _mediagroup: {
+        value: null
+    },
+    /**
+     * @type {String}
+     * @default null
+     */
+    mediagroup: {
+        get: function() {
+            return this._mediagroup;
+        },
+        set: function(mediagroup) {
+            this._mediagroup = mediagroup;
+        }
+    },
+
+    /**
+      @private
+    */
+    _posterSrc: {
+        value: null
+    },
+    /**
+     * @type {String}
+     * @default null
+     */
+    posterSrc: {
+        get: function() {
+            return this._posterSrc;
+        },
+        set: function(posterSrc) {
+            this._posterSrc = posterSrc;
+        }
+    },
+    
     /*-----------------------------------------------------------------------------
-    MARK:   Actions
+    MARK:   Event Handlers
     -----------------------------------------------------------------------------*/
+    
+    handlePlayButtonAction: {
+        value: function() {
+            if (this.controller.status === this.controller.PLAYING) {
+                this.controller.pause();
+            } else if (this.controller.status === this.controller.PAUSED) {
+                this.controller.unpause();
+            } else {
+                this.controller.play();
+            }
+        }
+    },
+    
+    handleRewindButtonAction: {
+        value: function() {
+            this.controller.rewind();
+        }
+    },
+    
+    handleFastForwardButtonAction: {
+        value: function() {
+            this.controller.fastForward();
+        }
+    },
+    
+    handleDecreaseVolumeButtonAction: {
+        value: function() {
+            this.controller.volumeDecrease();
+        }
+    },
+    
+    handleIncreaseVolumeButtonAction: {
+        value: function() {
+            this.controller.volumeIncrease();
+        }
+    },
+
+    handleMuteButtonAction: {
+        value: function() {
+            this.controller.toggleMute();
+        }
+    },
+    
+    handleRepeatButtonAction: {
+        value: function() {
+            // TODO
+        }
+    },
+    
+    handleFullScreenButtonAction: {
+        value: function() {
+            // TODO
+        }
+    },
+    
     /*-----------------------------------------------------------------------------
     MARK:   UI Setters
     -----------------------------------------------------------------------------*/
@@ -130,34 +237,21 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     */
     supportsFullScreen: { value: true },
 
-/**
-  @private
-*/
+    /**
+    @private
+    */
     _isFullScreen: { value: false },
 
     templateDidLoad: {
         value: function() {
             if(logger.isDebug) {
-                logger.debug("MediaController:templateDidLoad");
+                logger.debug("VideoPlayer:templateDidLoad");
             }
-            Bindings.defineBindings(this, {
-                "positionText.value": {
-                    "<->": "controller.position",
-                    convert: this._prettyTime
-                },
-                "durationText.value": {
-                    "<->": "controller.duration",
-                    convert: this._prettyTime
-                },
-                "slider.max": {
-                    "<->": "controller.duration"
-                }
-            });
         }
     },
-/**
-  @private
-*/
+    /**
+    @private
+    */
     _prettyTime: {
         value: function(time) {
             var sec, min, hour;
@@ -170,7 +264,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             return (hour > 0 ? hour + ":" : "") + (min < 10 ? "0"+min : min) + ":" + (sec < 10 ? "0"+sec : sec);
         }
     },
-/**
+    /**
     Description TODO
     @function
     @private
@@ -183,21 +277,21 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     /*-----------------------------------------------------------------------------
     MARK:   Interaction
     -----------------------------------------------------------------------------*/
-/**
-  Description TODO
-  @private
-*/
+    /**
+    Description TODO
+    @private
+    */
     _showControls: {
         value: true, enumerable: false
     },
-/**
-  Description TODO
-  @private
-*/
+    /**
+    Description TODO
+    @private
+    */
     _hideControlsId: {
         value: null, enumerable: false
     },
-/**
+    /**
     Description TODO
     @function
     @private
@@ -207,7 +301,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             this.showControlsForInterval();
         }
     },
-/**
+    /**
     Description TODO
     @function
     @private
@@ -217,7 +311,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             this.showControlsForInterval();
         }
     },
-/**
+    /**
     Displays the video player controlls for the interval specified by the CONTROL_SHOW_TIME property.
     @function
     */
@@ -239,7 +333,33 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             this._hideControlsId = window.setTimeout(hideControls, this.CONTROL_SHOW_TIME);
         }
     },
-/**
+
+
+    /**
+    @function
+    */
+    loadMedia: {
+        value: function() {
+            if (logger.isDebug) {
+                logger.debug("VideoPlayer:loadMedia");
+            }
+            this.mediaElement.src = this.src;
+            this.mediaElement.load();
+        }
+    },
+
+    /**
+    @function
+    */
+    showPoster: {
+        value: function() {
+            if (this.posterSrc) {
+                this.mediaElement.poster = this.posterSrc;
+            }
+        }
+    },
+
+    /**
     Toggles full-screen playback mode.
     @function
     */
@@ -251,17 +371,37 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             }
         }
     },
-/**
-  @private
-*/
+    
+    _createMediaController: {
+        value: function() {
+            if (this.element.hasAttribute("mediagroup") && this.element.getAttribute("mediagroup")) {
+                this.mediagroup = this.element.getAttribute("mediagroup");
+                this.mediaElement.setAttribute("mediagroup", this.mediagroup);
+                if (MediaGroupControllers[this.mediagroup]) {
+                    this.controller = MediaGroupControllers[this.mediagroup];
+                } else {
+                    this.controller = Montage.create(MediaController);
+                    this.controller.mediaController = this.mediaElement.controller;
+                    MediaGroupControllers[this.mediagroup] = this.controller;
+                }
+            } else {
+                this.mediaElement.controller = new window.MediaController();
+                this.controller = Montage.create(MediaController);
+                this.controller.mediaController = this.mediaElement.controller;
+            }
+        }
+    },
+    /**
+    @private
+    */
     _installMediaEventListeners: {
         value: function() {
             this.controller.addEventListener("mediaStateChange", this, false);
         }
     },
-/**
-  @private
-*/
+    /**
+    @private
+    */
     _installUserActionDetector: {
         value: function() {
             if (window.touch && this.autoHide) {
@@ -271,14 +411,33 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             }
         }
     },
-/**
+    /**
     @private
     */
     enterDocument: {
         value: function(firstTime) {
             if (firstTime) {
+                this._createMediaController();
+                
+                
+                Bindings.defineBindings(this, {
+                    "positionText.value": {
+                        "<-": "controller.position",
+                        convert: this._prettyTime
+                    },
+                    "durationText.value": {
+                        "<-": "controller.duration",
+                        convert: this._prettyTime
+                    },
+                    "slider.max": {
+                        "<-": "controller.duration"
+                    },
+                    "slider.value": {
+                        "<->": "controller.position"
+                    }
+                });
+
                 this._installUserActionDetector();
-                this.controller._installControlEventHandlers();
                 this._installMediaEventListeners();
 
                 if (!this.autoHide) {
@@ -287,7 +446,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             }
         }
     },
-/**
+    /**
     @private
     */
     draw: {
@@ -295,7 +454,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             var volumeWidth;
             // Handle loading
             if (this.controller.status === this.controller.EMPTY) {
-                this.controller.loadMedia();
+                this.loadMedia();
             } else {
                 // Handle playing
                 if (this.controller.status === this.controller.PLAYING) {
@@ -334,11 +493,22 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
                 if (this.supportsFullScreen) {
                     this.fullScreenPanel.classList.add("support-fullscreen");
                     this.fullScreenPanel.classList.remove("hide-fullscreen");
+
                     if (!this._isFullScreen) {
+                        if (this.mediaElement.webkitExitFullscreen) {
+                            this.mediaElement.webkitExitFullscreen();
+                        } else if (this.mediaElement.webkitCancelFullScreen) {
+                            this.mediaElement.webkitCancelFullScreen();
+                        }
                         this.fullScreenButton.classList.add("enter-fullscreen");
                         this.fullScreenButton.classList.remove("exit-fullscreen");
                         this.element.classList.remove("fullscreen");
                     } else {
+                        if (this.mediaElement.webkitEnterFullScreen) {
+                            this.mediaElement.webkitEnterFullScreen();
+                        } else if (this.mediaElement.webkitRequestFullScreen) {
+                            this.mediaElement.webkitRequestFullScreen();
+                        }
                         this.fullScreenButton.classList.add("exit-fullscreen");
                         this.fullScreenButton.classList.remove("enter-fullscreen");
                         this.element.classList.add("fullscreen");
@@ -351,5 +521,4 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             }
         }
     }
-
 });
