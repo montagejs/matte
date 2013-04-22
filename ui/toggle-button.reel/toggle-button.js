@@ -78,7 +78,7 @@ var ToggleButton = exports.ToggleButton = Montage.create(Button, /** @lends modu
     },
 
     _pressedClass: {
-        value: "pressed",
+        value: "pressed"
     },
 /**
     The CSS class that should be added to the element's class list when the button is in
