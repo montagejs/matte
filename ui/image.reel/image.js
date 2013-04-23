@@ -15,10 +15,10 @@ var Montage = require("montage").Montage,
  */
 exports.Image = Montage.create(NativeImage, /** @lends module:"matte/ui/image.reel".Image */ {
 
-    willPrepareForDraw: {
+    didCreate: {
         value: function() {
             // Call super method
-            NativeImage.willPrepareForDraw.call(this);
+            NativeImage.didCreate.call(this);
             this.element.classList.add("matte-image");
         }
     }

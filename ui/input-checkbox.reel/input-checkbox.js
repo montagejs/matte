@@ -15,10 +15,10 @@ exports.InputCheckbox = Montage.create(NativeInputCheckbox, /** module:"matte/ui
 
     hasTemplate: {value: true},
 
-    willPrepareForDraw: {
+    didCreate: {
         value: function() {
-            NativeInputCheckbox.willPrepareForDraw.call(this);
-            this.element.classList.add("matte-InputCheckbox");
+            NativeInputCheckbox.didCreate.call(this);
+            this.classList.add("matte-InputCheckbox");
         }
     }
 

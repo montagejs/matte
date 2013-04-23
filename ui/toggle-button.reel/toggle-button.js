@@ -130,17 +130,17 @@ var ToggleButton = exports.ToggleButton = Montage.create(Button, /** @lends modu
         }
     },
 
-    willPrepareForDraw: {
-        value: function() {
-            Object.getPrototypeOf(ToggleButton).willPrepareForDraw.call(this);
-
-            // If we haven't set the (un)pressedLabel of the initial state,
-            // then take it from the label
-            if (this._unpressedLabel === null && this._label !== null) {
-                this._unpressedLabel = this._label;
-            }
-            if (this._pressedLabel === null && this._label !== null) {
-                this._pressedLabel = this._label;
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+                // If we haven't set the (un)pressedLabel of the initial state,
+                // then take it from the label
+                if (this._unpressedLabel === null && this._label !== null) {
+                    this._unpressedLabel = this._label;
+                }
+                if (this._pressedLabel === null && this._label !== null) {
+                    this._pressedLabel = this._label;
+                }
             }
         }
     },

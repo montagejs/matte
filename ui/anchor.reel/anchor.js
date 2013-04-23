@@ -19,10 +19,10 @@ exports.Anchor = Montage.create(NativeAnchor, /** @lends module:"matte/ui/anchor
 
     hasTemplate: {value: false},
 
-    willPrepareForDraw: {
+    didCreate: {
         value: function() {
-            NativeAnchor.willPrepareForDraw.call(this);
-            this.element.classList.add("matte-Anchor");
+            NativeAnchor.didCreate.call(this); // super
+            this.classList.add("matte-Anchor");
         }
     }
 });

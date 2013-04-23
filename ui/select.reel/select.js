@@ -15,10 +15,12 @@ exports.Select = Montage.create(NativeSelect, /** @lends module:"matte/ui/select
 
     hasTemplate: {value: true},
 
-    willPrepareForDraw: {
+    didCreate: {
         value: function() {
-            NativeSelect.willPrepareForDraw.call(this);
-            this.element.classList.add("matte-Select");
+            if (NativeSelect.didCreate) {
+                NativeSelect.didCreate.call(this);
+            }
+            this.classList.add("matte-Select");
         }
     }
 

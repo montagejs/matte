@@ -20,11 +20,11 @@ exports.InputNumber = Montage.create(NativeInputNumber, /** @lends module:"matte
         value: true
     },
 
-    willPrepareForDraw: {
+    didCreate: {
         value: function() {
-            NativeInputNumber.willPrepareForDraw.call(this);
-            this.element.classList.add("matte-InputNumber");
-            this.element.classList.add("matte-InputText");
+            NativeInputNumber.didCreate.call(this);
+            this.classList.add("matte-InputNumber");
+            this.classList.add("matte-InputText");
         }
     }
 

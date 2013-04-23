@@ -15,10 +15,12 @@ exports.InputText = Montage.create(NativeInputText, /** @lends module:"matte/ui/
 
     hasTemplate: {value: true},
 
-    willPrepareForDraw: {
+    didCreate: {
         value: function() {
-            NativeInputText.willPrepareForDraw.call(this);
-            this.element.classList.add("matte-InputText");
+            if (NativeInputText.didCreate) {
+                NativeInputText.didCreate.call(this);
+            }
+            this.classList.add("matte-InputText");
         }
     }
 });

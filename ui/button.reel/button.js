@@ -17,10 +17,10 @@ exports.Button = Montage.create(NativeButton, /** @lends module:"matte/ui/button
 
     hasTemplate: {value: true},
 
-    willPrepareForDraw: {
+    didCreate: {
         value: function() {
-            NativeButton.willPrepareForDraw.call(this);
-            this.element.classList.add("matte-Button");
+            NativeButton.didCreate.call(this);
+            this.classList.add("matte-Button");
         }
     }
 });

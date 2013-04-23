@@ -48,17 +48,12 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
             TextInput.didCreate.call(this); // super
             this.delay = 500;
             this.minLength = 2;
+
+            this.classList.add("matte-InputText");
         }
     },
 
     hasTemplate: {value: true},
-
-    willPrepareForDraw: {
-        value: function() {
-            //TextInput.willPrepareForDraw.call(this);
-            this.element.classList.add("matte-InputText");
-        }
-    },
 
 /**
     The AutoComplete instance's delegate object.

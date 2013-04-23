@@ -15,10 +15,12 @@ exports.InputRadio = Montage.create(NativeInputRadio, /** @lends module:"matte/u
 
     hasTemplate: {value: true},
 
-    willPrepareForDraw: {
+    didCreate: {
         value: function() {
-            NativeInputRadio.willPrepareForDraw.call(this);
-            this.element.classList.add("matte-InputRadio");
+            if (NativeInputRadio.didCreate) {
+                NativeInputRadio.didCreate.call(this);
+            }
+            this.classList.add("matte-InputRadio");
         }
     }
 
