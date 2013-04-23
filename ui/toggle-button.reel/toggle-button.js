@@ -132,6 +132,8 @@ var ToggleButton = exports.ToggleButton = Montage.create(Button, /** @lends modu
 
     enterDocument: {
         value: function(firstTime) {
+            Object.getPrototypeOf(ToggleButton).enterDocument.apply(this, arguments);
+
             if (firstTime) {
                 // If we haven't set the (un)pressedLabel of the initial state,
                 // then take it from the label
