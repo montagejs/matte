@@ -19,7 +19,7 @@ exports.Image = Montage.create(NativeImage, /** @lends module:"matte/ui/image.re
         value: function() {
             // Call super method
             NativeImage.didCreate.call(this);
-            this.element.classList.add("matte-image");
+            this.classList.add("matte-image");
         }
     }
 
