@@ -1100,7 +1100,7 @@ var Flow = exports.Flow = Montage.create(Component, {
      * @private
      */
     draw: {
-        value: function () {
+        value: function (timestamp) {
             var i,
                 length = this._repetition._drawnIterations.length,
                 slideIndex, slideTime,
@@ -1121,11 +1121,11 @@ var Flow = exports.Flow = Montage.create(Component, {
                 offset,
                 epsilon = .00001;
 
-            var time = Date.now(),
-                // "iterations" this is a first approximation of the number of
-                // iterations that the flow will need, used to "prime the pump"
-                // when using numerical analysis to zero in on the actual
-                // number of visible iterations.
+            var time = timestamp,
+                // "iterations" is the number of iterations for the numerical methods
+                // integration of elastic scrolling. The higher the iterations, the more
+                // precise it is, but slower to compute. Setting it to 6 provides
+                // a good balance between precision and performance.
                 iterations = 6,
                 interval1 = this.lastDrawTime ? (time - this.lastDrawTime) * .018 * this._elasticScrollingSpeed : 0,
                 interval = 1 - (interval1 / iterations),
