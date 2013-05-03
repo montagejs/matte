@@ -1134,24 +1134,26 @@ var Flow = exports.Flow = Montage.create(Component, {
                 max = this._maxSlideOffsetIndex;
 
             this.lastDrawTime = time;
-            for (j = 0; j < iterations; j++) {
-                for (i = this._draggedSlideIndex - 1; i >= min; i--) {
-                    offset1 = this._getSlideOffset(i);
-                    offset2 = this._getSlideOffset(i + 1);
-                    resultOffset = (offset1 - offset2) * interval + offset2;
-                    if (resultOffset > 0) {
-                        resultOffset = 0;
+            if (this._hasElasticScrolling) {
+                for (j = 0; j < iterations; j++) {
+                    for (i = this._draggedSlideIndex - 1; i >= min; i--) {
+                        offset1 = this._getSlideOffset(i);
+                        offset2 = this._getSlideOffset(i + 1);
+                        resultOffset = (offset1 - offset2) * interval + offset2;
+                        if (resultOffset > 0) {
+                            resultOffset = 0;
+                        }
+                        this._updateSlideOffset(i, resultOffset);
                     }
-                    this._updateSlideOffset(i, resultOffset);
-                }
-                for (i = this._draggedSlideIndex + 1; i <= max; i++) {
-                    offset1 = this._getSlideOffset(i);
-                    offset2 = this._getSlideOffset(i - 1);
-                    resultOffset = (offset1 - offset2) * interval + offset2;
-                    if (resultOffset < 0) {
-                        resultOffset = 0;
+                    for (i = this._draggedSlideIndex + 1; i <= max; i++) {
+                        offset1 = this._getSlideOffset(i);
+                        offset2 = this._getSlideOffset(i - 1);
+                        resultOffset = (offset1 - offset2) * interval + offset2;
+                        if (resultOffset < 0) {
+                            resultOffset = 0;
+                        }
+                        this._updateSlideOffset(i, resultOffset);
                     }
-                    this._updateSlideOffset(i, resultOffset);
                 }
             }
             if (this._isTransitioningScroll) {
@@ -1203,10 +1205,11 @@ var Flow = exports.Flow = Montage.create(Component, {
                     element.setAttribute("style", "-webkit-transform:scale3d(0,0,0);opacity:0");
                 }
             }
-            // TODO there is a bug that a Flow will not render any iterations
-            // on the first draw.  Continuous redraw fixes the problem, but we
-            // need a more elegant solution.
-            this.needsDraw = true;
+            // Continue animation during elastic scrolling
+            if (this._slideOffsetsLength) {
+                this.needsDraw = true;
+            }
+            //console.log("draw");
         }
     },
 
