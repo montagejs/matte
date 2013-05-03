@@ -1374,7 +1374,7 @@ var Flow = exports.Flow = Montage.create(Component, {
     // TODO doc
     /**
      */
-    _range: {
+    _elasticScrollingRange: {
         value: 20
     },
 
@@ -1542,8 +1542,8 @@ var Flow = exports.Flow = Montage.create(Component, {
             if (this._hasElasticScrolling && (this._draggedSlideIndex !== null)) {
                 var i,
                     n,
-                    min = this._draggedSlideIndex - this._range,
-                    max = this._draggedSlideIndex + this._range,
+                    min = this._draggedSlideIndex - this._elasticScrollingRange,
+                    max = this._draggedSlideIndex + this._elasticScrollingRange,
                     tmp,
                     j,
                     x;
