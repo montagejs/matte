@@ -7,7 +7,7 @@ require("montage-testing").run(require,[
     "test/dynamic-element/dynamic-element-spec",
     "test/input-checkbox/input-checkbox-spec",
     "test/input-number/input-number-spec",
-    "test/input-radio/input-radio-spec",
+    "test/radio-button/radio-button-spec",
     "test/input-range/input-range-spec",
     "test/input-text/input-text-spec",
     "test/list/list-spec",

@@ -2,7 +2,7 @@ var Montage = require("montage").Montage;
 var TestPageLoader = require("montage-testing/testpageloader").TestPageLoader;
 var ActionEventListener = require("montage/core/event/action-event-listener").ActionEventListener;
 
-TestPageLoader.queueTest("input-radio-test", function(testPage) {
+TestPageLoader.queueTest("radio-button-test", function(testPage) {
     var test;
     beforeEach(function() {
         test = testPage.test;
@@ -23,7 +23,7 @@ TestPageLoader.queueTest("input-radio-test", function(testPage) {
         return changeEvent;
     };
 
-    describe("test/input-radio/input-radio-spec", function() {
+    describe("test/radio-button/radio-button-spec", function() {
 
         // The radio button uses the check-input class, which is pretty much
         // fully tested above. So fewer tests here.
