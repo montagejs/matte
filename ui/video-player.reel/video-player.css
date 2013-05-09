@@ -5,6 +5,7 @@ MARK:    media
 
 .matte-VideoPlayer {
     position: relative;
+    display: inline-block;
     min-width: 500px;
     overflow: hidden;
     border: 1px solid black;
@@ -26,10 +27,8 @@ MARK:    media
 .matte-VideoPlayer .matte-VideoPlayer-video {
     display: block; /* Get rid of the bottom space */
     position: relative;
-    /*
     width: 100%;
     height: auto;
-    */
 }
 
 
