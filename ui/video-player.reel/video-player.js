@@ -417,9 +417,26 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     enterDocument: {
         value: function(firstTime) {
             if (firstTime) {
+                // look for src attribute on original element
+                if (this.originalElement.hasAttribute("src") && this.originalElement.getAttribute("src")) {
+                    this.src = this.originalElement.getAttribute("src");
+                } else {
+                    // try to grab <source> child elements from original element
+                    var sources = this.originalElement.getElementsByTagName("source"),
+                        mediaSrc, mediaType, i;
+                    for (i=0;i<sources.length;i++) {
+                        mediaSrc = sources[i].getAttribute("src");
+                        mediaType = sources[i].getAttribute("type");
+                        if (mediaType && !this.originalElement.canPlayType(mediaType)) {
+                            continue;
+                        }
+                        this.src = mediaSrc;
+                        break;
+                    }
+                }
+
                 this._createMediaController();
-                
-                
+
                 Bindings.defineBindings(this, {
                     "positionText.value": {
                         "<-": "controller.position",
@@ -446,6 +463,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             }
         }
     },
+
     /**
     @private
     */
