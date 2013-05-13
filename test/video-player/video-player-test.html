@@ -18,18 +18,72 @@
                         "#": "videoPlayer1"
                     },
                     "autoHide": "true",
-                    "identifier": "videoPlayer1",
                     "src": "sample.ogv",
                     "supportsFullScreen": "true"
                 }
+            },
+            "videoPlayer2": {
+                "prototype": "ui/video-player.reel",
+                "properties": {
+                    "element": {
+                        "#": "videoPlayer2"
+                    }
+                }
             }
-
         }
     </script>
 
 </head>
 <body>
     <h1>VideoPlayer test</h1>
-    <div data-montage-id="videoPlayer1"></div>
+    <!--<div data-montage-id="videoPlayer1"></div>-->
+
+    <!--
+    <video data-montage-id="videoPlayer1" src="sample.ogv" poster="movie.jpg" controls mediagroup="mediagroup1"></video>
+    <video data-montage-id="videoPlayer2" src="sample.ogv" poster="movie.jpg" controls mediagroup="mediagroup1"></video>
+    -->
+
+    <video data-montage-id="videoPlayer1" poster="movie.jpg" src="sample.ogv" controls>
+        <source src="movie3.webm" type="video/webm"/>
+        <source src="movie2.ogv" type="video/ogg"/>
+    </video>
+    
+    <video data-montage-id="videoPlayer2" poster="movie.jpg" controls>
+        <source src="sample.ogv" type="video/ogg"/>
+        <source src="movie3.webm" type="video/webm"/>
+        <source src="movie2.ogv" type="video/ogg"/>
+    </video>
+
+<!--
+    <video data-montage-id="videoPlayer3" poster="movie.jpg" controls>
+        <source src="sample.ogv" type="video/ogg"/>
+    </video>
+
+    <video data-montage-id="videoPlayer3" poster="movie.jpg" controls>
+        <source src="movie3.webm" type="video/webm"/>
+        <source src="movie2.ogv" type="video/ogg"/>
+    </video>
+
+    <div>
+        <video data-montage-id="videoPlayer4" poster="movie.jpg" controls mediagroup="mediagroup1">
+            <source src="movie3.webm" type="video/ogg"/>
+        </video>
+        <video data-montage-id="videoPlayer5" poster="poster2.jpg" mediagroup="mediagroup1">
+            <source src="movie2.ogv" type="video/ogg"/>
+        </video>
+    </div>
+
+    <video data-montage-id="videoPlayer6" poster="movie.jpg" controls>
+        <source src="movie-1080p.ogg" type="video/ogg"/>
+        <source src="movie-400p.ogg" type="video/ogg"/>
+    </video>
+
+    <video data-montage-id="videoPlayer7" poster="movie.jpg" controls>
+        <source src="movie.webm" type="video/webm"/>
+        <source src="movie.ogg" type="video/ogg"/>
+        <track kind="captions" label="English captions" src="movie3-subtitles-en.vtt" srclang="en" default></track>
+        <track kind="subtitles" label="Deutsche Untertitel" src="movie3-subtitles-de.vtt" srclang="de"></track>
+    </video>
+-->
 </body>
 </html>
