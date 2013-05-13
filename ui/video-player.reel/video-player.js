@@ -216,7 +216,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     
     handleFullScreenButtonAction: {
         value: function() {
-            // TODO
+            this.toggleFullScreen()
         }
     },
     
