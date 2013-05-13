@@ -423,8 +423,8 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
                 } else {
                     // try to grab <source> child elements from original element
                     var sources = this.originalElement.getElementsByTagName("source"),
-                        mediaSrc, mediaType, i;
-                    for (i=0;i<sources.length;i++) {
+                        mediaSrc, mediaType;
+                    for (var i=0;i<sources.length;i++) {
                         mediaSrc = sources[i].getAttribute("src");
                         mediaType = sources[i].getAttribute("type");
                         if (mediaType && !this.originalElement.canPlayType(mediaType)) {
@@ -432,6 +432,22 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
                         }
                         this.src = mediaSrc;
                         break;
+                    }
+                }
+                
+                // try to grab <track> child elements from original element
+                var tracks = this.originalElement.getElementsByTagName("track");
+                for (var i=0;i<tracks.length;i++) {
+                    var trackKind = tracks[i].getAttribute("kind");
+                    if (trackKind == "captions" || trackKind == "subtitles") {
+                        var track = document.createElement("track");
+                        track.kind = trackKind;
+                        track.label = tracks[i].getAttribute("label");
+                        track.src = tracks[i].getAttribute("src");
+                        track.srclang = tracks[i].getAttribute("srclang");
+                        track.default = tracks[i].hasAttribute("default");
+                        this.mediaElement.appendChild(track);
+                        this.mediaElement.textTracks[this.mediaElement.textTracks.length-1].mode = "showing";
                     }
                 }
 
