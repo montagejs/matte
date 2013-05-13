@@ -29,6 +29,14 @@
                         "#": "videoPlayer2"
                     }
                 }
+            },
+            "videoPlayer3": {
+                "prototype": "ui/video-player.reel",
+                "properties": {
+                    "element": {
+                        "#": "videoPlayer3"
+                    }
+                }
             }
         }
     </script>
@@ -38,20 +46,12 @@
     <h1>VideoPlayer test</h1>
     <!--<div data-montage-id="videoPlayer1"></div>-->
 
-    <!--
     <video data-montage-id="videoPlayer1" src="sample.ogv" poster="movie.jpg" controls mediagroup="mediagroup1"></video>
     <video data-montage-id="videoPlayer2" src="sample.ogv" poster="movie.jpg" controls mediagroup="mediagroup1"></video>
-    -->
 
-    <video data-montage-id="videoPlayer1" poster="movie.jpg" src="sample.ogv" controls>
-        <source src="movie3.webm" type="video/webm"/>
-        <source src="movie2.ogv" type="video/ogg"/>
-    </video>
-    
-    <video data-montage-id="videoPlayer2" poster="movie.jpg" controls>
+    <video data-montage-id="videoPlayer3" poster="movie.jpg" controls>
+        <source src="some.movie" type="video/invalid-format"/>
         <source src="sample.ogv" type="video/ogg"/>
-        <source src="movie3.webm" type="video/webm"/>
-        <source src="movie2.ogv" type="video/ogg"/>
     </video>
 
 <!--
