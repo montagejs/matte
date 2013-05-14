@@ -128,7 +128,7 @@
         "properties":{
             "valueReference":{
                 "blueprintName":"Component",
-                "blueprintModuleId":"montage/ui/component-blueprint.json",
+                "blueprintModuleId":"montage/ui/component.meta",
                 "prototypeName":"Component"
             }
         }
@@ -138,7 +138,7 @@
         "prototype":"montage/core/meta/blueprint",
         "properties":{
             "name":"Flow",
-            "blueprintModuleId":"ui/flow.reel/flow-blueprint.json",
+            "blueprintModuleId":"ui/flow.reel/flow.meta",
             "prototypeName":"Flow",
             "customPrototype":false,
             "parent":{

@@ -4,7 +4,7 @@
         "properties":{
             "valueReference":{
                 "blueprintName":"NativeButton",
-                "blueprintModuleId":"native/ui/button.reel/button-blueprint.json",
+                "blueprintModuleId":"native/ui/button.reel/button.meta",
                 "prototypeName":"NativeButton"
             }
         }
@@ -14,7 +14,7 @@
         "prototype":"montage/core/meta/blueprint",
         "properties":{
             "name":"Button",
-            "blueprintModuleId":"matte/ui/button.reel/button-blueprint.json",
+            "blueprintModuleId":"matte/ui/button.reel/button.meta",
             "prototypeName":"Button",
             "customPrototype":false,
             "parent":{
