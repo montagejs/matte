@@ -364,6 +364,19 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
         value: function() {
             if (this.supportsFullScreen) {
                 this._isFullScreen = !this._isFullScreen;
+                if (!this._isFullScreen) {
+                    if (this.element.webkitExitFullscreen) {
+                        this.element.webkitExitFullscreen();
+                    } else if (this.element.webkitCancelFullScreen) {
+                        this.element.webkitCancelFullScreen();
+                    }
+                } else {
+                    if (this.element.webkitEnterFullScreen) {
+                        this.element.webkitEnterFullScreen();
+                    } else if (this.element.webkitRequestFullScreen) {
+                        this.element.webkitRequestFullScreen();
+                    }
+                }
                 this.needsDraw = true;
             }
         }
@@ -508,22 +521,11 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
                 if (this.supportsFullScreen) {
                     this.fullScreenPanel.classList.add("support-fullscreen");
                     this.fullScreenPanel.classList.remove("hide-fullscreen");
-
                     if (!this._isFullScreen) {
-                        if (this.mediaElement.webkitExitFullscreen) {
-                            this.mediaElement.webkitExitFullscreen();
-                        } else if (this.mediaElement.webkitCancelFullScreen) {
-                            this.mediaElement.webkitCancelFullScreen();
-                        }
                         this.fullScreenButton.classList.add("enter-fullscreen");
                         this.fullScreenButton.classList.remove("exit-fullscreen");
                         this.element.classList.remove("fullscreen");
                     } else {
-                        if (this.mediaElement.webkitEnterFullScreen) {
-                            this.mediaElement.webkitEnterFullScreen();
-                        } else if (this.mediaElement.webkitRequestFullScreen) {
-                            this.mediaElement.webkitRequestFullScreen();
-                        }
                         this.fullScreenButton.classList.add("exit-fullscreen");
                         this.fullScreenButton.classList.remove("enter-fullscreen");
                         this.element.classList.add("fullscreen");
