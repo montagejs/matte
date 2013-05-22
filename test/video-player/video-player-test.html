@@ -17,6 +17,9 @@
                     "element": {
                         "#": "videoPlayer1"
                     },
+                    "controller" : {
+                        "@": "mediaController1"
+                    },
                     "autoHide": "true",
                     "src": "sample.ogv",
                     "supportsFullScreen": "true"
@@ -27,6 +30,9 @@
                 "properties": {
                     "element": {
                         "#": "videoPlayer2"
+                    },
+                    "controller" : {
+                        "@": "mediaController1"
                     }
                 }
             },
@@ -36,6 +42,12 @@
                     "element": {
                         "#": "videoPlayer3"
                     }
+                }
+            },
+            "mediaController1": {
+                "prototype": "montage/core/media-controller",
+                "properties": {
+                    "autoplay": "true"
                 }
             }
         }
