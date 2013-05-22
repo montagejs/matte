@@ -12,8 +12,7 @@ var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
     logger = require("montage/core/logger").logger("video-player"),
     ActionEventListener = require("montage/core/event/action-event-listener").ActionEventListener,
-    MediaController = require("montage/core/media-controller").MediaController,
-    MediaGroupControllers = {};
+    MediaController = require("montage/core/media-controller").MediaController;
 /**
  @class module:matte/ui/video-player.VideoPlayer
  */
@@ -98,12 +97,29 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     /*-----------------------------------------------------------------------------
     MARK:   Properties
     -----------------------------------------------------------------------------*/
+    
+    _controller: {
+        value: null
+    },
+    
     /**
         The MediaController instance used by the VideoPlayer.
         @type {module:montage/core/media-controller.MediaController}
         @default null
     */
-    controller: { value: null, enumerable: false },     /* montage/controller/media-controller */
+    controller: {
+        get: function() {
+            return this._controller;
+        },
+        set: function(controller) {
+            if (controller) {
+                this._controller = controller;
+                if (this.mediaElement) {
+                    this.mediaElement.controller = controller.mediaController;
+                }
+            }
+        }
+    },
 
     /**
     @private
@@ -121,25 +137,6 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
         },
         set: function(src) {
             this._src = src;
-        }
-    },
-    
-    /**
-    @private
-    */
-    _mediagroup: {
-        value: null
-    },
-    /**
-     * @type {String}
-     * @default null
-     */
-    mediagroup: {
-        get: function() {
-            return this._mediagroup;
-        },
-        set: function(mediagroup) {
-            this._mediagroup = mediagroup;
         }
     },
 
@@ -372,25 +369,6 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
         }
     },
     
-    _createMediaController: {
-        value: function() {
-            if (this.element.hasAttribute("mediagroup") && this.element.getAttribute("mediagroup")) {
-                this.mediagroup = this.element.getAttribute("mediagroup");
-                this.mediaElement.setAttribute("mediagroup", this.mediagroup);
-                if (MediaGroupControllers[this.mediagroup]) {
-                    this.controller = MediaGroupControllers[this.mediagroup];
-                } else {
-                    this.controller = Montage.create(MediaController);
-                    this.controller.mediaController = this.mediaElement.controller;
-                    MediaGroupControllers[this.mediagroup] = this.controller;
-                }
-            } else {
-                this.mediaElement.controller = new window.MediaController();
-                this.controller = Montage.create(MediaController);
-                this.controller.mediaController = this.mediaElement.controller;
-            }
-        }
-    },
     /**
     @private
     */
@@ -451,7 +429,10 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
                     }
                 }
 
-                this._createMediaController();
+                if (!this.controller) {
+                    this.controller = Montage.create(MediaController);
+                }
+                this.mediaElement.controller = this.controller.mediaController;
 
                 Bindings.defineBindings(this, {
                     "positionText.value": {
