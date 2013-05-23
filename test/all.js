@@ -14,6 +14,5 @@ require("montage-testing").run(require,[
     "test/rich-text-editor/rich-text-editor-spec",
     "test/scroller/scroller-spec",
     "test/select/select-spec",
-    "test/toggle-button/toggle-button-spec",
-    "test/video-player/video-player-spec"
+    "test/toggle-button/toggle-button-spec"
 ]);
