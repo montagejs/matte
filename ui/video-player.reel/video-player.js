@@ -12,7 +12,29 @@ var Montage = require("montage").Montage,
     Component = require("montage/ui/component").Component,
     logger = require("montage/core/logger").logger("video-player"),
     ActionEventListener = require("montage/core/event/action-event-listener").ActionEventListener,
-    MediaController = require("montage/core/media-controller").MediaController;
+    MediaController = require("montage/core/media-controller").MediaController,
+    Converter = require("montage/core/converter/converter").Converter;
+
+exports.PrettyTimeConverter = Montage.create(Converter, {
+    convert: {
+        value: function(time) {
+            var sec, min, hour;
+            time = parseInt(time, 10);
+            if (isNaN(time) || time < 0)
+                return "";
+            sec = time % 60;
+            min = Math.floor(time / 60) % 60;
+            hour = Math.floor(time / 3600);
+            return (hour > 0 ? hour + ":" : "") + (min < 10 ? "0"+min : min) + ":" + (sec < 10 ? "0"+sec : sec);
+        }
+    },
+    revert: {
+        value: function(value) {
+            return value;
+        }
+    }
+});
+
 /**
  @class module:matte/ui/video-player.VideoPlayer
  */
@@ -246,21 +268,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             }
         }
     },
-    /**
-    @private
-    */
-    _prettyTime: {
-        value: function(time) {
-            var sec, min, hour;
-            time = parseInt(time, 10);
-            if (isNaN(time) || time < 0)
-                return "";
-            sec = time % 60;
-            min = Math.floor(time / 60) % 60;
-            hour = Math.floor(time / 3600);
-            return (hour > 0 ? hour + ":" : "") + (min < 10 ? "0"+min : min) + ":" + (sec < 10 ? "0"+sec : sec);
-        }
-    },
+    
     /**
     Description TODO
     @function
@@ -446,23 +454,6 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
                     this.controller = Montage.create(MediaController);
                 }
                 this.mediaElement.controller = this.controller.mediaController;
-
-                Bindings.defineBindings(this, {
-                    "positionText.value": {
-                        "<-": "controller.position",
-                        convert: this._prettyTime
-                    },
-                    "durationText.value": {
-                        "<-": "controller.duration",
-                        convert: this._prettyTime
-                    },
-                    "slider.max": {
-                        "<-": "controller.duration"
-                    },
-                    "slider.value": {
-                        "<->": "controller.position"
-                    }
-                });
 
                 this._installUserActionDetector();
                 this._installMediaEventListeners();
