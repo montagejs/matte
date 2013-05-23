@@ -27,7 +27,7 @@
 }
 
 .matte-RadioButton.montage-RadioButton--checked {
-    background: #f2f2f2 url(radio.png) no-repeat center;
+    background: #f2f2f2 url(radio.svg) no-repeat center;
 }
 
 .matte-RadioButton.montage--disabled {

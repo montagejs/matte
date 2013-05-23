@@ -27,7 +27,7 @@
 }
 
 .matte-InputCheckbox:checked {
-    background: #f2f2f2 url(checkbox.png) no-repeat center;
+    background: #f2f2f2 url(checkbox.svg) no-repeat center;
 }
 
 .matte-InputCheckbox:disabled {
