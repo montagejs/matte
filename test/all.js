@@ -15,6 +15,5 @@ require("montage-testing").run(require,[
     "test/scroller/scroller-spec",
     "test/select/select-spec",
     "test/toggle-button/toggle-button-spec",
-    "test/token-field/token-field-spec",
     "test/video-player/video-player-spec"
 ]);
