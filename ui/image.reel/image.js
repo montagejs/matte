@@ -22,7 +22,7 @@ exports.Image = Montage.create(AbstractImage, /** @lends module:"matte/ui/image.
     didCreate: {
         value: function() {
             // Call super method
-            if (AbstractImage) {
+            if (AbstractImage.didCreate) {
                 AbstractImage.didCreate.call(this);
             }
             this.classList.add("matte-Image");
