@@ -161,6 +161,36 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             this._src = src;
         }
     },
+    
+    /**
+    @private
+    */
+    _sources: {
+        value: null
+    },
+    /**
+     * @type {Array}
+     * @default null
+     */
+    sources: {
+        get: function() {
+            return [];
+        },
+        set: function(sources) {
+            if (sources && sources.length) {
+                var mediaElement = document.createElement("video");
+                for (var i=0;i<sources.length;i++) {
+                    var mediaSrc = sources[i].src,
+                        mediaType = sources[i].type;
+                    if (mediaType && mediaElement.canPlayType(mediaType)) {
+                        this.src = mediaSrc;
+                        break;
+                    }
+                }
+                this._sources = sources;
+            }
+        }
+    },
 
     /**
       @private
