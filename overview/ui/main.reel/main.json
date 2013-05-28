@@ -4,14 +4,64 @@
             "element": {"#": "main"}
         }
     },
-
-    "exampleText": {
-        "prototype": "montage/ui/text.reel",
+    
+    "Anchor": { "prototype": "ui/anchor.reel", "properties": { "element": {"#": "Anchor"} } },
+    
+    "Autocomplete": {
+        "prototype": "ui/autocomplete/autocomplete.reel",
         "properties": {
-            "element": {"#": "exampleText"}
+            "element": {"#": "Autocomplete"},
+            "identifier": "state",
+            "delay": "500",
+            "delegate": {"@": "owner"}
         },
         "bindings": {
-            "value": {"<-": "@owner.thing"}
+            "value": {"<->": "@owner.states"}
         }
-    }
+    },
+    
+    "Button": { "prototype": "ui/button.reel", "properties": { "element": {"#": "Button"} } },    
+    "ButtonGrouButton1": { "prototype": "ui/button.reel", "properties": { "element": {"#": "ButtonGrouButton1"} } },
+    "ButtonGrouButton2": { "prototype": "ui/button.reel", "properties": { "element": {"#": "ButtonGrouButton2"} } },
+    "ButtonGrouButton3": { "prototype": "ui/button.reel", "properties": { "element": {"#": "ButtonGrouButton3"} } },
+    
+    "Image": { "prototype": "ui/image.reel", "properties": { "element": {"#": "Image"} } },
+    
+    "InputCheckbox": { "prototype": "ui/input-checkbox.reel", "properties": { "element": {"#": "InputCheckbox"} } },
+    
+    "InputDate": { "prototype": "ui/input-date.reel", "properties": { "element": {"#": "InputDate"} } },
+    
+    "InputNumber": { "prototype": "ui/input-number.reel", "properties": { "element": {"#": "InputNumber"} } },
+    
+    "InputRange": { "prototype": "ui/input-range.reel", "properties": { "element": {"#": "InputRange"} } },
+    
+    "InputText": { "prototype": "ui/input-text.reel", "properties": { "element": {"#": "InputText"} } },
+    
+    "LoadingPanel": { "prototype": "ui/loading-panel.reel", "properties": { "element": {"#": "LoadingPanel"} } },
+    
+    "Loading": { "prototype": "ui/loading.reel", "properties": { "element": {"#": "Loading"}, "loading": "true" } },
+    
+    "Progress": { "prototype": "ui/progress.reel", "properties": { "element": {"#": "Progress"} } },
+    
+    "RadioButton": { "prototype": "ui/radio-button.reel", "properties": { "element": {"#": "RadioButton"} } },
+    
+    "Select": { "prototype": "ui/select.reel", "properties": { "element": {"#": "Select"} } },
+  
+    "TextSlider": { "prototype": "ui/text-slider.reel", "properties": { "element": {"#": "TextSlider"} } },
+    
+    "Textarea": { "prototype": "ui/textarea.reel", "properties": { "element": {"#": "Textarea"} } },
+    
+    "ToggleButton": {
+        "prototype": "ui/toggle-button.reel", 
+        "properties": {
+            "element": {"#": "ToggleButton"},
+            "pressedLabel": "On",
+            "unpressedLabel": "Off" 
+        } 
+    },
+    
+    "ToggleSwitch": { "prototype": "ui/toggle-switch.reel", "properties": { "element": {"#": "ToggleSwitch"} } },
+    
+    "VideoPlayer": { "prototype": "ui/video-player.reel", "properties": { "element": {"#": "VideoPlayer"} } }
+    
 }

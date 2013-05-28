@@ -1,66 +1,173 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Main</title>
-
-    <link rel="stylesheet" type="text/css" href="main.css">
-
-    <script type="text/montage-serialization">
-    {
-        "owner": {
-            "properties": {
-                "element": {"#": "main"}
-            }
-        },
-
-        "exampleText": {
-            "prototype": "montage/ui/text.reel",
-            "properties": {
-                "element": {"#": "exampleText"}
-            },
-            "bindings": {
-                "value": {"<-": "@owner.thing"}
-            }
-        }
-    }
-    </script>
-</head>
-<body>
-    <div data-montage-id="main" class="Main">
-
-    </div>
-</body>
-</html>
-<!doctype html>
-<html>
-<head>
     <meta charset="utf-8">
     <link href="main.css" rel="stylesheet">
     <link href="main.json" rel="serialization" type="text/montage-serialization">
 </head>
-<body data-montage-id="main">
+<body>
+    
+    <div data-montage-id="main">
 
-    <h1>matte</h1>
-
-    <h2>Components</h2>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Sample</th>
-             </tr>
-        </thead>
-        <tbody>
-
-            <tr>
-                <td><a href="#">Example</a></td>
-                <td>Hello, <span data-montage-id="exampleText"></span></td>
-            </tr>
-
-        </tbody>
-    </table>
+        <h1><span class="logo"></span> <span>Matte</span></h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Component</th>
+                 </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/anchor.reel">Anchor</a></td>
+                    <td>
+                        <a data-montage-id="Anchor" href="#">Link</a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/autocomplete.reel">Autocomplete</a></td>
+                    <td>
+                        <input data-montage-id="Autocomplete" placeholder="US States" type="text">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/button.reel">Button, ButtonGroup</a></td>
+                    <td>
+                        <button data-montage-id="Button">Button</button>
+                        
+                        <span class="matte-ButtonGroup">
+                            <button data-montage-id="ButtonGrouButton1">1</button>
+                            <button data-montage-id="ButtonGrouButton2">2</button>
+                            <button data-montage-id="ButtonGrouButton3">3</button>
+                        </span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/image.reel">Image</a></td>
+                    <td>
+                        <img data-montage-id="Image" src="assets/images/icon.png">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/input-checkbox.reel">InputCheckbox</a></td>
+                    <td>
+                        <input data-montage-id="InputCheckbox" type="checkbox">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/input-checkbox.reel">InputDate</a></td>
+                    <td>
+                        <input data-montage-id="InputDate" type="date">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/input-number.reel">InputNumber</a></td>
+                    <td>
+                        <input data-montage-id="InputNumber" type="number">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/input-range.reel">InputRange</a></td>
+                    <td>
+                        <input data-montage-id="InputRange" type="range">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/input-text.reel">InputText</a></td>
+                    <td>
+                        <input data-montage-id="InputText" type="text">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/loading-panel.reel">LoadingPanel</a></td>
+                    <td>
+                        <span data-montage-id="LoadingPanel"></span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/loading.reel">Loading</a></td>
+                    <td>
+                        <span data-montage-id="Loading"></span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/progress.reel">Progress</a></td>
+                    <td>
+                        <progress data-montage-id="Progress" value="50" max="100"></progress>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/radio-button.reel">RadioButton</a></td>
+                    <td>
+                        <input data-montage-id="RadioButton" type="radio">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/select.reel">Select</a></td>
+                    <td>
+                        <select data-montage-id="Select">
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/text-slider.reel">TextSlider</a></td>
+                    <td>
+                        <span data-montage-id="TextSlider"></span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/textarea.reel">Textarea</a></td>
+                    <td>
+                        <textarea data-montage-id="Textarea"></textarea>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/toggle-button.reel">ToggleButton</a></td>
+                    <td>
+                        <button data-montage-id="ToggleButton"></button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/toggle-switch.reel">ToggleSwitch</a></td>
+                    <td>
+                        <span data-montage-id="ToggleSwitch"></span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><a href="https://github.com/montagejs/matte/tree/master/ui/video-player.reel">VideoPlayer</a></td>
+                    <td>
+                        <video data-montage-id="VideoPlayer"></video>
+                    </td>
+                </tr>
+                
+    
+            </tbody>
+        </table>
+    
+    </div>
 
 </body>
 </html>
