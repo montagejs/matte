@@ -44,10 +44,24 @@
                     }
                 }
             },
+            "videoPlayer4": {
+                "prototype": "ui/video-player.reel",
+                "properties": {
+                    "element": {
+                        "#": "videoPlayer4"
+                    },
+                    "sources" : [
+                        {"src": "some.movie", "type": "video/invalid-format"},
+                        {"src": "sample.ogv", "type": "video/ogg"}
+                    ],
+                    "autoHide": true,
+                    "supportsFullScreen": true
+                }
+            },
             "mediaController1": {
                 "prototype": "montage/core/media-controller",
                 "properties": {
-                    "autoplay": "true"
+                    "autoplay": false
                 }
             }
         }
@@ -57,14 +71,16 @@
 <body>
     <h1>VideoPlayer test</h1>
 
-    <video data-montage-id="videoPlayer1" src="sample.ogv" poster="movie.jpg" controls mediagroup="mediagroup1"></video>
-    <video data-montage-id="videoPlayer2" src="sample.ogv" poster="movie.jpg" controls mediagroup="mediagroup1"></video>
+    <video data-montage-id="videoPlayer1"></video>
+    <video data-montage-id="videoPlayer2" src="sample.ogv" poster="movie.jpg" controls></video>
 
     <video data-montage-id="videoPlayer3" poster="movie.jpg" controls>
         <source src="some.movie" type="video/invalid-format"/>
         <source src="sample.ogv" type="video/ogg"/>
         <track kind="subtitles" label="English captions" src="movie3-subtitles-en.vtt" srclang="en" default>
     </video>
+    
+    <video data-montage-id="videoPlayer4"></video>
 
 </body>
 </html>
