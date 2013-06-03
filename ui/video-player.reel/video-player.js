@@ -2,16 +2,16 @@
 /**
     @module montage/ui/video-player
     @requires montage
-    @requires montage/ui/component
+    @requires montage/ui/base/abstract-video
     @requires core/logger
     @requires core/event/action-event-listener
     @requires core/media-controller
 */
 var Montage = require("montage").Montage,
     Bindings = require("montage/core/bindings").Bindings,
-    Component = require("montage/ui/component").Component,
     logger = require("montage/core/logger").logger("video-player"),
     ActionEventListener = require("montage/core/event/action-event-listener").ActionEventListener,
+    AbstractVideo = require("montage/ui/base/abstract-video").AbstractVideo,
     MediaController = require("montage/core/media-controller").MediaController,
     Converter = require("montage/core/converter/converter").Converter;
 
@@ -38,7 +38,7 @@ exports.PrettyTimeConverter = Montage.create(Converter, {
 /**
  @class module:matte/ui/video-player.VideoPlayer
  */
-var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends module:matte/ui/video-player.VideoPlayer# */ {
+var VideoPlayer = exports.VideoPlayer = Montage.create(AbstractVideo,/** @lends module:matte/ui/video-player.VideoPlayer# */ {
 
     /*-----------------------------------------------------------------------------
     MARK:   Constants
@@ -120,96 +120,8 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     MARK:   Properties
     -----------------------------------------------------------------------------*/
     
-    _controller: {
-        value: null
-    },
-    
-    /**
-        The MediaController instance used by the VideoPlayer.
-        @type {module:montage/core/media-controller.MediaController}
-        @default null
-    */
-    controller: {
-        get: function() {
-            return this._controller;
-        },
-        set: function(controller) {
-            if (controller) {
-                this._controller = controller;
-                if (this.mediaElement) {
-                    this.mediaElement.controller = controller.mediaController;
-                }
-            }
-        }
-    },
 
-    /**
-    @private
-    */
-    _src: {
-        value: null
-    },
-    /**
-     * @type {String}
-     * @default null
-     */
-    src: {
-        get: function() {
-            return this._src;
-        },
-        set: function(src) {
-            this._src = src;
-        }
-    },
-    
-    /**
-    @private
-    */
-    _sources: {
-        value: null
-    },
-    /**
-     * @type {Array}
-     * @default null
-     */
-    sources: {
-        get: function() {
-            return [];
-        },
-        set: function(sources) {
-            if (sources && sources.length) {
-                var mediaElement = document.createElement("video");
-                for (var i=0;i<sources.length;i++) {
-                    var mediaSrc = sources[i].src,
-                        mediaType = sources[i].type;
-                    if (mediaType && mediaElement.canPlayType(mediaType)) {
-                        this.src = mediaSrc;
-                        break;
-                    }
-                }
-                this._sources = sources;
-            }
-        }
-    },
 
-    /**
-      @private
-    */
-    _posterSrc: {
-        value: null
-    },
-    /**
-     * @type {String}
-     * @default null
-     */
-    posterSrc: {
-        get: function() {
-            return this._posterSrc;
-        },
-        set: function(posterSrc) {
-            this._posterSrc = posterSrc;
-        }
-    },
     
     /*-----------------------------------------------------------------------------
     MARK:   Event Handlers
@@ -279,17 +191,9 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     */
     autoHide: { value: true },
 
-    /**
-        Specifies whether the full screen video is supported.
-        @type {Boolean}
-        @default true
-    */
-    supportsFullScreen: { value: true },
 
-    /**
-    @private
-    */
-    _isFullScreen: { value: false },
+
+
 
     templateDidLoad: {
         value: function() {
@@ -299,16 +203,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
         }
     },
     
-    /**
-    Description TODO
-    @function
-    @private
-    */
-    handleMediaStateChange: {
-        value: function() {
-            this.needsDraw = true;
-        }
-    },
+
     /*-----------------------------------------------------------------------------
     MARK:   Interaction
     -----------------------------------------------------------------------------*/
@@ -369,65 +264,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
         }
     },
 
-
-    /**
-    @function
-    */
-    loadMedia: {
-        value: function() {
-            if (logger.isDebug) {
-                logger.debug("VideoPlayer:loadMedia");
-            }
-            this.mediaElement.src = this.src;
-            this.mediaElement.load();
-        }
-    },
-
-    /**
-    @function
-    */
-    showPoster: {
-        value: function() {
-            if (this.posterSrc) {
-                this.mediaElement.poster = this.posterSrc;
-            }
-        }
-    },
-
-    /**
-    Toggles full-screen playback mode.
-    @function
-    */
-    toggleFullScreen: {
-        value: function() {
-            if (this.supportsFullScreen) {
-                this._isFullScreen = !this._isFullScreen;
-                if (!this._isFullScreen) {
-                    if (this.element.webkitExitFullscreen) {
-                        this.element.webkitExitFullscreen();
-                    } else if (this.element.webkitCancelFullScreen) {
-                        this.element.webkitCancelFullScreen();
-                    }
-                } else {
-                    if (this.element.webkitEnterFullScreen) {
-                        this.element.webkitEnterFullScreen();
-                    } else if (this.element.webkitRequestFullScreen) {
-                        this.element.webkitRequestFullScreen();
-                    }
-                }
-                this.needsDraw = true;
-            }
-        }
-    },
     
-    /**
-    @private
-    */
-    _installMediaEventListeners: {
-        value: function() {
-            this.controller.addEventListener("mediaStateChange", this, false);
-        }
-    },
     /**
     @private
     */
@@ -440,53 +277,19 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
             }
         }
     },
+
     /**
     @private
     */
     enterDocument: {
         value: function(firstTime) {
+            // Call super method
+            if (AbstractVideo.enterDocument) {
+                AbstractVideo.enterDocument.call(this, firstTime);
+            }
+            
             if (firstTime) {
-                // look for src attribute on original element
-                if (this.originalElement.hasAttribute("src") && this.originalElement.getAttribute("src")) {
-                    this.src = this.originalElement.getAttribute("src");
-                } else {
-                    // try to grab <source> child elements from original element
-                    var sources = this.originalElement.getElementsByTagName("source"),
-                        mediaSrc, mediaType;
-                    for (var i=0;i<sources.length;i++) {
-                        mediaSrc = sources[i].getAttribute("src");
-                        mediaType = sources[i].getAttribute("type");
-                        if (mediaType && !this.originalElement.canPlayType(mediaType)) {
-                            continue;
-                        }
-                        this.src = mediaSrc;
-                        break;
-                    }
-                }
-                
-                // try to grab <track> child elements from original element
-                var tracks = this.originalElement.getElementsByTagName("track");
-                for (var i=0;i<tracks.length;i++) {
-                    var trackKind = tracks[i].getAttribute("kind");
-                    if (trackKind == "captions" || trackKind == "subtitles") {
-                        var track = document.createElement("track");
-                        track.kind = trackKind;
-                        track.label = tracks[i].getAttribute("label");
-                        track.src = tracks[i].getAttribute("src");
-                        track.srclang = tracks[i].getAttribute("srclang");
-                        track.default = tracks[i].hasAttribute("default");
-                        this.mediaElement.appendChild(track);
-                        this.mediaElement.textTracks[this.mediaElement.textTracks.length-1].mode = "showing";
-                    }
-                }
-
-                if (!this.controller) {
-                    this.controller = Montage.create(MediaController);
-                }
-                this.mediaElement.controller = this.controller.mediaController;
-
                 this._installUserActionDetector();
-                this._installMediaEventListeners();
 
                 if (!this.autoHide) {
                     this.element.style.paddingBottom = "50px";
@@ -500,6 +303,11 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
     */
     draw: {
         value: function() {
+            // Call super method
+            if (AbstractVideo.draw) {
+                AbstractVideo.draw.call(this);
+            }
+            
             var volumeWidth;
             // Handle loading
             if (this.controller.status === this.controller.EMPTY) {
@@ -542,7 +350,7 @@ var VideoPlayer = exports.VideoPlayer = Montage.create(Component,/** @lends modu
                 if (this.supportsFullScreen) {
                     this.fullScreenPanel.classList.add("support-fullscreen");
                     this.fullScreenPanel.classList.remove("hide-fullscreen");
-                    if (!this._isFullScreen) {
+                    if (!this.isFullScreen) {
                         this.fullScreenButton.classList.add("enter-fullscreen");
                         this.fullScreenButton.classList.remove("exit-fullscreen");
                         this.element.classList.remove("fullscreen");
