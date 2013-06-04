@@ -69,7 +69,7 @@ exports.TokenField = Component.specialize(/** @lends module:"matte/ui/token-fiel
         set: function(newValue) {
             if(newValue) {
                 var representedObject;
-                if(!this.allowAdHocValues && String.isString(newValue)) {
+                if(!this.allowAdHocValues && typeof newValue === "string") {
                     // since ad-hoc values are not allowed, check with the delegate
                     // if a representedObject can be found for this string
                     representedObject = this.callDelegateMethod('getRepresentedObject', newValue);

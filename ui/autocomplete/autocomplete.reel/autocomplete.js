@@ -95,7 +95,7 @@ var Autocomplete = exports.Autocomplete = TextInput.specialize(/** @lends module
         },
         set: function(value) {
             if(value !== this._delay) {
-                if(String.isString(value)) {
+                if(typeof value === "string") {
                     value = parseInt(value, 10);
                 }
                 this._delay = value;
@@ -274,7 +274,7 @@ var Autocomplete = exports.Autocomplete = TextInput.specialize(/** @lends module
                 var arr = this.tokens || [];
                 var token;
 
-                if(String.isString(aValue)) {
+                if(typeof aValue === "string") {
                     token = aValue;
                 } else {
                     if(this.textPropertyPath) {

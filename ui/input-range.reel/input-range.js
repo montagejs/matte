@@ -22,7 +22,7 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
             return this._min;
         },
         set: function(value) {
-            this._min =  String.isString(value) ? parseFloat(value) : value;
+            this._min = typeof value === "string" ? parseFloat(value) : value;
             this.needsDraw = true;
         }
     },
@@ -36,7 +36,7 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
             return this._max;
         },
         set: function(value) {
-            this._max = String.isString(value) ? parseFloat(value) : value;
+            this._max = typeof value === "string" ? parseFloat(value) : value;
             this.needsDraw = true;
         }
    },
@@ -50,7 +50,7 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
             return this._step;
         },
         set: function(value) {
-            this._step =  String.isString(value) ? parseFloat(value) : value;
+            this._step = typeof value === "string" ? parseFloat(value) : value;
             this.needsDraw = true;
         }
     },
@@ -65,7 +65,7 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
             return this._width;
         },
         set: function(value) {
-            this._width =  String.isString(value) ? parseFloat(value) : value;
+            this._width = typeof value === "string" ? parseFloat(value) : value;
             this.needsDraw = true;
         }
     },
@@ -87,7 +87,7 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
             return this._value;
         },
         set: function(value, fromInput) {
-            this._value =  String.isString(value) ? parseFloat(value) : value;
+            this._value = typeof value === "string" ? parseFloat(value) : value;
             //console.log('value set', this._value);
             if(fromInput) {
                 this._valueSyncedWithPosition = true;
