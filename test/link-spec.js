@@ -17,7 +17,7 @@ describe("ui/link-spec", function() {
 
     describe("draw", function() {
         it("should change the href", function() {
-            aLink.src = "http://montagejs.org/";
+            aLink.url = "http://montagejs.org/";
 
             aLink.draw();
 
@@ -30,6 +30,22 @@ describe("ui/link-spec", function() {
             aLink.draw();
 
             expect(aLink.element.textContent).toBe("MontageJS");
+        });
+
+        it("should have a title attribute when textAlternative is set", function() {
+            aLink.textAlternative = "MontageJS Website";
+
+            aLink.draw();
+
+            expect(aLink.element.getAttribute("title")).toBe("MontageJS Website");
+        });
+
+        it("should have a target attribute when opensNewWindow is set", function() {
+            aLink.opensNewWindow = true;
+
+            aLink.draw();
+
+            expect(aLink.element.getAttribute("target")).toBe("_blank");
         });
     });
 });

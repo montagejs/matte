@@ -3,32 +3,38 @@
 */
 
 /*global require,exports */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
-    AbstractLink = require("montage/ui/base/abstract-link").AbstractLink;
+var AbstractLink = require("montage/ui/base/abstract-link").AbstractLink;
 
 /**
  * Montage Anchor
  * @class module:"matte/ui/anchor.reel".Anchor
- * @extends module:"native/ui/anchor.reel".Anchor
+ * @extends module:"montage/ui/base/abstract-link.reel".AbstractLink
  */
-exports.Link = Montage.create(AbstractLink, /** @lends AbstractLink# */{
+exports.Link = AbstractLink.specialize(/** @lends AbstractLink# */{
 
-    hasTemplate: {value: false},
+    hasTemplate: {
+        value: false
+    },
 
-    didCreate: {
-        value: function() {
-            if (AbstractLink.didCreate) {
-                AbstractLink.didCreate.call(this); // super
-            }
+    constructor: {
+        value: function Link() {
+            this.super();
             this.classList.add("matte-Link");
         }
     },
 
     draw: {
         value: function() {
-            this.element.href = this.src;
+            this.element.href = this.url;
             this.element.textContent = this.label;
+            if (this.textAlternative) {
+                this.element.setAttribute("title", this.textAlternative);
+            }
+            if (this.opensNewWindow) {
+                this.element.setAttribute("target", "_blank");
+            } else {
+                this.element.removeAttribute("target");
+            }
         }
     }
 });
