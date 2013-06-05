@@ -23,10 +23,22 @@ exports.Link = AbstractLink.specialize(/** @lends AbstractLink# */{
         }
     },
 
+    enterDocument: {
+        value: function(firstTime) {
+            this.super(firstTime);
+
+            if (firstTime) {
+                this.element.innerHTML = "";
+                this._valueNode = document.createTextNode();
+                this.element.appendChild(this._valueNode);
+            }
+        }
+    },
+
     draw: {
         value: function() {
             this.element.href = this.url;
-            this.element.textContent = this.label;
+            this._valueNode.data = this.label;
             if (this.textAlternative) {
                 this.element.setAttribute("title", this.textAlternative);
             }
