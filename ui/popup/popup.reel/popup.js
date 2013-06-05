@@ -1,18 +1,15 @@
 
 /**
     @module "matte/ui/popup/popup.reel"
-    @requires montage/core/core
-    @requires montage/ui/component
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
 /**
     @class module:"matte/ui/popup.reel".Popup
     @extends module:montage/ui/component.Component
 */
 
-var Popup = exports.Popup = Montage.create(Component, { /** @lends module:"matte/ui/popup/popup.reel".Popup */
+var Popup = exports.Popup = Component.specialize({ /** @lends module:"matte/ui/popup/popup.reel".Popup */
 
     hasTemplate: {value: true},
 

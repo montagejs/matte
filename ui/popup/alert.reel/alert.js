@@ -1,21 +1,17 @@
 
 /**
     @module "matte/ui/popup/alert.reel"
-    @requires montage/core/core
-    @requires montage/ui/component
-    @requires "matte/ui/popup/popup.reel"
 */
 
-var Montage = require("montage").Montage;
-var Component = require("montage/ui/component").Component;
-var Popup = require("ui/popup/popup.reel").Popup;
+var Component = require("montage/ui/component").Component,
+    Popup = require("ui/popup/popup.reel").Popup;
 
 /**
  @class module:"matte/ui/popup/alert.reel".Alert
  @extends module:montage/ui/component.Component
  */
 
-var Alert = exports.Alert = Montage.create(Component, {
+var Alert = exports.Alert = Component.specialize({
     title: {
         value: 'Alert'
     },
@@ -110,7 +106,7 @@ var Alert = exports.Alert = Montage.create(Component, {
         value: function(msg, okCallback) {
             var popup = this.application._alertPopup, alert;
             if(!popup) {
-                popup = Popup.create();
+                popup = new Popup();
                 this.popup = popup;
 
                 popup.type = 'alert';
@@ -118,7 +114,7 @@ var Alert = exports.Alert = Montage.create(Component, {
                 popup.modal = true;
                 this.application._alertPopup = popup;
 
-                alert = Alert.create();
+                alert = new Alert();
                 popup.content = alert;
             }
             alert = popup.content;

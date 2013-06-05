@@ -2,10 +2,9 @@
 /**
     @module "matte/ui/scroll-bars.reel"
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
-exports.ScrollBars = Montage.create(Component, {
+exports.ScrollBars = Component.specialize({
 
     // Scroll and length are defined in a [0..1] range
 

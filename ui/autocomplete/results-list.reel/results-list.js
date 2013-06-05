@@ -1,7 +1,6 @@
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
-exports.ResultsList = Montage.create(Component, {
+exports.ResultsList = Component.specialize({
 
     textPropertyPath: {value: null},
 

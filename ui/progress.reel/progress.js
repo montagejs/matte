@@ -1,16 +1,12 @@
 /**
     module:"matte/ui/progress.reel"
-    @requires montage/core/core
-    @requires montage/ui/component
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
-    NativeProgress = require("native/ui/progress.reel").Progress;
+var NativeProgress = require("native/ui/progress.reel").Progress;
 /**
     @class module:matte/ui/progress.Progress
-    @extends module:montage/ui/component.Component
+    @extends module:native/ui/progress.NativeProgress
 */
-exports.Progress = Montage.create(NativeProgress,/** @lends module:"matte/ui/progress.reel".Progress# */ {
+exports.Progress = NativeProgress.specialize(/** @lends module:"matte/ui/progress.reel".Progress# */ {
 
     hasTemplate: {value: true},
 
@@ -81,11 +77,9 @@ exports.Progress = Montage.create(NativeProgress,/** @lends module:"matte/ui/pro
         }
     },
 
-    didCreate: {
-        value: function() {
-            if (NativeProgress.didCreate !== Function.noop) {
-                NativeProgress.didCreate.call(this);
-            }
+    constructor: {
+        value: function Progress() {
+            this.super();
         }
     },
 

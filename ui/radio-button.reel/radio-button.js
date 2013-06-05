@@ -2,25 +2,21 @@
     @module "matte/ui/radio-button.reel"
 */
 /*global require,exports */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
-    AbstractRadioButton = require("montage/ui/base/abstract-radio-button").AbstractRadioButton;
+var AbstractRadioButton = require("montage/ui/base/abstract-radio-button").AbstractRadioButton;
 
 /**
  * Input Radio
  * @class module:"matte/ui/radio-button.reel".RadioButton
- * @extends module:"native/ui/radio-button.reel".RadioButton
+ * @extends module:"montage/ui/abstract-radio-button.reel".AbstractRadioButton
  */
-exports.RadioButton = Montage.create(AbstractRadioButton, /** @lends RadioButton# */ {
+exports.RadioButton = AbstractRadioButton.specialize(/** @lends RadioButton# */ {
     hasTemplate: {
         value: true
     },
 
-    didCreate: {
-        value: function() {
-            if (AbstractRadioButton.didCreate) {
-                AbstractRadioButton.didCreate.call(this);
-            }
+    constructor: {
+        value: function RadioButton() {
+            this.super();
             this.classList.add("matte-RadioButton");
         }
     }

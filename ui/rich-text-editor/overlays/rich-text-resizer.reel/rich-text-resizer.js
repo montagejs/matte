@@ -1,12 +1,7 @@
 /**
 	module:"matte/ui/rich-text-editor/overlays/rich-text-resizer.reel"
-    @requires montage/core/core
-    @requires montage/core/geometry/point
-    @requires montage/core/dom
-    @requires montage/ui/component
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
+var Component = require("montage/ui/component").Component,
     dom = require("montage/core/dom"),
     Point = require("montage/core/geometry/point").Point;
 
@@ -14,7 +9,7 @@ var Montage = require("montage").Montage,
     @class module:"matte/ui/rich-text-editor/overlays/rich-text-resizer.reel".RichTextResizer
     @extends module:montage/ui/component.Component
 */
-exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/rich-text-editor/overlays/rich-text-resizer.reel".RichTextResizer# */ {
+exports.RichTextResizer = Component.specialize(/** @lends module:"matte/ui/rich-text-editor/overlays/rich-text-resizer.reel".RichTextResizer# */ {
 
     /**
       Description TODO
@@ -223,7 +218,7 @@ exports.RichTextResizer = Montage.create(Component,/** @lends module:"matte/ui/r
 
             if (this._draggedElement) {
                 // Resize the resizer
-                var zero = Point.create().init(0, 0),
+                var zero = new Point().init(0, 0),
                     framePosition = dom.convertPointFromNodeToPage(element, zero),
                     cursor = this._cursorPosition,
                     direction = this._draggedElement.getAttribute("data-montage-id").substring("matte-resizer-handle-".length),

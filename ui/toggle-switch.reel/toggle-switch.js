@@ -3,13 +3,12 @@
     @requires montage/core/core
     @requires montage/ui/component
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 /**
  @class module:"matte/ui/toggle-switch.reel".ToggleSwitch
  @extends module:montage/ui/component.Component
  */
-var ToggleSwitch = exports.ToggleSwitch = Montage.create(Component, /** @lends module:"matte/ui/toggle-switch.reel".ToggleSwitch# */ {
+exports.ToggleSwitch = Component.specialize(/** @lends module:"matte/ui/toggle-switch.reel".ToggleSwitch# */ {
 
 
     _value: {

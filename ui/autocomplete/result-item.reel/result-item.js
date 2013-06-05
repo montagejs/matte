@@ -1,19 +1,15 @@
 
 /**
     @module "matte/ui/autocomplete/result-item.reel"
-    @requires montage
-    @requires montage/ui/component
-    @requires "montage/ui/text.reel"
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
+var Component = require("montage/ui/component").Component,
     Text = require("montage/ui/text.reel").Text;
 
 /**
     @class module:"matte/ui/autocomplete/result-item.reel".ResultItem
     @extends module:"montage/ui/text.reel".Text
 */
-exports.ResultItem = Montage.create(Text, {
+exports.ResultItem = Text.specialize({
 
     textPropertyPath: {value: null},
 

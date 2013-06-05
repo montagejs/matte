@@ -3,8 +3,7 @@
     @module "matte/ui/autocomplete/autocomplete.reel"
 */
 
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
+var Component = require("montage/ui/component").Component,
     TextInput = require("ui/text-input").TextInput,
     logger = require("montage/core/logger").logger("autocomplete"),
     ResultsList = require("ui/autocomplete/results-list.reel/results-list").ResultsList,
@@ -41,11 +40,11 @@ var getElementPosition = function(obj) {
     @class module:"matte/ui/autocomplete/autocomplete.reel".Autocomplete
     @extends module:matte/ui/text-input.TextInput
 */
-var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends module:"matte/ui/autocomplete/autocomplete.reel".Autocomplete# */ {
+var Autocomplete = exports.Autocomplete = TextInput.specialize(/** @lends module:"matte/ui/autocomplete/autocomplete.reel".Autocomplete# */ {
 
-    didCreate: {
-        value: function() {
-            TextInput.didCreate.call(this); // super
+    constructor: {
+        value: function Autocomplete() {
+            this.super();
             this.delay = 500;
             this.minLength = 2;
 
@@ -382,7 +381,7 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
             var popup = this.popup;
 
             if(!popup) {
-                popup = Popup.create();
+                popup = new Popup();
                 popup.content = this.resultsList;
                 popup.anchor = this.element;
                 popup.delegate = this;
@@ -415,7 +414,7 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
                 this.element.classList.add('matte-Autocomplete');
 
                 // create the Repetition for the suggestions
-                this.resultsController = RangeController.create();
+                this.resultsController = new RangeController();
                 this.defineBinding("resultsController.content", {
                     "<-": "suggestions"
                 });
@@ -423,7 +422,7 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
                     "<-": "resultsController.selection[0]"
                 });
 
-                this.resultsList = ResultsList.create();
+                this.resultsList = new ResultsList();
                 this.defineBinding("resultsList.contentController", {
                     "<-": "resultsController"
                 });
@@ -442,17 +441,14 @@ var Autocomplete = exports.Autocomplete = Montage.create(TextInput, /** @lends m
     prepareForActivationEvents: {
         value: function() {
             // add pressComposer to handle the claimPointer related work
-            var pressComposer = PressComposer.create();
+            var pressComposer = new PressComposer();
             this.addComposer(pressComposer);
         }
     },
 
     draw: {
         value: function() {
-            var el = this.element;
-
-            var fn = Object.getPrototypeOf(Autocomplete).draw;
-            fn.call(this);
+            this.super();
 
             if (!this._valueSyncedWithInputField) {
                 if(this.tokens) {

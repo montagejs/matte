@@ -1,19 +1,15 @@
 
 /**
     @module "matte/ui/toggle-button.reel"
-    @requires montage/ui/component
-    @requires "matte/ui/button.reel"
 */
 
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
-    Button = require("ui/button.reel").Button;
+var Button = require("ui/button.reel").Button;
 /**
   The ToggleButton component extends the Button component to include state management (pressed or not pressed), and the ability to specify labels and CSS classes for each state.
   @class module:"matte/ui/toggle-button.reel".ToggleButton
   @extends module:"matte/ui/button.reel".Button
  */
-var ToggleButton = exports.ToggleButton = Montage.create(Button, /** @lends module:"matte/ui/toggle-button.reel".ToggleButton# */ {
+var ToggleButton = exports.ToggleButton = Button.specialize(/** @lends module:"matte/ui/toggle-button.reel".ToggleButton# */ {
     hasTemplate: {value: true},
 
     _pressed: {
@@ -132,7 +128,7 @@ var ToggleButton = exports.ToggleButton = Montage.create(Button, /** @lends modu
 
     enterDocument: {
         value: function(firstTime) {
-            Object.getPrototypeOf(ToggleButton).enterDocument.apply(this, arguments);
+            this.super(firstTime);
 
             if (firstTime) {
                 // If we haven't set the (un)pressedLabel of the initial state,
@@ -149,7 +145,8 @@ var ToggleButton = exports.ToggleButton = Montage.create(Button, /** @lends modu
 
     draw: {
         value: function() {
-            Object.getPrototypeOf(ToggleButton).draw.call(this);
+            this.super();
+
             if (this._pressed) {
                 this._element.classList.add(this._pressedClass);
                 this._element.setAttribute("aria-pressed", true);
@@ -163,7 +160,7 @@ var ToggleButton = exports.ToggleButton = Montage.create(Button, /** @lends modu
     _dispatchActionEvent: {
         value: function() {
             this.pressed = !this._pressed;
-            Object.getPrototypeOf(ToggleButton)._dispatchActionEvent.call(this);
+            this.super();
         }
     },
 
