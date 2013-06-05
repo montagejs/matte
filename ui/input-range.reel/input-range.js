@@ -2,8 +2,7 @@
     module:"matte/ui/input-range.reel"
 */
 /*global require,exports */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
+var Component = require("montage/ui/component").Component,
     dom = require("montage/core/dom");
 
 /**
@@ -11,7 +10,7 @@ var Montage = require("montage").Montage,
  * @class module:"matte/ui/input-range.reel".InputRange
  * @extends module:"montage/ui/component".Component
  */
-var InputRange = exports.InputRange = Montage.create(Component, /** @lends module:"matte/ui/input-range.reel".InputRange */  {
+exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-range.reel".InputRange */  {
 
     // public API
     _min: {

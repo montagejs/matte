@@ -1,7 +1,6 @@
-var Montage = require("montage").Montage;
 var TestController = require("montage-testing/test-controller").TestController;
 
-exports.ButtonTest = Montage.create(TestController, {
+exports.ButtonTest = TestController.specialize({
 
     handleAction: {
       value: function() {

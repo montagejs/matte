@@ -4,28 +4,22 @@
 */
 
 /*global require,exports */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
-    AbstractImage = require("montage/ui/base/abstract-image").AbstractImage;
+var AbstractImage = require("montage/ui/base/abstract-image").AbstractImage;
 
 /**
  * Image
  * @class module:"matte/ui/image.reel".Image
- * @extends module:"montage/ui/base/abstract-image".AbstractImage
+ * @extends module:"montage/ui/base/abstract-image.reel".AbstractImage
  */
-exports.Image = Montage.create(AbstractImage, /** @lends module:"matte/ui/image.reel".Image */ {
-
+exports.Image = AbstractImage.specialize(/** @lends module:"matte/ui/image.reel".Image */ {
     hasTemplate: {
         value: false
     },
 
-    didCreate: {
-        value: function() {
-            // Call super method
-            if (AbstractImage.didCreate) {
-                AbstractImage.didCreate.call(this);
-            }
-            this.classList.add("matte-Image");
+    constructor: {
+        value: function Image() {
+            this.super();
+            this.classList.add("matte-image");
         }
     }
 

@@ -1,17 +1,14 @@
 // TODO: ComponentList instead? ComponentContainer?
 /**
 	module:"matte/ui/component-group.reel"
-    @requires montage/core/core
-    @requires montage/ui/component
 */
-var Montage = require("montage").Montage;
 var Component = require("montage/ui/component").Component;
 
 /**
  @class module:"matte/ui/component-group.reel".ComponentGroup
  @extends module:montage/ui/component.Component
  */
-var ComponentGroup = exports.ComponentGroup = Montage.create(Component, /** @lends module:"matte/ui/component-group.reel".ComponentGroup# */ {
+exports.ComponentGroup = Component.specialize(/** @lends module:"matte/ui/component-group.reel".ComponentGroup# */ {
 
     hasTemplate: {value: false},
 

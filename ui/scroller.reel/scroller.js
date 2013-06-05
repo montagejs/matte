@@ -1,11 +1,8 @@
 
 /**
     @module "matte/ui/scroller.reel"
-    @requires montage
-    @requires montage/ui/component
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
 /**
     Provides scrolling for the contained elements.
@@ -20,7 +17,7 @@ var Montage = require("montage").Montage,
     &lt;p&gt;Another large paragraph...&lt;/p&gt;
 &lt;/div&gt;
 */
-exports.Scroller = Montage.create(Component, /** @lends module:"matte/ui/scroller.reel".Scroller */ {
+exports.Scroller = Component.specialize(/** @lends module:"matte/ui/scroller.reel".Scroller */ {
 
     _scrollX: {
         value: 0

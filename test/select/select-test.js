@@ -1,9 +1,8 @@
-var Montage = require("montage").Montage;
 var TestController = require("montage-testing/test-controller").TestController;
 
 var Converter = require("montage/core/converter/converter").Converter;
 
-exports.JustifyConverter = Montage.create(Converter, {
+exports.JustifyConverter = Converter.specialize({
     justify: {value: null},
 
     convert: {
@@ -19,7 +18,7 @@ exports.JustifyConverter = Montage.create(Converter, {
     }
 });
 
-exports.SelectTest = Montage.create(TestController, {
+exports.SelectTest = TestController.specialize({
 
     dept: {
         value: null
@@ -109,9 +108,9 @@ exports.SelectTest = Montage.create(TestController, {
 
     deptValues: {value: null},
 
-    didCreate: {
-        value: function() {
-            TestController.didCreate.apply(this, arguments);
+    constructor: {
+        value: function SelectTest() {
+            this.super();
             this.justify = "center";
             this.deptValues = ['HRD', 'SWE'];
         }

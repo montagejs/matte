@@ -1,11 +1,7 @@
 
 /**
     @module "matte/ui/popup/notifier.reel"
-    @requires montage/core/core
-    @requires montage/ui/component
-    @requires "montage/ui/popup/popup.reel"
 */
-var Montage = require("montage").Montage;
 var Component = require("montage/ui/component").Component;
 var Popup = require("ui/popup/popup.reel").Popup;
 
@@ -14,7 +10,7 @@ var Popup = require("ui/popup/popup.reel").Popup;
  @extends module:montage/ui/component.Component
  */
 
-var Notifier = exports.Notifier = Montage.create(Component, /** @lends module:"matte/ui/popup/notifier.reel".Notifier# */ {
+var Notifier = exports.Notifier = Component.specialize(/** @lends module:"matte/ui/popup/notifier.reel".Notifier# */ {
 
     _msgEl: {
         value: null
@@ -71,12 +67,12 @@ var Notifier = exports.Notifier = Montage.create(Component, /** @lends module:"m
         value: function(msg, timeout, position) {
             var popup = this.application._notifyPopup, notifier;
             if(!popup) {
-                popup = Popup.create();
+                popup = new Popup();
                 this.popup = popup;
                 popup.type = 'notify';
                 this.application._notifyPopup = popup;
 
-                notifier = Notifier.create();
+                notifier = new Notifier();
                 popup.content = notifier;
             }
             notifier = popup.content;

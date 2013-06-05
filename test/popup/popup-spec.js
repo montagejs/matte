@@ -86,7 +86,7 @@ TestPageLoader.queueTest("popup-test", function(testPage) {
                     testPage.waitForDraw();
                     runs(function() {
                         expect(popup.displayed).toBe(true);
-                        var eventInfo = Montage.create(EventInfo).initWithElementAndPosition(null, 1, 1);
+                        var eventInfo = new EventInfo().initWithElementAndPosition(null, 1, 1);
                         console.log('about to click outside the popup');
 
                         testPage.mouseEvent(eventInfo, 'click', function(evt) {

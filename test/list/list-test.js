@@ -1,7 +1,6 @@
-var Montage = require("montage").Montage;
 var TestController = require("montage-testing/test-controller").TestController;
 
-exports.ListTest = Montage.create(TestController, {
+exports.ListTest = TestController.specialize({
     list: {
         value: null
     }

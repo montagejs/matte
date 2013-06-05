@@ -1,16 +1,13 @@
 /**
 	module:"matte/ui/loading.reel"
-    @requires montage/core/core
-    @requires montage/ui/component
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 /**
  @class module:matte/ui/loading.Loading
  @extends module:montage/ui/component.Component
  */
 
-var Loading = exports.Loading = Montage.create(Component,/** @lends module:"matte/ui/loading.reel".Loading# */ {
+exports.Loading = Component.specialize(/** @lends module:"matte/ui/loading.reel".Loading# */ {
 /**
   Description TODO
   @private

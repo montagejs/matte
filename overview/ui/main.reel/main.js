@@ -1,7 +1,6 @@
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
-exports.Main = Montage.create(Component, {
+exports.Main = Component.specialize({
 
     thing: {
         value: "World"

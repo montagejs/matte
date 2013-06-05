@@ -1,10 +1,8 @@
 /*global Element */
 /**
 	module:"matte/ui/rich-text-editor.reel"
-    @requires montage/core/core
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
+var Component = require("montage/ui/component").Component,
     Sanitizer = require("./rich-text-sanitizer").Sanitizer,
     RichTextLinkPopup = require("../overlays/rich-text-linkpopup.reel").RichTextLinkPopup,
     RichTextResizer = require("../overlays/rich-text-resizer.reel").RichTextResizer,
@@ -15,7 +13,7 @@ var Montage = require("montage").Montage,
     @class module:"matte/ui/rich-text-editor.reel".RichTextEditorBase
     @extends module:montage/ui/component.Component
 */
-exports.RichTextEditorBase = Montage.create(Component,/** @lends module:"matte/ui/rich-text-editor.reel".RichTextEditor# */ {
+exports.RichTextEditorBase = Component.specialize(/** @lends module:"matte/ui/rich-text-editor.reel".RichTextEditor# */ {
     /**
       Description TODO
       @private
@@ -593,7 +591,7 @@ exports.RichTextEditorBase = Montage.create(Component,/** @lends module:"matte/u
 
                 // Setup the sanitizer if not specified
                 if (this._sanitizer === undefined) {
-                    this._sanitizer = Sanitizer.create();
+                    this._sanitizer = new Sanitizer();
                 }
 
                 // Setup the undoManager if not specified
@@ -604,7 +602,7 @@ exports.RichTextEditorBase = Montage.create(Component,/** @lends module:"matte/u
                 // Initialize the overlays
                 if (this._overlays === undefined) {
                     // Install the default overlays
-                    this._overlays = [RichTextResizer.create(), RichTextLinkPopup.create()];
+                    this._overlays = [new RichTextResizer(), new RichTextLinkPopup()];
                 }
                 this._callOverlays("initWithEditor", this, true);
             }

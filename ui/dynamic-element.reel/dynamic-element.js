@@ -30,10 +30,7 @@ POSSIBILITY OF SUCH DAMAGE.
 </copyright> */
 /**
     module:"matte/ui/dynamic-element.reel"
-    @requires montage
-    @requires montage/ui/component
 */
-var Montage = require("montage").Montage;
 var Component = require("montage/ui/component").Component;
 
 
@@ -42,7 +39,7 @@ var Component = require("montage/ui/component").Component;
     @class module:"matte/ui/dynamic-element.reel".DynamicElement
     @extends module:montage/ui/component.Component
 */
-exports.DynamicElement = Montage.create(Component, /** @lends module:"matte/ui/dynamic-element.reel".DynamicElement# */ {
+exports.DynamicElement = Component.specialize(/** @lends module:"matte/ui/dynamic-element.reel".DynamicElement# */ {
 
     hasTemplate: {
         value: false
