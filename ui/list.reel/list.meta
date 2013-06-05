@@ -19,6 +19,17 @@
             "valueType": "object"
         }
     },
+    "blueprint_list_content": {
+        "prototype": "montage/core/meta/property-blueprint",
+        "properties": {
+            "name": "content",
+            "blueprint": {
+                "@": "root"
+            },
+            "cardinality": -1,
+            "valueType": "object"
+        }
+    },
     "blueprint_list_contentController": {
         "prototype": "montage/core/meta/property-blueprint",
         "properties": {
@@ -54,6 +65,9 @@
                     "@": "blueprint_list_delegate"
                 },
                 {
+                    "@": "blueprint_list_content"
+                },
+                {
                     "@": "blueprint_list_contentController"
                 },
                 {
@@ -64,6 +78,9 @@
                 "List": [
                     {
                         "@": "blueprint_list_delegate"
+                    },
+                    {
+                        "@": "blueprint_list_content"
                     },
                     {
                         "@": "blueprint_list_contentController"
