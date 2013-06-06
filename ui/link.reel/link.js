@@ -29,7 +29,7 @@ exports.Link = AbstractLink.specialize(/** @lends AbstractLink# */{
 
             if (firstTime) {
                 this.element.innerHTML = "";
-                this._valueNode = document.createTextNode();
+                this._valueNode = document.createTextNode(this.label);
                 this.element.appendChild(this._valueNode);
             }
         }
