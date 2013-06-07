@@ -8,9 +8,6 @@
         "montage": "0.13.0-alpha",
         "native": "0.1.1-alpha"
     },
-    "mappings": {
-        "montage-test": "node_modules/montage/test"
-    },
     "devDependencies": {
         "montage-testing": "0.2.0-alpha"
     },
