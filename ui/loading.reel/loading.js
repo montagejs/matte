@@ -37,14 +37,14 @@ exports.Loading = Component.specialize(/** @lends module:"matte/ui/loading.reel"
     */
     draw: {
         value: function() {
-            var classList = this.element.classList, exists = classList.contains("animate");
+            var classList = this.element.classList, exists = classList.contains("matte-Loading--loading");
             if (this.loading) {
                 if (!exists) {
-                    classList.add("animate");
+                    classList.add("matte-Loading--loading");
                 }
             } else {
                 if (exists) {
-                    classList.remove("animate");
+                    classList.remove("matte-Loading--loading");
                 }
 
             }
