@@ -1,15 +1,16 @@
 {
     "name": "matte",
-    "version": "0.1.1-alpha",
-    "publishConfig": {
-      "tag": "edge"
+    "version": "0.1.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/montagejs/matte.git"
     },
     "dependencies": {
-        "montage": "0.13.0-alpha",
-        "native": "0.1.1-alpha"
+        "montage": "~0.13.0",
+        "native": "~0.1.1"
     },
     "devDependencies": {
-        "montage-testing": "0.2.0-alpha"
+        "montage-testing": "~0.2.0"
     },
     "exclude": [
         "overview.html",

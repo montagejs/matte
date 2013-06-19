@@ -1,12 +1,7 @@
 /**
     module:"matte/ui/rich-text-editor/rich-text-editor.reel"
-    @requires montage/core/core
-    @requires montage/core/event/mutable-event
-    @requires montage/core/event/event-manager
-    @requires rich-text-sanitizer
 */
-var Montage = require("montage").Montage,
-    RichTextEditorBase = require("./rich-text-editor-base").RichTextEditorBase,
+var RichTextEditorBase = require("./rich-text-editor-base").RichTextEditorBase,
     Sanitizer = require("./rich-text-sanitizer").Sanitizer,
     Promise = require("montage/core/promise").Promise;
 
@@ -36,7 +31,7 @@ The easiest way to create a RichTextEditor is with a serialization and a &lt;div
 &lt;/body&gt;
 </pre>
 */
-exports.RichTextEditor = Montage.create(RichTextEditorBase,/** @lends module:"matte/ui/rich-text-editor/rich-text-editor.reel".RichTextEditor# */ {
+exports.RichTextEditor = RichTextEditorBase.specialize(/** @lends module:"matte/ui/rich-text-editor/rich-text-editor.reel".RichTextEditor# */ {
 
 /**
     Returns <code>true</code> if the edtior has focus, otherwise returns <code>false</code>.
@@ -141,7 +136,7 @@ exports.RichTextEditor = Montage.create(RichTextEditorBase,/** @lends module:"ma
                     content = "";
                 }
                 if (this._sanitizer === undefined) {
-                    this._sanitizer = Sanitizer.create();
+                    this._sanitizer = new Sanitizer();
                 }
                 if (this._sanitizer) {
                     content = this._sanitizer.didGetValue(content, this._uniqueId);
@@ -169,7 +164,7 @@ exports.RichTextEditor = Montage.create(RichTextEditorBase,/** @lends module:"ma
                 this.hideOverlay();
 
                 if (this._sanitizer === undefined) {
-                    this._sanitizer = Sanitizer.create();
+                    this._sanitizer = new Sanitizer();
                 }
                 if (this._sanitizer) {
                     value = this._sanitizer.willSetValue(value, this._uniqueId);

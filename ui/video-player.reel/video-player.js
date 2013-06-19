@@ -7,10 +7,8 @@
     @requires core/event/action-event-listener
     @requires core/media-controller
 */
-var Montage = require("montage").Montage,
-    Bindings = require("montage/core/bindings").Bindings,
+var Bindings = require("montage/core/bindings").Bindings,
     logger = require("montage/core/logger").logger("video-player"),
-    ActionEventListener = require("montage/core/event/action-event-listener").ActionEventListener,
     AbstractVideo = require("montage/ui/base/abstract-video").AbstractVideo,
     MediaController = require("montage/core/media-controller").MediaController,
     Converter = require("montage/core/converter/converter").Converter;
@@ -38,7 +36,7 @@ exports.PrettyTimeConverter = Montage.create(Converter, {
 /**
  @class module:matte/ui/video-player.VideoPlayer
  */
-var VideoPlayer = exports.VideoPlayer = Montage.create(AbstractVideo,/** @lends module:matte/ui/video-player.VideoPlayer# */ {
+exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-player.VideoPlayer# */ {
 
     /*-----------------------------------------------------------------------------
     MARK:   Constants

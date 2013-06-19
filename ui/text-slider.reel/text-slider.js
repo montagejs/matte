@@ -2,13 +2,8 @@
 
 /**
     @module "matte/ui/text-slider.reel"
-    @requires montage/core/core
-    @requires montage/ui/component
-    @requires montage/composer/press-composer
  */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
-    PressComposer = require("montage/composer/press-composer").PressComposer;
+var Component = require("montage/ui/component").Component;
 
 var EDITING_CLASS = "matte-TextSlider--editing";
 
@@ -31,7 +26,7 @@ var EDITING_CLASS = "matte-TextSlider--editing";
     @class module:"matte/ui/text-slider.reel".TextSlider
     @extends module:montage/ui/component.Component
  */
-var TextSlider = exports.TextSlider = Montage.create(Component, /** @lends module:"matte/ui/text-slider.reel".TextSlider# */ {
+exports.TextSlider = Component.specialize(/** @lends module:"matte/ui/text-slider.reel".TextSlider# */ {
 
     // Properties
 
@@ -279,9 +274,9 @@ var TextSlider = exports.TextSlider = Montage.create(Component, /** @lends modul
         value: null
     },
 
-    didCreate: {
-        value: function() {
-            Component.didCreate.call(this);
+    constructor: {
+        value: function TextSlider() {
+            this.super();
             this.handlePress = this.handleClick;
         }
     },
@@ -349,7 +344,7 @@ var TextSlider = exports.TextSlider = Montage.create(Component, /** @lends modul
         }
     },
 
-    // handlePress and handleClick are set to equal in didCreate
+    // handlePress and handleClick are set to equal in the constructor
     // handlePress: edit on touch
     // handleClick: edit when parent <label> element is clicked/touched
     handleClick: {

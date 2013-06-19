@@ -1,4 +1,3 @@
-var Montage = require("montage").Montage;
 var TestController = require("montage-testing/test-controller").TestController;
 
 var states = [
@@ -63,7 +62,7 @@ var tags = [
 ];
 
 
-exports.TokenFieldTest = Montage.create(TestController, {
+exports.TokenFieldTest = TestController.specialize({
 
     tokenField1: {
         value: null

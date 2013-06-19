@@ -4,7 +4,7 @@ var TestController = require("montage-testing/test-controller").TestController;
 /**
 * A Delegate to position the popup using custom logic
 */
-var TestPopupPositionDelegate = Montage.create(Montage, {
+var TestPopupPositionDelegate = Montage.specialize({
     willPositionPopup: {
        value: function(popup, anchorPosition) {
            if(anchorPosition) {
@@ -25,9 +25,9 @@ var TestPopupPositionDelegate = Montage.create(Montage, {
        }
     }
 });
-var aTestPopupPositionDelegate = Montage.create(TestPopupPositionDelegate);
+var aTestPopupPositionDelegate = new TestPopupPositionDelegate();
 
-exports.PopupInWindowTest = Montage.create(TestController, {
+exports.PopupInWindowTest = TestController.specialize({
     deserializedFromTemplate: {
         value: function() {
             return this;
@@ -55,7 +55,7 @@ exports.PopupInWindowTest = Montage.create(TestController, {
         value:function () {
             var popup = this.testPopup.popup;
             if(!popup) {
-                popup = Popup.create();
+                popup = new Popup();
                 popup.content = this.testPopup;
                 popup.anchor = this.popupButton.element;
                 popup.delegate = aTestPopupPositionDelegate;

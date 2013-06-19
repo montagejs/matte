@@ -1,8 +1,7 @@
-var Montage = require("montage").Montage;
-var TestController = require("montage-testing/test-controller").TestController;
-var UndoManager = require("montage/core/undo-manager").UndoManager;
+var TestController = require("montage-testing/test-controller").TestController,
+    UndoManager = require("montage/core/undo-manager").UndoManager;
 
-exports.RichTextEditorTest = Montage.create(TestController, {
+exports.RichTextEditorTest = TestController.specialize({
 
     editor1: {
         value: null
@@ -30,7 +29,7 @@ exports.RichTextEditorTest = Montage.create(TestController, {
 
     resetUndoManager: {
         value: function(editor) {
-            editor.undoManager = UndoManager.create();
+            editor.undoManager = new UndoManager();
         }
     }
 });

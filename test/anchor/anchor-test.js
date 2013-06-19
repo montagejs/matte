@@ -1,7 +1,6 @@
-var Montage = require("montage").Montage;
 var TestController = require("montage-testing/test-controller").TestController;
 
-exports.AnchorTest = Montage.create(TestController, {
+exports.AnchorTest = TestController.specialize({
 
     link1: {
         value: null

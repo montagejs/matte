@@ -1,21 +1,20 @@
 /**
     @module "matte/ui/token-field/token-field.reel"
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
 var KEY_DELETE = 46,
-KEY_BACKSPACE = 8,
-KEY_LEFT = 37,
-KEY_UP = 38,
-KEY_RIGHT = 39,
-KEY_DOWN = 40;
+    KEY_BACKSPACE = 8,
+    KEY_LEFT = 37,
+    KEY_UP = 38,
+    KEY_RIGHT = 39,
+    KEY_DOWN = 40;
 
 /**
     @class module:"matte/ui/token-field/token-field.reel".TokenField
     @extends module:montage/ui/component.Component
 */
-exports.TokenField = Montage.create(Component, /** @lends module:"matte/ui/token-field/token-field.reel".TokenField */ {
+exports.TokenField = Component.specialize(/** @lends module:"matte/ui/token-field/token-field.reel".TokenField */ {
 
     delegate: {value: null},
 
@@ -70,7 +69,7 @@ exports.TokenField = Montage.create(Component, /** @lends module:"matte/ui/token
         set: function(newValue) {
             if(newValue) {
                 var representedObject;
-                if(!this.allowAdHocValues && String.isString(newValue)) {
+                if(!this.allowAdHocValues && typeof newValue === "string") {
                     // since ad-hoc values are not allowed, check with the delegate
                     // if a representedObject can be found for this string
                     representedObject = this.callDelegateMethod('getRepresentedObject', newValue);

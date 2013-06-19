@@ -2,8 +2,7 @@
     module:"matte/ui/input-range.reel"
 */
 /*global require,exports */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component,
+var Component = require("montage/ui/component").Component,
     dom = require("montage/core/dom");
 
 /**
@@ -11,7 +10,7 @@ var Montage = require("montage").Montage,
  * @class module:"matte/ui/input-range.reel".InputRange
  * @extends module:"montage/ui/component".Component
  */
-var InputRange = exports.InputRange = Montage.create(Component, /** @lends module:"matte/ui/input-range.reel".InputRange */  {
+exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-range.reel".InputRange */  {
 
     // public API
     _min: {
@@ -23,7 +22,7 @@ var InputRange = exports.InputRange = Montage.create(Component, /** @lends modul
             return this._min;
         },
         set: function(value) {
-            this._min =  String.isString(value) ? parseFloat(value) : value;
+            this._min = typeof value === "string" ? parseFloat(value) : value;
             this.needsDraw = true;
         }
     },
@@ -37,7 +36,7 @@ var InputRange = exports.InputRange = Montage.create(Component, /** @lends modul
             return this._max;
         },
         set: function(value) {
-            this._max = String.isString(value) ? parseFloat(value) : value;
+            this._max = typeof value === "string" ? parseFloat(value) : value;
             this.needsDraw = true;
         }
    },
@@ -51,7 +50,7 @@ var InputRange = exports.InputRange = Montage.create(Component, /** @lends modul
             return this._step;
         },
         set: function(value) {
-            this._step =  String.isString(value) ? parseFloat(value) : value;
+            this._step = typeof value === "string" ? parseFloat(value) : value;
             this.needsDraw = true;
         }
     },
@@ -66,7 +65,7 @@ var InputRange = exports.InputRange = Montage.create(Component, /** @lends modul
             return this._width;
         },
         set: function(value) {
-            this._width =  String.isString(value) ? parseFloat(value) : value;
+            this._width = typeof value === "string" ? parseFloat(value) : value;
             this.needsDraw = true;
         }
     },
@@ -88,7 +87,7 @@ var InputRange = exports.InputRange = Montage.create(Component, /** @lends modul
             return this._value;
         },
         set: function(value, fromInput) {
-            this._value =  String.isString(value) ? parseFloat(value) : value;
+            this._value = typeof value === "string" ? parseFloat(value) : value;
             //console.log('value set', this._value);
             if(fromInput) {
                 this._valueSyncedWithPosition = true;

@@ -1,4 +1,3 @@
-var Montage = require("montage").Montage;
 var TestController = require("montage-testing/test-controller").TestController;
 
 var states = [
@@ -62,7 +61,7 @@ var tags = [
 'business', 'companies', 'startups', 'silicon valley', 'bay area', 'biking', 'tennis', 'united states', 'USA'
 ];
 
-exports.AutocompleteTest = Montage.create(TestController, {
+exports.AutocompleteTest = TestController.specialize({
 
     autocomplete1: {
         value: null

@@ -32,9 +32,9 @@ TestPageLoader.queueTest("button-blueprint-test", function (testPage) {
         });
 
         it("can create button blueprint", function () {
-            var serializer = Serializer.create().initWithRequire(require);
+            var serializer = new Serializer().initWithRequire(require);
 
-            var newBlueprint = Blueprint.create().initWithName(button.identifier);
+            var newBlueprint = new Blueprint().initWithName(button.identifier);
             expect(newBlueprint).toBeTruthy();
             //
             var autofocus = newBlueprint.addToOnePropertyBlueprintNamed("autofocus");

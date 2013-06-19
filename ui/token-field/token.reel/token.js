@@ -1,7 +1,6 @@
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
-exports.Token = Montage.create(Component, {
+exports.Token = Component.specialize({
 
     _text: {
         value: null

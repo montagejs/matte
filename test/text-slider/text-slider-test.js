@@ -1,8 +1,7 @@
-var Montage = require("montage").Montage;
-var TestController = require("montage-testing/test-controller").TestController;
-var Converter = require("montage/core/converter/converter").Converter;
+var TestController = require("montage-testing/test-controller").TestController,
+    Converter = require("montage/core/converter/converter").Converter;
 
-exports.TextSliderTest = Montage.create(TestController, {
+exports.TextSliderTest = TestController.specialize({
     number: {
         value: null
     },
@@ -18,10 +17,10 @@ exports.TextSliderTest = Montage.create(TestController, {
     hexConverter: {
         value: null
     },
-    didCreate: {
-        value: function() {
-            TestController.didCreate.apply(this, arguments);
-            this.hexConverter = Converter.create();
+    constructor: {
+        value: function TextSliderTest() {
+            this.super();
+            this.hexConverter = new Converter();
 
             this.hexConverter.convert = function(value) {
                 return value.toString(16).toUpperCase();

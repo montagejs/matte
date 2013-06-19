@@ -1,16 +1,13 @@
 /**
 	@module "matte/ui/rich-text-editor/overlays/rich-text-resizer.reel"
-    @requires montage/core/core
-    @requires montage/ui/component
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
 /**
     @class module:"matte/ui/rich-text-editor/overlays/rich-text-linkpopup.reel".RichTextLinkPopup
     @extends module:montage/ui/component.Component
 */
-exports.RichTextLinkPopup = Montage.create(Component,/** @lends module:"matte/ui/rich-text-editor/overlays/rich-text-linkpopup.reel".RichTextLinkPopup# */ {
+exports.RichTextLinkPopup = Component.specialize(/** @lends module:"matte/ui/rich-text-editor/overlays/rich-text-linkpopup.reel".RichTextLinkPopup# */ {
 
     /**
       Description TODO

@@ -1,8 +1,7 @@
-var Montage = require("montage").Montage;
-var Converter = require("montage/core/converter/converter").Converter;
-var TestController = require("montage-testing/test-controller").TestController;
+var Converter = require("montage/core/converter/converter").Converter,
+    TestController = require("montage-testing/test-controller").TestController;
 
-exports.TextValidator = Montage.create(Converter, {
+exports.TextValidator = Converter.specialize({
     possibleValues: {
         value: null
     },
@@ -25,7 +24,7 @@ exports.TextValidator = Montage.create(Converter, {
 
 });
 
-exports.InputTextTest = Montage.create(TestController, {
+exports.InputTextTest = TestController.specialize({
 
     txt1: {
         value: null

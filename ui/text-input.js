@@ -35,8 +35,7 @@ POSSIBILITY OF SUCH DAMAGE.
     @requires montage/ui/native-control
     @requires montage/core/core
 */
-var Montage = require("montage").Montage,
-    Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component;
 
 /**
     The base class for all text-based input components. You typically won't create instances of this prototype.
@@ -49,7 +48,7 @@ var Montage = require("montage").Montage,
     @see module:"matte/ui/textarea.reel".TextArea
 
 */
-var TextInput = exports.TextInput =  Montage.create(Component, /** @lends module:matte/ui/text-input.TextInput# */ {
+var TextInput = exports.TextInput =  Component.specialize(/** @lends module:matte/ui/text-input.TextInput# */ {
 
     _hasFocus: {
         enumerable: false,
@@ -221,7 +220,7 @@ var TextInput = exports.TextInput =  Montage.create(Component, /** @lends module
     draw: {
         enumerable: false,
         value: function() {
-            Object.getPrototypeOf(TextInput).draw.call(this);
+            this.super();
 
             var el = this.element;
 

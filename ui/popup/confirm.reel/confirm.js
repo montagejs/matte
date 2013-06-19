@@ -1,21 +1,17 @@
 
 /**
     @module "matte/ui/popup/confirm.reel"
-    @requires montage/core/core
-    @requires montage/ui/component
-    @requires "montage/ui/popup/popup.reel"
 */
 
-var Montage = require("montage").Montage;
-var Component = require("montage/ui/component").Component;
-var Popup = require("ui/popup/popup.reel").Popup;
+var Component = require("montage/ui/component").Component,
+    Popup = require("ui/popup/popup.reel").Popup;
 
 /**
  @class module:"matte/ui/popup/confirm.reel".Confirm
  @extends module:montage/ui/component.Component
  */
 
-var Confirm = exports.Confirm = Montage.create(Component, /** @lends module:"matte/ui/popup/confirm.reel".Confirm# */ {
+var Confirm = exports.Confirm = Component.specialize(/** @lends module:"matte/ui/popup/confirm.reel".Confirm# */ {
     hasTemplate: {value: true},
 
     title: {
@@ -150,7 +146,7 @@ var Confirm = exports.Confirm = Montage.create(Component, /** @lends module:"mat
         value: function(options, okCallback, cancelCallback) {
             var popup = this.application._confirmPopup, confirm;
             if(!popup) {
-                popup = Popup.create();
+                popup = new Popup();
                 this.popup = popup;
 
                 popup.type = 'confirm';
@@ -158,7 +154,7 @@ var Confirm = exports.Confirm = Montage.create(Component, /** @lends module:"mat
                 popup.modal = true;
                 this.application._confirmPopup = popup;
 
-                confirm = Confirm.create();
+                confirm = new Confirm();
                 popup.content = confirm;
             }
 

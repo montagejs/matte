@@ -1,6 +1,5 @@
 /**
 	module:"matte/ui/rich-text-sanitizer.js"
-    @requires montage/core/core
 */
 var Montage = require("montage").Montage;
 
@@ -8,7 +7,7 @@ var Montage = require("montage").Montage;
     @class module:"matte/ui/rich-text-sanitizer.js".Sanitizer
     @extends module:montage/core/core.Montage
 */
-exports.Sanitizer = Montage.create(Montage,/** @lends module:"matte/ui/rich-text-sanitizer.js".Sanitizer# */ {
+exports.Sanitizer = Montage.specialize(/** @lends module:"matte/ui/rich-text-sanitizer.js".Sanitizer# */ {
 
     willSetValue: {
         value: function(value, uniqueId)  {

@@ -53,7 +53,7 @@ TestPageLoader.queueTest("radio-button-test", function(testPage) {
                     };
                     spyOn(buttonSpy, 'doSomething');
 
-                    var actionListener = Montage.create(ActionEventListener).initWithHandler_action_(buttonSpy, "doSomething");
+                    var actionListener = new ActionEventListener().initWithHandler_action_(buttonSpy, "doSomething");
                     test.radio1.addEventListener("action", actionListener);
 
                     click(test.radio3);
