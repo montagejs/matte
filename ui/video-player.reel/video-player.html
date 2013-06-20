@@ -218,18 +218,18 @@
         },
         "bindings": {
             "positionText.value": {
-                "<-": "controller.position",
+                "<-": "videoController.position",
                 "converter": {"@": "prettyTimeConverter"}
             },
             "durationText.value": {
-                "<-": "controller.duration",
+                "<-": "videoController.duration",
                 "converter": {"@": "prettyTimeConverter"}
             },
             "slider.max": {
-                "<-": "controller.duration"
+                "<-": "videoController.duration"
             },
             "slider.value": {
-                "<->": "controller.position"
+                "<->": "videoController.position"
             }
         }
     }

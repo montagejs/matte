@@ -7,7 +7,8 @@
     @requires core/event/action-event-listener
     @requires core/media-controller
 */
-var Bindings = require("montage/core/bindings").Bindings,
+var Montage = require("montage").Montage,
+    Bindings = require("montage/core/bindings").Bindings,
     logger = require("montage/core/logger").logger("video-player"),
     AbstractVideo = require("montage/ui/base/abstract-video").AbstractVideo,
     MediaController = require("montage/core/media-controller").MediaController,
@@ -36,7 +37,7 @@ exports.PrettyTimeConverter = Montage.create(Converter, {
 /**
  @class module:matte/ui/video-player.VideoPlayer
  */
-exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-player.VideoPlayer# */ {
+exports.VideoPlayer = AbstractVideo.specialize(/** @lends module:matte/ui/video-player.VideoPlayer# */ {
 
     /*-----------------------------------------------------------------------------
     MARK:   Constants
@@ -127,43 +128,43 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
     
     handlePlayButtonAction: {
         value: function() {
-            if (this.controller.status === this.controller.PLAYING) {
-                this.controller.pause();
-            } else if (this.controller.status === this.controller.PAUSED) {
-                this.controller.unpause();
+            if (this.videoController.status === this.videoController.PLAYING) {
+                this.videoController.pause();
+            } else if (this.videoController.status === this.videoController.PAUSED) {
+                this.videoController.unpause();
             } else {
-                this.controller.play();
+                this.videoController.play();
             }
         }
     },
     
     handleRewindButtonAction: {
         value: function() {
-            this.controller.rewind();
+            this.videoController.rewind();
         }
     },
     
     handleFastForwardButtonAction: {
         value: function() {
-            this.controller.fastForward();
+            this.videoController.fastForward();
         }
     },
     
     handleDecreaseVolumeButtonAction: {
         value: function() {
-            this.controller.volumeDecrease();
+            this.videoController.volumeDecrease();
         }
     },
     
     handleIncreaseVolumeButtonAction: {
         value: function() {
-            this.controller.volumeIncrease();
+            this.videoController.volumeIncrease();
         }
     },
 
     handleMuteButtonAction: {
         value: function() {
-            this.controller.toggleMute();
+            this.videoController.toggleMute();
         }
     },
     
@@ -308,11 +309,11 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
             
             var volumeWidth;
             // Handle loading
-            if (this.controller.status === this.controller.EMPTY) {
+            if (this.videoController.status === this.videoController.EMPTY) {
                 this.loadMedia();
             } else {
                 // Handle playing
-                if (this.controller.status === this.controller.PLAYING) {
+                if (this.videoController.status === this.videoController.PLAYING) {
                     if (!this.playButton.classList.contains('playing')) {
                         this.playButton.classList.add('playing');
                     }
@@ -323,11 +324,11 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
                 }
 
                 if (this.volumeLevel) {
-                    volumeWidth = Math.floor(this.controller.volume);
+                    volumeWidth = Math.floor(this.videoController.volume);
                     this.volumeLevel.style.width =  volumeWidth + "%";
                 }
 
-                if (this.controller.repeat) {
+                if (this.videoController.repeat) {
                     if (!this.repeatButton.classList.contains("loop")) {
                         this.repeatButton.classList.add("loop");
                     }
