@@ -1,30 +1,33 @@
 {
-    "blueprint_nativebutton_reference":{
-        "prototype":"montage/core/meta/blueprint-reference",
-        "properties":{
-            "valueReference":{
-                "blueprintName":"NativeButton",
-                "blueprintModuleId":"native/ui/button.reel/button.meta",
-                "prototypeName":"NativeButton"
+    "blueprint_nativebutton_reference": {
+        "prototype": "montage/core/meta/blueprint-reference",
+        "properties": {
+            "valueReference": {
+                "blueprintName": "NativeButton",
+                "prototypeName": "NativeButton",
+                "blueprintModule": {
+                    "%": "native/ui/button.reel/button.meta"
+                }
             }
         }
     },
-
-    "root":{
-        "prototype":"montage/core/meta/blueprint",
-        "properties":{
-            "name":"Button",
-            "blueprintModuleId":"matte/ui/button.reel/button.meta",
-            "prototypeName":"Button",
-            "customPrototype":false,
-            "parent":{
-                "@":"blueprint_nativebutton_reference"
+    "root": {
+        "prototype": "montage/core/meta/module-blueprint",
+        "properties": {
+            "name": "Button",
+            "customPrototype": false,
+            "parent": {
+                "@": "blueprint_nativebutton_reference"
             },
-            "propertyBlueprints":[
-            ],
-            "propertyBlueprintGroups":{
+            "propertyBlueprints": [],
+            "propertyBlueprintGroups": {},
+            "propertyValidationRules": {},
+            "blueprintModule": {
+                "%": "matte/ui/button.reel/button.meta"
             },
-            "propertyValidationRules":{
+            "exportName": "Button",
+            "module": {
+                "%": "ui/button.reel"
             }
         }
     }
