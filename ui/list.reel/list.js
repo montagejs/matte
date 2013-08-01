@@ -9,6 +9,21 @@ var Component = require("montage/ui/component").Component,
  @extends module:montage/ui/component.Component
  */
 exports.List = Component.specialize(/** @lends module:"matte/ui/list.reel".List# */ {
+
+    constructor: {
+        value: function List () {
+            this.super();
+
+            this.defineBinding("_repetition.content", {"<-": "content"});
+
+            // Only use a contentController if content is not defined
+            this.defineBinding("content.defined() ? null : _repetition.contentController", {
+                "<-": "contentController"
+            });
+
+        }
+    },
+
     /**
       Description TODO
       @private
@@ -25,31 +40,9 @@ exports.List = Component.specialize(/** @lends module:"matte/ui/list.reel".List#
         value: null
     },
 
-    _content: {value: null},
-    content: {
-        set: function(value) {
-            this._content = value;
-            this.defineBinding("_repetition.content", {
-                "<-": "_content"
-            });
-        },
-        get: function() {
-            return this._content;
-        }
-    },
+    content: {value: null},
 
-    _contentController: {value: null},
-    contentController: {
-        set: function(value) {
-            this._contentController = value;
-            this.defineBinding("_repetition.contentController", {
-                "<-": "_contentController"
-            });
-        },
-        get: function() {
-            return this._contentController;
-        }
-    },
+    contentController: {value: null},
 
     axis: {
         value: null
