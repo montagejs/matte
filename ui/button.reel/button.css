@@ -29,6 +29,21 @@
 }
 
 
+/* Variations ------------------------------------ */
+
+.matte-Button--glass {
+    margin: 0;
+    border-radius: 0;
+    border: none;
+}
+
+.matte-Button--glass,
+.matte-Button--glass:hover,
+.matte-Button--glass:active {
+    background-color: transparent;
+}
+
+
 /* ButtonGroup ------------------------------- */
 
 .matte-ButtonGroup {
