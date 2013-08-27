@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="video-player.css">
     <script type="text/montage-serialization">
 {
-    "dynamictext1": {
+    "durationText": {
         "prototype": "montage/ui/text.reel",
         "properties": {
             "element": {
@@ -13,7 +13,7 @@
             }
         }
     },
-    "dynamictext2": {
+    "positionText": {
         "prototype": "montage/ui/text.reel",
         "properties": {
             "element": {
@@ -21,39 +21,17 @@
             }
         }
     },
-    "mediacontroller1": {
-        "prototype": "montage/core/media-controller",
-        "properties": {
-            "mediaElement": {
-                "#": "video-tag"
-            }
-        },
-        "bindings": {
-            "mediaSrc": {"<-": "@owner.src"}
-        }
-    },
-    "slider1": {
+    "durationSlider": {
         "prototype": "ui/input-range.reel",
         "properties": {
             "element": {
                 "#": "durationSlider"
             },
             "min": 0.0
-        },
-        "bindings": {
-            "value": {"<->": "@owner.controller.position"}
         }
     },
-    "actioneventlistener1": {
-        "prototype": "montage/core/event/action-event-listener",
-        "properties": {
-            "handler": {
-                "@": "mediacontroller1"
-            },
-            "action": "playPause"
-        }
-    },
-    "togglebutton1": {
+
+    "playButton": {
         "prototype": "ui/toggle-button.reel",
         "properties": {
             "element": {
@@ -64,22 +42,14 @@
             {
                 "type": "action",
                 "listener": {
-                    "@": "actioneventlistener1"
+                    "@": "owner"
                 },
                 "capture": false
             }
         ]
     },
-    "actioneventlistener2": {
-        "prototype": "montage/core/event/action-event-listener",
-        "properties": {
-            "handler": {
-                "@": "mediacontroller1"
-            },
-            "action": "rewind"
-        }
-    },
-    "button1": {
+
+    "rewindButton": {
         "prototype": "ui/button.reel",
         "properties": {
             "element": {
@@ -90,22 +60,14 @@
             {
                 "type": "action",
                 "listener": {
-                    "@": "actioneventlistener2"
+                    "@": "owner"
                 },
                 "capture": false
             }
         ]
     },
-    "actioneventlistener3": {
-        "prototype": "montage/core/event/action-event-listener",
-        "properties": {
-            "handler": {
-                "@": "mediacontroller1"
-            },
-            "action": "fastForward"
-        }
-    },
-    "button2": {
+
+    "fastForwardButton": {
         "prototype": "ui/button.reel",
         "properties": {
             "element": {
@@ -116,22 +78,14 @@
             {
                 "type": "action",
                 "listener": {
-                    "@": "actioneventlistener3"
+                    "@": "owner"
                 },
                 "capture": false
             }
         ]
     },
-    "actioneventlistener4": {
-        "prototype": "montage/core/event/action-event-listener",
-        "properties": {
-            "handler": {
-                "@": "mediacontroller1"
-            },
-            "action": "volumeDecrease"
-        }
-    },
-    "button3": {
+
+    "decreaseVolumeButton": {
         "prototype": "ui/button.reel",
         "properties": {
             "element": {
@@ -142,22 +96,14 @@
             {
                 "type": "action",
                 "listener": {
-                    "@": "actioneventlistener4"
+                    "@": "owner"
                 },
                 "capture": false
             }
         ]
     },
-    "actioneventlistener5": {
-        "prototype": "montage/core/event/action-event-listener",
-        "properties": {
-            "handler": {
-                "@": "mediacontroller1"
-            },
-            "action": "volumeIncrease"
-        }
-    },
-    "button4": {
+
+    "increaseVolumeButton": {
         "prototype": "ui/button.reel",
         "properties": {
             "element": {
@@ -168,22 +114,14 @@
             {
                 "type": "action",
                 "listener": {
-                    "@": "actioneventlistener5"
+                    "@": "owner"
                 },
                 "capture": false
             }
         ]
     },
-    "actioneventlistener6": {
-        "prototype": "montage/core/event/action-event-listener",
-        "properties": {
-            "handler": {
-                "@": "mediacontroller1"
-            },
-            "action": "toggleMute"
-        }
-    },
-    "button5": {
+
+    "muteButton": {
         "prototype": "ui/button.reel",
         "properties": {
             "element": {
@@ -194,22 +132,14 @@
             {
                 "type": "action",
                 "listener": {
-                    "@": "actioneventlistener6"
+                    "@": "owner"
                 },
                 "capture": false
             }
         ]
     },
-    "actioneventlistener7": {
-        "prototype": "montage/core/event/action-event-listener",
-        "properties": {
-            "handler": {
-                "@": "mediacontroller1"
-            },
-            "action": "toggleRepeat"
-        }
-    },
-    "button6": {
+
+    "repeatButton": {
         "prototype": "ui/button.reel",
         "properties": {
             "element": {
@@ -220,22 +150,14 @@
             {
                 "type": "action",
                 "listener": {
-                    "@": "actioneventlistener7"
+                    "@": "owner"
                 },
                 "capture": false
             }
         ]
     },
-    "actioneventlistener8": {
-        "prototype": "montage/core/event/action-event-listener",
-        "properties": {
-            "handler": {
-                "@": "owner"
-            },
-            "action": "toggleFullScreen"
-        }
-    },
-    "button7": {
+
+    "fullScreenButton": {
         "prototype": "ui/button.reel",
         "properties": {
             "element": {
@@ -246,23 +168,31 @@
             {
                 "type": "action",
                 "listener": {
-                    "@": "actioneventlistener8"
+                    "@": "owner"
                 },
                 "capture": false
             }
         ]
     },
+    
+    "prettyTimeConverter": {
+        "prototype": "ui/video-player.reel/video-player[PrettyTimeConverter]"
+    },
+
     "owner": {
         "prototype": "ui/video-player.reel",
         "properties": {
+            "mediaElement": {
+                "#": "video-tag"
+            },
             "element": {
                 "#": "video-player"
             },
             "playButton": {
-                "#": "playButton"
+                "@": "playButton"
             },
             "repeatButton": {
-                "#": "repeatButton"
+                "@": "repeatButton"
             },
             "volumeLevel": {
                 "#": "volumeLevel"
@@ -274,19 +204,32 @@
                 "#": "fullScreenPanel"
             },
             "fullScreenButton": {
-                "#": "fullScreenButton"
+                "@": "fullScreenButton"
             },
             "slider": {
-                "@": "slider1"
+                "@": "durationSlider"
             },
             "durationText": {
-                "@": "dynamictext1"
+                "@": "durationText"
             },
             "positionText": {
-                "@": "dynamictext2"
+                "@": "positionText"
+            }
+        },
+        "bindings": {
+            "positionText.value": {
+                "<-": "videoController.position",
+                "converter": {"@": "prettyTimeConverter"}
             },
-            "controller": {
-                "@": "mediacontroller1"
+            "durationText.value": {
+                "<-": "videoController.duration",
+                "converter": {"@": "prettyTimeConverter"}
+            },
+            "slider.max": {
+                "<-": "videoController.duration"
+            },
+            "slider.value": {
+                "<->": "videoController.position"
             }
         }
     }
