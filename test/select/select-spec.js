@@ -28,26 +28,10 @@ TestPageLoader.queueTest("select-test", function(testPage) {
 
             describe("once loaded", function() {
 
-                it("select should have the Select element attributes", function() {
+                it("select should have 'multiple' attribute", function() {
                     // these attributes are defined at the InputNumber/RangeInput
                     var instance = test.dept;
-
-                    expect(instance._getElementAttributeDescriptor('multiple')).toBeDefined();
-                    expect(instance._getElementAttributeDescriptor('name')).toBeDefined();
-                    expect(instance._getElementAttributeDescriptor('size')).toBeDefined();
-
-                });
-
-                it("select should have the element attributes defined by NativeControl", function() {
-                    // these attributes are defined at the InputNumber/RangeInput
-                    var instance = testPage.test.dept;
-
-                    expect(instance._getElementAttributeDescriptor('placeholder')).not.toBeDefined();
-                    expect(instance._getElementAttributeDescriptor('pattern')).not.toBeDefined();
-
-                    expect(instance._getElementAttributeDescriptor('contenteditable')).toBeDefined();
-                    expect(instance._getElementAttributeDescriptor('title')).toBeDefined();
-                    expect(instance._getElementAttributeDescriptor('style')).toBeDefined();
+                    expect(instance.multiple).toBeDefined();
 
                 });
 
