@@ -72,7 +72,7 @@ TestPageLoader.queueTest("button-test", function(testPage) {
                     expect(test.disabledinput.disabled).toBe(false);
                     // TODO click the button and check that it wasn't pressed
                 });
-                it("can can be set in the serialization", function(){
+                it("can be set in the serialization", function(){
                     expect(test.disabledinputszn.disabled).toBe(true);
                     // TODO check button pressibility
                 });
