@@ -9,6 +9,9 @@
                 "prototype": "test/select/select-test",
                 "properties": {
                     "dept": {"@": "dept"},
+                    "lang": {"@": "lang"},
+                    "langCode": {"@": "langCode"},
+                    "langName": {"@": "langName"},
                     "state": {"@": "state"},
                     "country": {"@": "country"},
                     "noDefaultSelection": {"@": "noDefaultSelection"},
@@ -31,11 +34,47 @@
                     "multiple": true
                 },
                 "bindings": {
-                    "content": {"<-": "@test.departments"},
-                    "values": {"<-": "@test.deptValues"}
+                    "content.rangeContent()": {"<-": "@test.departments"},
+                    "values.rangeContent()": {"<-": "@test.deptValues"}
                 }
             },
 
+            "lang": {
+                "prototype": "ui/select.reel",
+                "properties": {
+                    "element": {"#": "lang"},
+                    "textPropertyPath": "name",
+                    "valuePropertyPath": "code",
+                    "multiple": true,
+                    "content": [
+                        {"name": "eng", "label": "English"},
+                        {"name": "spa", "label": "Spanish"},
+                        {"name": "por", "label": "Portuguese"},
+                        {"name": "fra", "label": "French"},
+                        {"name": "rus", "label": "Russian"}
+                    ]
+                }
+            },
+
+            "langName": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": {"#": "langName"}
+                },
+                "bindings": {
+                    "value": {"<-": "@lang.value.label"}
+                }
+            },
+
+            "langCode": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": {"#": "langCode"}
+                },
+                "bindings": {
+                    "value": {"<-": "@lang.value.name"}
+                }
+            },
 
             "statesController": {
                 "prototype": "montage/core/range-controller",
@@ -58,7 +97,14 @@
             "country": {
                 "prototype": "ui/select.reel",
                 "properties": {
-                    "element": {"#": "country"}
+                    "element": {"#": "country"},
+                    "content": [
+                        {"label": "Please select a Country"},
+                        {"label": "United States of America"},
+                        {"label": "India"},
+                        {"label": "France"},
+                        {"label": "Germany"}
+                    ]
                 }
             },
 
@@ -137,7 +183,7 @@
                     "element": {"#": "justifySelect"}
                 },
                 "bindings": {
-                    "value": {"<->": "@test.justify"}
+                    "value.rangeContent()": {"<->": "@test.justify"}
                 }
             },
             "justifyResult": {
@@ -146,7 +192,7 @@
                     "element": {"#": "justifyResult"}
                 },
                 "bindings": {
-                    "value": {"<-": "@test.justify"}
+                    "value.rangeContent()": {"<-": "@test.justify"}
                 }
             }
         }
@@ -154,14 +200,22 @@
 
 </head>
 <body>
+    <h2>Basic bindings</h2>
+    <label for="lang">Language</label>
+    <select id="lang" data-montage-id="lang" required="true">
+        <option>Loading...</option>
+    </select><br>
+    Name: <span data-montage-id="langName">?</span><br>
+    Code: <span data-montage-id="langCode">?</span>
+
     <h2>Select Input Test</h2>
     <div class="row">
         <div class="span8">
             <form data-montage-id="input-form" class="form-stacked">
                 <label for="dept">Department</label>
-                 <select id="dept" data-montage-id="dept" required="true">
-                     <option>Please select a Department</option>
-                 </select>
+                <select id="dept" data-montage-id="dept" required="true">
+                    <option>Please select a Department</option>
+                </select>
 
                 <label for="country">Country</label>
                 <select id="country" data-montage-id="country" required>
