@@ -1,6 +1,26 @@
 
+.matte-TextSlider {
+    display: inline-block;
+    min-width: 1em;
+    outline: none;
+    position: relative;
+}
+
 .matte-TextSlider-input {
     display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font: inherit;
+    line-height: inherit;
+    text-align: inherit;
+    border: none;
+    background: hsla(0,0%,0%,.1);
 }
 
 .matte-TextSlider--editing .matte-TextSlider-input {
@@ -11,6 +31,7 @@
     border-bottom: 1px dotted #000;
 }
 
-.matte-TextSlider--editing .matte-TextSlider-value, .matte-TextSlider--editing .matte-TextSlider-label {
-    display: none;
+.matte-TextSlider--editing .matte-TextSlider-value, 
+.matte-TextSlider--editing .matte-TextSlider-label {
+    visibility: hidden;
 }
