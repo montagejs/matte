@@ -169,13 +169,17 @@ exports.Scroller = Component.specialize(/** @lends module:"matte/ui/scroller.ree
             this._height = this._element.offsetHeight;
 
             // BUG: Firefox doesn't seem to properly calculate the scrollWidth
-            this._maxTranslateX = this._content.scrollWidth - this._width;
-            if (this._maxTranslateX < 0) {
+            var maxTranslateX = this._content.scrollWidth - this._width;
+            if (maxTranslateX < 0) {
                 this._maxTranslateX = 0;
+            } else {
+                this._maxTranslateX = maxTranslateX;
             }
-            this._maxTranslateY = this._content.offsetHeight - this._height;
-            if (this._maxTranslateY < 0) {
+            var maxTranslateY = this._content.offsetHeight - this._height;
+            if (maxTranslateY < 0) {
                 this._maxTranslateY = 0;
+            } else {
+                this._maxTranslateY = maxTranslateY;
             }
             var delegateValue = this.callDelegateMethod("didSetMaxScroll", {x: this._maxTranslateX, y: this._maxTranslateY});
             if (delegateValue) {

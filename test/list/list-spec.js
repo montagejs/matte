@@ -8,19 +8,65 @@ TestPageLoader.queueTest("list-test", function(testPage) {
     });
 
     describe("test/list/list-spec", function() {
-        var list;
+        var list1,
+            list2;
 
         beforeEach(function() {
-            list = test.list;
+            list1 = test.list1;
+            list2 = test.list2;
         });
 
         describe("when first loaded", function() {
             it("it should have no initial content", function() {
-                var repetition = list._element.querySelector('*[data-montage-id="repetition"]').component;
+                var repetition = list1._element.querySelector('*[data-montage-id="repetition"]').component;
                 expect(repetition).toBeDefined();
                 expect(repetition.iterations.length).toBe(3);
-                expect(list._element.querySelectorAll(".matte-InputRange").length).toBe(3);
+                expect(list1._element.querySelectorAll(".matte-InputRange").length).toBe(3);
             });
+        });
+
+        it("should scroll with the mouse", function() {
+            // a point inside list2
+            var element = testPage.document.elementFromPoint(10, 50);
+
+            // The first dragElementOffsetTo is only needed because the Scroller
+            // only scrolls after the first draw, the first one is used to
+            // calculate the maxTranslateY
+            testPage.dragElementOffsetTo(element, 0, 0, null, null, function() {
+                testPage.waitForDraw();
+                runs(function() {
+
+                    testPage.dragElementOffsetTo(element, 0, -40, null, null, function() {
+                        testPage.waitForDraw();
+                        runs(function() {
+                            expect(testPage.document.elementFromPoint(10, 50)).not.toBe(element);
+                        });
+                    }, {pointerType: "mouse"});
+
+                });
+            }, {pointerType: "mouse"});
+        });
+
+        it("should scroll with touch", function() {
+            // a point inside list2
+            var element = testPage.document.elementFromPoint(10, 50);
+
+            // The first dragElementOffsetTo is only needed because the Scroller
+            // only scrolls after the first draw, the first one is used to
+            // calculate the maxTranslateY
+            testPage.dragElementOffsetTo(element, 0, 0, null, null, function() {
+                testPage.waitForDraw();
+                runs(function() {
+
+                    testPage.dragElementOffsetTo(element, 0, -40, null, null, function() {
+                        testPage.waitForDraw();
+                        runs(function() {
+                            expect(testPage.document.elementFromPoint(10, 50)).not.toBe(element);
+                        });
+                    }, {pointerType: "touch"});
+
+                });
+            }, {pointerType: "touch"});
         });
     });
 });
