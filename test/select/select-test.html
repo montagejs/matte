@@ -190,7 +190,13 @@
             "justifySelect": {
                 "prototype": "ui/select.reel",
                 "properties": {
-                    "element": {"#": "justifySelect"}
+                    "element": {"#": "justifySelect"},
+                    "content": [
+                        {"label": "-", "value": "none"},
+                        {"label": "Left", "value": "left"},
+                        {"label": "Center", "value": "center"},
+                        {"label": "Right", "value": "right"}
+                    ]
                 },
                 "bindings": {
                     "value.rangeContent()": {"<->": "@test.justify"}
@@ -249,11 +255,7 @@
                 <div style="background:#A00; height:260px; width:10px">.</div>
                 <label for="country1">Country</label>
                 <select id="country1" data-montage-id="country1" required>
-                    <option value="">Please select a Country</option>
-                    <option value="USA" selected="true">United States of America</option>
-                    <option value="INR" >India</option>
-                    <option value="FR">France</option>
-                    <option value="GER">Germany</option>
+                    <option value="">Loading...</option>
                 </select>
                 <div style="background:#A00; height:200px; width:10px">.</div>
             </div>
@@ -270,13 +272,7 @@
                     <button data-montage-id="justifyRight" class="btn justify">R</button>
                 </div>
                 <div>
-                    <select data-montage-id="justifySelect" class="justifySelect">
-                            <option value=""></option>
-                            <option value="left">Left</option>
-                            <option value="center">Center</option>
-                            <option value="right">Right</option>
-                    </select>
-
+                    <select data-montage-id="justifySelect" class="justifySelect"></select>
                     <p>
                         Justify selection: <span data-montage-id="justifyResult"></span>
                     </p>
