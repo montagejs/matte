@@ -70,7 +70,7 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                     it("country's contentController must reflect selections", function() {
                         var select = test.country.element;
                         changeSelection(select, 1);
-                        expect(test.country.selectedIndexes[0]).toBe(1);
+                        expect(test.country.value.label).toEqual("United States of America");
                     });
                 });
 
