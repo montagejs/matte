@@ -1,0 +1,11 @@
+.matte-InputNumber {
+}
+
+.matte-InputNumber > .matte-InputNumber-input {
+    height: 2.5em !important;
+}
+
+.matte-InputNumber > .matte-InputNumber-plus,
+.matte-InputNumber > .matte-InputNumber-minus {
+    display: none;
+}
