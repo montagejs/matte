@@ -125,7 +125,11 @@
             "noDefaultSelection": {
                 "prototype": "ui/select.reel",
                 "properties": {
-                    "element": {"#": "noDefaultSelection"}
+                    "element": {"#": "noDefaultSelection"},
+                    "content": [
+                        {"label": "Name"},
+                        {"label": "Tags"}
+                    ]
                 }
             },
 
@@ -219,11 +223,7 @@
 
                 <label for="country">Country</label>
                 <select id="country" data-montage-id="country" required>
-                    <option value="">Please select a Country</option>
-                    <option value="USA" selected="true">United States of America</option>
-                    <option value="INR" >India</option>
-                    <option value="FR">France</option>
-                    <option value="GER">Germany</option>
+                    <option value="">Loading...</option>
                 </select>
 
                 <label for="state">State</label>
