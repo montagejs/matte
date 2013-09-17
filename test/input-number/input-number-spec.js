@@ -41,7 +41,7 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                     expect(testPage.test.num1.required).toBe(true);
                 });
                 it("num2 should have default value", function() {
-                    expect(testPage.test.num2.value).toBe('10');
+                    expect(testPage.test.num2.value).toBe(10);
                 });
                 it("num2 should be disabled", function() {
                     expect(testPage.test.num2.disabled).toBe(true);
@@ -76,14 +76,53 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
 
                     it("should accept the value when set programmatically", function() {
                         var field = testPage.test.num1,
-                        value = 10;
+                        value = "10";
                         field.value = value;
 
                         expect(field.value).toBe(value);
                         testPage.waitForDraw();
                         runs(function(){
                             // browser empties the content if value is invalid
-                            expect(field.element.value == value).toBe(true);
+                            expect(field.element.value).toBe(10);
+                        });
+                    });
+
+                    it("should accept float values", function() {
+                        var field = testPage.test.num1,
+                        value = "10.5";
+                        field.value = value;
+
+                        expect(field.value).toBe(value);
+                        testPage.waitForDraw();
+                        runs(function(){
+                            // browser empties the content if value is invalid
+                            expect(field.element.value).toBe(10.5);
+                        });
+                    });
+
+                    it("should truncate invalid extra decimal places", function() {
+                        var field = testPage.test.num1,
+                        value = "10.5.3";
+                        field.value = value;
+
+                        expect(field.value).toBe(value);
+                        testPage.waitForDraw();
+                        runs(function(){
+                            // browser empties the content if value is invalid
+                            expect(field.element.value).toBe(10.5);
+                        });
+                    });
+
+                    it("should reject input value if the user enters a string", function() {
+                        var field = testPage.test.num1,
+                        value = "foo10";
+                        field.value = value;
+
+                        expect(field.value).toBe(value);
+                        testPage.waitForDraw();
+                        runs(function(){
+                            // browser empties the content if value is invalid
+                            expect(field.element.value).toBe("");
                         });
                     });
 
@@ -107,7 +146,7 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                         testPage.waitForDraw();
                         runs(function(){
                             // browser empties the content if value is invalid
-                            expect(field.element.value == value).toBe(true);
+                            expect(field.element.value).toBe(value);
                         });
                     });
 

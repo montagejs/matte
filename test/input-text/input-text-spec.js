@@ -91,6 +91,14 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         expect(field.value).toBe(value);
                     });
 
+                    it("should accept a number as a string", function() {
+                        var field = testPage.test.txt1,
+                        value = "10";
+                        field.value = value;
+
+                        expect(field.value).toBe(value);
+                    });
+
                     it("should mark empty value as invalid for required fields", function() {
                         var field = testPage.test.txt1,
                         value = "";
