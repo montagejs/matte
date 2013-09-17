@@ -38,32 +38,32 @@ exports.SelectTest = TestController.specialize({
 
     departments: {
         value: [
-            {name: 'Please select a Department', code: ''},
-            {name: 'Human Resources', code: 'HRD'},
-            {name: 'Software Engineering', code: 'SWE'},
-            {name: 'Hardware Engineering', code: 'HWE'},
-            {name: 'Finance', code: 'FIN'},
-            {name: 'Information Technology', code: 'IT'}
+            {label: 'Please select a Department', code: ''},
+            {label: 'Human Resources', code: 'HRD'},
+            {label: 'Software Engineering', code: 'SWE'},
+            {label: 'Hardware Engineering', code: 'HWE'},
+            {label: 'Finance', code: 'FIN'},
+            {label: 'Information Technology', code: 'IT'}
         ]
     },
 
     states: {
         value: {
             'USA': [
-                {name: 'Arizona', code: 'AZ'},
-                {name: 'Colorado', code: 'CO'},
-                {name: 'California', code: 'CA'},
-                {name: 'New York', code: 'NY'},
-                {name: 'Washington', code: 'WA'},
-                {name: 'Oregon', code: 'OR'},
-                {name: 'Georgia', code: 'GA'}
+                {label: 'Arizona', code: 'AZ'},
+                {label: 'Colorado', code: 'CO'},
+                {label: 'California', code: 'CA'},
+                {label: 'New York', code: 'NY'},
+                {label: 'Washington', code: 'WA'},
+                {label: 'Oregon', code: 'OR'},
+                {label: 'Georgia', code: 'GA'}
             ],
             'INR': [
-                {name: 'Kerala', code: 'KL'},
-                {name: 'Karnataka', code: 'KA'},
-                {name: 'Tamil Nadu', code: 'TN'},
-                {name: 'Andhra Pradesh', code: 'AP'},
-                {name: 'Goa', code: 'GO'}
+                {label: 'Kerala', code: 'KL'},
+                {label: 'Karnataka', code: 'KA'},
+                {label: 'Tamil Nadu', code: 'TN'},
+                {label: 'Andhra Pradesh', code: 'AP'},
+                {label: 'Goa', code: 'GO'}
             ]
         }
     },
@@ -76,10 +76,10 @@ exports.SelectTest = TestController.specialize({
             if(value && this._selectedCountry !== value) {
                 this._selectedCountry = value;
                 // update states list
-                var code = this._selectedCountry.value;
+                var code = this._selectedCountry.code;
                 this.statesController.content = this.states[code];
                 // select the first option in the States dropdown
-                this.statesController.selectedIndexes = [0];
+                this.statesController.selectedIndexes = [0]; //FIXME
             }
         }
     },
