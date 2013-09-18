@@ -48,7 +48,7 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                 });
 
                 it("num1 should have the min/max/step element attributes", function() {
-                    // these attributes are defined at the InputNumber/RangeInput
+                    // these attributes are defined at the InputNumber/AbstractNumberField
                     var instance = testPage.test.num1;
                     console.log('test min/max');
                     expect(instance._getElementAttributeDescriptor('min')).toBeDefined();
@@ -58,7 +58,7 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                 });
 
                 it("num1 should have the element attributes defined by TextInput and NativeControl", function() {
-                    // these attributes are defined at the InputNumber/RangeInput
+                    // these attributes are defined at the AbstractControl
                     var instance = testPage.test.num1;
 
                     expect(instance._getElementAttributeDescriptor('name')).toBeDefined();
@@ -79,7 +79,7 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                         value = "10";
                         field.value = value;
 
-                        expect(field.value).toBe(value);
+                        expect(field.value).toBe(10);
                         testPage.waitForDraw();
                         runs(function(){
                             // browser empties the content if value is invalid
@@ -92,7 +92,7 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                         value = "10.5";
                         field.value = value;
 
-                        expect(field.value).toBe(value);
+                        expect(field.value).toBe(10.5);
                         testPage.waitForDraw();
                         runs(function(){
                             // browser empties the content if value is invalid
@@ -100,38 +100,24 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                         });
                     });
 
-                    it("should truncate invalid extra decimal places", function() {
-                        var field = testPage.test.num1,
-                        value = "10.5.3";
+                    it("should reject changes to value if the user enters a string", function() {
+                        var field = testPage.test.num2,
+                        value = 232;
                         field.value = value;
-
-                        expect(field.value).toBe(value);
-                        testPage.waitForDraw();
-                        runs(function(){
-                            // browser empties the content if value is invalid
-                            expect(field.element.value).toBe(10.5);
-                        });
-                    });
-
-                    it("should reject input value if the user enters a string", function() {
-                        var field = testPage.test.num1,
                         value = "foo10";
                         field.value = value;
 
-                        expect(field.value).toBe(value);
+                        expect(field.value).toBe(232);
                         testPage.waitForDraw();
                         runs(function(){
                             // browser empties the content if value is invalid
-                            expect(field.element.value).toBe("");
+                            expect(field.element.value).toBe(232);
                         });
                     });
 
-                    it("should mark empty value as invalid for required fields", function() {
-                        var field = testPage.test.num1,
-                        value = "";
-                        field.value = value;
+                    xit("should mark empty value as invalid for required fields", function() {
+                        var field = testPage.test.valueless;
 
-                        testPage.waitForDraw();
                         runs(function(){
                             expect(field.element.checkValidity()).toBe(false);
                         });
@@ -139,7 +125,7 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
 
                     it("should accept the value even if disabled", function() {
                         var field = testPage.test.num2,
-                        value = 10;
+                        value = 15;
                         field.value = value;
 
                         expect(field.value).toBe(value);
@@ -150,10 +136,9 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                         });
                     });
 
-                    /*
                     describe("when using converter for the value", function() {
                         // date field
-                        it("should a valid value", function() {
+                        xit("should a valid value", function() {
                             var field = testPage.test.date1,
                             value = "01-01-2010";
                             field.value = value;
@@ -161,7 +146,7 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                             expect(isDate(field.value)).toBe(true);
                             expect(field.error).toBeFalsy();
                         });
-                        it("should reject an invalid value", function() {
+                        xit("should reject an invalid value", function() {
                             var field = testPage.test.date1,
                             value = "01/01/2010";
                             field.value = value;
@@ -170,7 +155,6 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                         });
 
                     });
-                    */
 
                 });
 
@@ -243,9 +227,9 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                     it("should accept values from markup if provided", function() {
                         var field = testPage.test.num3;
 
-                        expect(field.step).toBe('2');
-                        expect(field.min).toBe('0');
-                        expect(field.max).toBe("20");
+                        expect(field.step).toBe(2);
+                        expect(field.min).toBe(0);
+                        expect(field.max).toBe(20);
 
                     });
                 });

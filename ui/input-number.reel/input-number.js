@@ -19,6 +19,10 @@ exports.InputNumber = AbstractNumberField.specialize(/** @lends module:"matte/ui
         value: function InputNumber() {
             this.super();
         }
+    },
+
+    _value: {
+        value: null
     }
 
 });
