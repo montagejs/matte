@@ -7,6 +7,7 @@ exports.Select = AbstractSelect.specialize({
             this.super();
 
             this.addPathChangeListener("content", this, "handleContentChange");
+            this.addOwnPropertyChangeListener("multiple", this);
         }
     },
 
@@ -16,6 +17,10 @@ exports.Select = AbstractSelect.specialize({
 
             this.element.addEventListener("change", this, false);
         }
+    },
+
+    multiple: {
+        value: false
     },
 
     handleChange: {
@@ -37,10 +42,18 @@ exports.Select = AbstractSelect.specialize({
         }
     },
 
+    handleMultipleChange: {
+        value: function() {
+            this.needsDraw = true;
+        }
+    },
+
     draw: {
         value: function() {
+            this.super();
+
             var selectedIndex,
-                    organizedContent = this.contentController.organizedContent;
+                organizedContent = this.contentController.organizedContent;
 
             if (this._contentIsDirty) {
                 this.drawOptions();
@@ -54,6 +67,7 @@ exports.Select = AbstractSelect.specialize({
             }
 
             this.element.selectedIndex = selectedIndex;
+            this.element.multiple = this.multiple;
         }
     },
 
