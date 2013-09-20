@@ -91,7 +91,7 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                 describe("if no option is marked as selected", function() {
                     it("should set the first one as selected (gh-122)", function() {
                         var selectInput = test.noDefaultSelection;
-                        expect(selectInput._selectedIndexes.length).toBe(1);
+                        expect(selectInput.element.selectedIndex).toBe(0);
                     });
                 });
 
