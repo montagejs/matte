@@ -83,8 +83,6 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                         // since US is selectedCountry by default
                         test.country.selectedIndexes = [1];  // US
                         expect(test.state.contentController.organizedContent.length).toBe(7);
-
-
                     });
                 });
 
@@ -95,87 +93,9 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                     });
                 });
 
-                //TODO francois: This needs to revisited once selection is solid in range-controller
+                //TODO NV: can't test 'value' bindings since two binding to the same target as not allowed ATM
+                // https://github.com/montagejs/matte/issues/27#issuecomment-24681490
                 describe("#208: Ability to bind to SelectInput.value", function() {
-                    it("Value should be set to the bound value initially", function() {
-                        var justifySelect = test.justifySelect;
-                        test.justify = 'center';
-
-                        testPage.waitForDraw();
-
-                        runs(function(){
-                            expect(justifySelect.value).toBe("center");
-                        });
-
-                    });
-
-
-                    it("Verify Select.value changes when bound value changes", function() {
-                        var justifySelect = test.justifySelect;
-                        test.justify = 'right';
-                        expect(justifySelect.value).toBe("right");
-
-                    });
-
-
-                    it("Verify bound value (justify) to change when Selection changes", function() {
-                        var justifySelect = test.justifySelect;
-
-                        changeSelection(justifySelect.element, 1);
-                        expect(justifySelect.value).toBe("left");
-
-                        changeSelection(justifySelect.element, 2);
-                        expect(justifySelect.value).toBe("center");
-                        expect(test.justify).toBe("center");
-
-                    });
-
-
-                });
-
-                //TODO francois: This needs to revisited once selection is solid in range-controller
-                describe("#208: Ability to bind to SelectInput.values", function() {
-                    it("Value should be set to the bound value initially", function() {
-                        var dept = test.dept;
-                        dept.values = ['SWE', 'IT'];
-
-                        testPage.waitForDraw();
-                        runs(function() {
-                            expect(dept.values.length).toBe(2);
-                            expect(dept._selectedIndexes[1]).toBe(5);
-                        });
-                    });
-
-                    it("Verify Select.values changes when bound value changes", function() {
-                        var dept = test.dept;
-                        dept.selectedIndexes = [2, 4, 5];
-
-                        testPage.waitForDraw();
-
-                        runs(function(){
-                            expect(dept.values[2]).toBe('IT');
-                        });
-                    });
-
-
-                    it("Verify bound value (justify) to change when Selection changes", function() {
-                        var dept = test.dept;
-
-                        changeSelection(dept.element, 1);
-                        expect(dept.values[0]).toBe("HRD");
-
-                        changeSelection(dept.element, 2);
-                        expect(dept.values[0]).toBe("SWE");
-
-                    });
-
-
-                });
-
-                // test set/get of standard and global attributes
-                describe("when setting standard attributes", function() {
-
-
 
                 });
 

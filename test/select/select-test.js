@@ -1,23 +1,5 @@
 var TestController = require("montage-testing/test-controller").TestController;
 
-var Converter = require("montage/core/converter/converter").Converter;
-
-exports.JustifyConverter = Converter.specialize({
-    justify: {value: null},
-
-    convert: {
-        value: function(value) {
-            return (value === this.justify);
-        }
-    },
-
-    revert: {
-        value: function(value) {
-            return (value === true ? this.justify : "");
-        }
-    }
-});
-
 exports.SelectTest = TestController.specialize({
 
     dept: {
@@ -29,10 +11,6 @@ exports.SelectTest = TestController.specialize({
     },
 
     country: {
-        value: null
-    },
-
-    justifySelect: {
         value: null
     },
 
@@ -67,7 +45,6 @@ exports.SelectTest = TestController.specialize({
             ]
         }
     },
-
 
     _selectedCountry: {value: null},
     selectedCountry: {
@@ -104,14 +81,11 @@ exports.SelectTest = TestController.specialize({
         }
     },
 
-    justify: {value: null},
-
     deptValues: {value: null},
 
     constructor: {
         value: function SelectTest() {
             this.super();
-            this.justify = "center";
             this.deptValues = ['HRD', 'SWE'];
         }
     }

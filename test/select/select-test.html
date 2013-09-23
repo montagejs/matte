@@ -15,7 +15,6 @@
                     "state": {"@": "state"},
                     "country": {"@": "country"},
                     "noDefaultSelection": {"@": "noDefaultSelection"},
-                    "justifySelect": {"@": "justifySelect"},
                     "statesController": {"@": "statesController"}
                 },
                 "bindings": {
@@ -45,7 +44,6 @@
                     "element": {"#": "lang"},
                     "textPropertyPath": "name",
                     "valuePropertyPath": "code",
-                    "multiple": true,
                     "content": [
                         {"name": "eng", "label": "English"},
                         {"name": "spa", "label": "Spanish"},
@@ -137,79 +135,6 @@
                         {"label": "Tags"}
                     ]
                 }
-            },
-
-            "justifyComparatorLeft": {
-                "prototype": "test/select/select-test[JustifyConverter]",
-                "properties": {
-                    "justify": "left"
-                }
-            },
-            "justifyComparatorRight": {
-                "prototype": "test/select/select-test[JustifyConverter]",
-                "properties": {
-                    "justify": "right"
-                }
-            },
-            "justifyComparatorCenter": {
-                "prototype": "test/select/select-test[JustifyConverter]",
-                "properties": {
-                    "justify": "center"
-                }
-            },
-            "justifyLeft": {
-                "prototype": "ui/toggle-button.reel",
-                "properties": {
-                    "element": {"#": "justifyLeft"},
-                    "pressedClass": "success"
-                },
-                "bindings": {
-                    "pressed": {"<->": "@test.justify", "converter": {"@": "justifyComparatorLeft"}}
-                }
-            },
-            "justifyCenter": {
-                "prototype": "ui/toggle-button.reel",
-                "properties": {
-                    "element": {"#": "justifyCenter"},
-                    "pressedClass": "success"
-                },
-                "bindings": {
-                    "pressed": {"<->": "@test.justify", "converter": {"@": "justifyComparatorCenter"}}
-                }
-            },
-            "justifyRight": {
-                "prototype": "ui/toggle-button.reel",
-                "properties": {
-                    "element": {"#": "justifyRight"},
-                    "pressedClass": "success"
-                },
-                "bindings": {
-                    "pressed": {"<->": "@test.justify", "converter": {"@": "justifyComparatorRight"}}
-                }
-            },
-            "justifySelect": {
-                "prototype": "ui/select.reel",
-                "properties": {
-                    "element": {"#": "justifySelect"},
-                    "content": [
-                        {"label": "-", "value": "none"},
-                        {"label": "Left", "value": "left"},
-                        {"label": "Center", "value": "center"},
-                        {"label": "Right", "value": "right"}
-                    ]
-                },
-                "bindings": {
-                    "value.rangeContent()": {"<->": "@test.justify"}
-                }
-            },
-            "justifyResult": {
-                "prototype": "montage/ui/text.reel",
-                "properties": {
-                    "element": {"#": "justifyResult"}
-                },
-                "bindings": {
-                    "value.rangeContent()": {"<-": "@test.justify"}
-                }
             }
         }
     </script>
@@ -261,24 +186,6 @@
             </div>
             </form>
         </div>
-
-        <section>
-            <h2>Test binding to SelectInput.value</h2>
-            <div class="demo">
-                <div style="height: 40px;">
-                    <button data-montage-id="justify-none" class="btn justify">-</button>
-                    <button data-montage-id="justifyLeft" class="btn justify">L</button>
-                    <button data-montage-id="justifyCenter" class="btn justify">C</button>
-                    <button data-montage-id="justifyRight" class="btn justify">R</button>
-                </div>
-                <div>
-                    <select data-montage-id="justifySelect" class="justifySelect"></select>
-                    <p>
-                        Justify selection: <span data-montage-id="justifyResult"></span>
-                    </p>
-                </div>
-            </div>
-        </section>
 
     </div>
 
