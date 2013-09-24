@@ -2,6 +2,18 @@ var TestController = require("montage-testing/test-controller").TestController;
 
 exports.SelectTest = TestController.specialize({
 
+    _selectedCurrency: {
+        value: null
+    },
+    selectedCurrency: {
+        get: function() {
+            return this._selectedCurrency;
+        },
+        set: function(value) {
+            this._selectedCurrency = value;
+        }
+    },
+
     dept: {
         value: null
     },

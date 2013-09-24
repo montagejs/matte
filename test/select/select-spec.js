@@ -97,6 +97,15 @@ TestPageLoader.queueTest("select-test", function(testPage) {
                 // https://github.com/montagejs/matte/issues/27#issuecomment-24681490
                 describe("#208: Ability to bind to SelectInput.value", function() {
 
+                    it("Verify Select.values changes when bound value changes", function() {
+                        var currency = test.currency;
+                        changeSelection(currency.element, 2);
+                        testPage.waitForDraw();
+                        runs(function(){
+                            expect(test.selectedCurrency.name).toBe('eur');
+                        });
+                    });
+
                 });
 
                 // TODO
