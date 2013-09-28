@@ -104,7 +104,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         value = "";
                         field.value = value;
 
-                        expect(field.element.checkValidity()).toBe(false);
+                        expect(field.checkValidity()).toBe(false);
                     });
 
                     it("should accept the value even if disabled", function() {
@@ -118,7 +118,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
 
                     describe("when using converter for the value", function() {
                         // date field
-                        it("should a valid value", function() {
+                        it("should accept a valid date", function() {
                             var field = testPage.test.date1,
                             value = "01-01-2010";
                             field.value = value;
@@ -126,7 +126,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                             expect(isDate(field.value)).toBe(true);
                             expect(field.error).toBeFalsy();
                         });
-                        it("should reject an invalid value", function() {
+                        it("should reject an invalid date", function() {
                             var field = testPage.test.date1,
                             value = "01/01/2010";
                             field.value = value;
