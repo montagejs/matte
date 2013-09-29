@@ -159,16 +159,16 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                         });
                     });
 
-                    it("should set the value to the nearest step", function() {
+                    it("should  accept the value even if its not at a step", function() {
                         var field = testPage.test.num4,
                         value = 14;
                         field.value = value;
 
-                        expect(field.value).toBe(15);
+                        expect(field.value).toBe(14);
                         testPage.waitForDraw();
                         runs(function(){
                             // browser empties the content if value is invalid
-                            expect(field.element.value).toBe(15);
+                            expect(field.element.value).toBe(14);
                         });
                     });
 
