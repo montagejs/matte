@@ -13,7 +13,9 @@ var AbstractNumberField = require("montage/ui/base/abstract-number-field").Abstr
  */
 exports.InputNumber = AbstractNumberField.specialize(/** @lends module:"matte/ui/input-number.reel".InputNumber */{
 
-    hasTemplate: {value: true},
+    hasTemplate: {
+        value: true
+    },
 
     constructor: {
         value: function InputNumber() {
