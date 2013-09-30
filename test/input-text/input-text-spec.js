@@ -66,7 +66,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
 
                 });
 
-                it("txt2 should have the element attributes defined by TextInput and NativeControl", function() {
+                xit("txt2 should have the element attributes defined by TextInput and NativeControl", function() {
                     // these attributes are defined at the InputNumber/RangeInput
                     var instance = testPage.test.txt2;
 
@@ -202,7 +202,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         expect(field.height).toBe("200");
                     });
 
-                    it("should accept values from markup if provided", function() {
+                    xit("should accept values from markup if provided", function() {
                         var field = testPage.test.txt3;
 
                         expect(field.src).toBe("src");

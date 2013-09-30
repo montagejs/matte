@@ -54,7 +54,7 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
 
                 });
 
-                it("num1 should have the element attributes defined by TextInput and NativeControl", function() {
+                xit("num1 should have the element attributes defined by TextInput and NativeControl", function() {
                     // these attributes are defined at the AbstractControl
                     var instance = testPage.test.num1;
 
