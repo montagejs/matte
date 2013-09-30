@@ -1,12 +1,40 @@
 .matte-InputNumber {
+    outline: none;
+    box-sizing: border-box;
+    position: relative;
     display: inline-block;
+    font-size: 0;
+    width: auto;
+    margin: 0;
+    outline: none;
+    -webkit-user-select: none;
 }
 
 .matte-InputNumber > .matte-InputNumber-input {
-    height: 2.5em !important;
     display: inline-block;
+    font-size: 16px;
+    width: 3.6em;
+    border-radius: 0;
+    text-align: center;
 }
 
 .matte-InputNumber > .matte-InputNumber-plus,
 .matte-InputNumber > .matte-InputNumber-minus {
+    font-size: 16px;
+    margin: 0;
+    padding: 2px;
+    -webkit-transform: translate3d(0px,0px,0px);
+    -moz-transform: translate3d(0px,0px,0px);
+    -ms-transform: translate3d(0px,0px,0px);
+    transform: translate3d(0px,0px,0px);
+}
+
+.matte-InputNumber > .matte-InputNumber-plus {
+    border-width: 1px 1px 1px 0;
+    border-radius: 0 2.5em 2.5em 0;
+}
+
+.matte-InputNumber > .matte-InputNumber-minus {
+    border-width: 1px 0 1px 1px;
+    border-radius: 2.5em 0 0 2.5em;
 }
