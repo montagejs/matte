@@ -8,7 +8,8 @@
             "test": {
                 "prototype": "test/list/list-test",
                 "properties": {
-                    "list": {"@": "list1"}
+                    "list1": {"@": "list1"},
+                    "list2": {"@": "list2"}
                 }
             },
 
@@ -22,23 +23,36 @@
             "list1": {
                 "prototype": "ui/list.reel",
                 "properties": {
-                    "element": {"#": "list"},
-                    "content": [
-                        0,
-                        1,
-                        2
-                    ]
+                    "element": {"#": "list1"},
+                    "content": [0, 1, 2]
+                }
+            },
+
+            "list2": {
+                "prototype": "ui/list.reel",
+                "properties": {
+                    "element": {"#": "list2"},
+                    "content": [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2]
                 }
             }
         }
     </script>
-
+    <style>
+        .list2 {
+            height: 100px;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
 
-<div data-montage-id="list" class="list">
+<div data-montage-id="list1" class="list1">
     List Item
     <span data-montage-id="slider" class="slider"></span>
+</div>
+
+<div data-montage-id="list2" class="list2">
+    <p>Item</p>
 </div>
 
 </body>
