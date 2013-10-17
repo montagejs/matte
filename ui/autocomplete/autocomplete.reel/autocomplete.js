@@ -415,6 +415,8 @@ var Autocomplete = exports.Autocomplete = TextInput.specialize(/** @lends module
 
                 // create the Repetition for the suggestions
                 this.resultsController = new RangeController();
+                this.resultsController.selection = [];
+
                 this.defineBinding("resultsController.content", {
                     "<-": "suggestions"
                 });
