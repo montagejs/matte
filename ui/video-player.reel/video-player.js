@@ -1,15 +1,43 @@
 "use strict";
 /**
-	@module montage/ui/video-player
+    @module montage/ui/video-player
+    @requires montage
+    @requires montage/ui/base/abstract-video
+    @requires core/logger
+    @requires core/event/action-event-listener
+    @requires core/media-controller
 */
-var Bindings = require("montage/core/bindings").Bindings,
-    Component = require("montage/ui/component").Component,
+var Montage = require("montage").Montage,
+    Bindings = require("montage/core/bindings").Bindings,
     logger = require("montage/core/logger").logger("video-player"),
-    MediaController = require("montage/core/media-controller").MediaController;
+    AbstractVideo = require("montage/ui/base/abstract-video").AbstractVideo,
+    MediaController = require("montage/core/media-controller").MediaController,
+    Converter = require("montage/core/converter/converter").Converter;
+
+exports.PrettyTimeConverter = Montage.create(Converter, {
+    convert: {
+        value: function(time) {
+            var sec, min, hour;
+            time = parseInt(time, 10);
+            if (isNaN(time) || time < 0)
+                return "";
+            sec = time % 60;
+            min = Math.floor(time / 60) % 60;
+            hour = Math.floor(time / 3600);
+            return (hour > 0 ? hour + ":" : "") + (min < 10 ? "0"+min : min) + ":" + (sec < 10 ? "0"+sec : sec);
+        }
+    },
+    revert: {
+        value: function(value) {
+            return value;
+        }
+    }
+});
+
 /**
  @class module:matte/ui/video-player.VideoPlayer
  */
-exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-player.VideoPlayer# */ {
+exports.VideoPlayer = AbstractVideo.specialize(/** @lends module:matte/ui/video-player.VideoPlayer# */ {
 
     /*-----------------------------------------------------------------------------
     MARK:   Constants
@@ -90,22 +118,68 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
     /*-----------------------------------------------------------------------------
     MARK:   Properties
     -----------------------------------------------------------------------------*/
-    /**
-        The MediaController instance used by the VideoPlayer.
-        @type {module:montage/core/media-controller.MediaController}
-        @default null
-    */
-    controller: { value: null, enumerable: false },     /* montage/controller/media-controller */
+    
 
-    /**
-        The source URL for the video.
-        @type {string}
-        @default null
-    */
-    src: { value: null },
+
+    
     /*-----------------------------------------------------------------------------
-    MARK:   Actions
+    MARK:   Event Handlers
     -----------------------------------------------------------------------------*/
+    
+    handlePlayButtonAction: {
+        value: function() {
+            if (this.videoController.status === this.videoController.PLAYING) {
+                this.videoController.pause();
+            } else if (this.videoController.status === this.videoController.PAUSED) {
+                this.videoController.unpause();
+            } else {
+                this.videoController.play();
+            }
+        }
+    },
+    
+    handleRewindButtonAction: {
+        value: function() {
+            this.videoController.rewind();
+        }
+    },
+    
+    handleFastForwardButtonAction: {
+        value: function() {
+            this.videoController.fastForward();
+        }
+    },
+    
+    handleDecreaseVolumeButtonAction: {
+        value: function() {
+            this.videoController.volumeDecrease();
+        }
+    },
+    
+    handleIncreaseVolumeButtonAction: {
+        value: function() {
+            this.videoController.volumeIncrease();
+        }
+    },
+
+    handleMuteButtonAction: {
+        value: function() {
+            this.videoController.toggleMute();
+        }
+    },
+    
+    handleRepeatButtonAction: {
+        value: function() {
+            // TODO
+        }
+    },
+    
+    handleFullScreenButtonAction: {
+        value: function() {
+            this.toggleFullScreen()
+        }
+    },
+    
     /*-----------------------------------------------------------------------------
     MARK:   UI Setters
     -----------------------------------------------------------------------------*/
@@ -116,81 +190,37 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
     */
     autoHide: { value: true },
 
-    /**
-        Specifies whether the full screen video is supported.
-        @type {Boolean}
-        @default true
-    */
-    supportsFullScreen: { value: true },
 
-/**
-  @private
-*/
-    _isFullScreen: { value: false },
+
+
 
     templateDidLoad: {
         value: function() {
             if(logger.isDebug) {
-                logger.debug("MediaController:templateDidLoad");
+                logger.debug("VideoPlayer:templateDidLoad");
             }
-            Bindings.defineBindings(this, {
-                "positionText.value": {
-                    "<->": "controller.position",
-                    convert: this._prettyTime
-                },
-                "durationText.value": {
-                    "<->": "controller.duration",
-                    convert: this._prettyTime
-                },
-                "slider.max": {
-                    "<->": "controller.duration"
-                }
-            });
         }
     },
-/**
-  @private
-*/
-    _prettyTime: {
-        value: function(time) {
-            var sec, min, hour;
-            time = parseInt(time, 10);
-            if (isNaN(time) || time < 0)
-                return "";
-            sec = time % 60;
-            min = Math.floor(time / 60) % 60;
-            hour = Math.floor(time / 3600);
-            return (hour > 0 ? hour + ":" : "") + (min < 10 ? "0"+min : min) + ":" + (sec < 10 ? "0"+sec : sec);
-        }
-    },
-/**
-    Description TODO
-    @function
-    @private
-    */
-    handleMediaStateChange: {
-        value: function() {
-            this.needsDraw = true;
-        }
-    },
+    
+
     /*-----------------------------------------------------------------------------
     MARK:   Interaction
     -----------------------------------------------------------------------------*/
-/**
-  Description TODO
-  @private
-*/
+    /**
+    Description TODO
+    @private
+    */
     _showControls: {
         value: true, enumerable: false
     },
-/**
-  Description TODO
-  @private
-*/
+    /**
+    Description TODO
+    @private
+    */
     _hideControlsId: {
         value: null, enumerable: false
     },
-/**
+    /**
     Description TODO
     @function
     @private
@@ -200,7 +230,7 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
             this.showControlsForInterval();
         }
     },
-/**
+    /**
     Description TODO
     @function
     @private
@@ -210,7 +240,7 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
             this.showControlsForInterval();
         }
     },
-/**
+    /**
     Displays the video player controlls for the interval specified by the CONTROL_SHOW_TIME property.
     @function
     */
@@ -232,29 +262,11 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
             this._hideControlsId = window.setTimeout(hideControls, this.CONTROL_SHOW_TIME);
         }
     },
-/**
-    Toggles full-screen playback mode.
-    @function
+
+    
+    /**
+    @private
     */
-    toggleFullScreen: {
-        value: function() {
-            if (this.supportsFullScreen) {
-                this._isFullScreen = !this._isFullScreen;
-                this.needsDraw = true;
-            }
-        }
-    },
-/**
-  @private
-*/
-    _installMediaEventListeners: {
-        value: function() {
-            this.controller.addEventListener("mediaStateChange", this, false);
-        }
-    },
-/**
-  @private
-*/
     _installUserActionDetector: {
         value: function() {
             if (window.touch && this.autoHide) {
@@ -264,15 +276,19 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
             }
         }
     },
-/**
+
+    /**
     @private
     */
     enterDocument: {
         value: function(firstTime) {
+            // Call super method
+            if (AbstractVideo.enterDocument) {
+                AbstractVideo.enterDocument.call(this, firstTime);
+            }
+            
             if (firstTime) {
                 this._installUserActionDetector();
-                this.controller._installControlEventHandlers();
-                this._installMediaEventListeners();
 
                 if (!this.autoHide) {
                     this.element.style.paddingBottom = "50px";
@@ -280,18 +296,24 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
             }
         }
     },
-/**
+
+    /**
     @private
     */
     draw: {
         value: function() {
+            // Call super method
+            if (AbstractVideo.draw) {
+                AbstractVideo.draw.call(this);
+            }
+            
             var volumeWidth;
             // Handle loading
-            if (this.controller.status === this.controller.EMPTY) {
-                this.controller.loadMedia();
+            if (this.videoController.status === this.videoController.EMPTY) {
+                this.loadMedia();
             } else {
                 // Handle playing
-                if (this.controller.status === this.controller.PLAYING) {
+                if (this.videoController.status === this.videoController.PLAYING) {
                     if (!this.playButton.classList.contains('playing')) {
                         this.playButton.classList.add('playing');
                     }
@@ -302,11 +324,11 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
                 }
 
                 if (this.volumeLevel) {
-                    volumeWidth = Math.floor(this.controller.volume);
+                    volumeWidth = Math.floor(this.videoController.volume);
                     this.volumeLevel.style.width =  volumeWidth + "%";
                 }
 
-                if (this.controller.repeat) {
+                if (this.videoController.repeat) {
                     if (!this.repeatButton.classList.contains("loop")) {
                         this.repeatButton.classList.add("loop");
                     }
@@ -327,7 +349,7 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
                 if (this.supportsFullScreen) {
                     this.fullScreenPanel.classList.add("support-fullscreen");
                     this.fullScreenPanel.classList.remove("hide-fullscreen");
-                    if (!this._isFullScreen) {
+                    if (!this.isFullScreen) {
                         this.fullScreenButton.classList.add("enter-fullscreen");
                         this.fullScreenButton.classList.remove("exit-fullscreen");
                         this.element.classList.remove("fullscreen");
@@ -344,5 +366,4 @@ exports.VideoPlayer = Component.specialize(/** @lends module:matte/ui/video-play
             }
         }
     }
-
 });
