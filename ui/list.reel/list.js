@@ -24,6 +24,14 @@ exports.List = Component.specialize(/** @lends module:"matte/ui/list.reel".List#
         }
     },
 
+    templateDidLoad: {
+        value: function() {
+            this._scroller.addOwnPropertyChangeListener("scrollY", this);
+            this._scroller.addOwnPropertyChangeListener("_maxTranslateY", this);
+        }
+    },
+
+
     /**
       Description TODO
       @private
@@ -31,6 +39,11 @@ exports.List = Component.specialize(/** @lends module:"matte/ui/list.reel".List#
     _repetition: {
         value: null
     },
+
+    _scroller: {
+        value: null
+    },
+
     /**
         Description TODO
         @type {Property}
@@ -56,6 +69,13 @@ exports.List = Component.specialize(/** @lends module:"matte/ui/list.reel".List#
         value: null
     },
 
+    /**
+     * Threshold at which the list will fire a "listEnd" event. This is the ratio of
+     */
+    listEndEventThreshold: {
+        value: 1
+    },
+
     // Initialization
 
     // TODO we should probably support the programmatic initialization of a list; forwarding the childComponents
@@ -71,6 +91,24 @@ exports.List = Component.specialize(/** @lends module:"matte/ui/list.reel".List#
                 }
             } else {
                 return observeProperty(this, key, emit, source, parameters, beforeChange);
+            }
+        }
+    },
+
+    _fireEndEvent: {
+        value: function() {
+            this.dispatchEventNamed("listEnd");
+        }
+    },
+
+    handlePropertyChange: {
+        value: function(changeValue, key, object) {
+            if (key === "scrollY" || key === "_maxTranslateY") {
+                if (this._scroller && object === this._scroller) {
+                    if (this._scroller.scrollY >= (this._scroller._maxTranslateY * this.listEndEventThreshold)) {
+                        this._fireEndEvent()
+                    }
+                }
             }
         }
     }
