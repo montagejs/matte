@@ -68,24 +68,24 @@ TestPageLoader.queueTest("list-test", function(testPage) {
         });
         describe("when scrolling", function() {
             it("it should fire when scroll reaches the end", function() {
-                list.listEndEventThreshold = 1;
-                list._scroller._maxTranslateY = 200;
-                var expectation = expectationToDispatch(list, "listEnd");
-                list._scroller.scrollY = 200;
+                list1.listEndEventThreshold = 1;
+                list1._scroller._maxTranslateY = 200;
+                var expectation = expectationToDispatch(list1, "listEnd");
+                list1._scroller.scrollY = 200;
                 expectation();
             });
             it("it should fire when scroll goes beyond threshold", function() {
-                list.listEndEventThreshold = .5;
-                list._scroller._maxTranslateY = 200;
-                var expectation = expectationToDispatch(list, "listEnd");
-                list._scroller.scrollY = 101;
+                list1.listEndEventThreshold = .5;
+                list1._scroller._maxTranslateY = 200;
+                var expectation = expectationToDispatch(list1, "listEnd");
+                list1._scroller.scrollY = 101;
                 expectation();
             });
             it("it should not fire when scroll doesn't go beyond threshold", function() {
-                list.listEndEventThreshold = .5;
-                list._scroller._maxTranslateY = 200;
-                var expectation = expectationToDispatch(list, "listEnd");
-                list._scroller.scrollY = 99;
+                list1.listEndEventThreshold = .5;
+                list1._scroller._maxTranslateY = 200;
+                var expectation = expectationToDispatch(list1, "listEnd");
+                list1._scroller.scrollY = 99;
                 expectation(true);
             });
       });
