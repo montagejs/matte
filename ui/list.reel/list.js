@@ -105,8 +105,8 @@ exports.List = Component.specialize(/** @lends module:"matte/ui/list.reel".List#
         value: function(changeValue, key, object) {
             if (key === "scrollY" || key === "_maxTranslateY") {
                 if (this._scroller && object === this._scroller) {
-                    if (this._scroller.scrollY >= (this._scroller._maxTranslateY * this.listEndEventThreshold)) {
-                        this._fireEndEvent()
+                    if (this._scroller.scrollY >= (this._scroller._maxTranslateY * this.listEndEventThreshold) && this._scroller._maxTranslateY > 0) {
+                        this._fireEndEvent();
                     }
                 }
             }

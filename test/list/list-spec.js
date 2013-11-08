@@ -88,6 +88,13 @@ TestPageLoader.queueTest("list-test", function(testPage) {
                 list1._scroller.scrollY = 99;
                 expectation(true);
             });
+            it("it should not fire when list doesn't scroll", function() {
+                list1.listEndEventThreshold = .5;
+                list1._scroller._maxTranslateY = 0;
+                var expectation = expectationToDispatch(list1, "listEnd");
+                list1._scroller.scrollY = 0;
+                expectation(true);
+            });
       });
     });
 });
