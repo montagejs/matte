@@ -24,7 +24,6 @@ TestPageLoader.queueTest("list-test", function(testPage) {
                 expect(list1._element.querySelectorAll(".matte-InputRange").length).toBe(3);
             });
         });
-
         it("should scroll with the mouse", function() {
             // a point inside list2
             var element = testPage.document.elementFromPoint(10, 50);
@@ -46,7 +45,6 @@ TestPageLoader.queueTest("list-test", function(testPage) {
                 });
             }, {pointerType: "mouse"});
         });
-
         it("should scroll with touch", function() {
             // a point inside list2
             var element = testPage.document.elementFromPoint(10, 50);
@@ -68,5 +66,28 @@ TestPageLoader.queueTest("list-test", function(testPage) {
                 });
             }, {pointerType: "touch"});
         });
+        describe("when scrolling", function() {
+            it("it should fire when scroll reaches the end", function() {
+                list1.listEndEventThreshold = 1;
+                list1._scroller._maxTranslateY = 200;
+                var expectation = expectationToDispatch(list1, "listEnd");
+                list1._scroller.scrollY = 200;
+                expectation();
+            });
+            it("it should fire when scroll goes beyond threshold", function() {
+                list1.listEndEventThreshold = .5;
+                list1._scroller._maxTranslateY = 200;
+                var expectation = expectationToDispatch(list1, "listEnd");
+                list1._scroller.scrollY = 101;
+                expectation();
+            });
+            it("it should not fire when scroll doesn't go beyond threshold", function() {
+                list1.listEndEventThreshold = .5;
+                list1._scroller._maxTranslateY = 200;
+                var expectation = expectationToDispatch(list1, "listEnd");
+                list1._scroller.scrollY = 99;
+                expectation(true);
+            });
+      });
     });
 });
