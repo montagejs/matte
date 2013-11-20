@@ -144,11 +144,11 @@ var Autocomplete = exports.Autocomplete = TextInput.specialize(/** @lends module
             var value = this._value;
 
             if(value) {
-                var arr = value.split(this.separator).map(function(item) {
+                var arr = value.split(this.separator.value).map(function(item) {
                     return item.trim();
                 });
                 this.activeTokenIndex = this._findActiveTokenIndex(this.tokens, arr);
-                this._tokens = value.split(this.separator).map(function(item) {
+                this._tokens = value.split(this.separator.value).map(function(item) {
                     return item.trim();
                 });
             } else {
@@ -415,8 +415,6 @@ var Autocomplete = exports.Autocomplete = TextInput.specialize(/** @lends module
 
                 // create the Repetition for the suggestions
                 this.resultsController = new RangeController();
-                this.resultsController.selection = [];
-
                 this.defineBinding("resultsController.content", {
                     "<-": "suggestions"
                 });
@@ -454,10 +452,10 @@ var Autocomplete = exports.Autocomplete = TextInput.specialize(/** @lends module
 
             if (!this._valueSyncedWithInputField) {
                 if(this.tokens) {
-                    this.value = this.tokens.join(this.separator);
+                    this.value = this.tokens.join(this.separator.value);
                 }
-                if(this.value && this.value.charAt(this.value.length-1) != this.separator) {
-                    this.value += this.separator;
+                if(this.value && this.value.charAt(this.value.length-1) != this.separator.value) {
+                    this.value += this.separator.value;
                 }
                 this.element.value = this.value;
                 this._valueSyncedWithInputField = true;
