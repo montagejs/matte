@@ -5,3 +5,6 @@
      background: url('loading.gif') no-repeat;
      background-position: right;
  }
+ .matte-Autocomplete--popup .repetition{
+    padding: 0;
+ }

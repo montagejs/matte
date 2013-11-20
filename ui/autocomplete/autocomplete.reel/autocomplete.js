@@ -383,6 +383,7 @@ var Autocomplete = exports.Autocomplete = TextInput.specialize(/** @lends module
             if(!popup) {
                 popup = new Popup();
                 popup.content = this.resultsList;
+                popup.classList.add("matte-Autocomplete--popup");
                 popup.anchor = this.element;
                 popup.delegate = this;
                 // dont let the popup take away the focus
