@@ -95,6 +95,23 @@ TestPageLoader.queueTest("list-test", function(testPage) {
                 list1._scroller.scrollY = 0;
                 expectation(true);
             });
-      });
+        });
+
+        describe("currentIteration property", function () {
+            it("should cause a deprecation warning", function () {
+                expectConsoleCallsFrom(function () {
+                    list1.observeProperty("currentIteration", Function.noop, Function.noop );
+                }, testPage.window, "warn").toHaveBeenCalledWith("currentIteration is deprecated, use :iteration.object instead.", "");
+            });
+        });
+
+        describe("objectAtCurrentIteration property", function () {
+            it("should cause a deprecation warning", function () {
+                expectConsoleCallsFrom(function () {
+                    list1.observeProperty("objectAtCurrentIteration", Function.noop, Function.noop );
+                }, testPage.window, "warn").toHaveBeenCalledWith("objectAtCurrentIteration is deprecated, use :iteration.object instead.", "");
+            });
+        });
+
     });
 });
