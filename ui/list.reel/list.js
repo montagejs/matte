@@ -4,6 +4,8 @@
 var Component = require("montage/ui/component").Component,
     observeProperty = require("montage/frb/observers").observeProperty;
 
+var deprecationWarning = require("montage/core/deprecate").deprecationWarning;
+
 /**
  @class module:"matte/ui/list.reel".List
  @extends module:montage/ui/component.Component
@@ -86,6 +88,7 @@ exports.List = Component.specialize(/** @lends module:"matte/ui/list.reel".List#
     observeProperty: {
         value: function (key, emit, source, parameters, beforeChange) {
             if (key === "objectAtCurrentIteration" || key === "currentIteration") {
+                deprecationWarning(key,":iteration.object");
                 if (this._repetition) {
                     return this._repetition.observeProperty(key, emit, source, parameters, beforeChange);
                 }
