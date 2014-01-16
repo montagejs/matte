@@ -18,6 +18,11 @@ var Component = require("montage/ui/component").Component;
 &lt;/div&gt;
 */
 exports.Scroller = Component.specialize(/** @lends module:"matte/ui/scroller.reel".Scroller */ {
+    constructor: {
+        value: function Scroller() {
+            this.super();
+        }
+    },
 
     _scrollX: {
         value: 0
