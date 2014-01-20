@@ -103,3 +103,7 @@ td:nth-child(2) { background: hsl(0,0%,96%); }
     display: inline-block;
     width: 300px;
 }
+
+.list {
+    height: 3em;
+}

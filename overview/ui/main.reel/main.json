@@ -4,9 +4,9 @@
             "element": {"#": "main"}
         }
     },
-    
+
     "Anchor": { "prototype": "ui/anchor.reel", "properties": { "element": {"#": "Anchor"} } },
-    
+
     "Autocomplete": {
         "prototype": "ui/autocomplete/autocomplete.reel",
         "properties": {
@@ -19,49 +19,56 @@
             "value": {"<->": "@owner.states"}
         }
     },
-    
-    "Button": { "prototype": "ui/button.reel", "properties": { "element": {"#": "Button"} } },    
+
+    "Button": { "prototype": "ui/button.reel", "properties": { "element": {"#": "Button"} } },
     "ButtonGrouButton1": { "prototype": "ui/button.reel", "properties": { "element": {"#": "ButtonGrouButton1"} } },
     "ButtonGrouButton2": { "prototype": "ui/button.reel", "properties": { "element": {"#": "ButtonGrouButton2"} } },
     "ButtonGrouButton3": { "prototype": "ui/button.reel", "properties": { "element": {"#": "ButtonGrouButton3"} } },
-    
+
     "Image": { "prototype": "ui/image.reel", "properties": { "element": {"#": "Image"} } },
-    
+
     "InputCheckbox": { "prototype": "ui/input-checkbox.reel", "properties": { "element": {"#": "InputCheckbox"} } },
-    
+
     "InputDate": { "prototype": "ui/input-date.reel", "properties": { "element": {"#": "InputDate"} } },
-    
+
     "InputNumber": { "prototype": "ui/input-number.reel", "properties": { "element": {"#": "InputNumber"} } },
-    
+
     "InputRange": { "prototype": "ui/input-range.reel", "properties": { "element": {"#": "InputRange"} } },
-    
+
     "InputText": { "prototype": "ui/input-text.reel", "properties": { "element": {"#": "InputText"} } },
-    
+
     "LoadingPanel": { "prototype": "ui/loading-panel.reel", "properties": { "element": {"#": "LoadingPanel"} } },
-    
+
     "Loading": { "prototype": "ui/loading.reel", "properties": { "element": {"#": "Loading"}, "loading": "true" } },
-    
+
     "Progress": { "prototype": "ui/progress.reel", "properties": { "element": {"#": "Progress"} } },
-    
+
     "RadioButton": { "prototype": "ui/radio-button.reel", "properties": { "element": {"#": "RadioButton"} } },
-    
+
     "Select": { "prototype": "ui/select.reel", "properties": { "element": {"#": "Select"} } },
-  
+
     "TextSlider": { "prototype": "ui/text-slider.reel", "properties": { "element": {"#": "TextSlider"} } },
-    
+
     "Textarea": { "prototype": "ui/textarea.reel", "properties": { "element": {"#": "Textarea"} } },
-    
+
     "ToggleButton": {
-        "prototype": "ui/toggle-button.reel", 
+        "prototype": "ui/toggle-button.reel",
         "properties": {
             "element": {"#": "ToggleButton"},
             "pressedLabel": "On",
-            "unpressedLabel": "Off" 
-        } 
+            "unpressedLabel": "Off"
+        }
     },
-    
+
     "ToggleSwitch": { "prototype": "ui/toggle-switch.reel", "properties": { "element": {"#": "ToggleSwitch"} } },
-    
-    "VideoPlayer": { "prototype": "ui/video-player.reel", "properties": { "element": {"#": "VideoPlayer"} } }
-    
+
+    "VideoPlayer": { "prototype": "ui/video-player.reel", "properties": { "element": {"#": "VideoPlayer"} } },
+
+    "list1": { "prototype": "ui/list.reel", "properties": { "element": {"#": "list-1"}, "content": [1, 2, 3, 4, 5] } },
+    "listContent1": { "prototype": "montage/ui/text.reel", "properties": { "element": {"#": "listContent1"} }, "bindings": { "value": {"<-": "@list1:iteration.object"}} },
+    "list2": { "prototype": "ui/list.reel", "properties": { "element": {"#": "list-2"}, "content": [1, 2, 3, 4, 5] } },
+    "listContent2": { "prototype": "montage/ui/text.reel", "properties": { "element": {"#": "listContent2"} }, "bindings": { "value": {"<-": "@list2:iteration.object"}} },
+    "list3": { "prototype": "ui/list.reel", "properties": { "element": {"#": "list-3"}, "content": [1, 2, 3, 4, 5] } },
+    "listContent3": { "prototype": "montage/ui/text.reel", "properties": { "element": {"#": "listContent3"} }, "bindings": { "value": {"<-": "@list3:iteration.object"}} }
+
 }
