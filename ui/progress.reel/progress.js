@@ -24,7 +24,7 @@ exports.Progress = NativeProgress.specialize(/** @lends module:"matte/ui/progres
 */
     _value: {
         enumerable: false,
-        value: null
+        value: 0
     },
 /**
         Description TODO
@@ -55,7 +55,7 @@ exports.Progress = NativeProgress.specialize(/** @lends module:"matte/ui/progres
 */
     _max: {
         enumerable: false,
-        value: null
+        value: 100
     },
 /**
         Description TODO
