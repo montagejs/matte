@@ -51,19 +51,6 @@ var Confirm = exports.Confirm = Component.specialize(/** @lends module:"matte/ui
     _popup: {
         value: null
     },
-/**
-        Description TODO
-        @type {Function}
-        @default null
-    */
-    popup: {
-        set: function(value) {
-            this._popup = value;
-        },
-        get: function() {
-            return this._popup;
-        }
-    },
 
     okCallback: {value: null},
     cancelCallback: {value: null},
@@ -129,6 +116,22 @@ var Confirm = exports.Confirm = Component.specialize(/** @lends module:"matte/ui
             this.dispatchEvent(anEvent);
 
             this.popup.hide();
+        }
+    }
+    
+},{
+
+    /**
+    Description TODO
+    @type {Function}
+    @default null
+    */
+    popup: {
+        set: function(value) {
+            this._popup = value;
+        },
+        get: function() {
+            return this._popup;
         }
     },
 
