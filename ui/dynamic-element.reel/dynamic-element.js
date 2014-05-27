@@ -128,6 +128,11 @@ exports.DynamicElement = Component.specialize(/** @lends module:"matte/ui/dynami
             var displayValue = (this.innerHTML || 0 === this.innerHTML ) ? this.innerHTML : this.defaultHTML,
                 content, allowedTagNames = this.allowedTagNames, range = this._range, elements;
 
+            // If this element is inside a Slot or another component that
+            // manipulates its contents then the range could be selecting
+            // the wrong content. Make sure we have the right stuff:
+            range.selectNodeContents(this.element);
+
             //push to DOM
             if(this._usingInnerHTML) {
                 if (allowedTagNames !== null) {
