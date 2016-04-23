@@ -1,20 +1,18 @@
 "use strict";
 /**
     @module montage/ui/video-player
-    @requires montage
     @requires montage/ui/base/abstract-video
     @requires core/logger
     @requires core/event/action-event-listener
     @requires core/media-controller
 */
-var Montage = require("montage").Montage,
-    Bindings = require("montage/core/bindings").Bindings,
+var Bindings = require("montage/core/bindings").Bindings,
     logger = require("montage/core/logger").logger("video-player"),
     AbstractVideo = require("montage/ui/base/abstract-video").AbstractVideo,
     MediaController = require("montage/core/media-controller").MediaController,
     Converter = require("montage/core/converter/converter").Converter;
 
-exports.PrettyTimeConverter = Montage.create(Converter, {
+exports.PrettyTimeConverter = Converter.specialize({
     convert: {
         value: function(time) {
             var sec, min, hour;
