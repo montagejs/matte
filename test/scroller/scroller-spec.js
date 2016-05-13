@@ -63,6 +63,20 @@ TestPageLoader.queueTest("scroller-test", function(testPage) {
                 });
             });
 
+            describe("determining if it canScroll", function() {
+                it("is true if it has content to scroll", function() {
+                    expect(test.scroller1.canScroll).toBe(true);
+                });
+
+                it("is false if it has enough space to hold its content", function() {
+                    test.scroller1._element.style.height = "1000000px";
+                    test.scroller1.needsDraw = true;
+                    testPage.waitForComponentDraw(test.scroller1, 1, true);
+                    runs(function() {
+                        expect(test.scroller1.canScroll).toBe(false);
+                    });
+                });
+            });
         });
     });
 });

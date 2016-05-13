@@ -122,6 +122,10 @@ exports.Scroller = Component.specialize(/** @lends module:"matte/ui/scroller.ree
         }
     },
 
+    canScroll: {
+        value: true
+    },
+
     _hasMomentum: {
         value: true
     },
@@ -236,6 +240,8 @@ exports.Scroller = Component.specialize(/** @lends module:"matte/ui/scroller.ree
                     this._scrollBars.verticalScroll = 0;
                 }
             }
+
+            this.canScroll = this._maxTranslateX > 0 || this._maxTranslateY > 0;
         }
     },
 
