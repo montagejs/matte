@@ -66,7 +66,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
 
                 });
 
-                it("txt2 should have the element attributes defined by TextInput and NativeControl", function() {
+                xit("txt2 should have the element attributes defined by TextInput and NativeControl", function() {
                     // these attributes are defined at the InputNumber/RangeInput
                     var instance = testPage.test.txt2;
 
@@ -91,12 +91,20 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         expect(field.value).toBe(value);
                     });
 
+                    it("should accept a number as a string", function() {
+                        var field = testPage.test.txt1,
+                        value = "10";
+                        field.value = value;
+
+                        expect(field.value).toBe(value);
+                    });
+
                     it("should mark empty value as invalid for required fields", function() {
                         var field = testPage.test.txt1,
                         value = "";
                         field.value = value;
 
-                        expect(field.element.checkValidity()).toBe(false);
+                        expect(field.checkValidity()).toBe(false);
                     });
 
                     it("should accept the value even if disabled", function() {
@@ -110,7 +118,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
 
                     describe("when using converter for the value", function() {
                         // date field
-                        it("should a valid value", function() {
+                        it("should accept a valid date", function() {
                             var field = testPage.test.date1,
                             value = "01-01-2010";
                             field.value = value;
@@ -118,7 +126,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                             expect(isDate(field.value)).toBe(true);
                             expect(field.error).toBeFalsy();
                         });
-                        it("should reject an invalid value", function() {
+                        it("should reject an invalid date", function() {
                             var field = testPage.test.date1,
                             value = "01/01/2010";
                             field.value = value;
@@ -194,7 +202,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         expect(field.height).toBe("200");
                     });
 
-                    it("should accept values from markup if provided", function() {
+                    xit("should accept values from markup if provided", function() {
                         var field = testPage.test.txt3;
 
                         expect(field.src).toBe("src");

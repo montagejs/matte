@@ -10,7 +10,11 @@
                 "properties": {
                     "num1": {"@": "num1"},
                     "num2": {"@": "num2"},
-                    "num3": {"@": "num3"}
+                    "valueless": {"@": "valueless"},
+                    "num3": {"@": "num3"},
+                    "num4": {"@": "num4"},
+                    "floatTest": {"@": "floatTest"},
+                    "converterTest": {"@": "converterTest"}
                 }
             },
 
@@ -25,6 +29,27 @@
                 "prototype": "ui/input-number.reel",
                 "properties": {
                     "element": {"#": "num2"}
+                }
+            },
+
+            "valueless": {
+                "prototype": "ui/input-number.reel",
+                "properties": {
+                    "element": {"#": "valueless"}
+                }
+            },
+
+            "floatTest": {
+                "prototype": "ui/input-number.reel",
+                "properties": {
+                    "element": {"#": "floatTest"}
+                }
+            },
+
+            "converterTest": {
+                "prototype": "ui/input-number.reel",
+                "properties": {
+                    "element": {"#": "converterTest"}
                 }
             },
 
@@ -81,10 +106,19 @@
         <input type="number" placeholder="Enter number" data-montage-id="num1" required maxlength="20" size="10" min="0" max="100" step="5"/>
 
         <label for="num2">Disabled Initially</label>
-        <input type="number" data-montage-id="num2" disabled value="10" />
+        <input type="number" data-montage-id="num2" disabled value=9/>
 
         <label for="num3"></label>
         <input type="text" data-montage-id="num3"  value="0" max="20" min="0" step="2"  width="100" height="100" multiple="true" name="num3" list="list1" />
+
+        <label for="floatTest">Float</label>
+        <input type="number" data-montage-id="floatTest" disabled value="9.2"  step=".01"/>
+
+        <label for="valueless">No value</label>
+        <input type="number" data-montage-id="valueless" required />
+
+        <label for="converterTest">Convert to valid numerical value</label>
+        <input type="number" data-montage-id="converterTest" step=".01"/>
 
     </form>
 

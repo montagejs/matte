@@ -18,9 +18,6 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
 
     // TODO much like Array.isArray these should probably be moved into a shim i.e. Foo.isFoo(obj)
 
-    var isDate = function(object) {
-        return _toString.call(object) === DATE_CLASS;
-    };
     var isNumber = function(object) {
         return _toString.call(object) === NUMBER_CLASS;
     };
@@ -41,14 +38,14 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                     expect(testPage.test.num1.required).toBe(true);
                 });
                 it("num2 should have default value", function() {
-                    expect(testPage.test.num2.value).toBe('10');
+                    expect(testPage.test.num2.value).toBe(9);
                 });
                 it("num2 should be disabled", function() {
                     expect(testPage.test.num2.disabled).toBe(true);
                 });
 
                 it("num1 should have the min/max/step element attributes", function() {
-                    // these attributes are defined at the InputNumber/RangeInput
+                    // these attributes are defined at the InputNumber/AbstractNumberField
                     var instance = testPage.test.num1;
                     console.log('test min/max');
                     expect(instance._getElementAttributeDescriptor('min')).toBeDefined();
@@ -57,8 +54,8 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
 
                 });
 
-                it("num1 should have the element attributes defined by TextInput and NativeControl", function() {
-                    // these attributes are defined at the InputNumber/RangeInput
+                xit("num1 should have the element attributes defined by TextInput and NativeControl", function() {
+                    // these attributes are defined at the AbstractControl
                     var instance = testPage.test.num1;
 
                     expect(instance._getElementAttributeDescriptor('name')).toBeDefined();
@@ -76,62 +73,162 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
 
                     it("should accept the value when set programmatically", function() {
                         var field = testPage.test.num1,
-                        value = 10;
+                        value = "10";
                         field.value = value;
 
-                        expect(field.value).toBe(value);
+                        expect(field.value).toBe(10);
                         testPage.waitForDraw();
                         runs(function(){
                             // browser empties the content if value is invalid
-                            expect(field.element.value == value).toBe(true);
+                            expect(field.element.value).toBe(10);
+                        });
+                    });
+
+                    it("should accept float values", function() {
+                        var field = testPage.test.floatTest,
+                        value = "10.5";
+                        field.value = value;
+
+                        expect(field.value).toBe(10.5);
+                        testPage.waitForDraw();
+                        runs(function(){
+                            // browser empties the content if value is invalid
+                            expect(field.element.value).toBe(10.5);
+                        });
+                    });
+
+                    it("should reject changes to value if the user enters a string", function() {
+                        var field = testPage.test.num2,
+                        value = 232;
+                        field.value = value;
+                        value = "foo10";
+                        field.value = value;
+
+                        expect(field.value).toBe(232);
+                        testPage.waitForDraw();
+                        runs(function(){
+                            // browser empties the content if value is invalid
+                            expect(field.element.value).toBe(232);
                         });
                     });
 
                     it("should mark empty value as invalid for required fields", function() {
-                        var field = testPage.test.num1,
-                        value = "";
-                        field.value = value;
+                        var field = testPage.test.valueless;
 
-                        testPage.waitForDraw();
                         runs(function(){
-                            expect(field.element.checkValidity()).toBe(false);
+                            expect(field.checkValidity()).toBe(false);
                         });
                     });
 
                     it("should accept the value even if disabled", function() {
                         var field = testPage.test.num2,
-                        value = 10;
+                        value = 15;
                         field.value = value;
 
                         expect(field.value).toBe(value);
                         testPage.waitForDraw();
                         runs(function(){
                             // browser empties the content if value is invalid
-                            expect(field.element.value == value).toBe(true);
+                            expect(field.element.value).toBe(value);
                         });
                     });
 
-                    /*
+                    it("should set the value to the min if out of range", function() {
+                        var field = testPage.test.num4,
+                        value = -5;
+                        field.value = value;
+
+                        expect(field.value).toBe(0);
+                        testPage.waitForDraw();
+                        runs(function(){
+                            // browser empties the content if value is invalid
+                            expect(field.element.value).toBe(0);
+                        });
+                    });
+
+                    it("should set the value to the max if out of range", function() {
+                        var field = testPage.test.num4,
+                        value = 105;
+                        field.value = value;
+
+                        expect(field.value).toBe(100);
+                        testPage.waitForDraw();
+                        runs(function(){
+                            // browser empties the content if value is invalid
+                            expect(field.element.value).toBe(100);
+                        });
+                    });
+
+                    it("should  accept the value even if its not at a step", function() {
+                        var field = testPage.test.num4,
+                        value = 14;
+                        field.value = value;
+
+                        expect(field.value).toBe(14);
+                        testPage.waitForDraw();
+                        runs(function(){
+                            // browser empties the content if value is invalid
+                            expect(field.element.value).toBe(14);
+                        });
+                    });
+
                     describe("when using converter for the value", function() {
-                        // date field
-                        it("should a valid value", function() {
-                            var field = testPage.test.date1,
-                            value = "01-01-2010";
+                        // English thousands
+                        it("should accept a valid value with commas", function() {
+                            var field = testPage.test.converterTest,
+                            value = "2,000,000.99";
                             field.value = value;
 
-                            expect(isDate(field.value)).toBe(true);
+                            expect(isNumber(field.value)).toBe(true);
                             expect(field.error).toBeFalsy();
+                            expect(field.value).toBe(2000000.99);
                         });
-                        it("should reject an invalid value", function() {
-                            var field = testPage.test.date1,
-                            value = "01/01/2010";
+                        // Common International formats http://en.wikipedia.org/wiki/Decimal_mark
+                        xit("should accept a valid value with an international numer format", function() {
+                            var field = testPage.test.converterTest,
+                            value = "2.111.111,99";
                             field.value = value;
 
-                            expect(field.error).not.toBeNull();
+                            expect(isNumber(field.value)).toBe(true);
+                            expect(field.error).toBeFalsy();
+                            expect(field.value).toBe(2111111.99);
+
+                            // Thin space  ISO 31-0
+                            value = "2 333 333,99";
+                            field.value = value;
+
+                            expect(isNumber(field.value)).toBe(true);
+                            expect(field.error).toBeFalsy();
+                            expect(field.value).toBe(2333333.99);
+
+                            // ASCII  ISO 31-0
+                            value = "2 444 444,99";
+                            field.value = value;
+
+                            expect(isNumber(field.value)).toBe(true);
+                            expect(field.error).toBeFalsy();
+                            expect(field.value).toBe(2444444.99);
+
+                            // Crore 
+                            value = "25,55,555.99";
+                            field.value = value;
+
+                            expect(isNumber(field.value)).toBe(true);
+                            expect(field.error).toBeFalsy();
+                            expect(field.value).toBe(2555555.99);
+                        });
+                        // Invalid decimal points
+                        it("should correct an invalid value with too many decimal points", function() {
+                            var field = testPage.test.converterTest,
+                            value = "2,000.32.99";
+                            field.value = value;
+
+                            expect(isNumber(field.value)).toBe(true);
+                            expect(field.error).toBeFalsy();
+                            expect(field.value).toBe(2000.32);
                         });
 
                     });
-                    */
 
                 });
 
@@ -204,9 +301,9 @@ TestPageLoader.queueTest("input-number-test", function(testPage) {
                     it("should accept values from markup if provided", function() {
                         var field = testPage.test.num3;
 
-                        expect(field.step).toBe('2');
-                        expect(field.min).toBe('0');
-                        expect(field.max).toBe("20");
+                        expect(field.step).toBe(2);
+                        expect(field.min).toBe(0);
+                        expect(field.max).toBe(20);
 
                     });
                 });
