@@ -8,17 +8,94 @@
             "test": {
                 "prototype": "test/select/select-test",
                 "properties": {
+                    "lang": {"@": "lang"},
+                    "langCode": {"@": "langCode"},
+                    "langName": {"@": "langName"},
+                    "currency": {"@": "currency"},
+                    "currencyName": {"@": "currencyName"},
+                    "currencyCode": {"@": "currencyCode"},
                     "dept": {"@": "dept"},
                     "state": {"@": "state"},
                     "country": {"@": "country"},
                     "noDefaultSelection": {"@": "noDefaultSelection"},
-                    "justifySelect": {"@": "justifySelect"},
                     "statesController": {"@": "statesController"}
                 },
                 "bindings": {
+                    "selectedCurrency": {"<->": "@currency.value"},
+
                     "selectedCountry": {"<->": "@country.contentController.selection.0"},
                     "selectedState": {"<->": "@state.contentController.selection.0"},
                     "selectedDept": {"<->": "@dept.contentController.selection.0"}
+                }
+            },
+
+            "lang": {
+                "prototype": "ui/select.reel",
+                "properties": {
+                    "element": {"#": "lang"},
+                    "textPropertyPath": "name",
+                    "valuePropertyPath": "code",
+                    "content": [
+                        {"name": "eng", "label": "English"},
+                        {"name": "spa", "label": "Spanish"},
+                        {"name": "por", "label": "Portuguese"},
+                        {"name": "fra", "label": "French"},
+                        {"name": "rus", "label": "Russian"}
+                    ]
+                }
+            },
+
+            "langName": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": {"#": "langName"}
+                },
+                "bindings": {
+                    "value": {"<-": "@lang.value.label"}
+                }
+            },
+
+            "langCode": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": {"#": "langCode"}
+                },
+                "bindings": {
+                    "value": {"<-": "@lang.value.name"}
+                }
+            },
+
+            "currency": {
+                "prototype": "ui/select.reel",
+                "properties": {
+                    "element": {"#": "currency"},
+                    "textPropertyPath": "label",
+                    "valuePropertyPath": "name",
+                    "content": [
+                        {"name": "usd", "label": "US Dollar"},
+                        {"name": "cad", "label": "Canadian Dollar"},
+                        {"name": "eur", "label": "Euro"}
+                    ]
+                }
+            },
+
+            "currencyName": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": {"#": "currencyName"}
+                },
+                "bindings": {
+                    "value": {"<-": "@test.selectedCurrency.label"}
+                }
+            },
+
+            "currencyCode": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": {"#": "currencyCode"}
+                },
+                "bindings": {
+                    "value": {"<-": "@test.selectedCurrency.name"}
                 }
             },
 
@@ -31,17 +108,15 @@
                     "multiple": true
                 },
                 "bindings": {
-                    "content": {"<-": "@test.departments"},
-                    "values": {"<-": "@test.deptValues"}
+                    "content.rangeContent()": {"<-": "@test.departments"},
+                    "values.rangeContent()": {"<-": "@test.deptValues"}
                 }
             },
-
 
             "statesController": {
                 "prototype": "montage/core/range-controller",
                 "properties": {
-                    "selectAddedObjects": true,
-                    "content": []
+                    "selectAddedObjects": true
                 }
             },
 
@@ -58,7 +133,14 @@
             "country": {
                 "prototype": "ui/select.reel",
                 "properties": {
-                    "element": {"#": "country"}
+                    "element": {"#": "country"},
+                    "content": [
+                        {"label": "Please select a Country"},
+                        {"label": "United States of America", "code": "USA"},
+                        {"label": "India", "code": "INR"},
+                        {"label": "France"},
+                        {"label": "Germany"}
+                    ]
                 }
             },
 
@@ -72,81 +154,25 @@
             "country1": {
                 "prototype": "ui/select.reel",
                 "properties": {
-                    "element": {"#": "country1"}
+                    "element": {"#": "country1"},
+                    "content": [
+                        {"label": "Please select a Country"},
+                        {"label": "United States of America"},
+                        {"label": "India"},
+                        {"label": "France"},
+                        {"label": "Germany"}
+                    ]
                 }
             },
 
             "noDefaultSelection": {
                 "prototype": "ui/select.reel",
                 "properties": {
-                    "element": {"#": "noDefaultSelection"}
-                }
-            },
-
-            "justifyComparatorLeft": {
-                "prototype": "test/select/select-test[JustifyConverter]",
-                "properties": {
-                    "justify": "left"
-                }
-            },
-            "justifyComparatorRight": {
-                "prototype": "test/select/select-test[JustifyConverter]",
-                "properties": {
-                    "justify": "right"
-                }
-            },
-            "justifyComparatorCenter": {
-                "prototype": "test/select/select-test[JustifyConverter]",
-                "properties": {
-                    "justify": "center"
-                }
-            },
-            "justifyLeft": {
-                "prototype": "ui/toggle-button.reel",
-                "properties": {
-                    "element": {"#": "justifyLeft"},
-                    "pressedClass": "success"
-                },
-                "bindings": {
-                    "pressed": {"<->": "@test.justify", "converter": {"@": "justifyComparatorLeft"}}
-                }
-            },
-            "justifyCenter": {
-                "prototype": "ui/toggle-button.reel",
-                "properties": {
-                    "element": {"#": "justifyCenter"},
-                    "pressedClass": "success"
-                },
-                "bindings": {
-                    "pressed": {"<->": "@test.justify", "converter": {"@": "justifyComparatorCenter"}}
-                }
-            },
-            "justifyRight": {
-                "prototype": "ui/toggle-button.reel",
-                "properties": {
-                    "element": {"#": "justifyRight"},
-                    "pressedClass": "success"
-                },
-                "bindings": {
-                    "pressed": {"<->": "@test.justify", "converter": {"@": "justifyComparatorRight"}}
-                }
-            },
-            "justifySelect": {
-                "prototype": "ui/select.reel",
-                "properties": {
-                    "element": {"#": "justifySelect"}
-                },
-                "bindings": {
-                    "value": {"<->": "@test.justify"}
-                }
-            },
-            "justifyResult": {
-                "prototype": "montage/ui/text.reel",
-                "properties": {
-                    "element": {"#": "justifyResult"}
-                },
-                "bindings": {
-                    "value": {"<-": "@test.justify"}
+                    "element": {"#": "noDefaultSelection"},
+                    "content": [
+                        {"label": "Name"},
+                        {"label": "Tags"}
+                    ]
                 }
             }
         }
@@ -154,22 +180,33 @@
 
 </head>
 <body>
+    <h2>Basic bindings</h2>
+    <label for="lang">Language</label>
+    <select id="lang" data-montage-id="lang" required="true">
+        <option>Loading...</option>
+    </select><br>
+    Name: <span data-montage-id="langName">?</span><br>
+    Code: <span data-montage-id="langCode">?</span>
+
+    <h2>Bindings through 3rd object</h2>
+    <select data-montage-id="currency">
+        <option>Loading...</option>
+    </select><br>
+    Name: <span data-montage-id="currencyName">?</span><br>
+    Code: <span data-montage-id="currencyCode">?</span>
+
     <h2>Select Input Test</h2>
     <div class="row">
         <div class="span8">
             <form data-montage-id="input-form" class="form-stacked">
                 <label for="dept">Department</label>
-                 <select id="dept" data-montage-id="dept" required="true">
-                     <option>Please select a Department</option>
-                 </select>
+                <select id="dept" data-montage-id="dept" required="true">
+                    <option>Please select a Department</option>
+                </select>
 
                 <label for="country">Country</label>
                 <select id="country" data-montage-id="country" required>
-                    <option value="">Please select a Country</option>
-                    <option value="USA" selected="true">United States of America</option>
-                    <option value="INR" >India</option>
-                    <option value="FR">France</option>
-                    <option value="GER">Germany</option>
+                    <option value="">Loading...</option>
                 </select>
 
                 <label for="state">State</label>
@@ -189,40 +226,12 @@
                 <div style="background:#A00; height:260px; width:10px">.</div>
                 <label for="country1">Country</label>
                 <select id="country1" data-montage-id="country1" required>
-                    <option value="">Please select a Country</option>
-                    <option value="USA" selected="true">United States of America</option>
-                    <option value="INR" >India</option>
-                    <option value="FR">France</option>
-                    <option value="GER">Germany</option>
+                    <option value="">Loading...</option>
                 </select>
                 <div style="background:#A00; height:200px; width:10px">.</div>
             </div>
             </form>
         </div>
-
-        <section>
-            <h2>Test binding to SelectInput.value</h2>
-            <div class="demo">
-                <div style="height: 40px;">
-                    <button data-montage-id="justify-none" class="btn justify">-</button>
-                    <button data-montage-id="justifyLeft" class="btn justify">L</button>
-                    <button data-montage-id="justifyCenter" class="btn justify">C</button>
-                    <button data-montage-id="justifyRight" class="btn justify">R</button>
-                </div>
-                <div>
-                    <select data-montage-id="justifySelect" class="justifySelect">
-                            <option value=""></option>
-                            <option value="left">Left</option>
-                            <option value="center">Center</option>
-                            <option value="right">Right</option>
-                    </select>
-
-                    <p>
-                        Justify selection: <span data-montage-id="justifyResult"></span>
-                    </p>
-                </div>
-            </div>
-        </section>
 
     </div>
 
