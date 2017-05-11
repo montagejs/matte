@@ -6,7 +6,7 @@
     "url": "https://github.com/montagejs/matte.git"
   },
   "dependencies": {
-    "montage": "~0.14.0",
+    "montage": "~16.0.4",
     "native": "~0.2.0"
   },
   "devDependencies": {
