@@ -29,13 +29,14 @@ TestPageLoader.queueTest("radio-button-test", function(testPage) {
         // fully tested above. So fewer tests here.
         describe("radio button", function() {
             describe("checked property", function() {
-                it("changes when the radio button is clicked", function() {
-                    runs(function() {
+                it("changes when the radio button is clicked", function(done) {
+                    setTimeout(function() {
                         expect(test.radio1.checked).toBe(false);
 
                         click(test.radio1);
 
                         expect(test.radio1.checked).toBe(true);
+                        done();
                     });
                 });
             });
