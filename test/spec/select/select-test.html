@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="../../../node_modules/montage/montage.js" data-package="../../"></script>
+        <script type="text/montage-serialization">
+        {
+            "test": {
+                "prototype": "spec/select/select-test",
+                "properties": {
+                    "dept": {"@": "dept"},
+                    "state": {"@": "state"},
+                    "country": {"@": "country"},
+                    "noDefaultSelection": {"@": "noDefaultSelection"},
+                    "justifySelect": {"@": "justifySelect"},
+                    "statesController": {"@": "statesController"}
+                },
+                "bindings": {
+                    "selectedCountry": {"<->": "@country.contentController.selection.0"},
+                    "selectedState": {"<->": "@state.contentController.selection.0"},
+                    "selectedDept": {"<->": "@dept.contentController.selection.0"}
+                }
+            },
+
+            "dept": {
+                "prototype": "matte/ui/select.reel",
+                "properties": {
+                    "element": {"#": "dept"},
+                    "textPropertyPath": "name",
+                    "valuePropertyPath": "code",
+                    "multiple": true
+                },
+                "bindings": {
+                    "content": {"<-": "@test.departments"},
+                    "values": {"<-": "@test.deptValues"}
+                }
+            },
+
+
+            "statesController": {
+                "prototype": "montage/core/range-controller",
+                "properties": {
+                    "selectAddedObjects": true,
+                    "content": []
+                }
+            },
+
+            "state": {
+                "prototype": "matte/ui/select.reel",
+                "properties": {
+                    "element": {"#": "state"},
+                    "contentController": {"@": "statesController"},
+                    "textPropertyPath": "name",
+                    "valuePropertyPath": "code"
+                }
+            },
+
+            "country": {
+                "prototype": "matte/ui/select.reel",
+                "properties": {
+                    "element": {"#": "country"}
+                }
+            },
+
+            "scroll1": {
+                "prototype": "matte/ui/scroller.reel",
+                "properties": {
+                    "element": {"#": "scroller"}
+                }
+            },
+
+            "country1": {
+                "prototype": "matte/ui/select.reel",
+                "properties": {
+                    "element": {"#": "country1"}
+                }
+            },
+
+            "noDefaultSelection": {
+                "prototype": "matte/ui/select.reel",
+                "properties": {
+                    "element": {"#": "noDefaultSelection"}
+                }
+            },
+
+            "justifyComparatorLeft": {
+                "prototype": "spec/select/select-test[JustifyConverter]",
+                "properties": {
+                    "justify": "left"
+                }
+            },
+            "justifyComparatorRight": {
+                "prototype": "spec/select/select-test[JustifyConverter]",
+                "properties": {
+                    "justify": "right"
+                }
+            },
+            "justifyComparatorCenter": {
+                "prototype": "spec/select/select-test[JustifyConverter]",
+                "properties": {
+                    "justify": "center"
+                }
+            },
+            "justifyLeft": {
+                "prototype": "matte/ui/toggle-button.reel",
+                "properties": {
+                    "element": {"#": "justifyLeft"},
+                    "pressedClass": "success"
+                },
+                "bindings": {
+                    "pressed": {"<->": "@test.justify", "converter": {"@": "justifyComparatorLeft"}}
+                }
+            },
+            "justifyCenter": {
+                "prototype": "matte/ui/toggle-button.reel",
+                "properties": {
+                    "element": {"#": "justifyCenter"},
+                    "pressedClass": "success"
+                },
+                "bindings": {
+                    "pressed": {"<->": "@test.justify", "converter": {"@": "justifyComparatorCenter"}}
+                }
+            },
+            "justifyRight": {
+                "prototype": "matte/ui/toggle-button.reel",
+                "properties": {
+                    "element": {"#": "justifyRight"},
+                    "pressedClass": "success"
+                },
+                "bindings": {
+                    "pressed": {"<->": "@test.justify", "converter": {"@": "justifyComparatorRight"}}
+                }
+            },
+            "justifySelect": {
+                "prototype": "matte/ui/select.reel",
+                "properties": {
+                    "element": {"#": "justifySelect"}
+                },
+                "bindings": {
+                    "value": {"<->": "@test.justify"}
+                }
+            },
+            "justifyResult": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": {"#": "justifyResult"}
+                },
+                "bindings": {
+                    "value": {"<-": "@test.justify"}
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <h2>Select Input Test</h2>
+    <div class="row">
+        <div class="span8">
+            <form data-montage-id="input-form" class="form-stacked">
+                <label for="dept">Department</label>
+                 <select id="dept" data-montage-id="dept" required="true">
+                     <option>Please select a Department</option>
+                 </select>
+
+                <label for="country">Country</label>
+                <select id="country" data-montage-id="country" required>
+                    <option value="">Please select a Country</option>
+                    <option value="USA" selected="true">United States of America</option>
+                    <option value="INR" >India</option>
+                    <option value="FR">France</option>
+                    <option value="GER">Germany</option>
+                </select>
+
+                <label for="state">State</label>
+                <select id="state" data-montage-id="state" required="true"></select>
+
+                <select data-montage-id="noDefaultSelection">
+                    <option value="name">Name</option>
+                    <option value="tags">Tags</option>
+                </select>
+
+            </form>
+
+
+            <h2>Scroll</h2>
+            <form action="" method="get">
+            <div data-montage-id="scroller" style="background:#CCC; height: 300px">
+                <div style="background:#A00; height:260px; width:10px">.</div>
+                <label for="country1">Country</label>
+                <select id="country1" data-montage-id="country1" required>
+                    <option value="">Please select a Country</option>
+                    <option value="USA" selected="true">United States of America</option>
+                    <option value="INR" >India</option>
+                    <option value="FR">France</option>
+                    <option value="GER">Germany</option>
+                </select>
+                <div style="background:#A00; height:200px; width:10px">.</div>
+            </div>
+            </form>
+        </div>
+
+        <section>
+            <h2>Test binding to SelectInput.value</h2>
+            <div class="demo">
+                <div style="height: 40px;">
+                    <button data-montage-id="justify-none" class="btn justify">-</button>
+                    <button data-montage-id="justifyLeft" class="btn justify">L</button>
+                    <button data-montage-id="justifyCenter" class="btn justify">C</button>
+                    <button data-montage-id="justifyRight" class="btn justify">R</button>
+                </div>
+                <div>
+                    <select data-montage-id="justifySelect" class="justifySelect">
+                            <option value=""></option>
+                            <option value="left">Left</option>
+                            <option value="center">Center</option>
+                            <option value="right">Right</option>
+                    </select>
+
+                    <p>
+                        Justify selection: <span data-montage-id="justifyResult"></span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
