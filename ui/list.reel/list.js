@@ -90,7 +90,7 @@ exports.List = Component.specialize(/** @lends module:"matte/ui/list.reel".List#
             if (key === "objectAtCurrentIteration" || key === "currentIteration") {
                 deprecationWarning(key,":iteration.object");
                 if (this._repetition) {
-                    return this._repetition.observeProperty(key, emit, source, parameters, beforeChange);
+                    return this._repetition.makePropertyObservable(key, emit, source, parameters, beforeChange);
                 }
             } else {
                 return observeProperty(this, key, emit, source, parameters, beforeChange);
