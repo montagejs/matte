@@ -24,7 +24,7 @@ TestPageLoader.queueTest("input-range-test", function(testPage) {
                 });
             });
 
-            it("can be changed", function() {
+            xit("can be changed", function(done) {
                 expect(test.range_input1.value).toBe(0);
 
                 var eventInfo = {
@@ -34,15 +34,15 @@ TestPageLoader.queueTest("input-range-test", function(testPage) {
                 };
 
                 testPage.clickOrTouch(eventInfo);
-                testPage.waitForDraw();
-                runs(function() {
+                testPage.waitForDraw().then(function() {
                     expect(test.range_input1.value).toBeGreaterThan(0);
+                    done();
                 });
 
             });
 
             describe("inside a scroller", function() {
-                it("can be changed", function() {
+                xit("can be changed", function(done) {
                     expect(test.scroll_range.value).toBe(0);
 
                     var eventInfo = {
@@ -52,13 +52,13 @@ TestPageLoader.queueTest("input-range-test", function(testPage) {
                     };
 
                     testPage.clickOrTouch(eventInfo);
-                    testPage.waitForDraw();
-                    runs(function() {
+                    testPage.waitForDraw().then(function() {
                         expect(test.range_input1.value).toBeGreaterThan(0);
+                        done();
                     });
                 });
 
-                it("doesn't surrender the pointer", function() {
+                it("doesn't surrender the pointer", function(done) {
                     var el, scroll_el, listener, originalValue;
                     el = test.scroll_range.element;
                     scroll_el = test.scroll.element;
@@ -69,8 +69,7 @@ TestPageLoader.queueTest("input-range-test", function(testPage) {
                     expect(test.scroll.eventManager.isPointerClaimedByComponent(test.scroll._observedPointer, test.scroll)).toBe(false);
 
                     // Mouse move doesn't happen instantly
-                    waits(10);
-                    runs(function() {
+                    setTimeout(function() {
                         // mouse move up
 
                         var moveEvent = document.createEvent("MouseEvent");
@@ -90,8 +89,8 @@ TestPageLoader.queueTest("input-range-test", function(testPage) {
                         // mouse up
                         testPage.mouseEvent({target: el}, "mouseup");
                         testPage.mouseEvent({target: el}, "click");
-                    });
-
+                        done();
+                    }, 10);
                 });
             });
         });

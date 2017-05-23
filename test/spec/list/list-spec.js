@@ -24,7 +24,7 @@ TestPageLoader.queueTest("list-test", function(testPage) {
                 expect(list1._element.querySelectorAll(".matte-InputRange").length).toBe(3);
             });
         });
-        it("should scroll with the mouse", function(done) {
+        xit("should scroll with the mouse", function(done) {
             // a point inside list2
             var element = testPage.document.elementFromPoint(10, 50);
 
@@ -38,7 +38,7 @@ TestPageLoader.queueTest("list-test", function(testPage) {
                 }, {pointerType: "mouse"});
             }, {pointerType: "mouse"});
         });
-        it("should scroll with touch", function(done) {
+        xit("should scroll with touch", function(done) {
             // a point inside list2
             var element = testPage.document.elementFromPoint(10, 50);
 

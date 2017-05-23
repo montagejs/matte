@@ -8,83 +8,87 @@ TestPageLoader.queueTest("text-slider-test", function(testPage) {
         test = testPage.test;
     });
 
-    describe("test/text-slider/text-slider-spec", function() {
+    describe("test/text-slider/text-slider-spec", function() {   
 
-        describe("text-slider", function() {
-            it("can be created", function() {
-                expect(test.number).toBeDefined();
-            });
+        it("can be created", function() {
+            expect(test.number).toBeDefined();
+        });
 
-            it("increases when dragged right", function(done) {
-                var oldValue = test.number.value;
-                testPage.dragElementOffsetTo(test.number.element, 50, 0, null, function() {
-                    var newValue = oldValue + 50;
-                    expect(test.number.value).toBe(newValue);
-                    expect(test.number.templateObjects.value.value).toBe(newValue);
-                    done();
-                }, null);
-            });
-            it("decreases when dragged left", function(done) {
-                var oldValue = test.number.value;
-                testPage.dragElementOffsetTo(test.number.element, -50, 0, null, function() {
-                    var newValue = oldValue - 50;
-                    expect(test.number.value).toBe(newValue);
-                    expect(test.number.templateObjects.value.value).toBe(newValue);
-                    done();
-                }, null);
-            });
-            it("increases when dragged up", function(done) {
-                var oldValue = test.number.value;
-                testPage.dragElementOffsetTo(test.number.element, 0, -50, null, function() {
-                    var newValue = oldValue + 50;
-                    expect(test.number.value).toBe(newValue);
-                    expect(test.number.templateObjects.value.value).toBe(newValue);
-                    done();
-                }, null);
-            });
-            it("decreases when dragged down", function(done) {
-                var oldValue = test.number.value;
-                testPage.dragElementOffsetTo(test.number.element, 0, 50, null, function() {
-                    var newValue = oldValue - 50;
-                    expect(test.number.value).toBe(newValue);
-                    expect(test.number.templateObjects.value.value).toBe(newValue);
-                    done();
-                }, null);
-            });
-            it("it doesn't decrease when dragging up and left", function(done) {
-                var element = test.number.element;
-                var oldValue = test.number.value;
+        describe("text-slider", function() {            
 
-                testPage.mouseEvent({target: element}, "mousedown", function () {
+            xdescribe("drag", function() {
+                it("increases when dragged right", function(done) {
+                    var oldValue = test.number.value;
+                    testPage.dragElementOffsetTo(test.number.element, 50, 0, null, function() {
+                        var newValue = oldValue + 50;
+                        expect(test.number.value).toBe(newValue);
+                        expect(test.number.templateObjects.value.value).toBe(newValue);
+                        done();
+                    }, null);
+                });
+                it("decreases when dragged left", function(done) {
+                    var oldValue = test.number.value;
+                    testPage.dragElementOffsetTo(test.number.element, -50, 0, null, function() {
+                        var newValue = oldValue - 50;
+                        expect(test.number.value).toBe(newValue);
+                        expect(test.number.templateObjects.value.value).toBe(newValue);
+                        done();
+                    }, null);
+                });
+                it("increases when dragged up", function(done) {
+                    var oldValue = test.number.value;
+                    testPage.dragElementOffsetTo(test.number.element, 0, -50, null, function() {
+                        var newValue = oldValue + 50;
+                        expect(test.number.value).toBe(newValue);
+                        expect(test.number.templateObjects.value.value).toBe(newValue);
+                        done();
+                    }, null);
+                });
+                it("decreases when dragged down", function(done) {
+                    var oldValue = test.number.value;
+                    testPage.dragElementOffsetTo(test.number.element, 0, 50, null, function() {
+                        var newValue = oldValue - 50;
+                        expect(test.number.value).toBe(newValue);
+                        expect(test.number.templateObjects.value.value).toBe(newValue);
+                        done();
+                    }, null);
+                });
 
-                    // Mouse move doesn't happen instantly
-                    testPage.mouseEvent({
-                        target: element,
-                        clientX: element.offsetLeft,
-                        clientY: element.offsetTop - 50
-                    }, "mousemove", function () {
-                        expect(test.number.value).toBe(oldValue + 50);
+                it("it doesn't decrease when dragging up and left", function(done) {
+                    var element = test.number.element;
+                    var oldValue = test.number.value;
 
+                    testPage.mouseEvent({target: element}, "mousedown", function () {
+
+                        // Mouse move doesn't happen instantly
                         testPage.mouseEvent({
                             target: element,
-                            clientX: element.offsetLeft - 60,
+                            clientX: element.offsetLeft,
                             clientY: element.offsetTop - 50
-                        }, "mousemove", function (eventInfo) {
-                                
-                            // mouse up
+                        }, "mousemove", function () {
+                            expect(test.number.value).toBe(oldValue + 50);
+
                             testPage.mouseEvent({
                                 target: element,
                                 clientX: element.offsetLeft - 60,
                                 clientY: element.offsetTop - 50
-                            }, "mouseup", function () {                                
+                            }, "mousemove", function (eventInfo) {
+                                    
+                                // mouse up
+                                testPage.mouseEvent({
+                                    target: element,
+                                    clientX: element.offsetLeft - 60,
+                                    clientY: element.offsetTop - 50
+                                }, "mouseup", function () {                                
 
-                                // It should not be -60, even though the left magnitude
-                                // is greater that the up magnitude here.
-                                expect(test.number.value).toBe(oldValue + 50);
-                                done();
+                                    // It should not be -60, even though the left magnitude
+                                    // is greater that the up magnitude here.
+                                    expect(test.number.value).toBe(oldValue + 50);
+                                    done();
+                                });
                             });
-                        });
-                    }); 
+                        }); 
+                    });
                 });
             });
 
@@ -102,26 +106,29 @@ TestPageLoader.queueTest("text-slider-test", function(testPage) {
             });
 
             describe("text field", function() {
-                it("appears when the text-slider is clicked", function() {
+                it("appears when the text-slider is clicked", function(done) {
                     test.hex.value = 160;
                     test.hex.handlePress();
                     expect(test.hex.isEditing).toBe(true);
                     testPage.waitForDraw().then(function() {
                         expect(test.hex.element.className).toMatch("matte-TextSlider--editing");
+                        done();
                     });
                 });
-                it("increases when the up arrow is pressed", function() {
+                it("increases when the up arrow is pressed", function(done) {
                     test.hex.handleInputKeydown({target: test.hex._inputElement, keyCode: 38});
                     expect(test.hex.value).toBe(161);
                     testPage.waitForDraw().then(function() {
                         expect(test.hex._inputElement.value).toBe("A1");
+                        done();
                     });
                 });
-                it("decreases when the down arrow is pressed", function() {
+                it("decreases when the down arrow is pressed", function(done) {
                     test.hex.handleInputKeydown({target: test.hex._inputElement, keyCode: 40});
                     expect(test.hex.value).toBe(160);
                     testPage.waitForDraw().then(function() {
                         expect(test.hex._inputElement.value).toBe("A0");
+                        done();
                     });
                 });
                 it("sets the value when enter is set", function() {

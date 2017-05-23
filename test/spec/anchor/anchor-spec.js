@@ -42,10 +42,8 @@ TestPageLoader.queueTest("anchor-test", function(testPage) {
                             done();
                         });
                     });
-                    /*
-                    // TODO: No support for converter for Anchor.textContent
 
-                    describe("when using converter for the value", function() {
+                    xdescribe("when using converter for the value", function() {
                         // date field
                         it("should a valid value", function() {
                             var field = test.date1,
@@ -64,8 +62,6 @@ TestPageLoader.queueTest("anchor-test", function(testPage) {
                         });
 
                     });
-                    */
-
                 });
 
                 // test set/get of standard and global attributes

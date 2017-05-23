@@ -24,7 +24,7 @@ TestPageLoader.queueTest("toggle-button-test", function(testPage) {
     describe("test/toggle-button/toggle-button-spec", function() {
 
         describe("togglebutton", function() {
-            it("alternates between unpressed and pressed", function() {
+            xit("alternates between unpressed and pressed", function(done) {
                 expect(test.toggleinput.pressed).toBe(false);
                 expect(test.toggleinput.label).toBe("off");
 
@@ -35,6 +35,7 @@ TestPageLoader.queueTest("toggle-button-test", function(testPage) {
                 click(test.toggleinput);
                 expect(test.toggleinput.pressed).toBe(false);
                 expect(test.toggleinput.label).toBe("off");
+                done();
             });
 
             describe("toggle()", function() {
@@ -50,7 +51,7 @@ TestPageLoader.queueTest("toggle-button-test", function(testPage) {
             });
 
             describe("label property", function() {
-                it("alternates between unpressed and pressed", function(done) {
+                xit("alternates between unpressed and pressed", function(done) {
                     test.toggleinput.pressed = false;
 
                     // The expectations are in a closure because the draw can
@@ -87,7 +88,7 @@ TestPageLoader.queueTest("toggle-button-test", function(testPage) {
                 });
             });
             describe("unpressedLabel", function() {
-                it("is set as the value when the button is unpressed", function() {
+                it("is set as the value when the button is unpressed", function(done) {
                     test.toggleinput.pressed = false;
                     expect(test.toggleinput.label).toBe("off");
                     test.toggleinput.unpressedLabel = "unpressed";
@@ -95,6 +96,7 @@ TestPageLoader.queueTest("toggle-button-test", function(testPage) {
 
                     testPage.waitForDraw().then(function(){
                         expect(test.toggleinput.element.value).toBe("unpressed");
+                        done();
                     });
                 });
                 it("is taken from `value` on init if the button is unpressed and unpressedLabel isn't set", function() {
@@ -103,7 +105,7 @@ TestPageLoader.queueTest("toggle-button-test", function(testPage) {
             });
 
             describe("pressedLabel", function() {
-                it("is set as the value when the button is pressed", function() {
+                it("is set as the value when the button is pressed", function(done) {
                     test.toggleinput.pressed = true;
                     expect(test.toggleinput.label).toBe("on");
                     test.toggleinput.pressedLabel = "pressed";
@@ -111,6 +113,7 @@ TestPageLoader.queueTest("toggle-button-test", function(testPage) {
 
                     testPage.waitForDraw().then(function(){
                         expect(test.toggleinput.element.value).toBe("pressed");
+                        done();
                     });
                 });
                 it("is taken from `value` on init if the button is pressed and pressedLabel isn't set", function() {
@@ -119,18 +122,20 @@ TestPageLoader.queueTest("toggle-button-test", function(testPage) {
             });
 
             describe("pressedClass", function() {
-                it("is not in the classList when the button is unpressed", function() {
+                it("is not in the classList when the button is unpressed", function(done) {
                     test.toggleinput.pressed = false;
 
                     testPage.waitForDraw().then(function(){
                         expect(test.toggleinput.element.className).not.toContain("pressed");
+                        done();
                     });
                 });
-                it("is added to the classList when the button is pressed", function() {
+                it("is added to the classList when the button is pressed", function(done) {
                     test.toggleinput.pressed = true;
 
                     testPage.waitForDraw().then(function(){
                         expect(test.toggleinput.element.className).toContain("pressed");
+                        done();
                     });
                 });
             });

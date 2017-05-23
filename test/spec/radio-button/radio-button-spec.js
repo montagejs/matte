@@ -29,7 +29,7 @@ TestPageLoader.queueTest("radio-button-test", function(testPage) {
         // fully tested above. So fewer tests here.
         describe("radio button", function() {
             describe("checked property", function() {
-                it("changes when the radio button is clicked", function(done) {
+                xit("changes when the radio button is clicked", function(done) {
                     setTimeout(function() {
                         expect(test.radio1.checked).toBe(false);
 
@@ -41,7 +41,7 @@ TestPageLoader.queueTest("radio-button-test", function(testPage) {
                 });
             });
             describe("action event", function() {
-                it("should fire when clicked", function() {
+                xit("should fire when clicked", function() {
                     expect(click(test.radio2)).toHaveBeenCalled();
                 });
                 it("should not fire when another radio button in the same group is clicked", function() {

@@ -37,28 +37,28 @@ TestPageLoader.queueTest("button-blueprint-test", function (testPage) {
             var newBlueprint = new Blueprint().initWithName(button.identifier);
             expect(newBlueprint).toBeTruthy();
             //
-            var autofocus = newBlueprint.addToOnePropertyBlueprintNamed("autofocus");
+            var autofocus = newBlueprint.addToOnePropertyDescriptorNamed("autofocus");
             autofocus.valueType = "string";
             autofocus.helpString = "Specifies that a button should automatically get focus when the page loads";
 
-            var enabled = newBlueprint.addToOnePropertyBlueprintNamed("enabled");
+            var enabled = newBlueprint.addToOnePropertyDescriptorNamed("enabled");
             enabled.valueType = "boolean";
             enabled.helpString = "Specifies that a button should be enabled";
 
-            var formaction = newBlueprint.addToOnePropertyBlueprintNamed("formaction");
+            var formaction = newBlueprint.addToOnePropertyDescriptorNamed("formaction");
             formaction.valueType = "url";
             formaction.helpString = "Specifies where to send the form-data when a form is submitted. Only for type='submit'";
 
-            var formmethod = newBlueprint.addToOnePropertyBlueprintNamed("formmethod");
+            var formmethod = newBlueprint.addToOnePropertyDescriptorNamed("formmethod");
             formmethod.valueType = "enum";
             formmethod.enumValues = ["get", "post"];
             formmethod.helpString = "Specifies how to send the form-data (which HTTP method to use). Only for type='submit'";
 
             //
-            newBlueprint.addPropertyBlueprintToGroupNamed(newBlueprint.propertyBlueprintForName("enabled"), "base");
-            newBlueprint.addPropertyBlueprintToGroupNamed(newBlueprint.propertyBlueprintForName("autofocus"), "base");
-            newBlueprint.addPropertyBlueprintToGroupNamed(newBlueprint.propertyBlueprintForName("formaction"), "form");
-            newBlueprint.addPropertyBlueprintToGroupNamed(newBlueprint.propertyBlueprintForName("formmethod"), "form");
+            newBlueprint.addPropertyDescriptorToGroupNamed(newBlueprint.propertyDescriptorForName("enabled"), "base");
+            newBlueprint.addPropertyDescriptorToGroupNamed(newBlueprint.propertyDescriptorForName("autofocus"), "base");
+            newBlueprint.addPropertyDescriptorToGroupNamed(newBlueprint.propertyDescriptorForName("formaction"), "form");
+            newBlueprint.addPropertyDescriptorToGroupNamed(newBlueprint.propertyDescriptorForName("formmethod"), "form");
             button.blueprint = newBlueprint;
 
             var blueprintPromise = button.blueprint;

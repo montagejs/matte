@@ -15,7 +15,7 @@ TestPageLoader.queueTest("scroller-test", function(testPage) {
                 expect(test.scroller1).toBeDefined();
             });
 
-            it("can be scrolled", function(done) {
+            xit("can be scrolled", function(done) {
                 testPage.dragElementOffsetTo(test.scroller1.element, 0, -20, null, null, function() {
                     testPage.waitForDraw(1, true).then(function() {
                         expect(test.scroller1.scrollY).toBe(20);

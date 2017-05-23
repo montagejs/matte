@@ -375,7 +375,7 @@ TestPageLoader.queueTest("rich-text-editor-test", function(testPage) {
                     });
                 });
 
-                describe ("focus testing", function() {
+                xdescribe ("focus testing", function() {
                     it("set focus on editor 1", function(done) {
                         test.editor1.focus();
                         setTimeout(function() {
@@ -516,7 +516,7 @@ TestPageLoader.queueTest("rich-text-editor-test", function(testPage) {
                             done();
                         });
                     });
-                    it("select an anchor, test the link popup overlay is active", function(done) {
+                    xit("select an anchor, test the link popup overlay is active", function(done) {
                         
                         var element = test.editor1.innerElement.getElementsByTagName("A")[0],
                             range;
