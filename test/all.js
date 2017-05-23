@@ -12,14 +12,14 @@ module.exports = require("montage-testing").run(require,[
     "spec/input-range/input-range-spec",
     "spec/input-text/input-text-spec",
     "spec/list/list-spec",
-    //"spec/popup/popup-spec",
-    "spec/rich-text-editor/rich-text-editor-spec",
+    {module: "spec/popup/popup-spec", karma: false},
+    {module: "spec/rich-text-editor/rich-text-editor-spec", karma: false},
     "spec/scroller/scroller-spec",
     "spec/select/select-spec",
     "spec/text-slider/text-slider-spec",
     "spec/toggle-button/toggle-button-spec",
     "spec/token-field/token-field-spec",
-    "spec/video-player/video-player-spec"
+    {module: "spec/video-player/video-player-spec", karma: false}
 ]).then(function () {
     console.log('montage-testing', 'End');
 }, function (err) {
