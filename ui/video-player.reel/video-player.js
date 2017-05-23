@@ -281,8 +281,8 @@ exports.VideoPlayer = AbstractVideo.specialize(/** @lends module:matte/ui/video-
     enterDocument: {
         value: function(firstTime) {
             // Call super method
-            if (AbstractVideo.enterDocument) {
-                AbstractVideo.enterDocument.call(this, firstTime);
+            if (AbstractVideo.prototype.enterDocument) {
+                AbstractVideo.prototype.enterDocument.call(this, firstTime);
             }
             
             if (firstTime) {

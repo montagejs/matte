@@ -1,22 +1,28 @@
-require("montage-testing").run(require,[
+console.log('montage-testing', 'Start');
+module.exports = require("montage-testing").run(require,[
     // Please keep in alphabetical order
-    "test/anchor/anchor-spec",
-    "test/autocomplete/autocomplete-spec",
-    "test/blueprint/button/button-blueprint-spec",
-    "test/button/button-spec",
-    "test/dynamic-element/dynamic-element-spec",
-    "test/input-checkbox/input-checkbox-spec",
-    "test/input-number/input-number-spec",
-    "test/radio-button/radio-button-spec",
-    "test/input-range/input-range-spec",
-    "test/input-text/input-text-spec",
-    "test/list/list-spec",
-    "test/popup/popup-spec",
-    "test/rich-text-editor/rich-text-editor-spec",
-    "test/scroller/scroller-spec",
-    "test/select/select-spec",
-    "test/text-slider/text-slider-spec",
-    "test/toggle-button/toggle-button-spec",
-    "test/token-field/token-field-spec",
-    "test/video-player/video-player-spec"
-]);
+    "spec/anchor/anchor-spec",
+    "spec/autocomplete/autocomplete-spec",
+    "spec/blueprint/button/button-blueprint-spec",
+    "spec/button/button-spec",
+    "spec/dynamic-element/dynamic-element-spec",
+    "spec/input-checkbox/input-checkbox-spec",
+    "spec/input-number/input-number-spec",
+    "spec/radio-button/radio-button-spec",
+    "spec/input-range/input-range-spec",
+    "spec/input-text/input-text-spec",
+    "spec/list/list-spec",
+    {module: "spec/popup/popup-spec", karma: false},
+    {module: "spec/rich-text-editor/rich-text-editor-spec", karma: false},
+    "spec/scroller/scroller-spec",
+    "spec/select/select-spec",
+    "spec/text-slider/text-slider-spec",
+    "spec/toggle-button/toggle-button-spec",
+    "spec/token-field/token-field-spec",
+    {module: "spec/video-player/video-player-spec", karma: false}
+]).then(function () {
+    console.log('montage-testing', 'End');
+}, function (err) {
+    console.log('montage-testing', 'Fail', err, err.stack);
+    throw err;
+});
