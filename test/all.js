@@ -12,7 +12,7 @@ module.exports = require("montage-testing").run(require,[
     "spec/input-range/input-range-spec",
     "spec/input-text/input-text-spec",
     "spec/list/list-spec",
-    {name: "spec/popup/popup-spec", karma: false},
+    {name: "spec/popup/popup-spec", karma: false, browser: false},
     {name: "spec/rich-text-editor/rich-text-editor-spec", karma: false},
     "spec/scroller/scroller-spec",
     "spec/select/select-spec",

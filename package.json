@@ -1,7 +1,7 @@
 {
   "name": "matte",
   "description": "Desktop-optimized MontageJS components for medium and large screen.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
