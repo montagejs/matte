@@ -1,42 +1,5 @@
 var Component = require("montage/ui/component").Component;
 
-exports.Main = Component.specialize({
-    
-    
-    // Autocomplete example
-    json: {value: null},
-    state: {value: null},
-    selectedStates: {value: null},
-    members: {value: null},
-    info: {value: null},
-    
-    _cachedStates: {value: null},
-    
-    stateShouldGetSuggestions: {
-       value: function(autocomplete, searchTerm) {
-           var results = [];
-           if(searchTerm) {
-               var term = searchTerm.toLowerCase();
-               if(this._cachedStates && this._cachedStates[term]) {
-                   results = this._cachedStates;
-               } else {
-                   results = states.filter(function(item) {
-                       // @todo - memoize
-                       return (item.name.toLowerCase().indexOf(term) >= 0 || item.code.indexOf(term) >= 0);
-                   });
-                   this._cachedStates = results;
-               }
-           }
-           autocomplete.suggestions = results.map(function(item) {
-               return item.name;
-           });
-       }
-    }
-    
-
-});
-
-
 // Used for the Autocomplete example
 var states = [
     {name: "Alabama", code: "AL" },
@@ -91,3 +54,60 @@ var states = [
     {name: "Wisconsin", code: "WI"},
     {name: "Wyoming", code: "WY"}
 ];
+
+
+exports.Main = Component.specialize({
+    // Autocomplete example
+    json: {
+      value: null
+    },
+    state: {
+      value: null
+    },
+    selectedStates: {
+      value: null
+    },
+    members: {
+      value: null
+    },
+    info: {
+      value: null
+    },
+    _cachedStates: {
+      value: null
+    },
+    stateShouldGetSuggestions: {
+       value: function(autocomplete, searchTerm) {
+           var results = [];
+           if(searchTerm) {
+               var term = searchTerm.toLowerCase();
+               if(this._cachedStates && this._cachedStates[term]) {
+                   results = this._cachedStates;
+               } else {
+                   results = states.filter(function(item) {
+                       // @todo - memoize
+                       return (item.name.toLowerCase().indexOf(term) >= 0 || item.code.indexOf(term) >= 0);
+                   });
+                   this._cachedStates = results;
+               }
+           }
+           autocomplete.suggestions = results.map(function(item) {
+               return item.name;
+           });
+       }
+    },
+
+    handleAction: {
+      value: function () {
+        debugger;
+        if (this.popup.displayed) {
+
+        this.popup.hide();
+        } else {
+
+        this.popup.show();
+        }
+      }
+    }
+});
+

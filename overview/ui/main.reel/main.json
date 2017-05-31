@@ -1,7 +1,8 @@
 {
     "owner": {
         "properties": {
-            "element": {"#": "main"}
+            "element": {"#": "main"},
+            "popup": {"@": "popup"}
         }
     },
 
@@ -61,6 +62,36 @@
     },
 
     "ToggleSwitch": { "prototype": "ui/toggle-switch.reel", "properties": { "element": {"#": "ToggleSwitch"} } },
+
+    "popup": {
+        "prototype": "ui/popup/popup.reel",
+        "properties": {
+            "content": {"@": "popupContent"},
+            "anchor": {"#": "popupButton"}
+        }
+    },
+    "popupButton": {
+        "prototype": "ui/button.reel",
+        "properties": {
+            "element": {"#": "popupButton"},
+            "identifier": "popupButton"
+        },
+        "listeners": [
+            {
+                "type": "action", 
+                "listener": {"@": "owner"}
+            }
+        ]
+    },
+
+    "popupContent": {
+        "prototype": "montage/ui/component",
+        "properties": {
+            "element": {"#": "testPopup"},
+            "identifier": "testPopup",
+            "hasTemplate": false
+        }
+    },
 
     "VideoPlayer": { "prototype": "ui/video-player.reel", "properties": { "element": {"#": "VideoPlayer"} } },
 
