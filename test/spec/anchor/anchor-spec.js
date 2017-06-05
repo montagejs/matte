@@ -36,31 +36,10 @@ TestPageLoader.queueTest("anchor-test", function(testPage) {
                         field.textContent = value;
 
                         expect(field.textContent).toBe(value);
-                        testPage.waitForDraw();
-                        setTimeout(function(){
+                        testPage.waitForDraw().then(function(){
                             expect(field.element.textContent == value).toBe(true);
                             done();
                         });
-                    });
-
-                    xdescribe("when using converter for the value", function() {
-                        // date field
-                        it("should a valid value", function() {
-                            var field = test.date1,
-                            value = "01-01-2010";
-                            field.value = value;
-
-                            expect(isDate(field.value)).toBe(true);
-                            expect(field.error).toBeFalsy();
-                        });
-                        it("should reject an invalid value", function() {
-                            var field = test.date1,
-                            value = "01/01/2010";
-                            field.value = value;
-
-                            expect(field.error).not.toBeNull();
-                        });
-
                     });
                 });
 

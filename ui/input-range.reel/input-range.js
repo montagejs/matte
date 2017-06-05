@@ -202,8 +202,9 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
         value: function() {
             // support touching the scale to select only in Desktop
             if(window.Touch) {
-                this.element.addEventListener('touchstart', this, false);
-            } else {
+            //     console.log('touched');
+            //     this.element.addEventListener('touchstart', this, false);
+            // } else {
                 this.element.addEventListener('mousedown', this, false);
             }
             this._touchOnHandle = false;
@@ -215,8 +216,8 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
         value: function() {
             // support touching the scale to select only in Desktop
             if(window.Touch) {
-                this.element.removeEventListener('touchstart', this, false);
-            } else {
+            //     this.element.removeEventListener('touchstart', this, false);
+            // } else {
                 this.element.removeEventListener('mousedown', this, false);
             }
         }
@@ -266,12 +267,16 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
 
     handleMousedown: {
         value: function(e) {
-            this._clickTarget = {x: e.pageX, y: e.pageY};
+            // console.log(e.target);
+            // console.log(this._handleEl);
+            this._touchOnHandle = (e.target === this._handleEl);
+            // this._clickTarget = {x: e.pageX, y: e.pageY};
         }
     },
 
     handleTouchstart: {
         value: function(e) {
+            debugger;
             var target = e.targetTouches[0];
             // handle the translate only if touch target is the knob
             this._touchOnHandle = (target.target === this._handleEl);
@@ -290,16 +295,16 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
         value: function() {
             this._handleWidth = this._handleEl.offsetWidth;
             this._sliderWidth = this.element.offsetWidth - this._handleWidth;
-            if(this._clickTarget) {
-                // the slider scale was clicked
-                var x = dom.convertPointFromNodeToPage(this.element).x;
-                var positionX = (this._clickTarget.x - (x + (this._handleWidth/2)));
-                if(positionX < 0) {
-                    positionX = 0;
-                }
-                this._positionX = positionX;
-                this._clickTarget = null;
-            }
+            // if(this._clickTarget) {
+            //     // the slider scale was clicked
+            //     var x = dom.convertPointFromNodeToPage(this.element).x;
+            //     var positionX = (this._clickTarget.x - (x + (this._handleWidth/2)));
+            //     if(positionX < 0) {
+            //         positionX = 0;
+            //     }
+            //     this._positionX = positionX;
+            //     this._clickTarget = null;
+            // }
             if(!this._valueSyncedWithPosition) {
                 this._calculatePositionFromValue();
             }

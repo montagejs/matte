@@ -58,8 +58,15 @@ exports.PopupTest = TestController.specialize({
      */
     showPopup:{
         value:function () {
+          debugger;
             this.popup.delegate = aTestPopupPositionDelegate;
+            if (this.popup.displayed) {
+
+            this.popup.hide();
+            } else {
+
             this.popup.show();
+            }
         }
     }
 
