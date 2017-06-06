@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "montage": ">=16.0.4",
-    "native": "^0.2.0"
+    "native": "^0.3.3"
   },
   "devDependencies": {
     "concurrently": "^3.4.0",
