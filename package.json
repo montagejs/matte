@@ -1,14 +1,14 @@
 {
   "name": "matte",
   "description": "Desktop-optimized MontageJS components for medium and large screen.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "https://github.com/montagejs/matte.git"
   },
   "dependencies": {
-    "montage": "^17.0.7",
+    "montage": "^16.0.4",
     "native": "^0.2.0"
   },
   "devDependencies": {
@@ -34,6 +34,7 @@
   },
   "exclude": [
     "overview",
+    "report",
     "test"
   ]
 }
