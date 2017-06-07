@@ -202,9 +202,7 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
         value: function() {
             // support touching the scale to select only in Desktop
             if(window.Touch) {
-            //     console.log('touched');
-            //     this.element.addEventListener('touchstart', this, false);
-            // } else {
+                this.element.addEventListener('touchstart', this, false);
                 this.element.addEventListener('mousedown', this, false);
             }
             this._touchOnHandle = false;
@@ -216,8 +214,7 @@ exports.InputRange = Component.specialize(/** @lends module:"matte/ui/input-rang
         value: function() {
             // support touching the scale to select only in Desktop
             if(window.Touch) {
-            //     this.element.removeEventListener('touchstart', this, false);
-            // } else {
+                this.element.removeEventListener('touchstart', this, false);
                 this.element.removeEventListener('mousedown', this, false);
             }
         }

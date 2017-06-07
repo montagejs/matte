@@ -34,6 +34,7 @@ exports.ToggleSwitch = Component.specialize(/** @lends module:"matte/ui/toggle-s
                     this._animation = null;
                     this._speed = 0;
                     this.needsDraw = true;
+                    console.log('toggle-switch value:', value);
                 }
             }
         }
@@ -158,6 +159,7 @@ exports.ToggleSwitch = Component.specialize(/** @lends module:"matte/ui/toggle-s
     handleTouchstart: {
         enumerable: false,
         value: function (event) {
+            console.log(event);
             if (event.target === this._toggle) {
                 this.value = !this.value;
             } else {

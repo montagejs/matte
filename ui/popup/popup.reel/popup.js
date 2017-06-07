@@ -510,7 +510,6 @@ var Popup = exports.Popup = Component.specialize({ /** @lends module:"matte/ui/p
 */
     _handleTouchMouseup: {
         value: function(event) {
-            debugger;
             var targetzIndex = this.getZIndex(event.target),
                 zIndex = this.getZIndex(this.element);
 

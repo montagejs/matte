@@ -61,7 +61,12 @@
         }
     },
 
-    "ToggleSwitch": { "prototype": "ui/toggle-switch.reel", "properties": { "element": {"#": "ToggleSwitch"} } },
+    "ToggleSwitch": { 
+        "prototype": "ui/toggle-switch.reel", 
+        "properties": { 
+            "element": {"#": "ToggleSwitch"} 
+        } 
+    },
 
     "popup": {
         "prototype": "ui/popup/popup.reel",
