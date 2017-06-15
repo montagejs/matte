@@ -493,8 +493,8 @@ TestPageLoader.queueTest("rich-text-editor-test", function(testPage) {
                             expect(test.editor1.overlays).toBeDefined();
                             expect(test.editor1.overlays.length).toBe(2);
                             // console.log(test.editor1.value);
-                            console.log(test.editor1.overlays[0]);
-                            console.log(test.editor1);
+                            // console.log(test.editor1.overlays[0]);
+                            // console.log(test.editor1);
                             // console.log(test.editor1._overlays[0]);
                             // console.log(test.editor1._overlays[1]);
                         

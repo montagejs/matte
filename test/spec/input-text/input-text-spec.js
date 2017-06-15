@@ -77,7 +77,11 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         value = "";
                         field.value = value;
 
-                        expect(field.element.checkValidity()).toBe(false);
+                        testPage.waitForDraw().then(function(){
+                            // browser empties the content if value is invalid
+                            expect(field.element.checkValidity()).toBe(false);
+                        });
+                        
                     });
 
                     it("should accept the value even if disabled", function() {
