@@ -73,12 +73,15 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         
                     });
 
-                    it("should mark empty value as invalid for required fields", function() {
+                    it("should mark empty value as invalid for required fields", function(done) {
                         var field = testPage.test.txt1,
                         value = "";
                         field.value = value;
 
-                        expect(field.element.checkValidity()).toBe(false);
+                        testPage.waitForDraw().then(function(){
+                            expect(field.element.checkValidity()).toBe(false);
+                            done();
+                        });
                        
                     });
 
