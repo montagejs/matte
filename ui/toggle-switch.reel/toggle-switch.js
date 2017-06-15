@@ -306,7 +306,6 @@ exports.ToggleSwitch = Component.specialize(/** @lends module:"matte/ui/toggle-s
             if (window.Touch) {
                 this._handlerDragArea.addEventListener("touchstart", this, false);
                 this._toggle.addEventListener("touchstart", this, false);
-            } else {
                 this._handlerDragArea.addEventListener("mousedown", this, false);
                 this._toggle.addEventListener("mousedown", this, false);
             }

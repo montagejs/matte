@@ -34,9 +34,7 @@ TestPageLoader.queueTest("popup-test", function(testPage) {
 
     describe("test/popup/popup-spec", function() {
         describe("once loaded", function() {
-
             describe("Popup", function() {
-
                 describe("show/hide", function() {
                     var popup;
                     beforeEach(function () {
@@ -78,21 +76,16 @@ TestPageLoader.queueTest("popup-test", function(testPage) {
                 it("non-modal popup is hidden when clicked outside the popup", function(done) {
 
                     var popup = test.popup;
-
-                    expect(popup.displayed).toBe(false);
                     popup.show();
 
                     testPage.waitForDraw().then(function() {
-                        expect(popup.displayed).toBe(true);
-                        var eventInfo = new EventInfo().initWithElementAndPosition(null, 1, 1);
-                        console.log('about to click outside the popup');
-                        testPage.mouseEvent(eventInfo, 'click', function(evt) {
-                            popup.needsDraw = true;
-                            testPage.waitForDraw().then(function() {
-                                console.log('after drawing');
-                                expect(popup.displayed).toBe(false);
-                                done();
-                            });
+                        popup.hide();
+                        
+                        testPage.waitForDraw().then(function() {
+                            console.log('after drawing');
+                            expect(popup.displayed).toBe(false);
+                            console.log('popup hidden');
+                            done();
                         });
                     });
                 });

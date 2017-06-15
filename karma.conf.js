@@ -35,6 +35,10 @@ module.exports = function(config) {
             included: false
         },
         {
+            pattern: 'ui/**/*.png',
+            included: false
+        },
+        {
             pattern: 'test/**/*.js',
             included: false
         },

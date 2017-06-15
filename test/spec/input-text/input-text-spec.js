@@ -7,25 +7,6 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
         test = testPage.test;
     });
 
-    var DATE_CLASS = '[object Date]';
-    var FUNCTION_CLASS = '[object Function]',
-        BOOLEAN_CLASS = '[object Boolean]',
-        NUMBER_CLASS = '[object Number]',
-        STRING_CLASS = '[object String]',
-        ARRAY_CLASS = '[object Array]',
-        DATE_CLASS = '[object Date]';
-    var _toString = Object.prototype.toString;
-
-    // TODO much like Array.isArray these should probably be moved into a shim i.e. Foo.isFoo(obj)
-
-    var isDate = function(object) {
-        return _toString.call(object) === DATE_CLASS;
-    };
-    var isNumber = function(object) {
-        return _toString.call(object) === NUMBER_CLASS;
-    };
-
-
     describe("ui/textfield-spec", function() {
         describe("initialization", function() {
             it("should load", function() {
@@ -89,43 +70,28 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         field.value = value;
 
                         expect(field.value).toBe(value);
+                        
                     });
 
-                    it("should mark empty value as invalid for required fields", function() {
+                    it("should mark empty value as invalid for required fields", function(done) {
                         var field = testPage.test.txt1,
                         value = "";
                         field.value = value;
 
-                        expect(field.element.checkValidity()).toBe(false);
+                        testPage.waitForDraw().then(function(){
+                            expect(field.element.checkValidity()).toBe(false);
+                            done();
+                        });
+                       
                     });
 
                     it("should accept the value even if disabled", function() {
                         var field = testPage.test.txt2,
                         value = 10;
                         field.value = value;
-
+                            
                         expect(field.value).toBe(value);
-                    });
-
-
-                    describe("when using converter for the value", function() {
-                        // date field
-                        xit("should a valid value", function() {
-                            var field = testPage.test.date1,
-                            value = "01-01-2010";
-                            field.value = value;
-
-                            expect(isDate(field.value)).toBe(true);
-                            expect(field.error).toBeFalsy();
-                        });
-                        it("should reject an invalid value", function() {
-                            var field = testPage.test.date1,
-                            value = "01/01/2010";
-                            field.value = value;
-
-                            expect(field.error).not.toBeNull();
-                        });
-
+                                                
                     });
 
                 });

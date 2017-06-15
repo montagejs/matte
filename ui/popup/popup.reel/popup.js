@@ -317,6 +317,12 @@ var Popup = exports.Popup = Component.specialize({ /** @lends module:"matte/ui/p
         }
     },
 
+    prepareForActivationEvents: {
+        value: function () {
+            this._addEventListeners();
+        }
+    },
+
     _addEventListeners: {
         value: function() {
             if (window.Touch) {
@@ -350,7 +356,6 @@ var Popup = exports.Popup = Component.specialize({ /** @lends module:"matte/ui/p
     */
     show: {
         value: function() {
-            //console.log("popup show", this.element);
             var type = this.type,
                 self = this;
             this.application.getPopupSlot(type, this, function(slot) {
@@ -366,7 +371,6 @@ var Popup = exports.Popup = Component.specialize({ /** @lends module:"matte/ui/p
     */
     hide: {
         value: function() {
-            //console.log('popup hide', this.element);
             var type = this.type,
                 self = this;
 
@@ -514,7 +518,7 @@ var Popup = exports.Popup = Component.specialize({ /** @lends module:"matte/ui/p
 
                 } else {
                     // hide the dialog when user clicks outside it
-                    this.displayed = false;
+                    this.hide();
                 }
             }
         }

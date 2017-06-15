@@ -375,7 +375,7 @@ TestPageLoader.queueTest("rich-text-editor-test", function(testPage) {
                     });
                 });
 
-                xdescribe ("focus testing", function() {
+                describe ("focus testing", function() {
                     it("set focus on editor 1", function(done) {
                         test.editor1.focus();
                         setTimeout(function() {
@@ -492,12 +492,19 @@ TestPageLoader.queueTest("rich-text-editor-test", function(testPage) {
                         testPage.waitForDraw().then(function() {
                             expect(test.editor1.overlays).toBeDefined();
                             expect(test.editor1.overlays.length).toBe(2);
-                            //expect(test.editor1.overlays[0]._montage_metadata.objectName).toBe("RichTextResizer");
-                            //expect(test.editor1.overlays[1]._montage_metadata.objectName).toBe("RichTextLinkPopup");
+                            // console.log(test.editor1.value);
+                            // console.log(test.editor1.overlays[0]);
+                            // console.log(test.editor1);
+                            // console.log(test.editor1._overlays[0]);
+                            // console.log(test.editor1._overlays[1]);
+                        
+                            // expect(test.editor1.overlays[0]._montage_metadata.objectName).toBe("RichTextResizer");
+                            // expect(test.editor1.overlays[1]._montage_metadata.objectName).toBe("RichTextLinkPopup");
                             done();
                         });
                     });
                     it("click on an image, test the image overlay is active", function(done) {
+                        // console.log(test.editor1.innerElement.getElementsByTagName("IMG")[0]);
                         var element = test.editor1.innerElement.getElementsByTagName("IMG")[0],
                             eventInfo = {
                                target: element,
@@ -505,7 +512,7 @@ TestPageLoader.queueTest("rich-text-editor-test", function(testPage) {
                                clientY: element.offsetTop + 5
                             };
                         testPage.clickOrTouch(eventInfo, function() {
-                            expect(test.editor1.activeOverlay).toBe(test.editor1.overlays[0]);
+                            expect(test.editor1.activeOverlay).toBe(test.editor1._overlays[0]);
                             done();
                         });
                     });

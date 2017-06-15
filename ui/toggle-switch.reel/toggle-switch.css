@@ -1,6 +1,7 @@
 .matte-ToggleSwitch {
     width: 60px;
     height: 22px;
+    cursor:pointer;
 }
 
 .matte-ToggleSwitch .toggle:before {
@@ -84,6 +85,7 @@
     border-radius: 11px;
     padding: 1px;
     -webkit-transform: translateZ(0);
+
 }
 
 .matte-ToggleSwitch .handleron {

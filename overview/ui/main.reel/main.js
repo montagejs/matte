@@ -99,7 +99,7 @@ exports.Main = Component.specialize({
 
     handleAction: {
       value: function () {
-        debugger;
+       
         if (this.popup.displayed) {
 
         this.popup.hide();
