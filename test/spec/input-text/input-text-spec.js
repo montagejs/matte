@@ -70,6 +70,7 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         field.value = value;
 
                         expect(field.value).toBe(value);
+                        
                     });
 
                     it("should mark empty value as invalid for required fields", function() {
@@ -77,19 +78,17 @@ TestPageLoader.queueTest("input-text-test", function(testPage) {
                         value = "";
                         field.value = value;
 
-                        testPage.waitForDraw().then(function(){
-                            // browser empties the content if value is invalid
-                            expect(field.element.checkValidity()).toBe(false);
-                        });
-                        
+                        expect(field.element.checkValidity()).toBe(false);
+                       
                     });
 
                     it("should accept the value even if disabled", function() {
                         var field = testPage.test.txt2,
                         value = 10;
                         field.value = value;
-
+                            
                         expect(field.value).toBe(value);
+                                                
                     });
 
                 });
